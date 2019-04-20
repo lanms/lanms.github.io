@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>python基础-06 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ORM - Object Relation Mapping 对象关系映射  关系型数据库 - 关系模型 Python 程序 - 对象模型 第三方框架 Alchemy 可以完成对象关系的双向转换,可以直接操作 数据库, 不用写 SQL 语句, 但是会降低性能  关键字host / [port] / user / passwd / db / charset / [autocommit / cursor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python基础-06">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/python基础-06/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="ORM - Object Relation Mapping 对象关系映射  关系型数据库 - 关系模型 Python 程序 - 对象模型 第三方框架 Alchemy 可以完成对象关系的双向转换,可以直接操作 数据库, 不用写 SQL 语句, 但是会降低性能  关键字host / [port] / user / passwd / db / charset / [autocommit / cursor">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:15:31.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python基础-06">
+<meta name="twitter:description" content="ORM - Object Relation Mapping 对象关系映射  关系型数据库 - 关系模型 Python 程序 - 对象模型 第三方框架 Alchemy 可以完成对象关系的双向转换,可以直接操作 数据库, 不用写 SQL 语句, 但是会降低性能  关键字host / [port] / user / passwd / db / charset / [autocommit / cursor">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">python基础-06</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <p>ORM - Object Relation Mapping 对象关系映射</p>
+<ul>
+<li>关系型数据库 - 关系模型</li>
+<li>Python 程序 - 对象模型</li>
+<li>第三方框架 Alchemy 可以完成对象关系的双向转换,可以直接操作 数据库, 不用写 SQL 语句, 但是会降低性能</li>
+</ul>
+<h5 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h5><p><em>host / [port] / user / passwd / db / charset / [autocommit / cursorclass=pymysql.cursors.DictCursor]</em></p>
+<h5 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h5><ol>
+<li>调用的是pymysql的connect()/Cursor()方法</li>
+<li>创建连接  pymysql.connect()   输入</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">conn = pymysql.connect(host=<span class="string">'localhost'</span>, port=<span class="number">3306</span>,user=<span class="string">'root'</span>, passwd=<span class="string">'123456'</span>, db=<span class="string">'hrs'</span>,charset=<span class="string">'utf8'</span>, autocommit=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建Cursor()<ul>
+<li>cursor.execute()  执行sql语句</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">with</span> conn.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">        result = cursor.execute(<span class="string">'insert into tbdept values ()'</span>)</span><br><span class="line">        conn.commit()</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在写sql语句时, 不可以用字符串格式化的方法来传参数,会被SQL注射攻击(SQL Injection) (x’ or 1=1’) 加一个恒成立的条件来跳过检查</li>
+<li>使用其规定的占位符写法(占位符加元组)</li>
+<li>也可以使用命名占位符  名称  + 字典</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安全占位符</span></span><br><span class="line">result = cursor.execute(<span class="string">'insert into tbdept values (%s, %s, %s)'</span>,(dno, dname, dloc))</span><br><span class="line"><span class="comment"># 命名占位 </span></span><br><span class="line">result = cursor.execute(<span class="string">'insert into tbdept values (%(no)s, %(name)s, %(dloc)s)'</span>, &#123;<span class="string">'no'</span>: dno, <span class="string">'name'</span>: dname, <span class="string">'loc'</span>: dloc&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>用 select + fetchone() 对查找内容进行输出</strong></p>
+<ul>
+<li>使用查询语句对数据库进行查询,返回的是一个元组</li>
+<li>不可使用 select * from table 的方法对数据库进行查询,这样会先查询该数据库的属性然后在将属性和内容返回出来,变变为了两次查询,降低了查询的速度</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> conn.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">        <span class="comment"># 一般不适用 * 查询 ,</span></span><br><span class="line">        cursor.execute(<span class="string">'select dno, dname, dloc from tbdept'</span>)</span><br><span class="line">        result = cursor.fetchone()</span><br><span class="line">        <span class="keyword">while</span> result:    <span class="comment"># fetchone 每次抓去一条出来</span></span><br><span class="line">            print(result[<span class="number">1</span>])</span><br><span class="line">            result = cursor.fetchone()</span><br><span class="line">        conn.commit()</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构建一个类, 将查到的结果(元组)出入, 通过类的构造方法对需要的属性进行查询</li>
+<li>将 cursor 的类型改为字典 cursor  <ul>
+<li>cursorclass=pymysql.cursors.Dictcursor </li>
+</ul>
+</li>
+</ul>
+<h4 id="常见的报出的错误"><a href="#常见的报出的错误" class="headerlink" title="常见的报出的错误"></a>常见的报出的错误</h4><p>Cannot connect… host 错误  port 错误  服务器没有启动</p>
+<p>Access denied …  -user/ -passwd错误</p>
+<p>Unknown database …. 数据库名字写错</p>
+<p>MySQL syntax Error / unknow … SQL 语句错误</p>
+<p>默认情况root 只能本地连接,不能远程连接, 如果出现远程连接错误时, 将数据库的主机改为 % </p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/python基础-07/" class="styled-border">
+                    ←
+                    python基础-07
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/python基础-05/" class="styled-border">
+                    
+                    python基础-05
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

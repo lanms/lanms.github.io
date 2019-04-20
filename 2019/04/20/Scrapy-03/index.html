@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Scrapy-03 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="scrapy-redis配置布隆过滤器 修改 scrapy-redis -&amp;gt; dupefilter.py 文件 新增部分有注释 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scrapy-03">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Scrapy-03/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="scrapy-redis配置布隆过滤器 修改 scrapy-redis -&amp;gt; dupefilter.py 文件 新增部分有注释 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:17:51.971Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scrapy-03">
+<meta name="twitter:description" content="scrapy-redis配置布隆过滤器 修改 scrapy-redis -&amp;gt; dupefilter.py 文件 新增部分有注释 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Scrapy-03</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <p>scrapy-redis配置布隆过滤器</p>
+<p>修改 scrapy-redis -&gt; dupefilter.py 文件</p>
+<p>新增部分有注释</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RFPDupeFilter</span><span class="params">(BaseDupeFilter)</span>:</span></span><br><span class="line"></span><br><span class="line">    logger = logger</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, server, key, debug=False)</span>:</span></span><br><span class="line">       </span><br><span class="line">        self.server = server</span><br><span class="line">        self.key = key</span><br><span class="line">        self.debug = debug</span><br><span class="line">        self.logdupes = <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 添加</span></span><br><span class="line">        self.hash_num = hash_num</span><br><span class="line">        self.bf = BloomFilter(server, key, bit, hash_number)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">from_settings</span><span class="params">(cls, settings)</span>:</span></span><br><span class="line">        server = get_redis_from_settings(settings)</span><br><span class="line">        key = defaults.DUPEFILTER_KEY % &#123;<span class="string">'timestamp'</span>: int(time.time())&#125;</span><br><span class="line">        debug = settings.getbool(<span class="string">'DUPEFILTER_DEBUG'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 添加</span></span><br><span class="line">        bit = settings.getint(<span class="string">'BLOOMFILTER_BIT'</span>, BLOOMFILTER_BIT)</span><br><span class="line">        hash_number = settings.getint(<span class="string">'BLOOMFILTER_HASH_NUMBER'</span>, BLOOMFILTER_HASH_NUMBER)</span><br><span class="line">        <span class="keyword">return</span> cls(server, key=key, debug=debug, bit=bit, hash_number=hash_bumber)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 添加内容 ##########################################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试使用</span></span><br><span class="line"><span class="comment"># 哈希函数的数量</span></span><br><span class="line"><span class="comment"># BLOOMFILTER_HASH_NUMBER = 6</span></span><br><span class="line"><span class="comment"># 数组的位数</span></span><br><span class="line"><span class="comment"># BLOOMFILTER_BIT = 30</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashMap</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    遍历 value 的每一位，并利用ord()方法取到每一位的 ASCII 码，然后混淆 seed 进行迭代求和，</span></span><br><span class="line"><span class="string">    最终得到一个数值。这个数值的结果就由 value 和 seed 唯一确定。</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, m, seed)</span>:</span></span><br><span class="line">        self.m = m</span><br><span class="line">        self.seed = seed</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hash</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        ret = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(value)):</span><br><span class="line">            ret += self.seed * ret + ord(value[i])</span><br><span class="line">        <span class="keyword">return</span> (self.m - <span class="number">1</span>) &amp; ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BloomFilter</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="string">"""布隆过滤器"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, server, key, bit=BLOOMFILTER_BIT, hash_number=BLOOMFILTER_HASH_NUMBER)</span>:</span></span><br><span class="line">        self.m = <span class="number">1</span> &lt;&lt; bit</span><br><span class="line">        self.seeds = range(hash_number)</span><br><span class="line">        self.maps = [HashMap(self.m, seed) <span class="keyword">for</span> seed <span class="keyword">in</span> self.seeds]</span><br><span class="line">        self.server = server</span><br><span class="line">        self.key = key</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">exists</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> value:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        exists = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> map <span class="keyword">in</span> self.maps:</span><br><span class="line">            offset = map.hash(value)</span><br><span class="line">            exists = exists &amp; self.server.getbit(self.key, offset)</span><br><span class="line">        <span class="keyword">return</span> exists</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> f <span class="keyword">in</span> self.maps:</span><br><span class="line">            offset = f.hash(value)</span><br><span class="line">            self.server.setbit(self.key, offset, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>defaults.py添加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BLOOMFILTER_HASH_NUMBER = <span class="number">6</span></span><br><span class="line">BLOOMFILTER_BIT = <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""测试 BloomFilter """</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">conn = redis.StrictRedis(host=<span class="string">'localhost'</span>, port=<span class="number">6379</span>, password=<span class="string">''</span>)</span><br><span class="line">bf = BloomFilter(conn, <span class="string">'testbf'</span>, <span class="number">5</span>, <span class="number">6</span>)</span><br><span class="line">bf.insert(<span class="string">'Hello'</span>)</span><br><span class="line">bf.insert(<span class="string">"world"</span>)</span><br><span class="line">result = bf.exists(<span class="string">'Hello'</span>)</span><br><span class="line">print(bool(result))  <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">result2 = bf.exists(<span class="string">'python'</span>)</span><br><span class="line">print(bool(result2))  <span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="#"></a>
+            
+            
+                <a href="/2019/04/20/Scrapy-02/" class="styled-border">
+                    
+                    Scrapy-02
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

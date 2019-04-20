@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Flask-03 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="03-模型的创建 初始化SQLAlchemy12345678910111213# 方法1from flask-sqlalchemy import SQLAlchemyapp = Flask(__name__)db = SQLAlchemy(app=app)# 方法2db = SQLAlchemy()def create_app():    app = Flask(__name__)    db.i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask-03">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Flask-03/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="03-模型的创建 初始化SQLAlchemy12345678910111213# 方法1from flask-sqlalchemy import SQLAlchemyapp = Flask(__name__)db = SQLAlchemy(app=app)# 方法2db = SQLAlchemy()def create_app():    app = Flask(__name__)    db.i">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:17:12.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flask-03">
+<meta name="twitter:description" content="03-模型的创建 初始化SQLAlchemy12345678910111213# 方法1from flask-sqlalchemy import SQLAlchemyapp = Flask(__name__)db = SQLAlchemy(app=app)# 方法2db = SQLAlchemy()def create_app():    app = Flask(__name__)    db.i">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Flask-03</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <p>03-模型的创建</p>
+<h4 id="初始化SQLAlchemy"><a href="#初始化SQLAlchemy" class="headerlink" title="初始化SQLAlchemy"></a>初始化SQLAlchemy</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1</span></span><br><span class="line"><span class="keyword">from</span> flask-sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">db = SQLAlchemy(app=app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2</span></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">()</span>:</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    db.init_app(app=app)</span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<p>定义模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(db.Model)</span>:</span></span><br><span class="line">    __tablename__ = <span class="string">"tb_student"</span>  <span class="comment"># 数据库中对应的表的名称</span></span><br><span class="line">    s_id = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    s_name = db.Column(db.String(<span class="number">16</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    s_age = db.Column(db.Integer, default=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<p>Integer表示创建的s_id字段的类型为整形，</p>
+<p>primary_key表示是否为主键</p>
+<p>String表示该字段为字符串</p>
+<p>unique表示该字段唯一</p>
+<p>default表示默认值</p>
+<p>autoincrement表示是否自增</p>
+<h4 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h4><p>在视图函数中我们引入models.py中定义的db</p>
+<ul>
+<li>db.create_all()表示创建定义模型中对应到数据库中的表</li>
+<li>db.drop_all()表示删除数据库中的所有的表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> App.models <span class="keyword">import</span> db</span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route("/createdb/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_db</span><span class="params">()</span>:</span></span><br><span class="line">    db.create_all()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"创建成功"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/dropdb/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drop_db</span><span class="params">()</span>:</span></span><br><span class="line">    db.drop_all()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'删除成功'</span></span><br></pre></td></tr></table></figure>
+<p>推荐使用 SQL 语句来在数据库中创建对应的表, 避免出现不可预知的问题, 但是在建表时一定要注意表与表之间的关联关系, 可以在数据库中建表之后在 shell 环境中导入对应的模型, 来进行 modelName.query.all() 来进行查询, 验证</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/Django-01/" class="styled-border">
+                    ←
+                    Django-01
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/Flask-02/" class="styled-border">
+                    
+                    Flask-02
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-01 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Django快速开发Web应用 Django快速开发步骤 mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境  python3 -m venv VENV_NAME 激活虚拟环境 - source ./activate   python -m pip install –upgrate pip 升级pip  pip install Django    安装Django django-a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-01">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Django-01/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="Django快速开发Web应用 Django快速开发步骤 mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境  python3 -m venv VENV_NAME 激活虚拟环境 - source ./activate   python -m pip install –upgrate pip 升级pip  pip install Django    安装Django django-a">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:16:27.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-01">
+<meta name="twitter:description" content="Django快速开发Web应用 Django快速开发步骤 mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境  python3 -m venv VENV_NAME 激活虚拟环境 - source ./activate   python -m pip install –upgrate pip 升级pip  pip install Django    安装Django django-a">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-01</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <p>Django快速开发Web应用</p>
+<h4 id="Django快速开发步骤"><a href="#Django快速开发步骤" class="headerlink" title="Django快速开发步骤"></a>Django快速开发步骤</h4><ul>
+<li>mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境 <ul>
+<li>python3 -m venv VENV_NAME</li>
+<li>激活虚拟环境 - source ./activate</li>
+</ul>
+</li>
+<li>python -m pip install –upgrate pip 升级pip </li>
+<li>pip install Django    安装Django</li>
+<li>django-admin –version  查看版本</li>
+<li>django-admin startproject PROJECT_NAME .  在最后加点号, 可以让项目创建在当前目录下</li>
+<li>python manage.py runserver 0.0.0.0:80启动服务器, 指定端口</li>
+</ul>
+<h4 id="PROJECT-NAME-views-py"><a href="#PROJECT-NAME-views-py" class="headerlink" title="PROJECT_NAME/ views.py"></a>PROJECT_NAME/ views.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render  <span class="comment">#渲染函数</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.template <span class="keyword">import</span> Template, Context</span><br><span class="line"><span class="keyword">from</span> django.template.loader <span class="keyword">import</span> get_template</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randrange</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">	fruit_list = [<span class="string">'苹果'</span>, <span class="string">'草莓'</span>, <span class="string">'蓝莓'</span>, <span class="string">'西瓜'</span>, <span class="string">'苹果'</span>]</span><br><span class="line">	start = <span class="number">0</span></span><br><span class="line">	end = randrange(len(fruit_list))</span><br><span class="line">	fruits = fruit_list[start:end]</span><br><span class="line">	ctx = &#123;</span><br><span class="line">	<span class="string">'greeting'</span>: <span class="string">'你好世界'</span>,</span><br><span class="line">	<span class="string">'current_time'</span>: datetime.now(),</span><br><span class="line">	<span class="string">'num'</span>: len(fruits),</span><br><span class="line">	<span class="string">'fruits'</span>: fruits</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment"># 第二个参数是模板页面(路劲在settings.py)</span></span><br><span class="line">	<span class="comment"># 第三个参数是一个字典(替换占位符)</span></span><br><span class="line">	<span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, ctx)</span><br><span class="line"></span><br><span class="line"><span class="comment"># def home(request):</span></span><br><span class="line"><span class="comment"># 	with open(r'C:\Users\Administrator\hell_django\templates\index.html', encoding='utf-8') as f:</span></span><br><span class="line"><span class="comment"># 		t = Template(f.read())</span></span><br><span class="line"><span class="comment"># 	index = randrange(0, len(fruit_list))</span></span><br><span class="line"><span class="comment"># 	ctx = Context(&#123;</span></span><br><span class="line"><span class="comment"># 	'greeting': '你好世界',</span></span><br><span class="line"><span class="comment"># 	'current_time': datetime.now(),</span></span><br><span class="line"><span class="comment"># 	'fruit': fruit_list[index]</span></span><br><span class="line"><span class="comment"># 	&#125;)</span></span><br><span class="line"><span class="comment"># 	return HttpResponse(t.render(ctx))     # 渲染</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># fruit_list = ['苹果', '草莓', '蓝莓', '西瓜', '苹果']</span></span><br><span class="line"><span class="comment"># # Create your views here.</span></span><br><span class="line"><span class="comment"># def home(request):</span></span><br><span class="line"><span class="comment"># 	html_str = '&lt;h1&gt;hello, django!&lt;/h1&gt;'</span></span><br><span class="line"><span class="comment"># 	html_str += '&lt;ul&gt;\n'</span></span><br><span class="line"><span class="comment"># 	for _ in range(3):</span></span><br><span class="line"><span class="comment"># 		index = randrange(0, len(fruit_list))</span></span><br><span class="line"><span class="comment"># 		html_str += '\t&lt;li&gt;' + fruit_list[index] + '&lt;/li&gt;\n'</span></span><br><span class="line"><span class="comment"># 	html_str += '&lt;/ul&gt;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 	return HttpResponse(html_str)</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># def home(request):</span></span><br><span class="line"><span class="comment"># 	html = '北京时间: %s' % datetime.now()</span></span><br><span class="line"><span class="comment"># 	return HttpResponse(html)</span></span><br></pre></td></tr></table></figure>
+<h4 id="hello-django-gt-settings-py-urls-py"><a href="#hello-django-gt-settings-py-urls-py" class="headerlink" title="hello_django -&gt; settings.py / urls.py"></a>hello_django -&gt; settings.py / urls.py</h4><ul>
+<li>setting.py<ul>
+<li>更改DEBUG  [‘*’]</li>
+<li>修改seetings.py  33行, installed_app    增加应用, 追加名字</li>
+<li>DIR []</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> hrs <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, views.home),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h4 id="templates-gt-index-html"><a href="#templates-gt-index-html" class="headerlink" title="templates - &gt; index.html"></a>templates - &gt; index.html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; greeting &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>   <span class="comment">&lt;!-- 占位符--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123; current_time &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>今天推荐&#123;&#123; num &#125;&#125;种水果:<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">		&#123;% for fruit in fruits %&#125;</span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; fruit &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		&#123;% endfor %&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="写页面"><a href="#写页面" class="headerlink" title="写页面"></a>写页面</h4><ul>
+<li>OA - office Auomation</li>
+<li>创建应用<code>python manage.py startapp hrs</code> , 创建成功后会有一个对应的文件夹</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hrs 文件目录包含以下内容</span><br><span class="line">__init__ 包</span><br><span class="line">apps  应用</span><br><span class="line">models 模型</span><br><span class="line">tests 测试</span><br><span class="line">views  控制器</span><br><span class="line">admin 注册  </span><br><span class="line">migrations 目录为数据库相关文件</span><br></pre></td></tr></table></figure>
+<p>stringIO 模块拼接字符串, write  value</p>
+<p><a href="https://docs.djangoproject.com/zh-hans/2.0/" target="_blank" rel="noopener">Django官方文档</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/Django-02/" class="styled-border">
+                    ←
+                    Django-02
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/Flask-03/" class="styled-border">
+                    
+                    Flask-03
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

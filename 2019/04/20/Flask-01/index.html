@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Flask-01 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="01-开始项目, 基础项目的拆分   本文主要介绍如何开始一个Flask项目, 以及更具Flask的丰富的拓展包, 来拆分项目, 让一个Flask项目满足基本的MVC架构, 下面就开始进入正文. Flask介绍:  Flask是一种使用Python编写的轻量级的Web框架, WSGI工具采用Werkzeug,模板引擎使用Jinja2, Flask使用的是BSD授权 Flask核心简单, 可以自定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask-01">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Flask-01/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="01-开始项目, 基础项目的拆分   本文主要介绍如何开始一个Flask项目, 以及更具Flask的丰富的拓展包, 来拆分项目, 让一个Flask项目满足基本的MVC架构, 下面就开始进入正文. Flask介绍:  Flask是一种使用Python编写的轻量级的Web框架, WSGI工具采用Werkzeug,模板引擎使用Jinja2, Flask使用的是BSD授权 Flask核心简单, 可以自定义">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:16:58.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flask-01">
+<meta name="twitter:description" content="01-开始项目, 基础项目的拆分   本文主要介绍如何开始一个Flask项目, 以及更具Flask的丰富的拓展包, 来拆分项目, 让一个Flask项目满足基本的MVC架构, 下面就开始进入正文. Flask介绍:  Flask是一种使用Python编写的轻量级的Web框架, WSGI工具采用Werkzeug,模板引擎使用Jinja2, Flask使用的是BSD授权 Flask核心简单, 可以自定义">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Flask-01</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <p>01-开始项目, 基础项目的拆分</p>
+<hr>
+<p> 本文主要介绍如何开始一个Flask项目, 以及更具Flask的丰富的拓展包, 来拆分项目, 让一个Flask项目满足基本的MVC架构, 下面就开始进入正文.</p>
+<p>Flask介绍:</p>
+<ul>
+<li>Flask是一种使用Python编写的轻量级的Web框架, WSGI工具采用Werkzeug,模板引擎使用Jinja2, Flask使用的是BSD授权</li>
+<li>Flask核心简单, 可以自定义扩展, 没有固定的数据库和模板等设置, 简单轻便</li>
+<li>Flask也有web开发’微’框架之称</li>
+</ul>
+<h4 id="开始项目"><a href="#开始项目" class="headerlink" title="开始项目"></a>开始项目</h4><ul>
+<li>下面是官网中的一个Flask项目, 只需要简单的7行代码, 我们就是可以让一个Flask项目运行起来</li>
+<li>Flask由于框架体量小, 所有的拓展包都需要我们自己去安装, 所以一个Flask项目会安装很多的拓展包是很常见的</li>
+</ul>
+<p>最简单的一个Flask项目</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="拆分"><a href="#拆分" class="headerlink" title="拆分"></a>拆分</h4><p>基于项目的可拓展性和代码的可阅读性, 当代码量较大时, 将所有的代码写在一个文件中是一件很可怕的事, 所以我们就要对其进行拆分, 主要还是参考 MVC模式进行, 将不同的功能放在其对应的模块中, 方便我们进行阅读</p>
+<ul>
+<li>将主要的执行内容写在执行文件manage.py中, 引入 Manage 进行管理app</li>
+<li>创建app的文件目录, 将views 和 models 写入其中进行管理</li>
+<li>创建 static 目录,存放静态文件</li>
+<li>创建 templates 目录, 存放网页模板</li>
+<li>创建utils 目录, 管理工具函数</li>
+</ul>
+<h5 id="Manger管理app"><a href="#Manger管理app" class="headerlink" title="Manger管理app"></a>Manger管理app</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_script <span class="keyword">import</span> Manager</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> utils.functions <span class="keyword">import</span> create_app</span><br><span class="line"></span><br><span class="line">app = create_app()</span><br><span class="line">manage = Manager(app=app)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    manage.run()</span><br></pre></td></tr></table></figure>
+<h4 id="views定义路由和控制器"><a href="#views定义路由和控制器" class="headerlink" title="views定义路由和控制器"></a>views定义路由和控制器</h4><ul>
+<li>需要蓝图</li>
+<li>blueprint</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Blueprint</span><br><span class="line"></span><br><span class="line">user_buleprint = Blueprint(<span class="string">'user'</span>, __name__) <span class="comment"># 'user'在重定向时使用</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@user_blueprint.route('/')  # 设置路由, 访问的url</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>)  <span class="comment"># 返回渲染的模板页面</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 带参数返回</span></span><br><span class="line"><span class="meta">@user_blueprint.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    content = <span class="string">''</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>, content=content)</span><br></pre></td></tr></table></figure>
+<h4 id="注册蓝图"><a href="#注册蓝图" class="headerlink" title="注册蓝图"></a>注册蓝图</h4><ul>
+<li>utils.functions.py</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">()</span>:</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    <span class="comment"># 注册蓝图, 设置url 前缀, 相当于 django中的 namespace</span></span><br><span class="line">    app.register_blueprint(blueprint=user_buleprint, url_prefix=<span class="string">'/user'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<h4 id="设置静态文件目录和模板目录"><a href="#设置静态文件目录和模板目录" class="headerlink" title="设置静态文件目录和模板目录"></a>设置静态文件目录和模板目录</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    BASE_DIR = os.path.dirname(os.path.dirname(__file__))</span><br><span class="line">    static_dir = os.path.join(BASE_DIR, <span class="string">'static'</span>)</span><br><span class="line">    templates_dir = os.path.join(BASE_DIR, <span class="string">'templates'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化 app</span></span><br><span class="line">    app = Flask(__name__,</span><br><span class="line">                static_folder=static_dir,</span><br><span class="line">                template_folder=templates_dir)</span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<h5 id><a href="#" class="headerlink" title=" "></a> </h5><h4 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h4><p>路由</p>
+<ul>
+<li><a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/‘)`</li>
+</ul>
+<p>客户端发送请求给服务器(浏览器到服务器), 进而请求传递到Flask的应用实例,应用实例需要知道对于各个URL请求需要执行哪部分代码, 所以它给Python函数建立了一个URLs映射, 这种在URL和函数之间建立联系的操作称之为路由</p>
+<p>route规则</p>
+<p>在<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/<a href="int:name" target="_blank" rel="noopener">int:name</a>‘)`</p>
+<ul>
+<li>string 字符串  默认</li>
+<li>int 整形</li>
+<li>float 浮点型</li>
+<li>path 路径</li>
+<li>uuid uuid字符串</li>
+<li>any 任何,无限制</li>
+</ul>
+<p>对同一个模板,通过url中传递的参数类型不同来执行不同的视图函数进行渲染</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template, request, Blueprint</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">blue = Blueprint(<span class="string">'first'</span>, __name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;name&gt;/', methods=['POST', "GET"])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_name</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, name=name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;float:float&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">float</span><span class="params">(float)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, float=float)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;int:int&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">float1</span><span class="params">(int)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, int=int)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;path:path&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(path)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, path=path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;uuid:uuid&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uuid1</span><span class="params">(uuid)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, uuid=uuid)</span><br></pre></td></tr></table></figure>
+<h4 id="methods-请求的方法"><a href="#methods-请求的方法" class="headerlink" title="methods 请求的方法"></a>methods 请求的方法</h4><ul>
+<li>获取传递的参数</li>
+<li>GET请求:<code>request.args</code></li>
+<li>POST请求: <code>request.form</code></li>
+</ul>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/Flask-02/" class="styled-border">
+                    ←
+                    Flask-02
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/python基础-10/" class="styled-border">
+                    
+                    python基础-10
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

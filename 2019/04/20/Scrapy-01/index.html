@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Scrapy-01 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Scrapy简介​    一个为爬取网站数据， 提取结构新数据而产生的应用框架， 可以应用在包括数据挖掘， 信息处理或历史存储历史数据的一系列过程中。 Scrappy使用了Twisted异步网络请求库来处理网络通讯， 大致结构如下  安装  pip install scrapy  开启一个项目  scrapy startproject YourProject scrapy genspider SP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scrapy-01">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Scrapy-01/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="Scrapy简介​    一个为爬取网站数据， 提取结构新数据而产生的应用框架， 可以应用在包括数据挖掘， 信息处理或历史存储历史数据的一系列过程中。 Scrappy使用了Twisted异步网络请求库来处理网络通讯， 大致结构如下  安装  pip install scrapy  开启一个项目  scrapy startproject YourProject scrapy genspider SP">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/Desktop/Learning/learning-notes.github/09-%E7%88%AC%E8%99%ABScrapy/scrapy%E6%A1%86%E6%9E%B6/assets/1530499077850.png">
+<meta property="og:updated_time" content="2019-04-20T09:17:35.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scrapy-01">
+<meta name="twitter:description" content="Scrapy简介​    一个为爬取网站数据， 提取结构新数据而产生的应用框架， 可以应用在包括数据挖掘， 信息处理或历史存储历史数据的一系列过程中。 Scrappy使用了Twisted异步网络请求库来处理网络通讯， 大致结构如下  安装  pip install scrapy  开启一个项目  scrapy startproject YourProject scrapy genspider SP">
+<meta name="twitter:image" content="http://yoursite.com/2019/Desktop/Learning/learning-notes.github/09-%E7%88%AC%E8%99%ABScrapy/scrapy%E6%A1%86%E6%9E%B6/assets/1530499077850.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Scrapy-01</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <h3 id="Scrapy简介"><a href="#Scrapy简介" class="headerlink" title="Scrapy简介"></a>Scrapy简介</h3><p>​    一个为爬取网站数据， 提取结构新数据而产生的应用框架， 可以应用在包括数据挖掘， 信息处理或历史存储历史数据的一系列过程中。</p>
+<p>Scrappy使用了Twisted异步网络请求库来处理网络通讯， 大致结构如下</p>
+<p><img src="../../../Desktop/Learning/learning-notes.github/09-%E7%88%AC%E8%99%ABScrapy/scrapy%E6%A1%86%E6%9E%B6/assets/1530499077850.png" alt="53049907785"></p>
+<p>安装</p>
+<ul>
+<li><code>pip install scrapy</code></li>
+</ul>
+<p>开启一个项目</p>
+<ul>
+<li><code>scrapy startproject YourProject</code></li>
+<li><code>scrapy genspider SPIDERNAME DOMAIN</code></li>
+</ul>
+<p>运行项目</p>
+<ul>
+<li>在 爬虫的文件目录下， <code>scrapy crawl qidian</code></li>
+</ul>
+<h4 id="各个文件的作用："><a href="#各个文件的作用：" class="headerlink" title="各个文件的作用："></a>各个文件的作用：</h4><ul>
+<li>items.py     设置存储数据的 模型</li>
+<li>middleware.py   中间件</li>
+<li>pipelines.py    数据的持久化， 存储数据库</li>
+<li>settings.py   配置文件</li>
+</ul>
+<p>spiders文件目录用于存放 爬虫文件</p>
+<h4 id="单个爬取"><a href="#单个爬取" class="headerlink" title="单个爬取"></a>单个爬取</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> Selector</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QiDianSpider</span><span class="params">(scrapy.spiders.Spider)</span>:</span></span><br><span class="line">    <span class="comment"># 启动项目制定的name参数</span></span><br><span class="line">    name = <span class="string">'qidian'</span></span><br><span class="line">    <span class="comment"># 需要爬取的页面</span></span><br><span class="line">    start_urls = &#123;</span><br><span class="line">        <span class="string">'https://www.qidian.com/'</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析页面</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        print(<span class="string">'-*'</span> * <span class="number">40</span>)</span><br><span class="line">        <span class="comment"># 请求时的 url</span></span><br><span class="line">        current_url = response.url</span><br><span class="line">        <span class="comment"># 返回的 THML 页面</span></span><br><span class="line">        body = response.body</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 返回的html unicode编码</span></span><br><span class="line">        unicode_body = response.body_as_unicode()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 小说分类信息</span></span><br><span class="line">        res = Selector(response)</span><br><span class="line">        menu_type = res.xpath(<span class="string">'//*[@id="classify-list"]/dl/dd/a/cite/span/i/text()'</span>).extract()</span><br><span class="line">        menu_type_href = res.xpath(<span class="string">'//*[@id="classify-list"]/dl/dd/a/@href'</span>).extract()</span><br><span class="line">        print(menu_type, menu_type_href)</span><br><span class="line">        print(<span class="string">'&lt;&lt;&lt;&lt;'</span> * <span class="number">40</span>)</span><br><span class="line">        <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+<h4 id="定义匹配规则进行批量爬取"><a href="#定义匹配规则进行批量爬取" class="headerlink" title="定义匹配规则进行批量爬取"></a>定义匹配规则进行批量爬取</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> Selector</span><br><span class="line"><span class="keyword">from</span> scrapy.linkextractors <span class="keyword">import</span> LinkExtractor</span><br><span class="line"><span class="keyword">from</span> scrapy.spider <span class="keyword">import</span> Rule, CrawlSpider</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> qidianSpider.items <span class="keyword">import</span> DoubanspiderItem</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> utils.clearn_data <span class="keyword">import</span> handle</span><br><span class="line"></span><br><span class="line"><span class="comment"># 继承 CrawlSpider</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DouBanSpider</span><span class="params">(CrawlSpider)</span>:</span></span><br><span class="line"></span><br><span class="line">    name = <span class="string">'douban'</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 开始的url</span></span><br><span class="line">    start_urls = &#123;</span><br><span class="line">        <span class="string">r'https://movie.douban.com/top250'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 设置匹配规则</span></span><br><span class="line">    rules = (Rule(LinkExtractor(allow=<span class="string">r'https://movie.douban.com/top250.*'</span>), callback=<span class="string">'parse_item'</span>), ) <span class="comment"># 自定义的回调函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># def start_requests(self):</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#     for i in range(10):</span></span><br><span class="line">    <span class="comment">#         url = r'https://movie.douban.com/top250?start=%s&amp;filter=' % i * 25</span></span><br><span class="line">    <span class="comment">#         yield scrapy.Request(url=url, callback=self.parse)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_item</span><span class="params">(self, response)</span>:</span></span><br><span class="line"></span><br><span class="line">        res = Selector(response)</span><br><span class="line">        items = DoubanspiderItem()</span><br><span class="line">        <span class="comment"># 电影名</span></span><br><span class="line">        items[<span class="string">'movie_name'</span>] = res.xpath(<span class="string">'//*[@id="content"]/div/div[1]/ol/li/div/div[2]/div[1]/a/span[1]/text()'</span>).extract()</span><br><span class="line">        <span class="comment"># 图片</span></span><br><span class="line">        items[<span class="string">'img'</span>] = res.xpath(<span class="string">'//*[@id="content"]/div/div[1]/ol/li/div/div[1]/a/img/@src'</span>).extract()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 导演演员信息</span></span><br><span class="line">        director = res.xpath(<span class="string">'//*[@id="content"]/div/div[1]/ol/li/div/div[2]/div[2]/p[1]/text()[1]'</span>).extract()</span><br><span class="line">        items[<span class="string">'director'</span>] = [handle(info) <span class="keyword">for</span> info <span class="keyword">in</span> director]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 年份分类信息</span></span><br><span class="line">        year_type = res.xpath(<span class="string">'//*[@id="content"]/div/div[1]/ol/li/div/div[2]/div[2]/p[1]/text()[2]'</span>).extract()</span><br><span class="line">        y_c_t_info = [handle(s).split(<span class="string">'/'</span>) <span class="keyword">for</span> s <span class="keyword">in</span> year_type]</span><br><span class="line">        year, country, type = [], [], []</span><br><span class="line">        <span class="keyword">for</span> y_c_t <span class="keyword">in</span> y_c_t_info:</span><br><span class="line">            year.append(y_c_t[<span class="number">0</span>])</span><br><span class="line">            country.append(y_c_t[<span class="number">1</span>])</span><br><span class="line">            type.append(y_c_t[<span class="number">2</span>])</span><br><span class="line">        items[<span class="string">'year'</span>] = year</span><br><span class="line">        items[<span class="string">'country'</span>] = country</span><br><span class="line">        items[<span class="string">'type'</span>] = type</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 评分</span></span><br><span class="line">        items[<span class="string">'rate'</span>] = res.xpath(<span class="string">'//*[@id="content"]/div/div[1]/ol/li/div/div[2]/div[2]/div/span[2]/text()'</span>).extract()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> items</span><br></pre></td></tr></table></figure>
+<p>代码上线</p>
+<ul>
+<li>虚拟环境  ——&gt; <a href="https://hub.docker.com" target="_blank" rel="noopener">dockor</a></li>
+</ul>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/Scrapy-02/" class="styled-border">
+                    ←
+                    Scrapy-02
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/Django-02/" class="styled-border">
+                    
+                    Django-02
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

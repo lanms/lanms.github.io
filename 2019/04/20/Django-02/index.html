@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-02 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Django123 后端渲染  服务器渲染  前端渲染  浏览器渲染  OA - 办公自动化系统 urls 中1.x和2.x的区别Django1.x - url() Django2  -   path() / re_path()  可以写正则 配置静态资源 settints.py添加静态资源目录 自己创建文件目录 ​    STATICFILES_DIRS = [os.path.join(BASE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-02">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Django-02/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="Django123 后端渲染  服务器渲染  前端渲染  浏览器渲染  OA - 办公自动化系统 urls 中1.x和2.x的区别Django1.x - url() Django2  -   path() / re_path()  可以写正则 配置静态资源 settints.py添加静态资源目录 自己创建文件目录 ​    STATICFILES_DIRS = [os.path.join(BASE">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:16:36.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-02">
+<meta name="twitter:description" content="Django123 后端渲染  服务器渲染  前端渲染  浏览器渲染  OA - 办公自动化系统 urls 中1.x和2.x的区别Django1.x - url() Django2  -   path() / re_path()  可以写正则 配置静态资源 settints.py添加静态资源目录 自己创建文件目录 ​    STATICFILES_DIRS = [os.path.join(BASE">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-02</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <p>Django123</p>
+<p>后端渲染</p>
+<ul>
+<li>服务器渲染</li>
+</ul>
+<p>前端渲染</p>
+<ul>
+<li>浏览器渲染</li>
+</ul>
+<p>OA - 办公自动化系统</p>
+<h4 id="urls-中1-x和2-x的区别"><a href="#urls-中1-x和2-x的区别" class="headerlink" title="urls 中1.x和2.x的区别"></a>urls 中1.x和2.x的区别</h4><p>Django1.x - url()</p>
+<p>Django2  -   path() / re_path()  可以写正则</p>
+<h4 id="配置静态资源-settints-py"><a href="#配置静态资源-settints-py" class="headerlink" title="配置静态资源 settints.py"></a>配置静态资源 settints.py</h4><p>添加静态资源目录</p>
+<p>自己创建文件目录</p>
+<p>​    <code>STATICFILES_DIRS = [os.path.join(BASE_DIR, &#39;static&#39;)]</code></p>
+<h4 id="连接数据库-管理数据库-访问数据"><a href="#连接数据库-管理数据库-访问数据" class="headerlink" title="连接数据库, 管理数据库, 访问数据"></a>连接数据库, 管理数据库, 访问数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">__exact 精确等于 like ‘aaa’ </span><br><span class="line">__iexact 精确等于 忽略大小写 ilike ‘aaa’ </span><br><span class="line">__contains 包含 like ‘%aaa%’ </span><br><span class="line">__icontains 包含 忽略大小写 ilike ‘%aaa%’，但是对于sqlite来说，contains的作用效果等同于icontains。 </span><br><span class="line">__gt 大于 </span><br><span class="line">__gte 大于等于 </span><br><span class="line">__lt 小于 </span><br><span class="line">__lte 小于等于 </span><br><span class="line">__in 存在于一个list范围内 </span><br><span class="line">__startswith 以…开头 </span><br><span class="line">__istartswith 以…开头 忽略大小写 </span><br><span class="line">__endswith 以…结尾 </span><br><span class="line">__iendswith 以…结尾，忽略大小写 </span><br><span class="line">__range 在…范围内 </span><br><span class="line">__year 日期字段的年份 </span><br><span class="line">__month 日期字段的月份 </span><br><span class="line">__day 日期字段的日 </span><br><span class="line">__isnull=<span class="literal">True</span>/<span class="literal">False</span> </span><br><span class="line">__isnull=<span class="literal">True</span> 与 __exact=<span class="literal">None</span>的区别</span><br></pre></td></tr></table></figure>
+<p>setting.py中将DATABASE设置改为mysql</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,   <span class="comment"># 引擎</span></span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'oa'</span>,</span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'port'</span>: <span class="number">3306</span>,</span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'123456'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">还需要将__init__.py中将pymysql设置, 在 setting.py同级目录下</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">pymysql.install_as_Mysqldb</span><br></pre></td></tr></table></figure>
+<p>在  templates中创建网页模板</p>
+<p>在 urls中添加path</p>
+<p>在views.py中创建渲染,</p>
+<p>在 app –&gt; models中可以创建数据库的表格参数, 直接通过</p>
+<ul>
+<li><code>python manage.py makemigrations yourApp</code>创建静态模板</li>
+<li><code>Python manage.py migrate</code>加载数据</li>
+</ul>
+<p>app –&gt; admin.py 后台显示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line"><span class="keyword">from</span> hrs.models <span class="keyword">import</span> Dept, Emp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeptAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line"></span><br><span class="line">    list_display = (<span class="string">'no'</span>, <span class="string">'name'</span>, <span class="string">'location'</span>)</span><br><span class="line">    ordering = (<span class="string">'no'</span>,)  <span class="comment">#元组 前面加 '-no' 为降序, 'no' 为升序</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmpAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line"></span><br><span class="line">    list_display = (<span class="string">'no'</span>, <span class="string">'name'</span>, <span class="string">'job'</span>, <span class="string">'sal'</span>, <span class="string">'comm'</span>, <span class="string">'dept_id'</span>, <span class="string">'mgr'</span>)</span><br><span class="line">    search_fields = (<span class="string">'name'</span>,)</span><br><span class="line">    ordering = (<span class="string">'dept_id'</span>,)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">admin.site.register(Dept, DeptAdmin)</span><br><span class="line">admin.site.register(Emp, EmpAdmin)</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">templaes --&gt; index.html</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&#123;<span class="comment">#&#123;% load staticfiles %&#125;#&#125;</span></span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello, Django!&lt;/h1&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &#123;% load static %&#125;</span><br><span class="line">    &lt;img src=<span class="string">"&#123;% static 'images/aaa.jpg' %&#125;"</span> alt=<span class="string">"图片"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">setting.py,</span><br><span class="line">pip install pymysql  <span class="comment"># 安装mysql</span></span><br><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,   <span class="comment"># 引擎</span></span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'oa'</span>,</span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        <span class="string">'port'</span>: <span class="number">3306</span>,</span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,    <span class="comment"># 本地连接, 远程连接新建用户, 给与权限</span></span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'123456'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">项目  - __init__.py</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">pymysql.install_as_MySQLdb()   <span class="comment">#将mysql当做mysqldb</span></span><br><span class="line"></span><br><span class="line">python manage.py migrate   <span class="comment"># 在数据库创建Django需要的表</span></span><br><span class="line">python mansge.py flush      <span class="comment"># 删除表</span></span><br></pre></td></tr></table></figure>
+<h4 id="建模型"><a href="#建模型" class="headerlink" title="建模型"></a>建模型</h4><p>app -&gt; models.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"><span class="comment"># 一个类对应一张表, 类的属性就是表的列, 创建的对象就对应着表里面的一条数据记录</span></span><br><span class="line"><span class="comment"># 对象关系映射   ORM</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 继承 models.Model</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dept</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    no = models.IntegerField(primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)  <span class="comment"># 默认不为空 not null</span></span><br><span class="line">    location = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emp</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    no = models.IntegerField(primary_key=<span class="literal">True</span>)</span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    job = models.CharField(max_length=<span class="number">10</span>)</span><br><span class="line">    sal = models.DecimalField(max_digits=<span class="number">7</span>, decimal_places=<span class="number">2</span>)</span><br><span class="line">    comm = models.DecimalField(max_digits=<span class="number">7</span>, decimal_places=<span class="number">2</span>, null=<span class="literal">True</span>) <span class="comment"># null = True  表示可以放空值</span></span><br><span class="line">    dept = models.ForeignKey(Dept, on_delete=models.PROTECT)   <span class="comment">#放在 1对 多的 多的一方    在删除时保护  , null = True on_delete = models.setnull</span></span><br></pre></td></tr></table></figure>
+<p><code>python manage.py makemigrations hrs</code>    # 生成数据模型</p>
+<p><code>python manage.py migrate</code>   # 数据迁移</p>
+<p>会在数据库表 django_migrations中产生一条迁移记录</p>
+<h5 id="实际开发都使用两个一对多来替代多对多"><a href="#实际开发都使用两个一对多来替代多对多" class="headerlink" title="实际开发都使用两个一对多来替代多对多"></a>实际开发都使用两个一对多来替代多对多</h5><h4 id="Django管理员平台"><a href="#Django管理员平台" class="headerlink" title="Django管理员平台"></a>Django管理员平台</h4><p>创建超级管理员</p>
+<ul>
+<li><code>python manage.py createsuperuser</code></li>
+</ul>
+<p>注册  在 app -&gt; admin 里加注册语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line"><span class="keyword">from</span> hrs.models <span class="keyword">import</span> Dept, Emp</span><br><span class="line"></span><br><span class="line">admin.site.register(Dept)</span><br><span class="line">admin.site.register(Emp)</span><br></pre></td></tr></table></figure>
+<p>最小惊讶原则</p>
+<p>? 是中文用拉丁1 语系编码,</p>
+<h4 id="对表进行增删改查"><a href="#对表进行增删改查" class="headerlink" title="对表进行增删改查"></a>对表进行增删改查</h4><p>python manage.py shell 开启交互式环境</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> hrs.models <span class="keyword">import</span> Emp</span><br><span class="line"></span><br><span class="line">Emp.objects.all()   <span class="comment"># 查看所有</span></span><br><span class="line">dept = Dept(no=<span class="string">'90'</span>, name=<span class="string">'研发2部'</span>, location=<span class="string">'武汉'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dept.no</span><br><span class="line"><span class="string">'90'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dept.save()   <span class="comment"># 保存到数据库</span></span><br><span class="line">dept.delete()  <span class="comment"># 删除</span></span><br><span class="line">Dept.objects.get(pk=<span class="number">20</span>)  <span class="comment"># 主键</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#筛选</span></span><br><span class="line">dept = Dept.objects.filter(name=<span class="string">'运维'</span>)</span><br><span class="line">dept.name</span><br><span class="line">dept.no</span><br><span class="line"></span><br><span class="line">Dept.objects.filter(name__icontains=<span class="string">'运维'</span>)   <span class="comment"># 模糊查询, i 忽略大小写, list将结果转为一个列表</span></span><br><span class="line"></span><br><span class="line">Dept.object.filter(no__gte=<span class="number">30</span>)  <span class="comment"># 查找 no 大于 30   gte 大于等于</span></span><br><span class="line"></span><br><span class="line">Dept.objects.all().order_by(<span class="string">'-no'</span>)[<span class="number">0</span>:<span class="number">3</span>]  <span class="comment"># 降序, 切片</span></span><br><span class="line">Dept.objects.all().order_by(<span class="string">'-no'</span>)[<span class="number">2</span>:<span class="number">4</span>]  </span><br><span class="line"></span><br><span class="line">Dept.objects.raw(<span class="string">'select name from tb_dept'</span>)   <span class="comment"># 原始操作</span></span><br><span class="line"></span><br><span class="line">emp = Emp.objects.get(pk=<span class="number">7800</span>)</span><br><span class="line">emp.dept.name      <span class="comment"># 可以将其另一张关联表的内容也差出来</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#QuerySet 负数索引不被支持</span></span><br></pre></td></tr></table></figure>
+<p>优秀部门, 加 * 图片, </p>
+<p>BooleanField , default=0, </p>
+<p>修改模型生成迁移</p>
+<p>部门超链接, 点击后可以进入该部门所有员工的页面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt; a href='/hrs/emps?dno=&#123;&#123;dept.no&#125;&#125;'&gt; &lt;/a&gt; # 筛选条件, 请求参数</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">emps</span><span class="params">(request)</span>:</span></span><br><span class="line">    dno = request.GET[<span class="string">'dno'</span>]</span><br><span class="line">    dept = Dept.Objects.get(pk=dno)</span><br><span class="line">    Emp.object.filter(dept=dept)</span><br></pre></td></tr></table></figure>
+<p>删除按钮, 执行删除</p>
+<p>git  忽略文件,    git 仓库创建文件  touch .gitignore, 添加需要忽略的文件</p>
+<p>git pull request  ‘’   发通知</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/Scrapy-01/" class="styled-border">
+                    ←
+                    Scrapy-01
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/Django-01/" class="styled-border">
+                    
+                    Django-01
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

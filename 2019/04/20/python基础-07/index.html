@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>python基础-07 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="装饰器  一个函数, 两个功能  123456789101112def func_3(line):    def comp(value):        if value &amp;gt;= line:            print(&apos;&amp;#123;&amp;#125; &amp;gt;= &amp;#123;&amp;#125;&apos;.format(value, line))        else:            print(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python基础-07">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/python基础-07/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="装饰器  一个函数, 两个功能  123456789101112def func_3(line):    def comp(value):        if value &amp;gt;= line:            print(&apos;&amp;#123;&amp;#125; &amp;gt;= &amp;#123;&amp;#125;&apos;.format(value, line))        else:            print(">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:15:39.440Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python基础-07">
+<meta name="twitter:description" content="装饰器  一个函数, 两个功能  123456789101112def func_3(line):    def comp(value):        if value &amp;gt;= line:            print(&apos;&amp;#123;&amp;#125; &amp;gt;= &amp;#123;&amp;#125;&apos;.format(value, line))        else:            print(">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">python基础-07</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <p>装饰器</p>
+<ul>
+<li>一个函数, 两个功能</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_3</span><span class="params">(line)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">comp</span><span class="params">(value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> value &gt;= line:</span><br><span class="line">            print(<span class="string">'&#123;&#125; &gt;= &#123;&#125;'</span>.format(value, line))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'&#123;&#125; &lt; &#123;&#125;'</span>.format(value, line))</span><br><span class="line">    <span class="keyword">return</span> comp</span><br><span class="line"></span><br><span class="line">f = func_3(<span class="number">60</span>)  <span class="comment"># 第一次调用外侧函数</span></span><br><span class="line">f(<span class="number">89</span>)  <span class="comment"># 第二次调用内层x</span></span><br><span class="line"><span class="comment"># 相当于 </span></span><br><span class="line">func_3(<span class="number">60</span>)(<span class="number">89</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自动将函数的参数放进了中间功能函数的中作为参数</li>
+<li>会将实际传入目标函数的参数在装饰器中先传入进行验证, 也就是先执行装饰器的函数, 再执行目标函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dec_1</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(num1, num2)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> num2 == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">'0000'</span>)</span><br><span class="line">        <span class="keyword">return</span> func(num1, num2)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">average_1</span><span class="params">(num1, num2)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> num1 / num2</span><br><span class="line"></span><br><span class="line"><span class="comment"># averge_1 = dec_1(average_1)</span></span><br><span class="line"><span class="comment"># a = averge_1(5, 0)</span></span><br><span class="line"><span class="comment"># print(a)</span></span><br><span class="line"><span class="meta">@dec_1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_1</span><span class="params">(num1, num2)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">a = sum_1(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<p>==接收不同 的参数==</p>
+<ul>
+<li>装饰器需要写三层</li>
+<li>也就是说最内层的只能接收到目标函数的参数, 但是如果需要传入目标函数参数以外的参数就必须要再加一层装饰器, 来讲需要的参数传入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">auth</span><span class="params">(auth_type)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dec_3</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> auth_type == <span class="string">'1'</span>:</span><br><span class="line">                print(<span class="string">'111111111'</span>)</span><br><span class="line">            <span class="keyword">elif</span> auth_type == <span class="string">'2'</span>:</span><br><span class="line">                print(<span class="string">'22222222'</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'0000--0000'</span>)</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> dec_3</span><br><span class="line"><span class="meta">@auth(auth_type='4')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">average_3</span><span class="params">(*args)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> sum(args)</span><br><span class="line">a = average_3(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/python基础-08/" class="styled-border">
+                    ←
+                    python基础-08
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/python基础-06/" class="styled-border">
+                    
+                    python基础-06
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

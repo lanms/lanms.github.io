@@ -5,25 +5,23 @@
   
   <title>python基础-07 | Blog Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="装饰器  一个函数, 两个功能  123456789101112def func_3(line):    def comp(value):        if value &amp;gt;= line:            print(&apos;&amp;#123;&amp;#125; &amp;gt;= &amp;#123;&amp;#125;&apos;.format(value, line))        else:            print(">
+  <meta name="description" content="装饰器  一个函数, 两个功能  def func_3(line):     def comp(value):         if value &amp;gt;= line:             print(&apos;{} &amp;gt;= {}&apos;.format(value, line))         else:             print(&apos;{} &amp;lt; {}&apos;.format(value, line))">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python基础-07">
 <meta property="og:url" content="http://yoursite.com/2019/04/20/python基础-07/index.html">
 <meta property="og:site_name" content="Blog Python">
-<meta property="og:description" content="装饰器  一个函数, 两个功能  123456789101112def func_3(line):    def comp(value):        if value &amp;gt;= line:            print(&apos;&amp;#123;&amp;#125; &amp;gt;= &amp;#123;&amp;#125;&apos;.format(value, line))        else:            print(">
+<meta property="og:description" content="装饰器  一个函数, 两个功能  def func_3(line):     def comp(value):         if value &amp;gt;= line:             print(&apos;{} &amp;gt;= {}&apos;.format(value, line))         else:             print(&apos;{} &amp;lt; {}&apos;.format(value, line))">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-20T09:15:39.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础-07">
-<meta name="twitter:description" content="装饰器  一个函数, 两个功能  123456789101112def func_3(line):    def comp(value):        if value &amp;gt;= line:            print(&apos;&amp;#123;&amp;#125; &amp;gt;= &amp;#123;&amp;#125;&apos;.format(value, line))        else:            print(">
+<meta name="twitter:description" content="装饰器  一个函数, 两个功能  def func_3(line):     def comp(value):         if value &amp;gt;= line:             print(&apos;{} &amp;gt;= {}&apos;.format(value, line))         else:             print(&apos;{} &amp;lt; {}&apos;.format(value, line))">
   
     <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
@@ -48,7 +46,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -105,18 +103,65 @@
 <ul>
 <li>一个函数, 两个功能</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_3</span><span class="params">(line)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">comp</span><span class="params">(value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> value &gt;= line:</span><br><span class="line">            print(<span class="string">'&#123;&#125; &gt;= &#123;&#125;'</span>.format(value, line))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'&#123;&#125; &lt; &#123;&#125;'</span>.format(value, line))</span><br><span class="line">    <span class="keyword">return</span> comp</span><br><span class="line"></span><br><span class="line">f = func_3(<span class="number">60</span>)  <span class="comment"># 第一次调用外侧函数</span></span><br><span class="line">f(<span class="number">89</span>)  <span class="comment"># 第二次调用内层x</span></span><br><span class="line"><span class="comment"># 相当于 </span></span><br><span class="line">func_3(<span class="number">60</span>)(<span class="number">89</span>)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func_3</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">comp</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> value <span class="token operator">>=</span> line<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'{} >= {}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>value<span class="token punctuation">,</span> line<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'{} &lt; {}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>value<span class="token punctuation">,</span> line<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> comp
+
+f <span class="token operator">=</span> func_3<span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 第一次调用外侧函数</span>
+f<span class="token punctuation">(</span><span class="token number">89</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 第二次调用内层x</span>
+<span class="token comment" spellcheck="true"># 相当于 </span>
+func_3<span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">89</span><span class="token punctuation">)</span>  
+</code></pre>
 <ul>
 <li>自动将函数的参数放进了中间功能函数的中作为参数</li>
 <li>会将实际传入目标函数的参数在装饰器中先传入进行验证, 也就是先执行装饰器的函数, 再执行目标函数</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dec_1</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(num1, num2)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> num2 == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">'0000'</span>)</span><br><span class="line">        <span class="keyword">return</span> func(num1, num2)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">average_1</span><span class="params">(num1, num2)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> num1 / num2</span><br><span class="line"></span><br><span class="line"><span class="comment"># averge_1 = dec_1(average_1)</span></span><br><span class="line"><span class="comment"># a = averge_1(5, 0)</span></span><br><span class="line"><span class="comment"># print(a)</span></span><br><span class="line"><span class="meta">@dec_1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_1</span><span class="params">(num1, num2)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">a = sum_1(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dec_1</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> num2 <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token string">'0000'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> func<span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> wrapper
+
+<span class="token keyword">def</span> <span class="token function">average_1</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> num1 <span class="token operator">/</span> num2
+
+<span class="token comment" spellcheck="true"># averge_1 = dec_1(average_1)</span>
+<span class="token comment" spellcheck="true"># a = averge_1(5, 0)</span>
+<span class="token comment" spellcheck="true"># print(a)</span>
+@dec_1
+<span class="token keyword">def</span> <span class="token function">sum_1</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2
+a <span class="token operator">=</span> sum_1<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</code></pre>
 <p>==接收不同 的参数==</p>
 <ul>
 <li>装饰器需要写三层</li>
 <li>也就是说最内层的只能接收到目标函数的参数, 但是如果需要传入目标函数参数以外的参数就必须要再加一层装饰器, 来讲需要的参数传入</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">auth</span><span class="params">(auth_type)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dec_3</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> auth_type == <span class="string">'1'</span>:</span><br><span class="line">                print(<span class="string">'111111111'</span>)</span><br><span class="line">            <span class="keyword">elif</span> auth_type == <span class="string">'2'</span>:</span><br><span class="line">                print(<span class="string">'22222222'</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'0000--0000'</span>)</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> dec_3</span><br><span class="line"><span class="meta">@auth(auth_type='4')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">average_3</span><span class="params">(*args)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> sum(args)</span><br><span class="line">a = average_3(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">auth</span><span class="token punctuation">(</span>auth_type<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">dec_3</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> auth_type <span class="token operator">==</span> <span class="token string">'1'</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'111111111'</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> auth_type <span class="token operator">==</span> <span class="token string">'2'</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'22222222'</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'0000--0000'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> wrapper
+    <span class="token keyword">return</span> dec_3
+@auth<span class="token punctuation">(</span>auth_type<span class="token operator">=</span><span class="token string">'4'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">average_3</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> sum<span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+a <span class="token operator">=</span> average_3<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</code></pre>
 
             <!-- / the end of articles -->
         </div>

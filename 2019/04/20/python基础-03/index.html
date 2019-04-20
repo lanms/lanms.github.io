@@ -5,25 +5,23 @@
   
   <title>python基础-03 | Blog Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="123456789101112131415161718192021222324from io import StringIOs = StringIO()s.write(&apos;www.baidu.com\n&apos;)s.write(&apos;abc\n&apos;)s.write(&apos;zhang&apos;)o = s.getvalue()print(o)s.seek(0)  # 指定开始读取的位置while True:    strBu">
+  <meta name="description" content="from io import StringIO   s = StringIO() s.write(&apos;www.baidu.com\n&apos;) s.write(&apos;abc\n&apos;) s.write(&apos;zhang&apos;)   o = s.getvalue() print(o)   s.seek(0)  # 指定开始读取的位置 while True:     strBuf = s.readline()     if">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python基础-03">
 <meta property="og:url" content="http://yoursite.com/2019/04/20/python基础-03/index.html">
 <meta property="og:site_name" content="Blog Python">
-<meta property="og:description" content="123456789101112131415161718192021222324from io import StringIOs = StringIO()s.write(&apos;www.baidu.com\n&apos;)s.write(&apos;abc\n&apos;)s.write(&apos;zhang&apos;)o = s.getvalue()print(o)s.seek(0)  # 指定开始读取的位置while True:    strBu">
+<meta property="og:description" content="from io import StringIO   s = StringIO() s.write(&apos;www.baidu.com\n&apos;) s.write(&apos;abc\n&apos;) s.write(&apos;zhang&apos;)   o = s.getvalue() print(o)   s.seek(0)  # 指定开始读取的位置 while True:     strBuf = s.readline()     if">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-20T09:14:59.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础-03">
-<meta name="twitter:description" content="123456789101112131415161718192021222324from io import StringIOs = StringIO()s.write(&apos;www.baidu.com\n&apos;)s.write(&apos;abc\n&apos;)s.write(&apos;zhang&apos;)o = s.getvalue()print(o)s.seek(0)  # 指定开始读取的位置while True:    strBu">
+<meta name="twitter:description" content="from io import StringIO   s = StringIO() s.write(&apos;www.baidu.com\n&apos;) s.write(&apos;abc\n&apos;) s.write(&apos;zhang&apos;)   o = s.getvalue() print(o)   s.seek(0)  # 指定开始读取的位置 while True:     strBuf = s.readline()     if">
   
     <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
@@ -48,7 +46,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -101,7 +99,31 @@
                     </div>
                 </h1>
 
-                <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = StringIO()</span><br><span class="line">s.write(<span class="string">'www.baidu.com\n'</span>)</span><br><span class="line">s.write(<span class="string">'abc\n'</span>)</span><br><span class="line">s.write(<span class="string">'zhang'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">o = s.getvalue()</span><br><span class="line">print(o)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s.seek(<span class="number">0</span>)  <span class="comment"># 指定开始读取的位置</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    strBuf = s.readline()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> strBuf:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(strBuf, end=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">s.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另外还有  readline()  readlines()  等方法可以读取</span></span><br></pre></td></tr></table></figure>
+                <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> io <span class="token keyword">import</span> StringIO
+
+
+s <span class="token operator">=</span> StringIO<span class="token punctuation">(</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'www.baidu.com\n'</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'abc\n'</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'zhang'</span><span class="token punctuation">)</span>
+
+
+o <span class="token operator">=</span> s<span class="token punctuation">.</span>getvalue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span>
+
+
+s<span class="token punctuation">.</span>seek<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 指定开始读取的位置</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    strBuf <span class="token operator">=</span> s<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> strBuf<span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>strBuf<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+
+s<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># 另外还有  readline()  readlines()  等方法可以读取</span>
+</code></pre>
 
             <!-- / the end of articles -->
         </div>

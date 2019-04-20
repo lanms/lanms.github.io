@@ -5,25 +5,23 @@
   
   <title>python基础-celery的使用 | Blog Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat 1http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v">
+  <meta name="description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python基础-celery的使用">
 <meta property="og:url" content="http://yoursite.com/2019/04/20/celery的使用/index.html">
 <meta property="og:site_name" content="Blog Python">
-<meta property="og:description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat 1http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v">
+<meta property="og:description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v2">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-20T09:30:02.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础-celery的使用">
-<meta name="twitter:description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat 1http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v">
+<meta name="twitter:description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v2">
   
     <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
@@ -48,7 +46,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -106,21 +104,34 @@
 <p><a href="https://www.cnblogs.com/forward-wang/p/5970806.html" target="_blank" rel="noopener">https://www.cnblogs.com/forward-wang/p/5970806.html</a></p>
 <p>启动命令</p>
 <p>celery -A task_dir_name beat</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;v2=bbb</span><br></pre></td></tr></table></figure>
-<p>可使用 AWS 的 SQS 和 DynmoDB</p>
+<pre><code>http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;v2=bbb
+</code></pre><p>可使用 AWS 的 SQS 和 DynmoDB</p>
 <p>windows</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install eventlet</span><br><span class="line">celery -A &lt;mymodule&gt; worker -l info -P eventlet</span><br></pre></td></tr></table></figure>
-<p><a href="http://www.cnblogs.com/cwp-bg/p/8759638.html" target="_blank" rel="noopener">http://www.cnblogs.com/cwp-bg/p/8759638.html</a></p>
+<pre><code>
+pip install eventlet
+celery -A &lt;mymodule&gt; worker -l info -P eventlet
+</code></pre><p><a href="http://www.cnblogs.com/cwp-bg/p/8759638.html" target="_blank" rel="noopener">http://www.cnblogs.com/cwp-bg/p/8759638.html</a></p>
 <p>celery_aaa</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">celery -A celery_aaa worker --loglevel=info</span><br><span class="line"></span><br><span class="line">python3 -m celery_aaa.run_tasks</span><br></pre></td></tr></table></figure>
+<pre class=" language-shell"><code class="language-shell">celery -A celery_aaa worker --loglevel=info
+
+python3 -m celery_aaa.run_tasks
+</code></pre>
 <p>可视化 celery 和 rabbitmq</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install flower</span><br></pre></td></tr></table></figure>
+<pre class=" language-shell"><code class="language-shell">pip install flower
+</code></pre>
 <p>所有的任务会存在本地的 schedule文件中</p>
 <p>当没有发布任务时 worker 会等待，直到有任务发布</p>
 <p>当没有worker存在时，会一直发布任务，直到worker出现</p>
 <p>启动任务发布时会返回它的pid，可以通过kill pid 来停止</p>
 <p>celery_aaa</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行worker</span></span><br><span class="line">celery -A celery_aaa worker --loglevel=info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入任务</span></span><br><span class="line"><span class="keyword">from</span>  celery_util.celery_aaa.tasks <span class="keyword">import</span> longtime_add</span><br><span class="line"></span><br><span class="line">longtime_add.delay(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 运行worker</span>
+celery <span class="token operator">-</span>A celery_aaa worker <span class="token operator">-</span><span class="token operator">-</span>loglevel<span class="token operator">=</span>info
+
+<span class="token comment" spellcheck="true"># 导入任务</span>
+<span class="token keyword">from</span>  celery_util<span class="token punctuation">.</span>celery_aaa<span class="token punctuation">.</span>tasks <span class="token keyword">import</span> longtime_add
+
+longtime_add<span class="token punctuation">.</span>delay<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
 
             <!-- / the end of articles -->
         </div>

@@ -25,8 +25,6 @@
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -50,7 +48,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -144,7 +142,43 @@
 <p><img src="../../../Desktop/Learning/learning-notes.github/01-python%E5%9F%BA%E7%A1%80/assets/1530151171209.png" alt="53015117120"></p>
 <p>next()  让 yield 向下执行</p>
 <p>send(n)  将值传入到 yield ， 让后向下执行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></span><br><span class="line">    r = <span class="string">''</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        n = <span class="keyword">yield</span> r</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> n:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        print(<span class="string">'[CONSUMER] 消费者：%s'</span> % n)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        r = <span class="string">'CONSUMER，结束状态！'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce</span><span class="params">(c)</span>:</span></span><br><span class="line">    next(c)  <span class="comment"># 启动程序 ，让执行到 yield 处， 暂停, 等待</span></span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; <span class="number">3</span>:</span><br><span class="line">        n += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'n的值：%s...'</span> % n)</span><br><span class="line">        <span class="comment"># 将 n 传入到 yield 中， yield r 的值 替换为 n，</span></span><br><span class="line">        <span class="comment"># 同时 将原来的r 的值获取到， 赋值给当前的 r</span></span><br><span class="line">        r = c.send(n)</span><br><span class="line">        print(<span class="string">'r的值：%s'</span> % r)</span><br><span class="line">        print(<span class="string">'--'</span> * <span class="number">20</span>)</span><br><span class="line">    c.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    c = consumer()</span><br><span class="line">    produce(c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> time
+
+
+<span class="token keyword">def</span> <span class="token function">consumer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    r <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        n <span class="token operator">=</span> <span class="token keyword">yield</span> r
+        <span class="token keyword">if</span> <span class="token operator">not</span> n<span class="token punctuation">:</span>
+            <span class="token keyword">return</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'[CONSUMER] 消费者：%s'</span> <span class="token operator">%</span> n<span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        r <span class="token operator">=</span> <span class="token string">'CONSUMER，结束状态！'</span>
+
+
+<span class="token keyword">def</span> <span class="token function">produce</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    next<span class="token punctuation">(</span>c<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 启动程序 ，让执行到 yield 处， 暂停, 等待</span>
+    n <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        n <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'n的值：%s...'</span> <span class="token operator">%</span> n<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 将 n 传入到 yield 中， yield r 的值 替换为 n，</span>
+        <span class="token comment" spellcheck="true"># 同时 将原来的r 的值获取到， 赋值给当前的 r</span>
+        r <span class="token operator">=</span> c<span class="token punctuation">.</span>send<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'r的值：%s'</span> <span class="token operator">%</span> r<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'--'</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">)</span>
+    c<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> consumer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    produce<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>next()  激活， 向下执行</li>
 <li>yield   暂停  停止， 并且返回值</li>
@@ -159,28 +193,77 @@
 <li>把<code>yield from</code>替换为<code>await</code>。</li>
 </ol>
 <p>下面的函数得到相同的结果</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@asyncio.coroutine</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(n)</span>:</span></span><br><span class="line">    print(<span class="string">'hello, world! '</span> + n)</span><br><span class="line">    r = <span class="keyword">yield</span> <span class="keyword">from</span> asyncio.sleep(<span class="number">3</span>)  <span class="comment"># 等待 3s 但是程序马上启动了第二个任务</span></span><br><span class="line">    print(<span class="string">'hello complete! '</span> + n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(n)</span>:</span></span><br><span class="line">    print(<span class="string">'hello, world! '</span> + n)</span><br><span class="line">    r = <span class="keyword">await</span> asyncio.sleep(<span class="number">3</span>)</span><br><span class="line">    print(<span class="string">'hello complete! '</span> + n)</span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">task = asyncio.wait([hello(<span class="string">'AAAAAA'</span>), hello(<span class="string">'BBBBBB'</span>)])</span><br><span class="line">loop.run_until_complete(task)</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> asyncio
+
+
+@asyncio<span class="token punctuation">.</span>coroutine
+<span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello, world! '</span> <span class="token operator">+</span> n<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token keyword">from</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 等待 3s 但是程序马上启动了第二个任务</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello complete! '</span> <span class="token operator">+</span> n<span class="token punctuation">)</span>
+
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello, world! '</span> <span class="token operator">+</span> n<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello complete! '</span> <span class="token operator">+</span> n<span class="token punctuation">)</span>
+
+loop <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>get_event_loop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+task <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>wait<span class="token punctuation">(</span><span class="token punctuation">[</span>hello<span class="token punctuation">(</span><span class="token string">'AAAAAA'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> hello<span class="token punctuation">(</span><span class="token string">'BBBBBB'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+loop<span class="token punctuation">.</span>run_until_complete<span class="token punctuation">(</span>task<span class="token punctuation">)</span>
+loop<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
 <p>我们可以在耗时较长的任务前中添加 <code>await</code>来让其实现多线程的并发</p>
 <p>实际就是在 判断为耗时较长的 程序代码前 添加 <code>await</code></p>
 <h5 id="使用自定义域名服务器"><a href="#使用自定义域名服务器" class="headerlink" title="使用自定义域名服务器"></a>使用自定义域名服务器</h5><h3 id="aiohttp-1"><a href="#aiohttp-1" class="headerlink" title="aiohttp"></a>aiohttp</h3><p>异步 http 请求</p>
 <p>底层需要<a href="https://aiohttp.readthedocs.io/en/stable/glossary.html#term-aiodns" target="_blank" rel="noopener">aiodns</a>支持:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> aiohttp.resolver <span class="keyword">import</span> AsyncResolver</span><br><span class="line"></span><br><span class="line">resolver = AsyncResolver(nameservers=[<span class="string">"8.8.8.8"</span>, <span class="string">"8.8.4.4"</span>])</span><br><span class="line">conn = aiohttp.TCPConnector(resolver=resolver)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> aiohttp<span class="token punctuation">.</span>resolver <span class="token keyword">import</span> AsyncResolver
+
+resolver <span class="token operator">=</span> AsyncResolver<span class="token punctuation">(</span>nameservers<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"8.8.8.8"</span><span class="token punctuation">,</span> <span class="token string">"8.8.4.4"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+conn <span class="token operator">=</span> aiohttp<span class="token punctuation">.</span>TCPConnector<span class="token punctuation">(</span>resolver<span class="token operator">=</span>resolver<span class="token punctuation">)</span>
+</code></pre>
 <h2 id="为TCP-sockets添加SSL控制"><a href="#为TCP-sockets添加SSL控制" class="headerlink" title="为TCP sockets添加SSL控制:"></a>为TCP sockets添加SSL控制:</h2><p>默认情况下aiohttp总会对使用了HTTPS协议(的URL请求)查验其身份。但也可将<em>verify_ssl</em>设置为<code>False</code>让其不检查:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = <span class="keyword">await</span> session.get(<span class="string">'https://example.com'</span>, verify_ssl=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">r <span class="token operator">=</span> <span class="token keyword">await</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://example.com'</span><span class="token punctuation">,</span> verify_ssl<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+</code></pre>
 <p>如果你需要设置自定义SSL信息(比如使用自己的证书文件)你可以创建一个<strong>ssl.SSLContext</strong>实例并传递到<strong>ClientSession</strong>中:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sslcontext = ssl.create_default_context(</span><br><span class="line">   cafile=<span class="string">'/path/to/ca-bundle.crt'</span>)</span><br><span class="line">r = <span class="keyword">await</span> session.get(<span class="string">'https://example.com'</span>, ssl_context=sslcontext)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">sslcontext <span class="token operator">=</span> ssl<span class="token punctuation">.</span>create_default_context<span class="token punctuation">(</span>
+   cafile<span class="token operator">=</span><span class="token string">'/path/to/ca-bundle.crt'</span><span class="token punctuation">)</span>
+r <span class="token operator">=</span> <span class="token keyword">await</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://example.com'</span><span class="token punctuation">,</span> ssl_context<span class="token operator">=</span>sslcontext<span class="token punctuation">)</span>
+</code></pre>
 <h2 id="代理支持"><a href="#代理支持" class="headerlink" title="代理支持"></a>代理支持</h2><p>aiohttp 支持 HTTP/HTTPS形式的代理。你需要使用<em>proxy</em>参数:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(<span class="string">"http://python.org"</span>,</span><br><span class="line">                           proxy=<span class="string">"http://some.proxy.com"</span>) <span class="keyword">as</span> resp:</span><br><span class="line">        print(resp.status)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">async</span> <span class="token keyword">with</span> aiohttp<span class="token punctuation">.</span>ClientSession<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>
+    <span class="token keyword">async</span> <span class="token keyword">with</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://python.org"</span><span class="token punctuation">,</span>
+                           proxy<span class="token operator">=</span><span class="token string">"http://some.proxy.com"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> resp<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span>status<span class="token punctuation">)</span>
+</code></pre>
 <p>同时支持认证代理:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">    proxy_auth = aiohttp.BasicAuth(<span class="string">'user'</span>, <span class="string">'pass'</span>)</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(<span class="string">"http://python.org"</span>,</span><br><span class="line">                           proxy=<span class="string">"http://some.proxy.com"</span>,</span><br><span class="line">                           proxy_auth=proxy_auth) <span class="keyword">as</span> resp:</span><br><span class="line">        print(resp.status)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">async</span> <span class="token keyword">with</span> aiohttp<span class="token punctuation">.</span>ClientSession<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>
+    proxy_auth <span class="token operator">=</span> aiohttp<span class="token punctuation">.</span>BasicAuth<span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'pass'</span><span class="token punctuation">)</span>
+    <span class="token keyword">async</span> <span class="token keyword">with</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://python.org"</span><span class="token punctuation">,</span>
+                           proxy<span class="token operator">=</span><span class="token string">"http://some.proxy.com"</span><span class="token punctuation">,</span>
+                           proxy_auth<span class="token operator">=</span>proxy_auth<span class="token punctuation">)</span> <span class="token keyword">as</span> resp<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span>status<span class="token punctuation">)</span>
+</code></pre>
 <p>也可将代理的验证信息放在url中:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.get(<span class="string">"http://python.org"</span>,</span><br><span class="line">            proxy=<span class="string">"http://user:pass@some.proxy.com"</span>)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://python.org"</span><span class="token punctuation">,</span>
+            proxy<span class="token operator">=</span><span class="token string">"http://user:pass@some.proxy.com"</span><span class="token punctuation">)</span>
+</code></pre>
 <p>与<code>requests(另一个广受欢迎的http包)</code>不同，aiohttp默认不会读取环境变量中的代理值。但你可以通过传递<code>trust_env=True</code>来让<strong>aiohttp.ClientSession</strong>读取<em>HTTP_PROXY</em>或<em>HTTPS_PROXY</em>环境变量中的代理信息(不区分大小写)。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(<span class="string">"http://python.org"</span>, trust_env=<span class="literal">True</span>) <span class="keyword">as</span> resp:</span><br><span class="line">        print(resp.status)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">async</span> <span class="token keyword">with</span> aiohttp<span class="token punctuation">.</span>ClientSession<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>
+    <span class="token keyword">async</span> <span class="token keyword">with</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://python.org"</span><span class="token punctuation">,</span> trust_env<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token keyword">as</span> resp<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span>status<span class="token punctuation">)</span>
+</code></pre>
 <h2 id="设置超时"><a href="#设置超时" class="headerlink" title="设置超时"></a>设置超时</h2><p>默认情况下每个IO操作有5分钟超时时间。可以通过给<strong>ClientSession.get</strong>()及其同类组件传递<code>timeout</code>来覆盖原超时时间:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">with</span> session.get(<span class="string">'https://github.com'</span>, timeout=<span class="number">60</span>) <span class="keyword">as</span> r:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">async</span> <span class="token keyword">with</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://github.com'</span><span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">)</span> <span class="token keyword">as</span> r<span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
 <p><code>None</code> 或者<code>0</code>则表示不检测超时。 还可通过调用<strong>async_timeout.timeout</strong>上下文管理器来为连接和解析响应内容添加一个总超时时间:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> async_timeout</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> async_timeout.timeout(<span class="number">0.001</span>):</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(<span class="string">'https://github.com'</span>) <span class="keyword">as</span> r:</span><br><span class="line">        <span class="keyword">await</span> r.text()</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> async_timeout
+
+<span class="token keyword">with</span> async_timeout<span class="token punctuation">.</span>timeout<span class="token punctuation">(</span><span class="token number">0.001</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">async</span> <span class="token keyword">with</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://github.com'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> r<span class="token punctuation">:</span>
+        <span class="token keyword">await</span> r<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <h2 id="愉快地结束"><a href="#愉快地结束" class="headerlink" title="愉快地结束:"></a>愉快地结束:</h2><p>当一个包含<code>ClientSession</code>的<code>async with</code>代码块的末尾行结束时(或直接调用了<code>.close()</code>)，因为asyncio内部的一些原因底层的连接其实没有关闭。在实际使用中，底层连接需要有一个缓冲时间来关闭。然而，如果事件循环在底层连接关闭之前就结束了，那么会抛出一个 资源警告: 存在未关闭的传输(通道)(<code>ResourceWarning: unclosed transport</code>),如果警告可用的话。 为了避免这种情况，在关闭事件循环前加入一小段延迟让底层连接得到关闭的缓冲时间。 对于非SSL的<code>ClientSession</code>, 使用0即可(<code>await asyncio.sleep(0)</code>):</p>
 
             <!-- / the end of articles -->

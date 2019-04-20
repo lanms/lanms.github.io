@@ -23,8 +23,6 @@
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -48,7 +46,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -107,19 +105,47 @@
 <p>Flask中可以自己的选择数据，用原生语句实现功能，也可以选择ORM（SQLAlchemy，MongoEngine）</p>
 <p>SQLAlchemy是一个很强大的关系型数据库框架，支持多种数据库后台。SQLAlchemy提供了高层ORM，也提供了使用数据库原生SQL的低层功能。</p>
 <p>ORM：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">将对对象的操作转换为原生SQL</span><br><span class="line">优点</span><br><span class="line">	易用性，可以有效减少重复SQL</span><br><span class="line">	性能损耗少</span><br><span class="line">	设计灵活，可以轻松实现复杂查询</span><br><span class="line">	移植性好</span><br></pre></td></tr></table></figure>
-<p>针对于Flask的支持, 更多<a href="http://flask-sqlalchemy.pocoo.org/2.3/" target="_blank" rel="noopener">官网地址</a></p>
+<pre><code>将对对象的操作转换为原生SQL
+优点
+    易用性，可以有效减少重复SQL
+    性能损耗少
+    设计灵活，可以轻松实现复杂查询
+    移植性好
+</code></pre><p>针对于Flask的支持, 更多<a href="http://flask-sqlalchemy.pocoo.org/2.3/" target="_blank" rel="noopener">官网地址</a></p>
 <ul>
 <li>Redis  主要用于会话的存储</li>
 <li>MySQL 主要用于数据的存储</li>
 </ul>
-<h4 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> falsk_session <span class="keyword">import</span> Session</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 密钥  数据库  redis</span></span><br><span class="line">    app.config[<span class="string">'SECRET_KEY'</span>] = <span class="string">'secret_key'</span>  <span class="comment"># 添加自己定义的复杂的 secret_key</span></span><br><span class="line">    app.config[<span class="string">'SESSION_TYPE'</span>] = <span class="string">'redis'</span>  <span class="comment"># 选择数据库类型, 默认连接本地 redis</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 连接指定的地址, 设置数据库的地址可以连接其他服务器的Redis</span></span><br><span class="line">    app.config[<span class="string">'SESSION_REDIS'</span>] = redis.Redis(host=<span class="string">'127.0.0.1'</span>,</span><br><span class="line">                                              port=<span class="number">6379</span>)</span><br><span class="line">     <span class="comment"># 添加 sessionid的前缀</span></span><br><span class="line">    app.config[<span class="string">'SESSION_KEY_PREFIX'</span>] = <span class="string">'flask'</span></span><br><span class="line">    </span><br><span class="line">    Session(app=app)  <span class="comment"># 初始化</span></span><br><span class="line">    <span class="comment"># 也可以写为 Session().init_app(app=app)</span></span><br></pre></td></tr></table></figure>
+<h4 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h4><pre class=" language-python"><code class="language-python">
+  <span class="token keyword">from</span> falsk_session <span class="token keyword">import</span> Session
+
+  <span class="token comment" spellcheck="true"># 设置 密钥  数据库  redis</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'secret_key'</span>  <span class="token comment" spellcheck="true"># 添加自己定义的复杂的 secret_key</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_TYPE'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'redis'</span>  <span class="token comment" spellcheck="true"># 选择数据库类型, 默认连接本地 redis</span>
+
+      <span class="token comment" spellcheck="true"># 连接指定的地址, 设置数据库的地址可以连接其他服务器的Redis</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_REDIS'</span><span class="token punctuation">]</span> <span class="token operator">=</span> redis<span class="token punctuation">.</span>Redis<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span>
+                                                port<span class="token operator">=</span><span class="token number">6379</span><span class="token punctuation">)</span>
+       <span class="token comment" spellcheck="true"># 添加 sessionid的前缀</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_KEY_PREFIX'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'flask'</span>
+
+      Session<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 初始化</span>
+      <span class="token comment" spellcheck="true"># 也可以写为 Session().init_app(app=app)</span>
+</code></pre>
 <h4 id="连接-MySQL"><a href="#连接-MySQL" class="headerlink" title="连接 MySQL"></a>连接 MySQL</h4><p>注意: 创建模型是需要 从 falsk-sqlalchemy 中 导入 SQLAlchemy开进行模型的创建</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置数据库</span></span><br><span class="line">   app.config[<span class="string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="string">'mysql+pymysql://root:123456@localhost:3306/hello_flask'</span></span><br><span class="line">   app.config[<span class="string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span>] = <span class="literal">False</span></span><br><span class="line">  </span><br><span class="line">   db.init_app(app=app)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">   <span class="token comment" spellcheck="true"># 配置数据库</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_DATABASE_URI'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'mysql+pymysql://root:123456@localhost:3306/hello_flask'</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+      db<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>
+</code></pre>
 <p>例：访问mysql数据库，驱动为pymysql，用户为root，密码为123456，数据库的地址为本地，端口为3306，数据库名称HelloFlask</p>
 <p>设置如下： <code>mysql+pymysql://root:123456@localhost:3306/HelloFlask</code></p>
 <p>在初始化init.py文件中如下配置：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.config[<span class="string">'SQLALCHEMY_TRAKE_MODIFICATIONS'</span>] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">app.config[<span class="string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="string">"mysql+pymysql://root:123456@localhost:3306/HelloFlask"</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">  app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_TRAKE_MODIFICATIONS'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+  app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_DATABASE_URI'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"mysql+pymysql://root:123456@localhost:3306/HelloFlask"</span>
+</code></pre>
 
             <!-- / the end of articles -->
         </div>

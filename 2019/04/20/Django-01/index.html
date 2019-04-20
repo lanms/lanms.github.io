@@ -23,8 +23,6 @@
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -48,7 +46,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -114,7 +112,62 @@
 <li>django-admin startproject PROJECT_NAME .  在最后加点号, 可以让项目创建在当前目录下</li>
 <li>python manage.py runserver 0.0.0.0:80启动服务器, 指定端口</li>
 </ul>
-<h4 id="PROJECT-NAME-views-py"><a href="#PROJECT-NAME-views-py" class="headerlink" title="PROJECT_NAME/ views.py"></a>PROJECT_NAME/ views.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render  <span class="comment">#渲染函数</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.template <span class="keyword">import</span> Template, Context</span><br><span class="line"><span class="keyword">from</span> django.template.loader <span class="keyword">import</span> get_template</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randrange</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">	fruit_list = [<span class="string">'苹果'</span>, <span class="string">'草莓'</span>, <span class="string">'蓝莓'</span>, <span class="string">'西瓜'</span>, <span class="string">'苹果'</span>]</span><br><span class="line">	start = <span class="number">0</span></span><br><span class="line">	end = randrange(len(fruit_list))</span><br><span class="line">	fruits = fruit_list[start:end]</span><br><span class="line">	ctx = &#123;</span><br><span class="line">	<span class="string">'greeting'</span>: <span class="string">'你好世界'</span>,</span><br><span class="line">	<span class="string">'current_time'</span>: datetime.now(),</span><br><span class="line">	<span class="string">'num'</span>: len(fruits),</span><br><span class="line">	<span class="string">'fruits'</span>: fruits</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment"># 第二个参数是模板页面(路劲在settings.py)</span></span><br><span class="line">	<span class="comment"># 第三个参数是一个字典(替换占位符)</span></span><br><span class="line">	<span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, ctx)</span><br><span class="line"></span><br><span class="line"><span class="comment"># def home(request):</span></span><br><span class="line"><span class="comment"># 	with open(r'C:\Users\Administrator\hell_django\templates\index.html', encoding='utf-8') as f:</span></span><br><span class="line"><span class="comment"># 		t = Template(f.read())</span></span><br><span class="line"><span class="comment"># 	index = randrange(0, len(fruit_list))</span></span><br><span class="line"><span class="comment"># 	ctx = Context(&#123;</span></span><br><span class="line"><span class="comment"># 	'greeting': '你好世界',</span></span><br><span class="line"><span class="comment"># 	'current_time': datetime.now(),</span></span><br><span class="line"><span class="comment"># 	'fruit': fruit_list[index]</span></span><br><span class="line"><span class="comment"># 	&#125;)</span></span><br><span class="line"><span class="comment"># 	return HttpResponse(t.render(ctx))     # 渲染</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># fruit_list = ['苹果', '草莓', '蓝莓', '西瓜', '苹果']</span></span><br><span class="line"><span class="comment"># # Create your views here.</span></span><br><span class="line"><span class="comment"># def home(request):</span></span><br><span class="line"><span class="comment"># 	html_str = '&lt;h1&gt;hello, django!&lt;/h1&gt;'</span></span><br><span class="line"><span class="comment"># 	html_str += '&lt;ul&gt;\n'</span></span><br><span class="line"><span class="comment"># 	for _ in range(3):</span></span><br><span class="line"><span class="comment"># 		index = randrange(0, len(fruit_list))</span></span><br><span class="line"><span class="comment"># 		html_str += '\t&lt;li&gt;' + fruit_list[index] + '&lt;/li&gt;\n'</span></span><br><span class="line"><span class="comment"># 	html_str += '&lt;/ul&gt;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 	return HttpResponse(html_str)</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># def home(request):</span></span><br><span class="line"><span class="comment"># 	html = '北京时间: %s' % datetime.now()</span></span><br><span class="line"><span class="comment"># 	return HttpResponse(html)</span></span><br></pre></td></tr></table></figure>
+<h4 id="PROJECT-NAME-views-py"><a href="#PROJECT-NAME-views-py" class="headerlink" title="PROJECT_NAME/ views.py"></a>PROJECT_NAME/ views.py</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render  <span class="token comment" spellcheck="true">#渲染函数</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>template <span class="token keyword">import</span> Template<span class="token punctuation">,</span> Context
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>template<span class="token punctuation">.</span>loader <span class="token keyword">import</span> get_template
+
+<span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+
+<span class="token keyword">def</span> <span class="token function">home</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fruit_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'苹果'</span><span class="token punctuation">,</span> <span class="token string">'草莓'</span><span class="token punctuation">,</span> <span class="token string">'蓝莓'</span><span class="token punctuation">,</span> <span class="token string">'西瓜'</span><span class="token punctuation">,</span> <span class="token string">'苹果'</span><span class="token punctuation">]</span>
+    start <span class="token operator">=</span> <span class="token number">0</span>
+    end <span class="token operator">=</span> randrange<span class="token punctuation">(</span>len<span class="token punctuation">(</span>fruit_list<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fruits <span class="token operator">=</span> fruit_list<span class="token punctuation">[</span>start<span class="token punctuation">:</span>end<span class="token punctuation">]</span>
+    ctx <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'greeting'</span><span class="token punctuation">:</span> <span class="token string">'你好世界'</span><span class="token punctuation">,</span>
+    <span class="token string">'current_time'</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'num'</span><span class="token punctuation">:</span> len<span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'fruits'</span><span class="token punctuation">:</span> fruits
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true"># 第二个参数是模板页面(路劲在settings.py)</span>
+    <span class="token comment" spellcheck="true"># 第三个参数是一个字典(替换占位符)</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># def home(request):</span>
+<span class="token comment" spellcheck="true">#     with open(r'C:\Users\Administrator\hell_django\templates\index.html', encoding='utf-8') as f:</span>
+<span class="token comment" spellcheck="true">#         t = Template(f.read())</span>
+<span class="token comment" spellcheck="true">#     index = randrange(0, len(fruit_list))</span>
+<span class="token comment" spellcheck="true">#     ctx = Context({</span>
+<span class="token comment" spellcheck="true">#     'greeting': '你好世界',</span>
+<span class="token comment" spellcheck="true">#     'current_time': datetime.now(),</span>
+<span class="token comment" spellcheck="true">#     'fruit': fruit_list[index]</span>
+<span class="token comment" spellcheck="true">#     })</span>
+<span class="token comment" spellcheck="true">#     return HttpResponse(t.render(ctx))     # 渲染</span>
+
+
+<span class="token comment" spellcheck="true"># fruit_list = ['苹果', '草莓', '蓝莓', '西瓜', '苹果']</span>
+<span class="token comment" spellcheck="true"># # Create your views here.</span>
+<span class="token comment" spellcheck="true"># def home(request):</span>
+<span class="token comment" spellcheck="true">#     html_str = '&lt;h1>hello, django!&lt;/h1>'</span>
+<span class="token comment" spellcheck="true">#     html_str += '&lt;ul>\n'</span>
+<span class="token comment" spellcheck="true">#     for _ in range(3):</span>
+<span class="token comment" spellcheck="true">#         index = randrange(0, len(fruit_list))</span>
+<span class="token comment" spellcheck="true">#         html_str += '\t&lt;li>' + fruit_list[index] + '&lt;/li>\n'</span>
+<span class="token comment" spellcheck="true">#     html_str += '&lt;/ul>'</span>
+
+<span class="token comment" spellcheck="true">#     return HttpResponse(html_str)</span>
+<span class="token comment" spellcheck="true"># </span>
+
+<span class="token comment" spellcheck="true"># def home(request):</span>
+<span class="token comment" spellcheck="true">#     html = '北京时间: %s' % datetime.now()</span>
+<span class="token comment" spellcheck="true">#     return HttpResponse(html)</span>
+
+
+</code></pre>
 <h4 id="hello-django-gt-settings-py-urls-py"><a href="#hello-django-gt-settings-py-urls-py" class="headerlink" title="hello_django -&gt; settings.py / urls.py"></a>hello_django -&gt; settings.py / urls.py</h4><ul>
 <li>setting.py<ul>
 <li>更改DEBUG  [‘*’]</li>
@@ -123,13 +176,47 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> hrs <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, views.home),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h4 id="templates-gt-index-html"><a href="#templates-gt-index-html" class="headerlink" title="templates - &gt; index.html"></a>templates - &gt; index.html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; greeting &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>   <span class="comment">&lt;!-- 占位符--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123; current_time &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>今天推荐&#123;&#123; num &#125;&#125;种水果:<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">		&#123;% for fruit in fruits %&#125;</span><br><span class="line">		<span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; fruit &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">		&#123;% endfor %&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path
+<span class="token keyword">from</span> hrs <span class="token keyword">import</span> views
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    path<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>home<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<h4 id="templates-gt-index-html"><a href="#templates-gt-index-html" class="headerlink" title="templates - &gt; index.html"></a>templates - &gt; index.html</h4><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>首页<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>{{ greeting }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>   <span class="token comment" spellcheck="true">&lt;!-- 占位符--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>{{ current_time }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>今天推荐{{ num }}种水果:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+        {% for fruit in fruits %}
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>{{ fruit }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+		{% endfor %}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
 <h4 id="写页面"><a href="#写页面" class="headerlink" title="写页面"></a>写页面</h4><ul>
 <li>OA - office Auomation</li>
 <li>创建应用<code>python manage.py startapp hrs</code> , 创建成功后会有一个对应的文件夹</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hrs 文件目录包含以下内容</span><br><span class="line">__init__ 包</span><br><span class="line">apps  应用</span><br><span class="line">models 模型</span><br><span class="line">tests 测试</span><br><span class="line">views  控制器</span><br><span class="line">admin 注册  </span><br><span class="line">migrations 目录为数据库相关文件</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">hrs 文件目录包含以下内容
+__init__ 包
+apps  应用
+models 模型
+tests 测试
+views  控制器
+admin 注册  
+migrations 目录为数据库相关文件
+</code></pre>
 <p>stringIO 模块拼接字符串, write  value</p>
 <p><a href="https://docs.djangoproject.com/zh-hans/2.0/" target="_blank" rel="noopener">Django官方文档</a></p>
 

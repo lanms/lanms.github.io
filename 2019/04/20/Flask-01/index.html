@@ -23,8 +23,6 @@
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -48,7 +46,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -115,7 +113,18 @@
 <li>Flask由于框架体量小, 所有的拓展包都需要我们自己去安装, 所以一个Flask项目会安装很多的拓展包是很常见的</li>
 </ul>
 <p>最简单的一个Flask项目</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">
+  <span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
+
+  app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+  @app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token string">'hello'</span>
+
+  <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+      main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <h4 id="拆分"><a href="#拆分" class="headerlink" title="拆分"></a>拆分</h4><p>基于项目的可拓展性和代码的可阅读性, 当代码量较大时, 将所有的代码写在一个文件中是一件很可怕的事, 所以我们就要对其进行拆分, 主要还是参考 MVC模式进行, 将不同的功能放在其对应的模块中, 方便我们进行阅读</p>
 <ul>
 <li>将主要的执行内容写在执行文件manage.py中, 引入 Manage 进行管理app</li>
@@ -124,17 +133,60 @@
 <li>创建 templates 目录, 存放网页模板</li>
 <li>创建utils 目录, 管理工具函数</li>
 </ul>
-<h5 id="Manger管理app"><a href="#Manger管理app" class="headerlink" title="Manger管理app"></a>Manger管理app</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_script <span class="keyword">import</span> Manager</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> utils.functions <span class="keyword">import</span> create_app</span><br><span class="line"></span><br><span class="line">app = create_app()</span><br><span class="line">manage = Manager(app=app)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    manage.run()</span><br></pre></td></tr></table></figure>
+<h5 id="Manger管理app"><a href="#Manger管理app" class="headerlink" title="Manger管理app"></a>Manger管理app</h5><pre class=" language-python"><code class="language-python">  <span class="token keyword">from</span> flask_script <span class="token keyword">import</span> Manager
+
+  <span class="token keyword">from</span> utils<span class="token punctuation">.</span>functions <span class="token keyword">import</span> create_app
+
+  app <span class="token operator">=</span> create_app<span class="token punctuation">(</span><span class="token punctuation">)</span>
+  manage <span class="token operator">=</span> Manager<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+      manage<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
 <h4 id="views定义路由和控制器"><a href="#views定义路由和控制器" class="headerlink" title="views定义路由和控制器"></a>views定义路由和控制器</h4><ul>
 <li>需要蓝图</li>
 <li>blueprint</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Blueprint</span><br><span class="line"></span><br><span class="line">user_buleprint = Blueprint(<span class="string">'user'</span>, __name__) <span class="comment"># 'user'在重定向时使用</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@user_blueprint.route('/')  # 设置路由, 访问的url</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>)  <span class="comment"># 返回渲染的模板页面</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 带参数返回</span></span><br><span class="line"><span class="meta">@user_blueprint.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    content = <span class="string">''</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'index.html'</span>, content=content)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">  <span class="token keyword">from</span> flask <span class="token keyword">import</span> Blueprint
+
+  user_buleprint <span class="token operator">=</span> Blueprint<span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">,</span> __name__<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 'user'在重定向时使用</span>
+
+  @user_blueprint<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 设置路由, 访问的url</span>
+  <span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 返回渲染的模板页面</span>
+
+  <span class="token comment" spellcheck="true"># 带参数返回</span>
+  @user_blueprint<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      content <span class="token operator">=</span> <span class="token string">''</span>
+      <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span>
+
+</code></pre>
 <h4 id="注册蓝图"><a href="#注册蓝图" class="headerlink" title="注册蓝图"></a>注册蓝图</h4><ul>
 <li>utils.functions.py</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">()</span>:</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    <span class="comment"># 注册蓝图, 设置url 前缀, 相当于 django中的 namespace</span></span><br><span class="line">    app.register_blueprint(blueprint=user_buleprint, url_prefix=<span class="string">'/user'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
-<h4 id="设置静态文件目录和模板目录"><a href="#设置静态文件目录和模板目录" class="headerlink" title="设置静态文件目录和模板目录"></a>设置静态文件目录和模板目录</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    BASE_DIR = os.path.dirname(os.path.dirname(__file__))</span><br><span class="line">    static_dir = os.path.join(BASE_DIR, <span class="string">'static'</span>)</span><br><span class="line">    templates_dir = os.path.join(BASE_DIR, <span class="string">'templates'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化 app</span></span><br><span class="line">    app = Flask(__name__,</span><br><span class="line">                static_folder=static_dir,</span><br><span class="line">                template_folder=templates_dir)</span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">  <span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
+
+  <span class="token keyword">def</span> <span class="token function">create_app</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true"># 注册蓝图, 设置url 前缀, 相当于 django中的 namespace</span>
+      app<span class="token punctuation">.</span>register_blueprint<span class="token punctuation">(</span>blueprint<span class="token operator">=</span>user_buleprint<span class="token punctuation">,</span> url_prefix<span class="token operator">=</span><span class="token string">'/user'</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span> app
+</code></pre>
+<h4 id="设置静态文件目录和模板目录"><a href="#设置静态文件目录和模板目录" class="headerlink" title="设置静态文件目录和模板目录"></a>设置静态文件目录和模板目录</h4><pre class=" language-python"><code class="language-python">  <span class="token keyword">def</span> <span class="token function">create_app</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+      BASE_DIR <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      static_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'static'</span><span class="token punctuation">)</span>
+      templates_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'templates'</span><span class="token punctuation">)</span>
+
+      <span class="token comment" spellcheck="true"># 初始化 app</span>
+      app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">,</span>
+                  static_folder<span class="token operator">=</span>static_dir<span class="token punctuation">,</span>
+                  template_folder<span class="token operator">=</span>templates_dir<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> app
+</code></pre>
 <h5 id><a href="#" class="headerlink" title=" "></a> </h5><h4 id="视图函数"><a href="#视图函数" class="headerlink" title="视图函数"></a>视图函数</h4><p>路由</p>
 <ul>
 <li><a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>(‘/‘)`</li>
@@ -151,7 +203,44 @@
 <li>any 任何,无限制</li>
 </ul>
 <p>对同一个模板,通过url中传递的参数类型不同来执行不同的视图函数进行渲染</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template, request, Blueprint</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">blue = Blueprint(<span class="string">'first'</span>, __name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;name&gt;/', methods=['POST', "GET"])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_name</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'GET'</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, name=name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;float:float&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">float</span><span class="params">(float)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, float=float)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;int:int&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">float1</span><span class="params">(int)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, int=int)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;path:path&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(path)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, path=path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/hello/&lt;uuid:uuid&gt;/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">uuid1</span><span class="params">(uuid)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">'hello.html'</span>, uuid=uuid)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">  <span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template<span class="token punctuation">,</span> request<span class="token punctuation">,</span> Blueprint
+
+
+  blue <span class="token operator">=</span> Blueprint<span class="token punctuation">(</span><span class="token string">'first'</span><span class="token punctuation">,</span> __name__<span class="token punctuation">)</span>
+
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">)</span>
+
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/&lt;name>/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">,</span> <span class="token string">"GET"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">hello_name</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+          <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">,</span> name<span class="token operator">=</span>name<span class="token punctuation">)</span>
+
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/&lt;float:float>/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">float</span><span class="token punctuation">(</span>float<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">,</span> float<span class="token operator">=</span>float<span class="token punctuation">)</span>
+
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/&lt;int:int>/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">float1</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">,</span> int<span class="token operator">=</span>int<span class="token punctuation">)</span>
+
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/&lt;path:path>/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">show</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">,</span> path<span class="token operator">=</span>path<span class="token punctuation">)</span>
+
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/&lt;uuid:uuid>/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">uuid1</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">,</span> uuid<span class="token operator">=</span>uuid<span class="token punctuation">)</span>
+
+
+</code></pre>
 <h4 id="methods-请求的方法"><a href="#methods-请求的方法" class="headerlink" title="methods 请求的方法"></a>methods 请求的方法</h4><ul>
 <li>获取传递的参数</li>
 <li>GET请求:<code>request.args</code></li>

@@ -5,25 +5,23 @@
   
   <title>Flask-03 | Blog Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="03-模型的创建 初始化SQLAlchemy12345678910111213# 方法1from flask-sqlalchemy import SQLAlchemyapp = Flask(__name__)db = SQLAlchemy(app=app)# 方法2db = SQLAlchemy()def create_app():    app = Flask(__name__)    db.i">
+  <meta name="description" content="03-模型的创建 初始化SQLAlchemy  # 方法1   from flask-sqlalchemy import SQLAlchemy    app = Flask(__name__)   db = SQLAlchemy(app=app)    # 方法2   db = SQLAlchemy()    def create_app():       app = Flask(__name__">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flask-03">
 <meta property="og:url" content="http://yoursite.com/2019/04/20/Flask-03/index.html">
 <meta property="og:site_name" content="Blog Python">
-<meta property="og:description" content="03-模型的创建 初始化SQLAlchemy12345678910111213# 方法1from flask-sqlalchemy import SQLAlchemyapp = Flask(__name__)db = SQLAlchemy(app=app)# 方法2db = SQLAlchemy()def create_app():    app = Flask(__name__)    db.i">
+<meta property="og:description" content="03-模型的创建 初始化SQLAlchemy  # 方法1   from flask-sqlalchemy import SQLAlchemy    app = Flask(__name__)   db = SQLAlchemy(app=app)    # 方法2   db = SQLAlchemy()    def create_app():       app = Flask(__name__">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-04-20T09:17:12.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flask-03">
-<meta name="twitter:description" content="03-模型的创建 初始化SQLAlchemy12345678910111213# 方法1from flask-sqlalchemy import SQLAlchemyapp = Flask(__name__)db = SQLAlchemy(app=app)# 方法2db = SQLAlchemy()def create_app():    app = Flask(__name__)    db.i">
+<meta name="twitter:description" content="03-模型的创建 初始化SQLAlchemy  # 方法1   from flask-sqlalchemy import SQLAlchemy    app = Flask(__name__)   db = SQLAlchemy(app=app)    # 方法2   db = SQLAlchemy()    def create_app():       app = Flask(__name__">
   
     <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/tocas.css">
   <link rel="stylesheet" href="/css/animate.css">
@@ -48,7 +46,7 @@
   <script src="/js/tocas.js"></script>
   
 
-</head></html>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
 
 <body>
 <!-- navigation -->
@@ -102,9 +100,35 @@
                 </h1>
 
                 <p>03-模型的创建</p>
-<h4 id="初始化SQLAlchemy"><a href="#初始化SQLAlchemy" class="headerlink" title="初始化SQLAlchemy"></a>初始化SQLAlchemy</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1</span></span><br><span class="line"><span class="keyword">from</span> flask-sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">db = SQLAlchemy(app=app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2</span></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">()</span>:</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    db.init_app(app=app)</span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<h4 id="初始化SQLAlchemy"><a href="#初始化SQLAlchemy" class="headerlink" title="初始化SQLAlchemy"></a>初始化SQLAlchemy</h4><pre class=" language-python"><code class="language-python">  <span class="token comment" spellcheck="true"># 方法1</span>
+  <span class="token keyword">from</span> flask<span class="token operator">-</span>sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+
+  app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+  db <span class="token operator">=</span> SQLAlchemy<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>
+
+  <span class="token comment" spellcheck="true"># 方法2</span>
+  db <span class="token operator">=</span> SQLAlchemy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">def</span> <span class="token function">create_app</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+      db<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> app
+
+</code></pre>
 <p>定义模型</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(db.Model)</span>:</span></span><br><span class="line">    __tablename__ = <span class="string">"tb_student"</span>  <span class="comment"># 数据库中对应的表的名称</span></span><br><span class="line">    s_id = db.Column(db.Integer, primary_key=<span class="literal">True</span>, autoincrement=<span class="literal">True</span>)</span><br><span class="line">    s_name = db.Column(db.String(<span class="number">16</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    s_age = db.Column(db.Integer, default=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">
+  <span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+
+  db <span class="token operator">=</span> SQLAlchemy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+  <span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      __tablename__ <span class="token operator">=</span> <span class="token string">"tb_student"</span>  <span class="token comment" spellcheck="true"># 数据库中对应的表的名称</span>
+      s_id <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> autoincrement<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+      s_name <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>String<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">,</span> unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+      s_age <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+</code></pre>
 <p>其中：</p>
 <p>Integer表示创建的s_id字段的类型为整形，</p>
 <p>primary_key表示是否为主键</p>
@@ -117,7 +141,18 @@
 <li>db.create_all()表示创建定义模型中对应到数据库中的表</li>
 <li>db.drop_all()表示删除数据库中的所有的表</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> App.models <span class="keyword">import</span> db</span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route("/createdb/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_db</span><span class="params">()</span>:</span></span><br><span class="line">    db.create_all()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"创建成功"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@blue.route('/dropdb/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drop_db</span><span class="params">()</span>:</span></span><br><span class="line">    db.drop_all()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'删除成功'</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-python"><code class="language-python">  <span class="token keyword">from</span> App<span class="token punctuation">.</span>models <span class="token keyword">import</span> db
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">"/createdb/"</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">create_db</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      db<span class="token punctuation">.</span>create_all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token string">"创建成功"</span>
+
+  @blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/dropdb/'</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> <span class="token function">drop_db</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      db<span class="token punctuation">.</span>drop_all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token string">'删除成功'</span>
+</code></pre>
 <p>推荐使用 SQL 语句来在数据库中创建对应的表, 避免出现不可预知的问题, 但是在建表时一定要注意表与表之间的关联关系, 可以在数据库中建表之后在 shell 环境中导入对应的模型, 来进行 modelName.query.all() 来进行查询, 验证</p>
 
             <!-- / the end of articles -->

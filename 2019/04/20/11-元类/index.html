@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>python基础-元类 | Blog Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="元类介绍type可以直接生成类（class），但也可以先生成元类（metaclass），再使用元类批量定制类（class）  使用 class 创建类 1234567class Hello():    def say(self, name=&apos;world&apos;):        print(&apos;Hello, %s&apos; % name)       h = Hello()h.say() 使用 type 直接创建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python基础-元类">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/11-元类/index.html">
+<meta property="og:site_name" content="Blog Python">
+<meta property="og:description" content="元类介绍type可以直接生成类（class），但也可以先生成元类（metaclass），再使用元类批量定制类（class）  使用 class 创建类 1234567class Hello():    def say(self, name=&apos;world&apos;):        print(&apos;Hello, %s&apos; % name)       h = Hello()h.say() 使用 type 直接创建">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T09:27:11.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python基础-元类">
+<meta name="twitter:description" content="元类介绍type可以直接生成类（class），但也可以先生成元类（metaclass），再使用元类批量定制类（class）  使用 class 创建类 1234567class Hello():    def say(self, name=&apos;world&apos;):        print(&apos;Hello, %s&apos; % name)       h = Hello()h.say() 使用 type 直接创建">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog Python" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+</head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Blog Python</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">python基础-元类</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    
+                    </div>
+                </h1>
+
+                <h3 id="元类介绍"><a href="#元类介绍" class="headerlink" title="元类介绍"></a>元类介绍</h3><p><strong>type可以直接生成类（class），但也可以先生成元类（metaclass），再使用元类批量定制类（class）</strong> </p>
+<p>使用 class 创建类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(self, name=<span class="string">'world'</span>)</span>:</span></span><br><span class="line">        print(<span class="string">'Hello, %s'</span> % name) </span><br><span class="line">      </span><br><span class="line">h = Hello()</span><br><span class="line">h.say()</span><br></pre></td></tr></table></figure>
+<p>使用 type 直接创建</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say</span><span class="params">(self, name=<span class="string">'world'</span>)</span>:</span></span><br><span class="line">    print(<span class="string">"Hello, %s"</span> % name)</span><br><span class="line">   </span><br><span class="line">Hello = type(<span class="string">'Hello'</span>, (object, ), dict(say_hello=say))</span><br><span class="line">h = Hello()</span><br><span class="line">h.say()</span><br></pre></td></tr></table></figure>
+<p>先生成元类 metaclass，再批量创建</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 传入type</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SayMetaClass</span><span class="params">(type)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 传入      类名称、父类、属性</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, name, bases, attrs)</span>:</span></span><br><span class="line">        <span class="comment"># 添加属性 </span></span><br><span class="line">        attrs[<span class="string">'say_'</span>+name] = <span class="keyword">lambda</span> self,value,saying=name: print(saying+<span class="string">','</span>+value+<span class="string">'!'</span>)</span><br><span class="line">        <span class="comment"># 传承三大：类名称、父类、属性</span></span><br><span class="line">        <span class="keyword">return</span> type.__new__(cls, name, bases, attrs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span><span class="params">(object, metaclass=SayMetaClass)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建实列</span></span><br><span class="line">hello = Hello()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用实例方法</span></span><br><span class="line">hello.say_Hello(<span class="string">'world!'</span>)  <span class="comment"># Hello, world！   类名 + 传入的参数</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NiHao</span><span class="params">(object, metaclass=SayMetacalss)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">n = NiHao()</span><br><span class="line">n.say_NiHao(<span class="string">"中国"</span>)  <span class="comment"># NiHao, 中国！</span></span><br></pre></td></tr></table></figure>
+<h3 id="元类的应用"><a href="#元类的应用" class="headerlink" title="元类的应用"></a>元类的应用</h3><p>参考文章 <a href="https://blog.csdn.net/birdreamer/article/details/79728249" target="_blank" rel="noopener">快速掌握元类</a></p>
+<h4 id="ORM-对象关系映射"><a href="#ORM-对象关系映射" class="headerlink" title="ORM 对象关系映射"></a>ORM 对象关系映射</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Field</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, column_type)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.column_type = column_type</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&lt;%s: %s&gt;'</span> % (self.__class__.__name__, self.name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StringField</span><span class="params">(Field)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        super().__init__(name, <span class="string">'varchar(100)'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntegerField</span><span class="params">(Field)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        super().__init__(name, <span class="string">'bigint'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ModelMetaClass</span><span class="params">(type)</span>:</span></span><br><span class="line">    <span class="string">"""元类"""</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    创建一个新的字典mapping</span></span><br><span class="line"><span class="string">    将每一个类的属性，通过.items()遍历其键值对。</span></span><br><span class="line"><span class="string">    如果值是Field类，则打印键值，并将这一对键值绑定到mapping字典上。</span></span><br><span class="line"><span class="string">    将刚刚传入值为Field类的属性删除。</span></span><br><span class="line"><span class="string">    创建一个专门的__mappings__属性，保存字典mapping。</span></span><br><span class="line"><span class="string">    创建一个专门的__table__属性，保存传入的类的名称。</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, name, bases, attrs)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">'Model'</span>:</span><br><span class="line">            <span class="keyword">return</span> type.__new__(cls, name, bases, attrs)</span><br><span class="line">        print(<span class="string">'Found model: %s'</span> % name)</span><br><span class="line">        mappings = dict()</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> attrs.items():</span><br><span class="line">            <span class="keyword">if</span> isinstance(v, Field):</span><br><span class="line">                print(<span class="string">'Found mapping: %s ==&gt; %s'</span> % (k, v))</span><br><span class="line">                mappings[k] = v</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> mappings.keys():</span><br><span class="line">            attrs.pop(k)</span><br><span class="line">        attrs[<span class="string">"__mappings__"</span>] = mappings</span><br><span class="line">        attrs[<span class="string">"__table__"</span>] = name</span><br><span class="line">        <span class="keyword">return</span> type.__new__(cls, name, bases, attrs)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Model</span><span class="params">(dict, metaclass=ModelMetaClass)</span>:</span></span><br><span class="line">    <span class="string">"""创建 Modle 来自于元类"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, **kwargs)</span>:</span></span><br><span class="line">        super().__init__(**kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> self[key]</span><br><span class="line">        <span class="keyword">except</span> KeyError:</span><br><span class="line">            <span class="keyword">raise</span> AttributeError(<span class="string">"'Model' object has no attribute '%s'"</span> % key)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        self[key] = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""模拟 sql 语句"""</span></span><br><span class="line">        fields = []</span><br><span class="line">        args = []</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> self.__mappings__.items():</span><br><span class="line">            fields.append(v.name)</span><br><span class="line">            args.append(getattr(self, k, <span class="literal">None</span>))</span><br><span class="line">        sql = <span class="string">'insert into %s (%s) values (%s)'</span> % (self.__table__, <span class="string">','</span>.join(fields), <span class="string">','</span>.join(str(i) <span class="keyword">for</span> i <span class="keyword">in</span> args))</span><br><span class="line">        print(<span class="string">"SQL: %s"</span> % sql)</span><br><span class="line">        print(<span class="string">"Args: %s"</span> % str(args))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span><span class="params">(Model)</span>:</span></span><br><span class="line">    <span class="string">"""创建子类"""</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">        id= IntegerField(‘id’)就会自动解析为：</span></span><br><span class="line"><span class="string">            Model.__setattr__(self, ‘id’, IntegerField(‘id’))</span></span><br><span class="line"><span class="string">            因为IntergerField(‘id’)是Field的子类的实例，自动触发元类的__new__，</span></span><br><span class="line"><span class="string">            所以将IntergerField(‘id’)存入__mappings__并删除这个键值对</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    id = IntegerField(<span class="string">'id'</span>)</span><br><span class="line">    name = StringField(<span class="string">'username'</span>)</span><br><span class="line">    email = StringField(<span class="string">'email'</span>)</span><br><span class="line">    password = StringField(<span class="string">'password'</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">实例化过程中</span></span><br><span class="line"><span class="string">先调用Model.__setattr__，将键值载入私有对象</span></span><br><span class="line"><span class="string">然后调用元类的“天赋”，ModelMetaclass._new_，将Model中的私有对象，只要是Field的实例，都自动存入u.__mappings__</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 实例化 User</span></span><br><span class="line">u = User(id=<span class="number">12345</span>, name=<span class="string">'Batman'</span>, email=<span class="string">'12343@qq.com'</span>, password=<span class="string">'qwerqwer'</span>)</span><br><span class="line">u.save()</span><br></pre></td></tr></table></figure>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/Flask-01/" class="styled-border">
+                    ←
+                    Flask-01
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/python基础-10/" class="styled-border">
+                    
+                    python基础-10
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is mijn blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

@@ -131,7 +131,34 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/20/04-网络编程-TCP-UDP-BS64/" data-id="cjup9cs9b00031djd2u5d4iyy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/20/04-网络编程-TCP-UDP-BS64/" data-id="cjup9ekwy00023pjdd3fg6xuw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-03-stringIO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/20/03-stringIO/" class="article-date">
+  <time datetime="2019-04-20T08:44:33.503Z" itemprop="datePublished">2019-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = StringIO()</span><br><span class="line">s.write(<span class="string">'www.baidu.com\n'</span>)</span><br><span class="line">s.write(<span class="string">'abc\n'</span>)</span><br><span class="line">s.write(<span class="string">'zhang'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">o = s.getvalue()</span><br><span class="line">print(o)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s.seek(<span class="number">0</span>)  <span class="comment"># 指定开始读取的位置</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    strBuf = s.readline()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> strBuf:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(strBuf, end=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">s.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另外还有  readline()  readlines()  等方法可以读取</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/20/03-stringIO/" data-id="cjup9ekww00013pjdp4uqvzlf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,34 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/20/02-函数-reduce()-map()-nonloca/" data-id="cjup9cs9700011djd0vyuczxn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-03-stringIO" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/20/03-stringIO/" class="article-date">
-  <time datetime="2019-04-20T08:44:33.503Z" itemprop="datePublished">2019-04-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = StringIO()</span><br><span class="line">s.write(<span class="string">'www.baidu.com\n'</span>)</span><br><span class="line">s.write(<span class="string">'abc\n'</span>)</span><br><span class="line">s.write(<span class="string">'zhang'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">o = s.getvalue()</span><br><span class="line">print(o)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s.seek(<span class="number">0</span>)  <span class="comment"># 指定开始读取的位置</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    strBuf = s.readline()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> strBuf:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(strBuf, end=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">s.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 另外还有  readline()  readlines()  等方法可以读取</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/20/03-stringIO/" data-id="cjup9cs9900021djdfxdj2obe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/20/02-函数-reduce()-map()-nonloca/" data-id="cjup9ekwz00033pjdy9fwo492" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/20/01-python基础01/" data-id="cjup9cs9300001djd7maf77cz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/20/01-python基础01/" data-id="cjup9ekwr00003pjd6fct7t7s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,11 +279,11 @@
           </li>
         
           <li>
-            <a href="/2019/04/20/02-函数-reduce()-map()-nonloca/">(no title)</a>
+            <a href="/2019/04/20/03-stringIO/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2019/04/20/03-stringIO/">(no title)</a>
+            <a href="/2019/04/20/02-函数-reduce()-map()-nonloca/">(no title)</a>
           </li>
         
           <li>

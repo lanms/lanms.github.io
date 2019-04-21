@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>django表单处理 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="产品原型专业工具:   Axure RP 快速原型工具 - 线框图 - 高保真原型  业余工具  Mockups  Mockplus  django 1.11#  url  from django.conf.urls import url  urlpatterns = [     url(r&apos;^admin/$&apos;, admin.site.urls)   # 正则表达式 ]  # 创建模型  mode">
+<meta name="keywords" content="kkkk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django表单处理">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/django表单处理/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="产品原型专业工具:   Axure RP 快速原型工具 - 线框图 - 高保真原型  业余工具  Mockups  Mockplus  django 1.11#  url  from django.conf.urls import url  urlpatterns = [     url(r&apos;^admin/$&apos;, admin.site.urls)   # 正则表达式 ]  # 创建模型  mode">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T01:42:17.789Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="django表单处理">
+<meta name="twitter:description" content="产品原型专业工具:   Axure RP 快速原型工具 - 线框图 - 高保真原型  业余工具  Mockups  Mockplus  django 1.11#  url  from django.conf.urls import url  urlpatterns = [     url(r&apos;^admin/$&apos;, admin.site.urls)   # 正则表达式 ]  # 创建模型  mode">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">django表单处理</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
+                    
+                    </div>
+                </h1>
+
+                <h4 id="产品原型"><a href="#产品原型" class="headerlink" title="产品原型"></a>产品原型</h4><p>专业工具: </p>
+<ul>
+<li>Axure RP 快速原型工具 - 线框图 - 高保真原型</li>
+</ul>
+<p>业余工具</p>
+<ul>
+<li>Mockups  Mockplus</li>
+</ul>
+<h4 id="django-1-11"><a href="#django-1-11" class="headerlink" title="django 1.11"></a>django 1.11</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#  url </span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf<span class="token punctuation">.</span>urls <span class="token keyword">import</span> url
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    url<span class="token punctuation">(</span>r<span class="token string">'^admin/$'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 正则表达式</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 创建模型  models.py   继承models.Model</span>
+carno     不设置 主键会自动添加主键 
+models<span class="token punctuation">.</span>DateTimeField<span class="token punctuation">(</span>db_column<span class="token operator">=</span><span class="token string">'happenday'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 指定在数据库中的列名</span>
+models<span class="token punctuation">.</span>BooleanField<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        db_table <span class="token operator">=</span> <span class="token string">'tb_ss_ss'</span> 数据库中表名设置
+          oriding <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'xxx'</span><span class="token punctuation">,</span> <span class="token punctuation">)</span>   设置排序
+
+<span class="token comment" spellcheck="true"># 模型迁移</span>
+<span class="token number">1</span><span class="token punctuation">.</span> 配置数据库
+<span class="token number">2</span><span class="token punctuation">.</span> 安装 pymysql <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">></span> pip install pymysql
+<span class="token number">3</span><span class="token punctuation">.</span> 在 __init__<span class="token punctuation">.</span>py  添加  <span class="token keyword">import</span> pymysql  pymysql<span class="token punctuation">.</span>install_as_MySQLdb<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token number">4</span><span class="token punctuation">.</span> 创建数据库  指定默认编码  utf8  
+<span class="token number">5</span><span class="token punctuation">.</span> settings 添加 app 
+<span class="token number">6</span><span class="token punctuation">.</span> python manage<span class="token punctuation">.</span>py makemigrations your_app     make migrate
+<span class="token number">7</span><span class="token punctuation">.</span> 配置管理员界面   用户 密码设置
+<span class="token number">8</span><span class="token punctuation">.</span> admin<span class="token punctuation">.</span>py  注册模型 
+    <span class="token keyword">from</span> search<span class="token punctuation">.</span>models <span class="token keyword">import</span> Carrecord
+    <span class="token keyword">class</span> <span class="token class-name">carRecordAdmin</span><span class="token punctuation">(</span>admin<span class="token punctuation">.</span>ModelAdmin<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        lis_diaplay <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+        search_field <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token punctuation">)</span>
+
+    admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>carrecord<span class="token punctuation">)</span>
+<span class="token number">9</span><span class="token punctuation">.</span> 在templates 中创建静态模板页面   search<span class="token punctuation">.</span>html
+
+</code></pre>
+<p>####令牌   csrf_token </p>
+<p>cookie 用户跟踪   在浏览器里放置 cookie 做身份识别 ,首次登陆网站会生成</p>
+<p>跨站身份伪造, 利用浏览器存储的cookie信息</p>
+<p>在 DJango 的表单中放置令牌, 防止, 伪造</p>
+<p>csrf_token  随机令牌, 令牌每次都是不同, 放置重复操作, 重放攻击</p>
+<p>type=’hidden’    隐藏域, 隐式表单域, 页面上无法看到该内容</p>
+<h4 id="request"><a href="#request" class="headerlink" title="request"></a>request</h4><ul>
+<li>request.method    ==  ‘GET’ / ‘POST’</li>
+<li>META   请求头</li>
+<li>PATH  路径</li>
+<li>GET   查询参数   路径后面的参数  ?a=b&amp;c=d  –&gt;  {a:b, c:d}</li>
+<li>POST 表单参数   </li>
+</ul>
+<p>Django  会自动按照 字典 - &gt; 属性 -&gt; 键 -&gt; 方法 的顺序搜索</p>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><h4 id="form"><a href="#form" class="headerlink" title="form"></a>form</h4><ul>
+<li>action</li>
+<li>method</li>
+<li>input<ul>
+<li>type   search  submit</li>
+</ul>
+</li>
+<li>datetime.strftime()  格式化时间日期</li>
+</ul>
+<p>post 请求 添加  csrf_token   防止跨站身份伪造</p>
+<p>JSON序列化编码器</p>
+<p>内存困惑在线绘制内存图<a href="http://pythontutor.com/visualize.html#mode=edit" target="_blank" rel="noopener">pythontutor</a></p>
+<h4 id="深度复制"><a href="#深度复制" class="headerlink" title="深度复制"></a>深度复制</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> copy
+copy<span class="token punctuation">.</span>deepcopy<span class="token punctuation">(</span><span class="token punctuation">)</span>  全复制<span class="token punctuation">,</span> 深拷贝<span class="token punctuation">,</span> 深度复制克隆
+copy<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>  浅拷贝
+</code></pre>
+<p>pip show 包 查看是否需要安装的包</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 序列化/串行化/腌咸菜: 把对象按照某种方式处理成字符或者字节的序列</span>
+<span class="token comment" spellcheck="true"># 反序列化/反串行化/解冻 : 把字符或者字节序列重新还原成对象</span>
+<span class="token comment" spellcheck="true"># python 序列化反序列化的工具  : json/  pickle / shelve / jsonpickle</span>
+pickle  <span class="token comment" spellcheck="true"># 序列化成字节</span>
+<span class="token comment" spellcheck="true"># django 序列化工具; serializers.serialze</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>serializers <span class="token keyword">import</span> serialize
+serialize<span class="token punctuation">(</span><span class="token string">'json'</span><span class="token punctuation">,</span> 对象<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="Django表单处理"><a href="#Django表单处理" class="headerlink" title="Django表单处理"></a>Django表单处理</h4><p>表单提交数据</p>
+<ul>
+<li>终端<ul>
+<li>from car_no.views import CarRecorsform</li>
+<li>f = CarRecordForm()</li>
+<li>f.as_table()   as_p()P标签     as_ul() 列表</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-python"><code class="language-python">f<span class="token punctuation">.</span>is_valid<span class="token punctuation">(</span><span class="token punctuation">)</span>  查看输入是否有效
+f<span class="token punctuation">.</span>errors
+</code></pre>
+<pre class=" language-python"><code class="language-python">auto_now     第一次插入数据时记录时间<span class="token punctuation">,</span> 不会修改
+auto_now_add  最后登录时间<span class="token punctuation">,</span> 每次修改都会改
+</code></pre>
+<h4 id="创建一个类-继承-forms-Form"><a href="#创建一个类-继承-forms-Form" class="headerlink" title="创建一个类 继承 forms.Form"></a>创建一个类 继承 forms.Form</h4><h4 id="重写属性"><a href="#重写属性" class="headerlink" title="重写属性"></a>重写属性</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django <span class="token keyword">import</span> forms
+
+<span class="token keyword">class</span> <span class="token class-name">CarRecordForm</span><span class="token punctuation">(</span>forms<span class="token punctuation">.</span>Form<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    carno <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'车牌号码'</span><span class="token punctuation">,</span> error_messages<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># label 显示在标签中的名字</span>
+    case <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'违章原因'</span><span class="token punctuation">)</span>
+    punish <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> require<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'处罚方式'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+        errors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        f <span class="token operator">=</span> CarRecordForm
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> CarRecordForm<span class="token punctuation">(</span>request<span class="token punctuation">.</span>POST<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> f<span class="token punctuation">.</span>is_valid<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            a <span class="token operator">=</span> f<span class="token punctuation">.</span>cleaned_data
+            Car<span class="token punctuation">(</span><span class="token operator">**</span>a<span class="token punctuation">)</span><span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            f<span class="token punctuation">.</span>CarRecordForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            errors <span class="token operator">=</span> f<span class="token punctuation">.</span>errors<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'add.html'</span><span class="token punctuation">,</span> comtext<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'f'</span><span class="token punctuation">:</span> f<span class="token punctuation">,</span> <span class="token string">'errors'</span><span class="token punctuation">:</span> errors<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> json <span class="token keyword">import</span> dumps<span class="token punctuation">,</span> JSONEncoder
+
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>core<span class="token punctuation">.</span>serializers<span class="token punctuation">.</span>json <span class="token keyword">import</span> DjangoJSONEncoder
+<span class="token keyword">from</span> django <span class="token keyword">import</span> forms
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse<span class="token punctuation">,</span> JsonResponse
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
+
+<span class="token comment" spellcheck="true"># Create your views here.</span>
+<span class="token keyword">from</span> car_no<span class="token punctuation">.</span>models <span class="token keyword">import</span> Car
+
+
+<span class="token keyword">class</span> <span class="token class-name">CarRecordForm</span><span class="token punctuation">(</span>forms<span class="token punctuation">.</span>Form<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    carno <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">7</span> <span class="token punctuation">,</span>label<span class="token operator">=</span><span class="token string">'车牌号'</span><span class="token punctuation">,</span> error_messages<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    case <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'违章原因'</span><span class="token punctuation">)</span>
+    punish <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> required<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'处罚方式'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 可以不填</span>
+
+
+<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+        errors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        f <span class="token operator">=</span> CarRecordForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> CarRecordForm<span class="token punctuation">(</span>request<span class="token punctuation">.</span>POST<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> f<span class="token punctuation">.</span>is_valid<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            a <span class="token operator">=</span> f<span class="token punctuation">.</span>cleaned_data <span class="token comment" spellcheck="true"># 获得输入的纯数据, 字典样式</span>
+            Car<span class="token punctuation">(</span><span class="token operator">**</span>a<span class="token punctuation">)</span><span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            f <span class="token operator">=</span> CarRecordForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            errors <span class="token operator">=</span> f<span class="token punctuation">.</span>errors<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 所有的错误信息</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'add.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'f'</span><span class="token punctuation">:</span> f<span class="token punctuation">,</span> <span class="token string">'errors'</span><span class="token punctuation">:</span> errors<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+
+<span class="token keyword">class</span> <span class="token class-name">CarRecordEncoder</span><span class="token punctuation">(</span>DjangoJSONEncoder<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># DjangoJSONEncoder</span>
+    <span class="token comment" spellcheck="true"># pass</span>
+    <span class="token keyword">def</span> <span class="token function">default</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> o<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'=='</span><span class="token operator">*</span><span class="token number">20</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>model<span class="token punctuation">)</span>
+        a <span class="token operator">=</span> o<span class="token punctuation">.</span>model<span class="token punctuation">.</span>__dict__
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'======>>>>>'</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
+        <span class="token keyword">del</span> a<span class="token punctuation">[</span><span class="token string">'_state'</span><span class="token punctuation">]</span>    <span class="token comment" spellcheck="true"># 转化为字典</span>
+        <span class="token comment" spellcheck="true"># o.__dict__['cardate'] = o.happen_date</span>
+        <span class="token keyword">return</span> a
+
+<span class="token keyword">def</span> <span class="token function">ajax_search</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">"GET"</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'ajax_search.html'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        carno <span class="token operator">=</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">[</span><span class="token string">'carno'</span><span class="token punctuation">]</span>
+        record_list <span class="token operator">=</span> Car<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 第一个参数是要转换成JSON格式(序列化)的对象</span>
+        <span class="token comment" spellcheck="true">#encoder 参数是指定自定义对象序列化的编码器 (JS</span>
+        <span class="token comment" spellcheck="true"># ONEncoder的子类型)</span>
+        <span class="token comment" spellcheck="true"># safe 的值如果为True 那么传入的第一个参数只能是字典, False 传入的不需要必须是字典, 但是要自定义序列化, 指定encoder</span>
+        <span class="token comment" spellcheck="true">#JsonResponse 如果传入的是字典, 就不需要其他的参数, 可以直接完成JSON格式的字符字符串的处理</span>
+        <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span>record_list<span class="token punctuation">,</span>encoder<span class="token operator">=</span>CarRecordEncoder <span class="token punctuation">,</span>safe<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># return HttpResponse(json.dumps(record_list), content_type='application/json; charset=utf-8')</span>
+
+
+<span class="token keyword">def</span> <span class="token function">search</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+        ctx <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'show_result'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">}</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        carno <span class="token operator">=</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">[</span><span class="token string">'carno'</span><span class="token punctuation">]</span>
+        ctx <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'show_result'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+            <span class="token string">'record_list'</span><span class="token punctuation">:</span> list<span class="token punctuation">(</span>Car<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>carno__contains<span class="token operator">=</span>carno<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true"># contians 模糊查询</span>
+
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'search.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span>ctx<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">car</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    ctx<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'car_list'</span><span class="token punctuation">:</span> Car<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'car.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span>ctx<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">query</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ctx <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'car_list'</span><span class="token punctuation">:</span> Car<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'query.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span>ctx<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ctx <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'query'</span><span class="token punctuation">:</span> <span class="token string">'/car_no/query'</span><span class="token punctuation">,</span>
+        <span class="token string">'car'</span><span class="token punctuation">:</span> <span class="token string">'/car_no/car'</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span>ctx<span class="token punctuation">)</span>
+
+
+
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/21/django小结01/" class="styled-border">
+                    ←
+                    Django-小结
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/15-python内置函数库/" class="styled-border">
+                    
+                    python基础-内置函数
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

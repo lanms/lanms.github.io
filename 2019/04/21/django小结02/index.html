@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-表单提交,equest.method-cookie-session | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="表单提交,  request.method     cookie  session 表单提交的令牌{-%- csrf_token-%-}  随机令牌, 放置重复操作, 重放攻击, 只有每次都是不同是才表示不是恶意访问  type=&amp;#39;hidden&amp;#39; 隐藏域, 页面上不会显示input  通过模板对数据库中关联的表进行重写操作,验证有效性  继承自forms.Form 和 forms.">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-表单提交,equest.method-cookie-session">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/django小结02/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="表单提交,  request.method     cookie  session 表单提交的令牌{-%- csrf_token-%-}  随机令牌, 放置重复操作, 重放攻击, 只有每次都是不同是才表示不是恶意访问  type=&amp;#39;hidden&amp;#39; 隐藏域, 页面上不会显示input  通过模板对数据库中关联的表进行重写操作,验证有效性  继承自forms.Form 和 forms.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T01:51:30.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-表单提交,equest.method-cookie-session">
+<meta name="twitter:description" content="表单提交,  request.method     cookie  session 表单提交的令牌{-%- csrf_token-%-}  随机令牌, 放置重复操作, 重放攻击, 只有每次都是不同是才表示不是恶意访问  type=&amp;#39;hidden&amp;#39; 隐藏域, 页面上不会显示input  通过模板对数据库中关联的表进行重写操作,验证有效性  继承自forms.Form 和 forms.">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-表单提交,equest.method-cookie-session</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/django/">django</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>表单提交,  request.method     cookie  session</p>
+<h4 id="表单提交的令牌"><a href="#表单提交的令牌" class="headerlink" title="表单提交的令牌"></a>表单提交的令牌</h4><p><code>{-%- csrf_token-%-}</code></p>
+<ul>
+<li><p>随机令牌, 放置重复操作, 重放攻击, 只有每次都是不同是才表示不是恶意访问</p>
+</li>
+<li><p><code>type=&#39;hidden&#39;</code> 隐藏域, 页面上不会显示<code>input</code></p>
+</li>
+<li><p>通过模板对数据库中关联的表进行重写操作,验证有效性</p>
+<ul>
+<li>继承自<code>forms.Form</code> 和 <code>forms.ModelForm</code></li>
+</ul>
+<p><strong>页面模板</strong></p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>添加<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>添加违章记录<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/add<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        {-%- csrf_token -%-}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
+            {{ f.as_table }}     <span class="token comment" spellcheck="true">&lt;!--自动将f 中的属性调用生成表格--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>添加<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p><strong>views.py控制器</strong></p>
+<p><code>`</code>python<br>from django import forms</p>
+<p>class CarRecordForm(forms.Form):</p>
+<pre><code># 设置属性时必须和数据库中的设置是一致的, 不然无法提交到数据库中
+
+carno = forms.CharField(max_length=7, label=&#39;车牌号码&#39;, error_messages={}) # label 显示在标签中的名字
+case = forms.CharField(max_length=50, label=&#39;违章原因&#39;)
+punish = forms.CharField(max_length=50, require=False, label=&#39;处罚方式&#39;)
+</code></pre><p>def add(request):</p>
+<pre><code>if request.method == &#39;GET&#39;:
+    errors = []
+    f = CarRecordForm
+else:
+    f = CarRecordForm(request.POST)
+    if f.is_valid():
+        a = f.cleaned_data
+        Car(**a).save()
+        f.CarRecordForm()
+    else:
+        errors = f.errors.values()
+return render(request, &#39;add.html&#39;, comtext={&#39;f&#39;: f, &#39;errors&#39;: errors})
+</code></pre></li>
+</ul>
+<h1 id="ModelForm-也可以添加额外的验证-clean-开头的方法写验证的条件"><a href="#ModelForm-也可以添加额外的验证-clean-开头的方法写验证的条件" class="headerlink" title="ModelForm,  也可以添加额外的验证, clean_开头的方法写验证的条件"></a>ModelForm,  也可以添加额外的验证, clean_开头的方法写验证的条件</h1><p>  class CarRecordForm(forms.ModelForm):</p>
+<pre><code>  carno = forms.CharField(max_length=7 ,label=&#39;车牌号&#39;, error_messages={})
+  case = forms.CharField(max_length=50, label=&#39;违章原因&#39;)
+  punish = forms.CharField(max_length=50, required=False,
+                           label=&#39;处罚方式&#39;) #required 属性False可以不填
+
+  def clean_carno(self):  # 验证数据, clean_开头,
+                            # 加对应的字段名字 自动执行下面的验证规则
+
+      _carno = self.cleaned_data[&#39;carno&#39;]
+      if _carno in condition:
+          #写验证条件, 验证通过
+          return self._carno
+      else:
+          # 验证失败, 没通过
+          raise forms.ValidationError(&#39;错误信息&#39;)
+
+  class Meta:
+      model = CarRecord   # 指定模型对应的model, 在models.py文件中
+      fields = (&#39;carno&#39;, &#39;case&#39;, &#39;punish&#39;) # 与数据库模型对应的项目
+</code></pre><p>  def add(request):</p>
+<pre><code>  if request.method == &#39;GET&#39;:
+      errors = []
+      f = CarRecordForm()# 添加初始化字符 initial = {}添加表单初始数据
+  else:
+      f = CarRecordForm(request.POST)
+      if f.is_valid():
+          f.save()
+          return redirect(&#39;/search2&#39;)  # 重定向,跳转到search2
+      else:
+          errors = f.errors.values()  # 所有的错误信息
+  return render(request, &#39;add.html&#39;, context={&#39;f&#39;: f, &#39;errors&#39;: errors})
+</code></pre><pre><code>
+
+
+#### request 请求 method / POST /  GET
+
+- `request.method == &#39;GET&#39; / &#39;POST&#39;`
+
+- request里面有GET和POST属性
+
+  - `request.POST`为表单提交的内容 
+
+- 返回的内容, 返回JSON 字符串, (代码示例为==car_完整版==)
+
+  ```python
+  from django.http import HttpResponse, JsonResponse
+
+  HttpResponse(json.dumps(your_data),content_type=&#39;application/json; charset=utf-8&#39;)
+
+  # 也可以用 Jsonresponse, 但是要先自定义编码器, encoder
+
+  return JsonResponse(your_data, encoder=YourEncoder, safe=False)
+
+  class YourEncoder(DjangoJSONEncoder):  # 继承自DjangoJSONEncoder, 
+                                         # 或者 JsonEncoder
+      def defaulf(self, o):   #重写default方法
+          a = o.model.__dict__
+          del a[&#39;_satae&#39;]
+          return a
+
+</code></pre><ul>
+<li><p>返回渲染后的页面</p>
+<ul>
+<li>用<code>django.shortcuts</code>中的 <code>render</code>函数<code>render(request, &#39;your.html&#39;, context=ctx)</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h4><p>Cookie - &gt; 浏览器     session –&gt; 服务器</p>
+<ul>
+<li>用户跟踪的方式<ol>
+<li>隐藏域, 表单中的隐藏的额外的字段, 来表名用户的身份和喜好</li>
+<li>url重写,在url中添加额外的字段来识别用户的的身份, 不可以存放敏感数据, 大小不可超过2048字节</li>
+<li><strong>cookie</strong>, 放在请求头中的, 服务器用来识别身份, 会在对应的session 中添加记录</li>
+</ol>
+</li>
+</ul>
+<h5 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h5><ul>
+<li>主流的验证方式, 一般只存放一些标志性的信息, 只能存放4Kb的信息, 其他的内容会存放在服务的会话(session)中, 通过Cookie可以调用Session</li>
+</ul>
+<p>cookie 用户跟踪, 存放有sessionid</p>
+<ul>
+<li>HTTP是无状态协议, 所以需要这些信息来在用户每次登陆时进行用户的识别</li>
+<li>每次的HTTP请求都会在请求头中携带用户的Cookie,来进行身份验证</li>
+</ul>
+<p>示例, 对访问时间信息的cookie设置</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">search</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    current_time <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>ctime<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    last_vist_time <span class="token operator">=</span> request<span class="token punctuation">.</span>COOKIES<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'last_vist_time'</span><span class="token punctuation">,</span> 
+                                         current_time<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+        ctx <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'show_result'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token string">'last_time'</span><span class="token punctuation">:</span> last_vist_time<span class="token punctuation">}</span>
+        response <span class="token operator">=</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'search.html'</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+        response<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span><span class="token string">'last_vist_time'</span><span class="token punctuation">,</span> current_time<span class="token punctuation">,</span>
+                            max_age<span class="token operator">=</span><span class="token number">1209600</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> response
+</code></pre>
+<h4 id="Session应用"><a href="#Session应用" class="headerlink" title="Session应用"></a>Session应用</h4><ul>
+<li>通过request.session可以拿到==request==的session属性, 说明, request本身就是一个==object==</li>
+<li>session相当于服务器端用来存储用户数据的一个字典</li>
+<li>session 利用了Cookie保存的sessionid来对应器内容, 获取用户的会话信息</li>
+<li>如果删除浏览器的Cookie那么其对应的sessionid也就会丢失, 再次访问会分配新的sessionid给用户, 即以前的用户记录将会丢失</li>
+<li>通常情况下Django的session被设定的是持久化的, 而不是浏览器存续期的会话</li>
+<li>修改session 的生命周期<ul>
+<li><code>SESSION_EXPIRE_AT_BROWSER_CLOSE</code>和<code>SESSION_COOKIE_AGE</code>参数设定的该表</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>1.6版开始, Django 的默认序列化方式是<code>JsonSerializer</code></li>
+<li>修改Django的默认的序列化器, 改为<code>PickleSerializer</code><ul>
+<li>settings.py - - &gt;<code>SESSION_SERIALIZER=&#39;django.contrib.sessions.serializers.PickleSerializer&#39;</code></li>
+</ul>
+</li>
+</ul>
+<p>示例代码</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render<span class="token punctuation">,</span> redirect
+
+<span class="token keyword">from</span> cart<span class="token punctuation">.</span>models <span class="token keyword">import</span> Goods
+
+
+<span class="token keyword">class</span> <span class="token class-name">CartItem</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> no<span class="token punctuation">,</span> goods<span class="token punctuation">,</span> amount<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>no <span class="token operator">=</span> no
+        self<span class="token punctuation">.</span>goods <span class="token operator">=</span> goods
+        self<span class="token punctuation">.</span>amount <span class="token operator">=</span> amount
+
+    @property
+    <span class="token keyword">def</span> <span class="token function">total</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>price <span class="token operator">*</span> self<span class="token punctuation">.</span>amount
+
+
+<span class="token keyword">class</span> <span class="token class-name">ShoppingCart</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>num <span class="token operator">=</span> <span class="token number">1</span>
+        self<span class="token punctuation">.</span>items <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">def</span> <span class="token function">add_item</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> item<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>id <span class="token keyword">in</span> self<span class="token punctuation">.</span>items<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>items<span class="token punctuation">[</span>item<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>id<span class="token punctuation">]</span><span class="token punctuation">.</span>amount <span class="token operator">+=</span> item<span class="token punctuation">.</span>amount
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>items<span class="token punctuation">[</span>item<span class="token punctuation">.</span>goods<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> item
+            self<span class="token punctuation">.</span>num <span class="token operator">+=</span> <span class="token number">1</span>
+
+    @property
+    <span class="token keyword">def</span> <span class="token function">total</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        val <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">for</span> item <span class="token keyword">in</span> self<span class="token punctuation">.</span>items<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            val <span class="token operator">+=</span> item<span class="token punctuation">.</span>total
+        <span class="token keyword">return</span> val
+
+
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    goods_list <span class="token operator">=</span> Goods<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'goods.html'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'goods_list'</span><span class="token punctuation">:</span> goods_list<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">add_to_cart</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    goods <span class="token operator">=</span> Goods<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>pk<span class="token operator">=</span>id<span class="token punctuation">)</span>
+    cart <span class="token operator">=</span> request<span class="token punctuation">.</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'cart'</span><span class="token punctuation">,</span> ShoppingCart<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    item <span class="token operator">=</span> CartItem<span class="token punctuation">(</span>cart<span class="token punctuation">.</span>num<span class="token punctuation">,</span> goods<span class="token punctuation">)</span>
+    cart<span class="token punctuation">.</span>add_item<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    request<span class="token punctuation">.</span>session<span class="token punctuation">[</span><span class="token string">'cart'</span><span class="token punctuation">]</span> <span class="token operator">=</span> cart
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'/cart'</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">show_cart</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    current_time <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>ctime<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    last_vist_time <span class="token operator">=</span> request<span class="token punctuation">.</span>COOKIES<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'last_vist_time'</span><span class="token punctuation">,</span> <span class="token string">'第一次访问'</span><span class="token punctuation">)</span>
+
+
+    cart <span class="token operator">=</span> request<span class="token punctuation">.</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'cart'</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span>
+    cart_items <span class="token operator">=</span> cart<span class="token punctuation">.</span>items<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> cart <span class="token keyword">else</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    total <span class="token operator">=</span> cart<span class="token punctuation">.</span>total <span class="token keyword">if</span> cart <span class="token keyword">else</span> <span class="token number">0</span>
+    ctx <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'cart_items'</span><span class="token punctuation">:</span>cart_items<span class="token punctuation">,</span>
+        <span class="token string">'total'</span><span class="token punctuation">:</span> total<span class="token punctuation">,</span>
+        <span class="token string">'last_vist_time'</span><span class="token punctuation">:</span> last_vist_time
+    <span class="token punctuation">}</span>
+    response <span class="token operator">=</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'cart.html'</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+    response<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span><span class="token string">'last_vist_time'</span><span class="token punctuation">,</span> current_time<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> response
+
+
+
+
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/21/django小结03/" class="styled-border">
+                    ←
+                    Django-web页面Django的增删改查-主要是代码示例
+                    
+                </a>
+            
+            
+                <a href="/2019/04/21/django小结01/" class="styled-border">
+                    
+                    Django-小结
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-小结 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Pyhton 的 web开发框架 Flask / Django / Tornado / Pyramid / Bottle / Web2py / web.py /   Django高内聚, 低耦合  使用MVC架构      (model controller view) 做到数据与数据的显示解藕和, 同一组数据可以以不同的形式显示 Djago可以快速上手, 快速出产品  Django开始项目步骤">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-小结">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/django小结01/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="Pyhton 的 web开发框架 Flask / Django / Tornado / Pyramid / Bottle / Web2py / web.py /   Django高内聚, 低耦合  使用MVC架构      (model controller view) 做到数据与数据的显示解藕和, 同一组数据可以以不同的形式显示 Djago可以快速上手, 快速出产品  Django开始项目步骤">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T01:51:34.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-小结">
+<meta name="twitter:description" content="Pyhton 的 web开发框架 Flask / Django / Tornado / Pyramid / Bottle / Web2py / web.py /   Django高内聚, 低耦合  使用MVC架构      (model controller view) 做到数据与数据的显示解藕和, 同一组数据可以以不同的形式显示 Djago可以快速上手, 快速出产品  Django开始项目步骤">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-小结</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/django/">django</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="Pyhton-的-web开发框架"><a href="#Pyhton-的-web开发框架" class="headerlink" title="Pyhton 的 web开发框架"></a>Pyhton 的 web开发框架</h3><ul>
+<li><strong>Flask</strong> / <strong>Django</strong> / Tornado / Pyramid / <strong>Bottle</strong> / Web2py / <strong>web.py</strong> / </li>
+</ul>
+<h4 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h4><p>高内聚, 低耦合</p>
+<ul>
+<li>使用MVC架构      (model controller view)</li>
+<li>做到数据与数据的显示解藕和, 同一组数据可以以不同的形式显示</li>
+<li>Djago可以快速上手, 快速出产品</li>
+</ul>
+<h4 id="Django开始项目步骤"><a href="#Django开始项目步骤" class="headerlink" title="Django开始项目步骤"></a>Django开始项目步骤</h4><ol>
+<li><p>创建虚拟环境<code>python -m venv venv</code></p>
+</li>
+<li><p>激活虚拟环境 ‘activate’   Linux–&gt; <code>source ./activate</code></p>
+</li>
+<li><p>安装django <code>pip install django</code>  默认安装最新版, ==1.11可以安装指定的版本</p>
+</li>
+<li><p>开启项目 <code>django-admin startproject your_django_project</code></p>
+</li>
+<li><p>生成app <code>python manage.py startapp your_app</code></p>
+</li>
+<li><p>如果需要连接数据库, 还需安装数据库的包- 例如连接MySQL要安装<code>pymysql</code></p>
+</li>
+</ol>
+<p>   <strong>Mac创建Django虚拟环境</strong></p>
+<pre class=" language-python"><code class="language-python">   命令行输入<span class="token punctuation">:</span>
+   mkdir hello_django         创建项目目录
+   cd hello_django            切换到项目目录
+   python3 <span class="token operator">-</span>m vevn hd_vevn    使用venv模块创建虚拟环境<span class="token punctuation">,</span> 目录名hd_venv
+   source hd_vevn<span class="token operator">/</span>bin<span class="token operator">/</span>activate  激活虚拟环境
+   python <span class="token operator">-</span>m pip install <span class="token operator">-</span><span class="token operator">-</span>update pip    更新pip到最新版
+   pip install django        pip安装django
+   django<span class="token operator">-</span>admin <span class="token operator">-</span><span class="token operator">-</span>version    通过安装django时安装的脚本工具django<span class="token operator">-</span>admin检查django版本
+   django<span class="token operator">-</span>admin startproject hello_django  <span class="token punctuation">.</span> 加点号<span class="token punctuation">,</span> 可以将文件生成在当前目录下
+   cd hello_django  查看内容   里面有个包  hello_django
+   python manage<span class="token punctuation">.</span>py runserver启动服务器<span class="token punctuation">,</span> 输入地址可查看是否启动成功
+   更改设置 <span class="token operator">-</span> settings<span class="token punctuation">.</span>py <span class="token number">106</span> 语言 zh<span class="token operator">-</span>hans
+</code></pre>
+<h4 id="Django项目文件目录作用"><a href="#Django项目文件目录作用" class="headerlink" title="Django项目文件目录作用"></a>Django项目文件目录作用</h4><ul>
+<li>项目目录<ul>
+<li>存放的是项目的设置文件, 整个项目的Url链接设置</li>
+<li><code>settings.py / urls.py / __init__.py</code></li>
+</ul>
+</li>
+<li>应用目录  <code>your_app</code><ul>
+<li>目录包含文件–&gt;<code>__init__.py / admin.py /apps.py / models.py / urls.py / views.py / test.py</code></li>
+<li>可以在里面创建model , 和后台注册, 设置url , 最主要就是views.py, 控制页面模板的渲染</li>
+<li><code>python manage.py makemigrations yourApp</code>创建静态模板</li>
+<li><code>Python manage.py migrate</code>加载数据</li>
+</ul>
+</li>
+<li>static 存放项目的静态文件<ul>
+<li>需要在settings.py中添加<code>STATICFILES_DIRS = [os.path.join(BASE_DIR, &#39;static&#39;)]</code></li>
+<li>images / css / js / 都可以存放在这里</li>
+</ul>
+</li>
+<li>templates目录文件存放项目的模板页面<ul>
+<li>也要添加路径, 在<code>TEMPLATES</code>中添加<code>&#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;    templates&#39;)]</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="模板页面的占位符"><a href="#模板页面的占位符" class="headerlink" title="模板页面的占位符"></a>模板页面的占位符</h4><pre class=" language-python"><code class="language-python"><span class="token punctuation">{</span><span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span> load staticfiles <span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> static <span class="token string">'image/a.jpj'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>   <span class="token comment" spellcheck="true"># 静态文件占位</span>
+
+<span class="token punctuation">{</span><span class="token punctuation">{</span> gretting <span class="token punctuation">}</span><span class="token punctuation">}</span>   <span class="token comment" spellcheck="true"># 普通字符占位</span>
+<span class="token punctuation">{</span><span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span> url <span class="token string">'url_name'</span> <span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span><span class="token punctuation">}</span>   <span class="token comment" spellcheck="true"># url占位</span>
+
+<span class="token comment" spellcheck="true"># 循环和分支</span>
+<span class="token punctuation">{</span><span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> list  <span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span> endfor <span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">if</span> conditon <span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token keyword">else</span> <span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span> endif <span class="token operator">-</span><span class="token operator">%</span><span class="token operator">-</span><span class="token punctuation">}</span>
+</code></pre>
+<h3 id="url-同一资源定位-2-x版本写法"><a href="#url-同一资源定位-2-x版本写法" class="headerlink" title="url, 同一资源定位, 2.x版本写法"></a>url, 同一资源定位, 2.x版本写法</h3><p>1.x写法有很多不同</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path<span class="token punctuation">,</span> include
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+
+<span class="token keyword">from</span> your_app <span class="token keyword">import</span> views 
+
+<span class="token comment" spellcheck="true"># 在your_project文件设置</span>
+urlpattern <span class="token operator">=</span> <span class="token punctuation">[</span>
+    path<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>index<span class="token punctuation">)</span>
+    path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span>
+    path<span class="token punctuation">(</span><span class="token string">'your_app/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span><span class="token string">'your_app.urls'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 在 your_app中设置urls</span>
+<span class="token comment" spellcheck="true"># 可以给每个功能一个 url , 通过对应 的url实现指定的功能</span>
+
+<span class="token comment" spellcheck="true"># 1.x 和 2.x 中 url 的区别</span>
+<span class="token number">1.</span>x <span class="token operator">-</span> <span class="token operator">></span> 
+urlpatterns<span class="token operator">=</span><span class="token punctuation">[</span>  
+    url<span class="token punctuation">(</span>r<span class="token string">'^$'</span><span class="token punctuation">,</span>views<span class="token punctuation">.</span>index<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  
+    url<span class="token punctuation">(</span>r<span class="token string">'^topics/$'</span><span class="token punctuation">,</span>views<span class="token punctuation">.</span>topics<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">'topics'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  
+    url<span class="token punctuation">(</span>r<span class="token string">'^topics/(?(?P&lt;topic_id>\d+)/)?$'</span><span class="token punctuation">,</span>views<span class="token punctuation">.</span>topic<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">'topic'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">]</span> 
+
+<span class="token number">2.</span>x <span class="token operator">-</span> <span class="token operator">></span>
+urlpatterns<span class="token operator">=</span><span class="token punctuation">[</span>  
+    path<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span>views<span class="token punctuation">.</span>index<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  
+    path<span class="token punctuation">(</span><span class="token string">'topics/'</span><span class="token punctuation">,</span>views<span class="token punctuation">.</span>topics<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">'topics'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    path<span class="token punctuation">(</span><span class="token string">'topics/&lt;int:no>'</span><span class="token punctuation">,</span>views<span class="token punctuation">.</span>topics<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">'topics'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    re_path<span class="token punctuation">(</span>r<span class="token string">'^topics/(?:(?P&lt;topic_id>\d+)/)?$'</span><span class="token punctuation">,</span>views<span class="token punctuation">.</span>topic<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">'topic'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  
+<span class="token punctuation">]</span>  
+</code></pre>
+<h4 id="控制器-views-py"><a href="#控制器-views-py" class="headerlink" title="控制器 views.py"></a>控制器 views.py</h4><ul>
+<li>对页面渲染</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ctx <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'占位符'</span><span class="token punctuation">:</span> <span class="token string">'设置内容'</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="Django-记录日志"><a href="#Django-记录日志" class="headerlink" title="Django 记录日志"></a><a href="https://docs.djangoproject.com/zh-hans/2.0/topics/logging/#examples" target="_blank" rel="noopener">Django 记录日志</a></h4><p>调试阶段设置为 DEBUG   项目上线   日志登记为  ERROR</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token comment" spellcheck="true"># 控制台输出</span>
+<span class="token keyword">import</span> os
+
+LOGGING <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'version'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">'disable_existing_loggers'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'console'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.StreamHandler'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'loggers'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'django'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'console'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">'level'</span><span class="token punctuation">:</span> os<span class="token punctuation">.</span>getenv<span class="token punctuation">(</span><span class="token string">'DJANGO_LOG_LEVEL'</span><span class="token punctuation">,</span> <span class="token string">'INFO'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="连接数据库的设置"><a href="#连接数据库的设置" class="headerlink" title="连接数据库的设置"></a>连接数据库的设置</h4><pre class=" language-python"><code class="language-python">setting<span class="token punctuation">.</span>py<span class="token punctuation">,</span>
+pip install pymysql  <span class="token comment" spellcheck="true"># 安装mysql</span>
+DATABASES <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'default'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'ENGINE'</span><span class="token punctuation">:</span> <span class="token string">'django.db.backends.mysql'</span><span class="token punctuation">,</span>   <span class="token comment" spellcheck="true"># 引擎</span>
+        <span class="token string">'NAME'</span><span class="token punctuation">:</span> <span class="token string">'oa'</span><span class="token punctuation">,</span>
+        <span class="token string">'HOST'</span><span class="token punctuation">:</span> <span class="token string">'localhost'</span><span class="token punctuation">,</span>
+        <span class="token string">'port'</span><span class="token punctuation">:</span> <span class="token number">3306</span><span class="token punctuation">,</span>
+        <span class="token string">'USER'</span><span class="token punctuation">:</span> <span class="token string">'root'</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true"># 本地连接, 远程连接新建用户, 给与权限</span>
+        <span class="token string">'PASSWORD'</span><span class="token punctuation">:</span> <span class="token string">'123456'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+项目  <span class="token operator">-</span> __init__<span class="token punctuation">.</span>py
+<span class="token keyword">import</span> pymysql
+
+pymysql<span class="token punctuation">.</span>install_as_MySQLdb<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">#将mysql当做mysqldb</span>
+
+python manage<span class="token punctuation">.</span>py makemigrations <span class="token operator">/</span>  migrate   <span class="token comment" spellcheck="true"># 在数据库创建Django需要的表</span>
+python mansge<span class="token punctuation">.</span>py flush      <span class="token comment" spellcheck="true"># 删除表</span>
+</code></pre>
+<h4 id="建模型models"><a href="#建模型models" class="headerlink" title="建模型models"></a>建模型models</h4><p>app -&gt; models.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+
+<span class="token comment" spellcheck="true"># Create your models here.</span>
+<span class="token comment" spellcheck="true"># 一个类对应一张表, 类的属性就是表的列, 创建的对象就对应着表里面的一条数据记录</span>
+<span class="token comment" spellcheck="true"># 对象关系映射   ORM</span>
+<span class="token comment" spellcheck="true">#</span>
+
+<span class="token comment" spellcheck="true"># 继承 models.Model</span>
+<span class="token keyword">class</span> <span class="token class-name">Dept</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    no <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span>primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 不写主键会自动增加一列作为主键</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 默认不为空 not null</span>
+    location <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Emp</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    no <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span>primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>
+    job <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
+    sal <span class="token operator">=</span> models<span class="token punctuation">.</span>DecimalField<span class="token punctuation">(</span>max_digits<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">,</span> decimal_places<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+    comm <span class="token operator">=</span> models<span class="token punctuation">.</span>DecimalField<span class="token punctuation">(</span>max_digits<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">,</span> decimal_places<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> null<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># null = True  表示可以放空值</span>
+    dept <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span>Dept<span class="token punctuation">,</span> on_delete<span class="token operator">=</span>models<span class="token punctuation">.</span>PROTECT<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">#放在 1对 多的 多的一方    在删除时保护  , null = True on_delete = models.setnull</span>
+
+</code></pre>
+<p><code>python manage.py makemigrations hrs</code>    # 生成数据模型</p>
+<p><code>python manage.py migrate</code>   # 数据迁移</p>
+<p>会在数据库表 django_migrations中产生一条迁移记录</p>
+<h5 id="实际开发都使用两个一对多来替代多对多"><a href="#实际开发都使用两个一对多来替代多对多" class="headerlink" title="实际开发都使用两个一对多来替代多对多"></a>实际开发都使用两个一对多来替代多对多</h5><h4 id="Django管理员平台注册"><a href="#Django管理员平台注册" class="headerlink" title="Django管理员平台注册"></a>Django管理员平台注册</h4><p>创建超级管理员</p>
+<ul>
+<li><code>python manage.py createsuperuser</code></li>
+</ul>
+<p>注册  在 app -&gt; admin 里加注册语句</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+
+<span class="token comment" spellcheck="true"># Register your models here.</span>
+<span class="token keyword">from</span> hrs<span class="token punctuation">.</span>models <span class="token keyword">import</span> Dept<span class="token punctuation">,</span> Emp
+
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Dept<span class="token punctuation">)</span>
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Emp<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="对数据库表进行增删改查"><a href="#对数据库表进行增删改查" class="headerlink" title="对数据库表进行增删改查"></a>对数据库表进行增删改查</h4><p><code>python manage.py shell</code>开启交互式环境</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> hrs<span class="token punctuation">.</span>models <span class="token keyword">import</span> Emp
+
+Emp<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 查看所有</span>
+dept <span class="token operator">=</span> Dept<span class="token punctuation">(</span>no<span class="token operator">=</span><span class="token string">'90'</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'研发2部'</span><span class="token punctuation">,</span> location<span class="token operator">=</span><span class="token string">'武汉'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> dept<span class="token punctuation">.</span>no
+<span class="token string">'90'</span>
+<span class="token operator">>></span><span class="token operator">></span> dept<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 保存到数据库</span>
+dept<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 删除</span>
+Dept<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>pk<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 主键</span>
+
+<span class="token comment" spellcheck="true">#筛选</span>
+dept <span class="token operator">=</span> Dept<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">'运维'</span><span class="token punctuation">)</span>
+dept<span class="token punctuation">.</span>name
+dept<span class="token punctuation">.</span>no
+
+Dept<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>name__icontains<span class="token operator">=</span><span class="token string">'运维'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 模糊查询, i 忽略大小写, list将结果转为一个列表</span>
+
+Dept<span class="token punctuation">.</span>object<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>no__gte<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 查找 no 大于 30   gte 大于等于</span>
+
+Dept<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'-no'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 降序, 切片</span>
+Dept<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'-no'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span>  
+
+Dept<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>raw<span class="token punctuation">(</span><span class="token string">'select name from tb_dept'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 原始操作</span>
+
+emp <span class="token operator">=</span> Emp<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>pk<span class="token operator">=</span><span class="token number">7800</span><span class="token punctuation">)</span>
+emp<span class="token punctuation">.</span>dept<span class="token punctuation">.</span>name      <span class="token comment" spellcheck="true"># 可以将其另一张关联表的内容也差出来</span>
+
+<span class="token comment" spellcheck="true">#QuerySet 负数索引不被支持</span>
+
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/21/django小结02/" class="styled-border">
+                    ←
+                    Django-表单提交,equest.method-cookie-session
+                    
+                </a>
+            
+            
+                <a href="/2019/04/21/django表单处理/" class="styled-border">
+                    
+                    django表单处理
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

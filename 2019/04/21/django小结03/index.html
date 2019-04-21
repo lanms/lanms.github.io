@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-web页面Django的增删改查-主要是代码示例 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="web页面Django的增删改查, 主要是代码示例 Ajax 删除空的部门 &amp;lt;tbody id=&quot;dept&quot;&amp;gt;     {% for dept in dept_list %} 		&amp;lt;tr&amp;gt;           &amp;lt;td&amp;gt;&amp;lt;a id=&quot;{{ dept.no }}&quot; href=&quot;javascript:void(0)&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-web页面Django的增删改查-主要是代码示例">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/django小结03/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="web页面Django的增删改查, 主要是代码示例 Ajax 删除空的部门 &amp;lt;tbody id=&quot;dept&quot;&amp;gt;     {% for dept in dept_list %} 		&amp;lt;tr&amp;gt;           &amp;lt;td&amp;gt;&amp;lt;a id=&quot;{{ dept.no }}&quot; href=&quot;javascript:void(0)&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T01:51:24.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-web页面Django的增删改查-主要是代码示例">
+<meta name="twitter:description" content="web页面Django的增删改查, 主要是代码示例 Ajax 删除空的部门 &amp;lt;tbody id=&quot;dept&quot;&amp;gt;     {% for dept in dept_list %} 		&amp;lt;tr&amp;gt;           &amp;lt;td&amp;gt;&amp;lt;a id=&quot;{{ dept.no }}&quot; href=&quot;javascript:void(0)&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-web页面Django的增删改查-主要是代码示例</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/django/">django</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>web页面Django的增删改查, 主要是代码示例</p>
+<h4 id="Ajax-删除空的部门"><a href="#Ajax-删除空的部门" class="headerlink" title="Ajax 删除空的部门"></a>Ajax 删除空的部门</h4><pre class=" language-html"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dept<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    {% for dept in dept_list %}
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ dept.no }}<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>javascript:void(0)<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>noopener<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-danger btn-xs<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>删除<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	{% endfor %}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#dept a[id]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>evt<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>evt<span class="token punctuation">.</span>target<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">'确定??'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           $<span class="token punctuation">.</span><span class="token function">getJSON</span><span class="token punctuation">(</span><span class="token string">'/hrs/deldept/'</span> <span class="token operator">+</span> a<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                   <span class="token keyword">if</span> <span class="token punctuation">(</span>json<span class="token punctuation">.</span>code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                       a<span class="token punctuation">.</span><span class="token function">parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># urls</span>
+path<span class="token punctuation">(</span><span class="token string">'deldept/&lt;int:no>'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>del_dept<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'ddel'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># views</span>
+<span class="token keyword">def</span> <span class="token function">del_dept</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> no<span class="token operator">=</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># no = request.GET['no']</span>
+        Dept<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>pk<span class="token operator">=</span>no<span class="token punctuation">)</span><span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        ctx <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'code'</span><span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">}</span>    <span class="token comment" spellcheck="true">#  Ajax</span>
+    <span class="token keyword">except</span> <span class="token punctuation">(</span>ObjectDoesNotExist<span class="token punctuation">,</span> ValueError<span class="token punctuation">,</span> MultiValueDictKeyError<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        ctx <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'code'</span><span class="token punctuation">:</span><span class="token number">404</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span>dumps<span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        content_type<span class="token operator">=</span><span class="token string">'application/json; '</span>
+                                     <span class="token string">'charset=utf-8'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 返回类型</span>
+    <span class="token comment" spellcheck="true"># return HttpResponseRedirect(reverse('depts'))</span>
+    <span class="token comment" spellcheck="true"># return redirect(reverse('depts'))  # reverse  重定向</span>
+
+</code></pre>
+<ul>
+<li>通过跳转页面传参数,删除</li>
+</ul>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-danger btn-xs<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{% url <span class="token punctuation">'</span>ddel<span class="token punctuation">'</span> dept.no %}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>删除<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+</code></pre>
+<h4 id="添加违章记录-表单提交"><a href="#添加违章记录-表单提交" class="headerlink" title="添加违章记录, 表单提交"></a>添加违章记录, 表单提交</h4><pre class=" language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!--add.html--></span>
+<span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>添加<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>添加违章记录<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/add<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        {% csrf_token %}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
+            {{ f.as_table }}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>添加<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># url</span>
+path<span class="token punctuation">(</span><span class="token string">'add'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>add<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># views</span>
+<span class="token keyword">class</span> <span class="token class-name">CarRecordForm</span><span class="token punctuation">(</span>forms<span class="token punctuation">.</span>Form<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    carno <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">7</span> <span class="token punctuation">,</span>label<span class="token operator">=</span><span class="token string">'车牌号'</span><span class="token punctuation">,</span> error_messages<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    case <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'违章原因'</span><span class="token punctuation">)</span>
+    punish <span class="token operator">=</span> forms<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> required<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">'处罚方式'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#required 属性False可以不填</span>
+
+
+<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+        errors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        f <span class="token operator">=</span> CarRecordForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> CarRecordForm<span class="token punctuation">(</span>request<span class="token punctuation">.</span>POST<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> f<span class="token punctuation">.</span>is_valid<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            a <span class="token operator">=</span> f<span class="token punctuation">.</span>cleaned_data <span class="token comment" spellcheck="true"># 获得输入的纯数据, 字典样式</span>
+            Car<span class="token punctuation">(</span><span class="token operator">**</span>a<span class="token punctuation">)</span><span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            f <span class="token operator">=</span> CarRecordForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            errors <span class="token operator">=</span> f<span class="token punctuation">.</span>errors<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 所有的错误信息</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'add.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'f'</span><span class="token punctuation">:</span> f<span class="token punctuation">,</span> <span class="token string">'errors'</span><span class="token punctuation">:</span> errors<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="跳转-查找该部门下属的员工"><a href="#跳转-查找该部门下属的员工" class="headerlink" title="跳转 ,查找该部门下属的员工"></a>跳转 ,查找该部门下属的员工</h4><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{% url <span class="token punctuation">'</span>empsindept<span class="token punctuation">'</span> dept.no %}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{ dept.name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># url</span>
+path<span class="token punctuation">(</span><span class="token string">'depts/emps/&lt;int:no>'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>emps<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'empsindept'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># views</span>
+<span class="token keyword">def</span> <span class="token function">emps</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> no<span class="token operator">=</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># dno = request.GET['no']</span>
+    dno <span class="token operator">=</span> no
+    emp_list <span class="token operator">=</span> list<span class="token punctuation">(</span>Emp<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>dept__no<span class="token operator">=</span>dno<span class="token punctuation">)</span><span class="token punctuation">.</span>select_related<span class="token punctuation">(</span><span class="token string">'dept'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 联查, 关联对象字段名, models的class Dept</span>
+    ctx <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'emp_list'</span><span class="token punctuation">:</span> emp_list<span class="token punctuation">,</span>
+        <span class="token string">'dept_name'</span><span class="token punctuation">:</span> emp_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>dept<span class="token punctuation">.</span>name
+    <span class="token punctuation">}</span> <span class="token keyword">if</span> len<span class="token punctuation">(</span>emp_list<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'emp.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span>ctx<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="Ajax-查找-查找违章记录"><a href="#Ajax-查找-查找违章记录" class="headerlink" title="Ajax-查找, 查找违章记录"></a>Ajax-查找, 查找违章记录</h4><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+        <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#search'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'submit'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>evt<span class="token punctuation">)</span>  <span class="token punctuation">{</span>
+                evt<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//阻止默认的提交行为</span>
+                <span class="token keyword">var</span> carno <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#carno'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> token <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#search input[type=hidden]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                    url<span class="token punctuation">:</span> <span class="token string">'/search2'</span><span class="token punctuation">,</span>
+                    type<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+                    data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                        <span class="token string">'carno'</span><span class="token punctuation">:</span> carno<span class="token punctuation">,</span>
+                        <span class="token string">'csrfmiddlewaretoken'</span><span class="token punctuation">:</span> token
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    dataType<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
+                    success<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#result tbody'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">children</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token function">alert</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> json<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            <span class="token keyword">var</span> tr <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;tr>'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;td>'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">txt</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#result tbody'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>tr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">CarRecordEncoder</span><span class="token punctuation">(</span>DjangoJSONEncoder<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># DjangoJSONEncoder</span>
+    <span class="token comment" spellcheck="true"># pass</span>
+    <span class="token keyword">def</span> <span class="token function">default</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> o<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        <span class="token keyword">del</span> o<span class="token punctuation">.</span>__dict__<span class="token punctuation">[</span><span class="token string">'_state'</span><span class="token punctuation">]</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'===========>>>>>>>>>'</span><span class="token punctuation">,</span> o<span class="token punctuation">.</span>__dict__<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># o.__dict__['cardate'] = o.happen_date</span>
+        <span class="token keyword">return</span> o<span class="token punctuation">.</span>__dict__
+
+
+<span class="token keyword">def</span> <span class="token function">ajax_search</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">"GET"</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'ajax_search.html'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        carno <span class="token operator">=</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">[</span><span class="token string">'carno'</span><span class="token punctuation">]</span>
+        record_list <span class="token operator">=</span> list<span class="token punctuation">(</span>Car<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>carno__icontains<span class="token operator">=</span>carno<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span>record_list<span class="token punctuation">,</span>encoder<span class="token operator">=</span>CarRecordEncoder <span class="token punctuation">,</span>safe<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="#"></a>
+            
+            
+                <a href="/2019/04/21/django小结02/" class="styled-border">
+                    
+                    Django-表单提交,equest.method-cookie-session
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

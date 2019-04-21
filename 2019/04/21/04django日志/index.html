@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-日志处理 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HTTP协议 1.1 –&amp;gt;  2.0 请求行 请求头  空行 请求体 WireShark 抓包和协议分析工具, 前身是 Ethereal 只要将网卡设置为混杂模式, 可以截获局域网所有数据 MIME类型 Multipurpose  Internet Mail Extensions 多用途互联网邮件扩展 Django 记录日志调试阶段设置为 DEBUG   项目上线   日志登记为  ERRO">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-日志处理">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/04django日志/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="HTTP协议 1.1 –&amp;gt;  2.0 请求行 请求头  空行 请求体 WireShark 抓包和协议分析工具, 前身是 Ethereal 只要将网卡设置为混杂模式, 可以截获局域网所有数据 MIME类型 Multipurpose  Internet Mail Extensions 多用途互联网邮件扩展 Django 记录日志调试阶段设置为 DEBUG   项目上线   日志登记为  ERRO">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T01:54:58.780Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-日志处理">
+<meta name="twitter:description" content="HTTP协议 1.1 –&amp;gt;  2.0 请求行 请求头  空行 请求体 WireShark 抓包和协议分析工具, 前身是 Ethereal 只要将网卡设置为混杂模式, 可以截获局域网所有数据 MIME类型 Multipurpose  Internet Mail Extensions 多用途互联网邮件扩展 Django 记录日志调试阶段设置为 DEBUG   项目上线   日志登记为  ERRO">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-日志处理</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/django/">django</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>HTTP协议</p>
+<p>1.1 –&gt;  2.0</p>
+<p>请求行 请求头  空行 请求体</p>
+<p>WireShark 抓包和协议分析工具, 前身是 Ethereal</p>
+<p>只要将网卡设置为混杂模式, 可以截获局域网所有数据</p>
+<p>MIME类型</p>
+<p>Multipurpose  Internet Mail Extensions 多用途互联网邮件扩展</p>
+<h4 id="Django-记录日志"><a href="#Django-记录日志" class="headerlink" title="Django 记录日志"></a><a href="https://docs.djangoproject.com/zh-hans/2.0/topics/logging/#examples" target="_blank" rel="noopener">Django 记录日志</a></h4><p>调试阶段设置为 DEBUG   项目上线   日志登记为  ERROR</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># settings.py,  文件输出日志</span>
+LOGGING <span class="token operator">=</span> <span class="token operator">-</span>
+    <span class="token string">'version'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">'disable_existing_loggers'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+        <span class="token string">'file'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+            <span class="token string">'level'</span><span class="token punctuation">:</span> <span class="token string">'DEBUG'</span><span class="token punctuation">,</span>
+            <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.FileHandler'</span><span class="token punctuation">,</span>
+            <span class="token string">'filename'</span><span class="token punctuation">:</span> <span class="token string">'/path/to/django/debug.log'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'loggers'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+        <span class="token string">'django'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+            <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">'level'</span><span class="token punctuation">:</span> <span class="token string">'DEBUG'</span><span class="token punctuation">,</span>
+            <span class="token string">'propagate'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># 控制台输出</span>
+<span class="token keyword">import</span> os
+
+LOGGING <span class="token operator">=</span> <span class="token operator">-</span>
+    <span class="token string">'version'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">'disable_existing_loggers'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+        <span class="token string">'console'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+            <span class="token string">'class'</span><span class="token punctuation">:</span> <span class="token string">'logging.StreamHandler'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'loggers'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+        <span class="token string">'django'</span><span class="token punctuation">:</span> <span class="token operator">-</span>
+            <span class="token string">'handlers'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'console'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">'level'</span><span class="token punctuation">:</span> os<span class="token punctuation">.</span>getenv<span class="token punctuation">(</span><span class="token string">'DJANGO_LOG_LEVEL'</span><span class="token punctuation">,</span> <span class="token string">'INFO'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>request.get_host()  请求主机  port- 端口  full_path()</p>
+<p>request.META    得到的是字典, 可以得到请求头</p>
+<p>​        request.GET  </p>
+<p>filter() 得到的是以QuerySet对象,  get 得的是对象本身</p>
+<h5 id="惰性查询"><a href="#惰性查询" class="headerlink" title="惰性查询"></a>惰性查询</h5><ul>
+<li>不是必须要数据时, 才会发送SQL语句来进行查询</li>
+<li>节省服务器内存的,   延迟加载,   节省了空间浪费了时间</li>
+</ul>
+<p>Queryset 惰性查询    all() / filter() 得到的是Queryset</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">&lt;</span>td<span class="token operator">></span><span class="token operator">&lt;</span>button type<span class="token operator">=</span><span class="token string">"button"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"btn btn-danger btn-xs"</span><span class="token operator">></span><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"--%- url 'ddel' -%-}?no=-- dept.no }}"</span><span class="token operator">></span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+
+<span class="token comment" spellcheck="true"># 过滤,  排序,  切片, 连接查询</span>
+<span class="token keyword">def</span> <span class="token function">emps</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dno <span class="token operator">=</span> request<span class="token punctuation">.</span>GET<span class="token punctuation">[</span><span class="token string">'no'</span><span class="token punctuation">]</span>
+    emp_list <span class="token operator">=</span> list<span class="token punctuation">(</span>Emp<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>dept__no<span class="token operator">=</span>dno<span class="token punctuation">)</span><span class="token punctuation">.</span>orderby<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>select_related<span class="token punctuation">(</span><span class="token string">'dept'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 联查, 关联对象字段名, models的class Dept</span>
+    ctx <span class="token operator">=</span> <span class="token operator">-</span>
+        <span class="token string">'emp_list'</span><span class="token punctuation">:</span> emp_list<span class="token punctuation">,</span>
+        <span class="token string">'dept_name'</span><span class="token punctuation">:</span> emp_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>dept<span class="token punctuation">.</span>name
+    <span class="token punctuation">}</span> <span class="token keyword">if</span> len<span class="token punctuation">(</span>emp_list<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token operator">-</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'emp.html'</span><span class="token punctuation">,</span> context<span class="token operator">=</span>ctx<span class="token punctuation">)</span>
+</code></pre>
+<p>尽量避免使用硬代码(hard code)</p>
+<p>– 占位符 }}  –%- 分支循环, url -%-}</p>
+<p>EAFP 优于LBYL</p>
+<p>try 优于 if</p>
+<h5 id="正则表达式命名捕获组"><a href="#正则表达式命名捕获组" class="headerlink" title="正则表达式命名捕获组"></a>正则表达式命名捕获组</h5><pre class=" language-python"><code class="language-python"><span class="token punctuation">(</span>?<span class="token operator">&lt;</span>name<span class="token operator">></span>exp<span class="token punctuation">)</span>   Python 中要加P <span class="token punctuation">(</span>?P<span class="token operator">&lt;</span>name<span class="token operator">></span>exp<span class="token punctuation">)</span>
+</code></pre>
+<h5 id="url-后缀"><a href="#url-后缀" class="headerlink" title="url 后缀"></a>url 后缀</h5><p>没有后缀的URL </p>
+<p>Django 1.x 和 2.x 做法是不同的</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#1.x      pattern</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf<span class="token punctuation">.</span>urls <span class="token keyword">import</span> url
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>url<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+              url<span class="token punctuation">(</span><span class="token string">'depts/emps/(?P&lt;no>[0-9]+)'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>emps<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'empsindept'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 可以写正则表达式</span>
+              <span class="token punctuation">]</span>
+
+在 views<span class="token punctuation">.</span>py中 <span class="token punctuation">,</span> 可以直接获得参数
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> no<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+</code></pre>
+<h5 id="2-x"><a href="#2-x" class="headerlink" title="2.x"></a>2.x</h5><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 2.x</span>
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>path<span class="token punctuation">(</span><span class="token string">'dept/emps/&lt;int:no>'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">]</span>
+
+</code></pre>
+<h4 id="Ajax删除"><a href="#Ajax删除" class="headerlink" title="Ajax删除"></a>Ajax删除</h4><pre class=" language-python"><code class="language-python">
+</code></pre>
+<p>作业</p>
+<p>Django  1.11  </p>
+<p>新建项目  输入框 -  车牌号,  按钮 - 点击按钮查询有没有违章记录 </p>
+<p>记录编号, autofield</p>
+<p>车牌号码</p>
+<p>违章原因</p>
+<p>违章日期</p>
+<p>处罚方式</p>
+<p>是否受理</p>
+<p>db_column = ‘dno’  在数据库中的名字</p>
+<p>db_index=’’   创建索引</p>
+<p>自参照完整性   </p>
+<p>mgr = models.ForeignKey(‘self’, null=True, blank=’True’, on_delete =Models.set_null)   参照自己的主键</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/21/06Model.Form和cookie/" class="styled-border">
+                    ←
+                    Django-Form和ModelForm-Cookie-Session
+                    
+                </a>
+            
+            
+                <a href="/2019/04/21/03django访问数据库查询/" class="styled-border">
+                    
+                    Django-数据库增删改查
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-基础介绍 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="django基础教程简记 Django学习文档博客 class Meta:   # 指定模型的复数形式,不指定会在admin中自动加s    verbose_name_plural = &apos;categories&apos;  verbose_name  指定一个用户可读的名字  # admin.py prepopulated_fields = &apos;slug&apos;: (&apos;aa&apos;, &apos;bb&apos;)} 该方法会自动合并aa">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-基础介绍">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/00Rango学习笔记/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="django基础教程简记 Django学习文档博客 class Meta:   # 指定模型的复数形式,不指定会在admin中自动加s    verbose_name_plural = &apos;categories&apos;  verbose_name  指定一个用户可读的名字  # admin.py prepopulated_fields = &apos;slug&apos;: (&apos;aa&apos;, &apos;bb&apos;)} 该方法会自动合并aa">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/21/00Rango学习笔记/QQ截图20180526171717.png">
+<meta property="og:updated_time" content="2019-04-21T01:54:09.525Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-基础介绍">
+<meta name="twitter:description" content="django基础教程简记 Django学习文档博客 class Meta:   # 指定模型的复数形式,不指定会在admin中自动加s    verbose_name_plural = &apos;categories&apos;  verbose_name  指定一个用户可读的名字  # admin.py prepopulated_fields = &apos;slug&apos;: (&apos;aa&apos;, &apos;bb&apos;)} 该方法会自动合并aa">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/21/00Rango学习笔记/QQ截图20180526171717.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-基础介绍</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/django/">django</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="django基础教程简记"><a href="#django基础教程简记" class="headerlink" title="django基础教程简记"></a>django基础教程简记</h3><hr>
+<p><a href="http://www.cnblogs.com/Simon-xm/tag/Django/" target="_blank" rel="noopener">Django学习文档博客</a></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true"># 指定模型的复数形式,不指定会在admin中自动加s</span>
+   verbose_name_plural <span class="token operator">=</span> <span class="token string">'categories'</span>
+
+verbose_name  指定一个用户可读的名字
+
+<span class="token comment" spellcheck="true"># admin.py</span>
+prepopulated_fields <span class="token operator">=</span> <span class="token string">'slug'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">,</span> <span class="token string">'bb'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+该方法会自动合并aa 和 bb 为aa<span class="token operator">-</span>bb形式填写到该字段输入框中
+</code></pre>
+<p>官方文档<a href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.prepopulated_fields" target="_blank" rel="noopener">prepopulated_fields</a></p>
+<h4 id="ForeignKey-on-delete"><a href="#ForeignKey-on-delete" class="headerlink" title="ForeignKey.on_delete"></a>ForeignKey.on_delete</h4><ul>
+<li><p>当一个ForeignKey 引用的对象被删除时，Django 默认模拟SQL 的ON DELETE CASCADE 的约束行为，并且删除包含该ForeignKey的对象。这种行为可以通过设置on_delete 参数来改变。例如，如果你有一个可以为空的ForeignKey，在其引用的对象被删除的时你想把这个ForeignKey 设置为空：</p>
+</li>
+<li><p>user = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)</p>
+</li>
+<li><p>on_delete 在django.db.models中可以找到的值有：</p>
+<ul>
+<li>CASCADE<ul>
+<li>级联删除；默认值。</li>
+</ul>
+</li>
+<li>PROTECT<ul>
+<li>抛出ProtectedError 以阻止被引用对象的删除，它是django.db.IntegrityError 的一个子类。</li>
+</ul>
+</li>
+<li>SET_NULL<ul>
+<li>把ForeignKey 设置为null； null 参数为True 时才可以这样做。</li>
+</ul>
+</li>
+<li>SET_DEFAULT<ul>
+<li>ForeignKey 值设置成它的默认值；此时必须设置ForeignKey 的default 参数。</li>
+</ul>
+</li>
+<li>DO_NOTHING<ul>
+<li>Take no action. 如果你的数据库后端强制引用完整性，它将引发一个IntegrityError ，除非你手动添加一个ON DELETE 约束给数据库自动（可能要用到初始化的SQL）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SET()</p>
+<ul>
+<li>设置ForeignKey 为传递给SET() 的值，如果传递的是一个可调用对象，则为调用后的结果。在大部分情形下，传递一个可调用对象用于避免models.py 在导入时执行查询：</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
+
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>auth <span class="token keyword">import</span> get_user_model
+
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+
+<span class="token keyword">def</span> <span class="token function">get_sentinel_user</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">return</span> get_user_model<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get_or_create<span class="token punctuation">(</span>username<span class="token operator">=</span><span class="token string">'deleted'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyModel</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    user <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span>settings<span class="token punctuation">.</span>AUTH_USER_MODEL<span class="token punctuation">,</span>
+
+                             on_delete<span class="token operator">=</span>models<span class="token punctuation">.</span>SET<span class="token punctuation">(</span>get_sentinel_user<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre>
+</li>
+</ul>
+<h5 id="编写数据库填充脚本-p-53"><a href="#编写数据库填充脚本-p-53" class="headerlink" title="编写数据库填充脚本 p-53"></a>编写数据库填充脚本 p-53</h5><p><img src="QQ截图20180526171717.png" alt></p>
+<h4 id="版本的中间键MIDDLEWARE"><a href="#版本的中间键MIDDLEWARE" class="headerlink" title="版本的中间键MIDDLEWARE"></a><a href="https://blog.csdn.net/xiongjiezk/article/details/53220302" target="_blank" rel="noopener">版本的中间键MIDDLEWARE</a></h4><ul>
+<li>1.X -  MIDDLEWARE_CLASS</li>
+<li>2.X - MIDDLEWARE</li>
+</ul>
+<h4 id="伺服媒体文件"><a href="#伺服媒体文件" class="headerlink" title="伺服媒体文件"></a>伺服媒体文件</h4><p>settings.py 中增加</p>
+<pre class=" language-python"><code class="language-python">MEDIA_DIR <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'media'</span><span class="token punctuation">)</span>
+
+MEDIA_ROOT <span class="token operator">=</span> MEDIA_DIR
+
+MEDIA_URL <span class="token operator">=</span> <span class="token string">'/media/'</span>
+
+TEMPLATE中的<span class="token string">'context_process'</span>
+增加  <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">></span>  <span class="token string">'django.template.context_processors.media'</span>
+</code></pre>
+<p>调整URL</p>
+<ul>
+<li><p>在项目的urls.py 文件中增加模块</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf<span class="token punctuation">.</span>urls<span class="token punctuation">.</span>static <span class="token keyword">import</span> static
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+
+<span class="token punctuation">]</span> <span class="token operator">+</span> static<span class="token punctuation">(</span>settings<span class="token punctuation">.</span>MEDIA_URL<span class="token punctuation">,</span> document_root<span class="token operator">=</span>settings<span class="token punctuation">.</span>MEDIA_ROOT<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+<p><strong>在网页中伺服媒体文件</strong></p>
+<ul>
+<li>把媒体文件放到项目的media目录中, </li>
+<li>在模板页面中使用 MEDIA_URL }}上下文变量引用媒体文件<ul>
+<li>例如  – <code>&lt;img src=&#39;MEDIA_URL}} cat.jpg&#39;/&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="建立模型–-gt-gt-models-py"><a href="#建立模型–-gt-gt-models-py" class="headerlink" title="建立模型–&gt;&gt;models.py"></a>建立模型–&gt;&gt;models.py</h4><ul>
+<li>ForeignKey  建立一对多关系</li>
+<li>OneToOneField  建立一对一关系</li>
+<li>ManyToManyField   建立多对多关系</li>
+</ul>
+<p>模型中的<strong><code>__str__()</code></strong></p>
+<ul>
+<li>如果不使用<code>__str__()</code>, 那么在调试时, print打印出的对象将显示为<code>&lt;Category: Category object&gt;</code>,这将无法对我们的调试有所帮助, 添加<code>__str__()</code>后, 打印’Python’ 分类时将显示<code>&lt;Category: Python&gt;</code>这个方法也可以在管理员界面用到,应为Django的后台显示对象为字符串表示形式</li>
+</ul>
+<h4 id="Django模型和Shell"><a href="#Django模型和Shell" class="headerlink" title="Django模型和Shell"></a>Django模型和Shell</h4><ul>
+<li><code>python manage.py shell</code></li>
+<li>启动模型交互环境</li>
+</ul>
+<h4 id="管理员界面"><a href="#管理员界面" class="headerlink" title="管理员界面"></a>管理员界面</h4><ul>
+<li></li>
+</ul>
+<h4 id="url-中的正则匹配问题"><a href="#url-中的正则匹配问题" class="headerlink" title="url-中的正则匹配问题"></a><a href="https://www.cnblogs.com/Simon-xm/p/3890759.html" target="_blank" rel="noopener">url-中的正则匹配问题</a></h4>
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/21/01Django虚拟环境安装/" class="styled-border">
+                    ←
+                    Django-Web应用介绍-windows创建虚拟环境-Mac创建虚拟环境,
+                    
+                </a>
+            
+            
+                <a href="/2019/04/21/django表单处理/" class="styled-border">
+                    
+                    django表单处理
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

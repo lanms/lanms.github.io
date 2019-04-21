@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Django-Web应用介绍，templates | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Django快速开发Web应用 Django快速开发步骤 mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境  python3 -m venv VENV_NAME 激活虚拟环境 - source ./activate   python -m pip install –upgrate pip 升级pip  pip install Django    安装Django django-a">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django-Web应用介绍，templates">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/02Django快速开发Web应用/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="Django快速开发Web应用 Django快速开发步骤 mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境  python3 -m venv VENV_NAME 激活虚拟环境 - source ./activate   python -m pip install –upgrate pip 升级pip  pip install Django    安装Django django-a">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T01:52:46.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django-Web应用介绍，templates">
+<meta name="twitter:description" content="Django快速开发Web应用 Django快速开发步骤 mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境  python3 -m venv VENV_NAME 激活虚拟环境 - source ./activate   python -m pip install –upgrate pip 升级pip  pip install Django    安装Django django-a">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Django-Web应用介绍，templates</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/django/">django</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>Django快速开发Web应用</p>
+<h4 id="Django快速开发步骤"><a href="#Django快速开发步骤" class="headerlink" title="Django快速开发步骤"></a>Django快速开发步骤</h4><ul>
+<li>mkdir  DIR_NAME   在创建的文件目录下创建虚拟环境 <ul>
+<li>python3 -m venv VENV_NAME</li>
+<li>激活虚拟环境 - source ./activate</li>
+</ul>
+</li>
+<li>python -m pip install –upgrate pip 升级pip </li>
+<li>pip install Django    安装Django</li>
+<li>django-admin –version  查看版本</li>
+<li>django-admin startproject PROJECT_NAME .  在最后加点号, 可以让项目创建在当前目录下</li>
+<li>python manage.py runserver 0.0.0.0:80启动服务器, 指定端口</li>
+</ul>
+<h4 id="PROJECT-NAME-views-py"><a href="#PROJECT-NAME-views-py" class="headerlink" title="PROJECT_NAME/ views.py"></a>PROJECT_NAME/ views.py</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render  <span class="token comment" spellcheck="true">#渲染函数</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>template <span class="token keyword">import</span> Template<span class="token punctuation">,</span> Context
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>template<span class="token punctuation">.</span>loader <span class="token keyword">import</span> get_template
+
+<span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+
+<span class="token keyword">def</span> <span class="token function">home</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fruit_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'苹果'</span><span class="token punctuation">,</span> <span class="token string">'草莓'</span><span class="token punctuation">,</span> <span class="token string">'蓝莓'</span><span class="token punctuation">,</span> <span class="token string">'西瓜'</span><span class="token punctuation">,</span> <span class="token string">'苹果'</span><span class="token punctuation">]</span>
+    start <span class="token operator">=</span> <span class="token number">0</span>
+    end <span class="token operator">=</span> randrange<span class="token punctuation">(</span>len<span class="token punctuation">(</span>fruit_list<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fruits <span class="token operator">=</span> fruit_list<span class="token punctuation">[</span>start<span class="token punctuation">:</span>end<span class="token punctuation">]</span>
+    ctx <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'greeting'</span><span class="token punctuation">:</span> <span class="token string">'你好世界'</span><span class="token punctuation">,</span>
+    <span class="token string">'current_time'</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'num'</span><span class="token punctuation">:</span> len<span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'fruits'</span><span class="token punctuation">:</span> fruits
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true"># 第二个参数是模板页面(路劲在settings.py)</span>
+    <span class="token comment" spellcheck="true"># 第三个参数是一个字典(替换占位符)</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span> ctx<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># def home(request):</span>
+<span class="token comment" spellcheck="true">#     with open(r'C:\Users\Administrator\hell_django\templates\index.html', encoding='utf-8') as f:</span>
+<span class="token comment" spellcheck="true">#         t = Template(f.read())</span>
+<span class="token comment" spellcheck="true">#     index = randrange(0, len(fruit_list))</span>
+<span class="token comment" spellcheck="true">#     ctx = Context({</span>
+<span class="token comment" spellcheck="true">#     'greeting': '你好世界',</span>
+<span class="token comment" spellcheck="true">#     'current_time': datetime.now(),</span>
+<span class="token comment" spellcheck="true">#     'fruit': fruit_list[index]</span>
+<span class="token comment" spellcheck="true">#     })</span>
+<span class="token comment" spellcheck="true">#     return HttpResponse(t.render(ctx))     # 渲染</span>
+
+
+<span class="token comment" spellcheck="true"># fruit_list = ['苹果', '草莓', '蓝莓', '西瓜', '苹果']</span>
+<span class="token comment" spellcheck="true"># # Create your views here.</span>
+<span class="token comment" spellcheck="true"># def home(request):</span>
+<span class="token comment" spellcheck="true">#     html_str = '&lt;h1>hello, django!&lt;/h1>'</span>
+<span class="token comment" spellcheck="true">#     html_str += '&lt;ul>\n'</span>
+<span class="token comment" spellcheck="true">#     for _ in range(3):</span>
+<span class="token comment" spellcheck="true">#         index = randrange(0, len(fruit_list))</span>
+<span class="token comment" spellcheck="true">#         html_str += '\t&lt;li>' + fruit_list[index] + '&lt;/li>\n'</span>
+<span class="token comment" spellcheck="true">#     html_str += '&lt;/ul>'</span>
+
+<span class="token comment" spellcheck="true">#     return HttpResponse(html_str)</span>
+<span class="token comment" spellcheck="true"># </span>
+
+<span class="token comment" spellcheck="true"># def home(request):</span>
+<span class="token comment" spellcheck="true">#     html = '北京时间: -%-s' -%- datetime.now()</span>
+<span class="token comment" spellcheck="true">#     return HttpResponse(html)</span>
+
+
+</code></pre>
+<h4 id="hello-django-gt-settings-py-urls-py"><a href="#hello-django-gt-settings-py-urls-py" class="headerlink" title="hello_django -&gt; settings.py / urls.py"></a>hello_django -&gt; settings.py / urls.py</h4><ul>
+<li>setting.py<ul>
+<li>更改DEBUG  [‘*’]</li>
+<li>修改seetings.py  33行, installed_app    增加应用, 追加名字</li>
+<li>DIR []</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path
+<span class="token keyword">from</span> hrs <span class="token keyword">import</span> views
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    path<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>home<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<h4 id="templates-gt-index-html"><a href="#templates-gt-index-html" class="headerlink" title="templates - &gt; index.html"></a>templates - &gt; index.html</h4><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>首页<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>{{ greeting }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>   <span class="token comment" spellcheck="true">&lt;!-- 占位符--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>{{ current_time }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>今天推荐{{ num }}种水果:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+        {-%- for fruit in fruits -%-}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>{{ fruit }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        {-%- endfor -%-}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<h4 id="写页面"><a href="#写页面" class="headerlink" title="写页面"></a>写页面</h4><ul>
+<li>OA - office Auomation</li>
+<li>创建应用<code>python manage.py startapp hrs</code> , 创建成功后会有一个对应的文件夹</li>
+</ul>
+<pre class=" language-python"><code class="language-python">hrs 文件目录包含以下内容
+__init__ 包
+apps  应用
+models 模型
+tests 测试
+views  控制器
+admin 注册  
+migrations 目录为数据库相关文件
+</code></pre>
+<p>stringIO 模块拼接字符串, write  value</p>
+<p><a href="https://docs.djangoproject.com/zh-hans/2.0/" target="_blank" rel="noopener">Django官方文档</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/21/03django访问数据库查询/" class="styled-border">
+                    ←
+                    Django-数据库增删改查
+                    
+                </a>
+            
+            
+                <a href="/2019/04/21/01Django虚拟环境安装/" class="styled-border">
+                    
+                    Django-Web应用介绍-windows创建虚拟环境-Mac创建虚拟环境,
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

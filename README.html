@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>python基础-celery的使用 | Lanms Blog</title>
+  <title>Lanms Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v2">
+  <meta name="description" content="My Blogwww.pytool.cn www.lameshuai.com www.blogzml.top">
 <meta name="keywords" content="kkkk">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python基础-celery的使用">
-<meta property="og:url" content="http://yoursite.com/2019/04/20/celery的使用/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lanms Blog">
+<meta property="og:url" content="http://yoursite.com/README.html">
 <meta property="og:site_name" content="Lanms Blog">
-<meta property="og:description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v2">
+<meta property="og:description" content="My Blogwww.pytool.cn www.lameshuai.com www.blogzml.top">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-20T09:30:02.560Z">
+<meta property="og:updated_time" content="2019-04-21T01:16:20.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python基础-celery的使用">
-<meta name="twitter:description" content="celery的使用 https://blog.csdn.net/Shyllin/article/details/80940643 https://www.cnblogs.com/forward-wang/p/5970806.html 启动命令 celery -A task_dir_name beat http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;amp;v2">
+<meta name="twitter:title" content="Lanms Blog">
+<meta name="twitter:description" content="My Blogwww.pytool.cn www.lameshuai.com www.blogzml.top">
   
     <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
   
@@ -94,45 +94,15 @@
             <!-- Articles -->
                 
                 <h1 class="ts header">
-                    <span style="color: #333;">python基础-celery的使用</span>
-                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                    <span style="color: #333;"></span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/21 
                     
                     </div>
                 </h1>
 
-                <p>celery的使用</p>
-<p><a href="https://blog.csdn.net/Shyllin/article/details/80940643" target="_blank" rel="noopener">https://blog.csdn.net/Shyllin/article/details/80940643</a></p>
-<p><a href="https://www.cnblogs.com/forward-wang/p/5970806.html" target="_blank" rel="noopener">https://www.cnblogs.com/forward-wang/p/5970806.html</a></p>
-<p>启动命令</p>
-<p>celery -A task_dir_name beat</p>
-<pre><code>http://127.0.0.1:5555/user/celery/?v1=aaaa&amp;v2=bbb
-</code></pre><p>可使用 AWS 的 SQS 和 DynmoDB</p>
-<p>windows</p>
-<pre><code>
-pip install eventlet
-celery -A &lt;mymodule&gt; worker -l info -P eventlet
-</code></pre><p><a href="http://www.cnblogs.com/cwp-bg/p/8759638.html" target="_blank" rel="noopener">http://www.cnblogs.com/cwp-bg/p/8759638.html</a></p>
-<p>celery_aaa</p>
-<pre class=" language-shell"><code class="language-shell">celery -A celery_aaa worker --loglevel=info
-
-python3 -m celery_aaa.run_tasks
-</code></pre>
-<p>可视化 celery 和 rabbitmq</p>
-<pre class=" language-shell"><code class="language-shell">pip install flower
-</code></pre>
-<p>所有的任务会存在本地的 schedule文件中</p>
-<p>当没有发布任务时 worker 会等待，直到有任务发布</p>
-<p>当没有worker存在时，会一直发布任务，直到worker出现</p>
-<p>启动任务发布时会返回它的pid，可以通过kill pid 来停止</p>
-<p>celery_aaa</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 运行worker</span>
-celery <span class="token operator">-</span>A celery_aaa worker <span class="token operator">-</span><span class="token operator">-</span>loglevel<span class="token operator">=</span>info
-
-<span class="token comment" spellcheck="true"># 导入任务</span>
-<span class="token keyword">from</span>  celery_util<span class="token punctuation">.</span>celery_aaa<span class="token punctuation">.</span>tasks <span class="token keyword">import</span> longtime_add
-
-longtime_add<span class="token punctuation">.</span>delay<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-</code></pre>
+                <h1 id="My-Blog"><a href="#My-Blog" class="headerlink" title="My Blog"></a>My Blog</h1><p><a href="http://www.pytool.cn" target="_blank" rel="noopener">www.pytool.cn</a></p>
+<p><a href="http://www.lameshuai.com" target="_blank" rel="noopener">www.lameshuai.com</a></p>
+<p><a href="http://www.blogzml.top" target="_blank" rel="noopener">www.blogzml.top</a></p>
 
             <!-- / the end of articles -->
         </div>
@@ -162,24 +132,6 @@ longtime_add<span class="token punctuation">.</span>delay<span class="token punc
         
 
         <!-- Next Post and Prev Post -->
-        
-        <hr/>
-        <div class="next-prev-post-section">
-            
-                <a href="/2019/04/20/15-python内置函数库/" class="styled-border">
-                    ←
-                    python基础-内置函数
-                    
-                </a>
-            
-            
-                <a href="/2019/04/20/13-py2和py3的区别/" class="styled-border">
-                    
-                    python基础-python3和python2的区别
-                    →
-                </a>
-            
-        </div>
         
 </div>
 <script type="text/javascript">

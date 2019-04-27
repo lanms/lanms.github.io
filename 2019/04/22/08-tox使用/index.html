@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Tox代码检视集成测试 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="tox tox是通用的虚拟环境管理和测试命令行工具，tox能够让我们在同一个Host上自定义出多套相互独立且隔离的python环境  检查软件包能否在不同的python版本或解释器下正常安装 在不同的环境中运行测试代码 作为持续集成服务的前端，大大减少测试工作所需的时间  2、openstack社区tox使用： 比如openstack社区的openstack-infra/project-confi">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tox代码检视集成测试">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/08-tox使用/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="tox tox是通用的虚拟环境管理和测试命令行工具，tox能够让我们在同一个Host上自定义出多套相互独立且隔离的python环境  检查软件包能否在不同的python版本或解释器下正常安装 在不同的环境中运行测试代码 作为持续集成服务的前端，大大减少测试工作所需的时间  2、openstack社区tox使用： 比如openstack社区的openstack-infra/project-confi">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:45:46.425Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tox代码检视集成测试">
+<meta name="twitter:description" content="tox tox是通用的虚拟环境管理和测试命令行工具，tox能够让我们在同一个Host上自定义出多套相互独立且隔离的python环境  检查软件包能否在不同的python版本或解释器下正常安装 在不同的环境中运行测试代码 作为持续集成服务的前端，大大减少测试工作所需的时间  2、openstack社区tox使用： 比如openstack社区的openstack-infra/project-confi">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Tox代码检视集成测试</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/22 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Python/">Python</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>tox</p>
+<p>tox是通用的虚拟环境管理和测试命令行工具，tox能够让我们在同一个Host上自定义出多套相互独立且隔离的python环境</p>
+<ul>
+<li>检查软件包能否在不同的python版本或解释器下正常安装</li>
+<li>在不同的环境中运行测试代码</li>
+<li>作为持续集成服务的前端，大大减少测试工作所需的时间</li>
+</ul>
+<p>2、openstack社区tox使用：</p>
+<p>比如openstack社区的openstack-infra/project-config工程，其gerrit配置的门禁，其门禁具体执行中使用了tox执行基本语法检测。</p>
+<p>S1、clone该工程：</p>
+<p>git clone <a href="https://github.com/openstack-infra/project-config.git" target="_blank" rel="noopener">https://github.com/openstack-infra/project-config.git</a></p>
+<p>S2、查看project-config的工程门禁配置（project-config/zuul/layout.yaml截取一部分）：</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token operator">-</span> name<span class="token punctuation">:</span> openstack<span class="token operator">-</span>infra<span class="token operator">/</span>project<span class="token operator">-</span>config            
+  template<span class="token punctuation">:</span>                                       
+  <span class="token operator">-</span> name<span class="token punctuation">:</span> bindep<span class="token operator">-</span>fallback                       
+  <span class="token operator">-</span> name<span class="token punctuation">:</span> merge<span class="token operator">-</span>check                           
+    check<span class="token punctuation">:</span>                                          
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>gerrit                  
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>grafyaml                
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>layout    <span class="token comment" spellcheck="true"># check阶段的门禁                  </span>
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>linters<span class="token operator">-</span>ubuntu<span class="token operator">-</span>xenial   
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>irc<span class="token operator">-</span>access              
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>jenkins<span class="token operator">-</span>project         
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>nodepool                
+  <span class="token operator">-</span> gate<span class="token operator">-</span>infra<span class="token operator">-</span>docs<span class="token operator">-</span>index                       
+  <span class="token operator">-</span> gate<span class="token operator">-</span>generate<span class="token operator">-</span>specs<span class="token operator">-</span>site                    
+  <span class="token operator">-</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>dib  
+</code></pre>
+<p>S3、查看gate-project-config-layout的工程配置：</p>
+<p>（位于project-config/jenkins/jobs/infra.yaml中）</p>
+<pre class=" language-python"><code class="language-python">job<span class="token punctuation">:</span>                                    
+name<span class="token punctuation">:</span> gate<span class="token operator">-</span>project<span class="token operator">-</span>config<span class="token operator">-</span>layout      
+node<span class="token punctuation">:</span> ubuntu<span class="token operator">-</span>trusty                   
+
+builders<span class="token punctuation">:</span>                             
+
+<span class="token operator">-</span> net<span class="token operator">-</span>info <span class="token comment" spellcheck="true"># 显示环境信息，如构建时间、ip、网络状况等                         </span>
+<span class="token operator">-</span> zuul<span class="token operator">-</span>git<span class="token operator">-</span>prep       <span class="token comment" spellcheck="true"># zuul-clone工程                  </span>
+<span class="token operator">-</span> install<span class="token operator">-</span>distro<span class="token operator">-</span>packages   <span class="token comment" spellcheck="true"># 安装相应依赖        </span>
+<span class="token operator">-</span> revoke<span class="token operator">-</span>sudo       <span class="token comment" spellcheck="true"># 取消sudo权限                    </span>
+<span class="token operator">-</span> run<span class="token operator">-</span>tox<span class="token punctuation">:</span>          <span class="token comment" spellcheck="true"># 调用tox的相关脚本              </span>
+  envlist<span class="token punctuation">:</span> <span class="token string">'zuul'</span>                 
+
+
+publishers<span class="token punctuation">:</span>                           
+
+<span class="token operator">-</span> test<span class="token operator">-</span>results                      
+<span class="token operator">-</span> console<span class="token operator">-</span>log       
+</code></pre>
+<p>S4、重点是查看builder：run-tox的配置，位于project-config/jenkins/jobs/macros.yaml：</p>
+<pre class=" language-python"><code class="language-python">
+
+<span class="token operator">-</span> builder<span class="token punctuation">:</span>                                                             
+  name<span class="token punctuation">:</span> run<span class="token operator">-</span>tox                                                      
+  builders<span class="token punctuation">:</span>                                                          
+  <span class="token operator">-</span> shell<span class="token punctuation">:</span> <span class="token string">"/usr/local/jenkins/slave_scripts/run-tox.sh {envlist}"</span>
+</code></pre>
+<p>实际上最后执行的脚本就是：/usr/local/jenkins/slave_scripts/run-tox.sh zuul</p>
+<p>run-tox.sh的脚本位于：project-config/jenkins/scripts/run-tox.sh</p>
+<p>S5、run-tox.sh中脚本，最重要的就是：</p>
+<p>tox -vv -e$venv （其中venv=$1，也就是zuul）</p>
+<p>其中执行的脚本就是zuul -vv zuul，执行对应的测试</p>
+<p>具体的参见openstack的gerrit：</p>
+<p><a href="https://review.openstack.org/#/q/status:merged+project-config" target="_blank" rel="noopener">https://review.openstack.org/#/q/status:merged+project-config</a></p>
+<p>3、tox -vv zuul的具体执行任务：</p>
+<p>当clone下来project-config的工程后，里面有tox.ini文件（截取相关的部分）</p>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">[</span>testenv<span class="token punctuation">:</span>zuul<span class="token punctuation">]</span>           
+basepython <span class="token operator">=</span> python2<span class="token number">.7</span>      
+deps <span class="token operator">=</span>                      <span class="token comment" spellcheck="true"># 安装对应的依赖    </span>
+     jenkins<span class="token operator">-</span>job<span class="token operator">-</span>builder<span class="token operator">==</span><span class="token number">1.6</span><span class="token punctuation">.</span><span class="token number">1</span>    
+     zuul              
+whitelist_externals <span class="token operator">=</span>        <span class="token comment" spellcheck="true"># 白名单，列出的命令可在virtualenv中使用 </span>
+  bash     
+  find                                                                                 
+  jenkins<span class="token operator">-</span>jobs                                                                         
+  mkdir                                                                                 
+  rm                                                                                   
+commands <span class="token operator">=</span>              <span class="token comment" spellcheck="true"># 具体的执行命令的过程脚本          </span>
+  rm <span class="token operator">-</span>rf <span class="token punctuation">{</span>envdir<span class="token punctuation">}</span><span class="token operator">/</span>tmp     
+  mkdir <span class="token operator">-</span>p <span class="token punctuation">{</span>envdir<span class="token punctuation">}</span><span class="token operator">/</span>tmp<span class="token operator">/</span>jobs  
+  pip install <span class="token operator">-</span>U jenkins<span class="token operator">/</span>modules<span class="token operator">/</span>jjb_afs  
+  jenkins<span class="token operator">-</span>jobs <span class="token operator">-</span>l debug test <span class="token operator">-</span>o <span class="token punctuation">{</span>envdir<span class="token punctuation">}</span><span class="token operator">/</span>tmp<span class="token operator">/</span>jobs jenkins<span class="token operator">/</span>jobs  
+  bash <span class="token operator">-</span>c <span class="token string">'find {envdir}/tmp/jobs -printf "%f\n" > {envdir}/tmp/job-list.txt'</span> 
+  zuul<span class="token operator">-</span>server <span class="token operator">-</span>c tools<span class="token operator">/</span>zuul<span class="token punctuation">.</span>conf<span class="token operator">-</span>sample <span class="token operator">-</span>l zuul<span class="token operator">/</span>layout<span class="token punctuation">.</span>yaml <span class="token operator">-</span>t <span class="token punctuation">{</span>envdir<span class="token punctuation">}</span><span class="token operator">/</span>tmp<span class="token operator">/</span>job<span class="token operator">-</span>list<span class="token punctuation">.</span>txt   
+  <span class="token punctuation">{</span>toxinidir<span class="token punctuation">}</span><span class="token operator">/</span>tools<span class="token operator">/</span>layout<span class="token operator">-</span>checks<span class="token punctuation">.</span>py <span class="token punctuation">{</span>envdir<span class="token punctuation">}</span><span class="token operator">/</span>tmp<span class="token operator">/</span>job<span class="token operator">-</span>list<span class="token punctuation">.</span>txt                            
+</code></pre>
+<p>可以看到，这个tox.ini文件中有很多配置，这里只是截取了该任务对应的配置。、</p>
+<p>{envdir}：tox.ini文件目录</p>
+<p>4、查看tox的详细配置：</p>
+<p>tox的<a href="https://tox.readthedocs.io/en/latest/examples.html" target="_blank" rel="noopener">https://tox.readthedocs.io/en/latest/examples.html</a></p>
+<p>常见配置如下：</p>
+<p>（1）tox -i <a href="http://pypi.my-alternative-index.org：更换pypi依赖的下载地址" target="_blank" rel="noopener">http://pypi.my-alternative-index.org：更换pypi依赖的下载地址</a></p>
+<p>（或者在tox.ini中指定indexserver地址）</p>
+<p>（2）通常tox只能传递系统变量PATH，如果需要传递其他变量，需要赋值指定；</p>
+<p>（3）指定基础环境，有几种方式：</p>
+<p>使用tox -e ENV1[,ENV2…]</p>
+<p>（4）使用distshare变量实现多个tox工程的文件共享</p>
+<p>（5）使用basepython指定构建virtualenv的编译器</p>
+<p>（6）usedevelop：使用开发模式安装</p>
+<p>（7）skipsdist：不在virtualenv中安装本次软件，使用时需谨慎</p>
+<p>5、tox集成pytest、unitest、nose等：</p>
+<p>比如一个简单的例子如下，在工程的tox.ini中写入：</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token punctuation">[</span>tox<span class="token punctuation">]</span>
+envlist <span class="token operator">=</span> py26<span class="token punctuation">,</span>py31
+<span class="token punctuation">[</span>testenv<span class="token punctuation">]</span>
+deps<span class="token operator">=</span>pytest       <span class="token comment" spellcheck="true"># PYPI package providing pytestcommands=</span>
+  pytest \
+​        <span class="token punctuation">{</span>posargs<span class="token punctuation">}</span> <span class="token comment" spellcheck="true"># substitute with tox' positional arguments</span>
+</code></pre>
+<p>在tox.ini目录中执行tox命令的时候，会构建py26、py31两个环境，并且安装pytest，并执行对应的pytest测试</p>
+<p>6、使用tox类：</p>
+<p>可以在python脚本中使用tox的类调用对应的tox方法。</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">import</span> tox
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>os<span class="token punctuation">.</span>getenv<span class="token punctuation">(</span><span class="token string">'WORKSPACE'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+tox<span class="token punctuation">.</span>cmdline<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 执行对应的tox命令，可根据情况入参，具体参见tox类的函数</span>
+</code></pre>
+<p>7、构建一个开发的virtual环境：</p>
+<p>我们可以使用tox构建一个简单的virtualenv环境辅助我们进行开发</p>
+<p>详情参见：<a href="https://tox.readthedocs.io/en/latest/example/devenv.html" target="_blank" rel="noopener">https://tox.readthedocs.io/en/latest/example/devenv.html</a> </p>
+<p>然后用virtualenv + 路径切入进行测试开发</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/22/07-Git Flow使用方法/" class="styled-border">
+                    ←
+                    gitflow分支管理模型
+                    
+                </a>
+            
+            
+                <a href="/2019/04/22/08-Centos7虚拟机扩展磁盘/" class="styled-border">
+                    
+                    CentOs7磁盘扩展
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

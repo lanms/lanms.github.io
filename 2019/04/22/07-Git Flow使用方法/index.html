@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>gitflow分支管理模型 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="http://www.berlinix.com/it/gitflow.php   http://www.berlinix.com/it/gitflow.php   http://www.berlinix.com/it/git.php   http://www.berlinix.com/it/git.php gitflow分支管理模型  gitflow的分支类型：  master分支（1个） dev">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitflow分支管理模型">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/07-Git Flow使用方法/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="http://www.berlinix.com/it/gitflow.php   http://www.berlinix.com/it/gitflow.php   http://www.berlinix.com/it/git.php   http://www.berlinix.com/it/git.php gitflow分支管理模型  gitflow的分支类型：  master分支（1个） dev">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:47:33.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gitflow分支管理模型">
+<meta name="twitter:description" content="http://www.berlinix.com/it/gitflow.php   http://www.berlinix.com/it/gitflow.php   http://www.berlinix.com/it/git.php   http://www.berlinix.com/it/git.php gitflow分支管理模型  gitflow的分支类型：  master分支（1个） dev">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">gitflow分支管理模型</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/22 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Git/">Git</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p><a href="http://www.berlinix.com/it/gitflow.php" target="_blank" rel="noopener">http://www.berlinix.com/it/gitflow.php</a></p>
+<p>  <a href="http://www.berlinix.com/it/gitflow.php" target="_blank" rel="noopener">http://www.berlinix.com/it/gitflow.php</a></p>
+<p>  <a href="http://www.berlinix.com/it/git.php" target="_blank" rel="noopener">http://www.berlinix.com/it/git.php</a></p>
+<p>  <a href="http://www.berlinix.com/it/git.php" target="_blank" rel="noopener">http://www.berlinix.com/it/git.php</a></p>
+<h1 id="gitflow分支管理模型"><a href="#gitflow分支管理模型" class="headerlink" title="gitflow分支管理模型"></a>gitflow分支管理模型</h1><p>  gitflow的分支类型：</p>
+<ul>
+<li>master分支（1个）</li>
+<li>develop分支（1个）</li>
+<li>feature分支。同时存在多个。</li>
+<li>release分支。同一时间只有1个，生命周期很短，只是为了发布。</li>
+<li><p>hotfix分支。同一时间只有1个。生命周期较短，用了修复bug或小粒度修改发布。</p>
+<p>在这个模型中，master和develop都具有象征意义。master分支上的代码总是稳定的（stable build），随时可以发布出去。develop上的代码总是从feature上合并过来的，可以进行Nightly Builds，但不直接在develop上进行开发。当develop上的feature足够多以至于可以进行新版本的发布时，可以创建release分支。</p>
+<p>release分支基于develop，进行很简单的修改后就被合并到master，并打上tag，表示可以发布了。紧接着release将被合并到develop；此时develop可能往前跑了一段，出现合并冲突，需要手工解决冲突后再次合并。这步完成后就删除release分支。</p>
+<p>当从已发布版本中发现bug要修复时，就应用到hotfix分支了。hotfix基于master分支，完成bug修复或紧急修改后，要merge回master，打上一个新的tag，并merge回develop，删除hotfix分支。</p>
+<p>由此可见release和hotfix的生命周期都较短，master/develop虽然总是存在但却不常使用。</p>
+<p>以上就是gitflow的基本概念了。下面是nvie（gitflow的提出者，一个荷兰人！） <a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">A successful Git branching model</a>（发布于2010年月5日）一文的笔记。</p>
+</li>
+</ul>
+<p>  从右看起：</p>
+<ul>
+<li>时间轴。</li>
+<li>feature（玫红）。主要是自己玩了，差不多的时候要合并回develop去。从不与master交互。</li>
+<li>develop（黄色）。主要是和feature以及release交互。</li>
+<li>release（绿色）。总是基于develop，最后又合并回develop。当然对应的tag跑到master这边去了。</li>
+<li>hotfix（红色）。总是基于master，并最后合并到master和develop。</li>
+<li><p>master（蓝色）。没有什么东西，仅是一些关联的tag，因从不在master上开发。</p>
+<p>接下来nvie说道自己喜爱git，因git改变了人们对合并/分支（merge/branches）的看法。从集中式的代码管理工具过来的人感到释放了（beware of merge conflicts, they bite you，注意合并冲突，它们会跳出来咬你！）。</p>
+<h1 id="gitflow实例"><a href="#gitflow实例" class="headerlink" title="gitflow实例"></a>gitflow实例</h1><p>安装gitflow：</p>
+<pre><code>$ git clone --recursive git://github.com/nvie/gitflow.git
+$ cd gitflow/
+$ sudo make install
+$ ls /usr/local/bin/git-flow
+/usr/local/bin/git-flow
+</code></pre><p>到项目根目录下执行gitflow，因为之前修改没有commit，所以gitflow初始化失败：</p>
+<pre><code>$ git flow init
+fatal: Working tree contains unstaged changes. Aborting.
+</code></pre><p>commit后再次进行gitflow初始化：</p>
+<pre><code>$ git commit -a -m &quot;update Bash&quot;
+[master 8f5b874] update Bash
+4 files changed, 71 insertions(+), 5 deletions(-)
+
+[bailing@zhuji zhuji]$ git flow init
+
+Which branch should be used for bringing forth production releases?
+ - master
+Branch name for production releases: [master] 
+Branch name for &quot;next release&quot; development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? [] 
+</code></pre><p>一路回车下来，各个分支名都按默认的设置。最后，当前分支已经被切换到了develop：</p>
+<p><code>`</code><br>$ git branch</p>
+</li>
+</ul>
+<ul>
+<li><p>develop<br>master</p>
+<pre><code>
+建立一个新的feature。git flow新建了功能分支feature/blog_builder，并在develop的基础上checkout了新分支：
+
+</code></pre><p>$ git flow feature start blog_builder<br>$ git branch<br>develop</p>
+</li>
+<li><p>feature/blog_builder<br>master</p>
+<pre><code>
+开发完成后执行如下命令：
+
+</code></pre><p>$ git flow feature finish blog_builder<br>Summary of actions:</p>
+</li>
+</ul>
+<ul>
+<li>The feature branch ‘feature/blog_builder’ was merged into ‘develop’</li>
+<li>Feature branch ‘feature/blog_builder’ has been removed</li>
+<li><p>You are now on branch ‘develop’<br><code>`</code></p>
+<p>正如这条命令的总结所言，git flow为我们做了3件事：</p>
+</li>
+<li><p>把feature/blog_builder合并到了develop。</p>
+</li>
+<li>删除了feature/blog_builder分支。</li>
+<li><p>切换回develop分支。</p>
+<p>接下来发布一个正常的版本：</p>
+<pre><code>$ git flow release start v0.5
+</code></pre><p>一旦需要发布的版本确认无误可以发布后，执行命令：</p>
+<p><code>`</code><br>$ git flow release finish v0.5<br>summary of actions:</p>
+</li>
+<li>Latest objects have been fetched from ‘origin’</li>
+<li>Release branch has been merged into ‘master’</li>
+<li>The release was tagged ‘v0.5’</li>
+<li>Release branch has been back-merged into ‘develop’</li>
+<li><p>Release branch ‘release/v0.5’ has been deleted</p>
+<pre><code>
+注意release/v0.5被合并到了master和develop分支，并打了个v0.5的tag，然后被删除，最后切换回了develop分支：
+
+</code></pre><p>$ git branch</p>
+</li>
+</ul>
+<ul>
+<li><p>develop<br>master</p>
+<pre><code>
+发布时只需将tag为v0.5的版本checkout出来部署即可：
+
+</code></pre><p>$ git tag<br>v0.5</p>
+<pre><code>
+当上线后发现v0.5的bug，可以进行hotfix：
+
+</code></pre><p>$ git flow hotfix start v0.5.1</p>
+<pre><code>
+此时gitflow从master分支上拉出一个hotfix/v0.5.1的分支，接下来在新分支上修改bug。最后执行命令：
+
+</code></pre><p>$ git flow hotfix finish v0.5.1<br><code>`</code></p>
+<p>这样hotfix/v0.5.1被merge到master/develop分支，打好v0.5.1这个tag，删除这个分支，切换回develop分支。</p>
+<p>之后又是新一次的轮回，启动正常的feature开发。</p>
+</li>
+</ul>
+<p>  -—————————-</p>
+<p>  Git（the stupid content tracker）是一个源自<a href="http://www.berlinix.com/linux/Linux.php" target="_blank" rel="noopener">Linux</a>内核项目的源码管理工具。和传统的CVS、<a href="http://www.berlinix.com/it/SVN.php" target="_blank" rel="noopener">SVN</a>不同，git是一个分布式源码管理工具。</p>
+<table>
+<thead>
+<tr>
+<th>Git命令</th>
+<th>简单说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git init</td>
+<td>初始化一个本地的代码仓库。</td>
+</tr>
+<tr>
+<td>git clone</td>
+<td>从远程复制一个代码仓库。</td>
+</tr>
+<tr>
+<td>git config</td>
+<td>git选项设置。</td>
+</tr>
+<tr>
+<td>git add</td>
+<td>添加文件/目录。</td>
+</tr>
+<tr>
+<td>git commit</td>
+<td>提交修改。</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>显示工作目录的状态以及缓冲区内的快照。</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>已提交快照的日志。</td>
+</tr>
+<tr>
+<td>git branch</td>
+<td>创建分支。</td>
+</tr>
+<tr>
+<td>git checkout</td>
+<td>迁出/拉出/切换到一个分支。</td>
+</tr>
+<tr>
+<td>git merge</td>
+<td>合并分支。</td>
+</tr>
+<tr>
+<td>git revert</td>
+<td>撤销commit快照。</td>
+</tr>
+<tr>
+<td>git reset</td>
+<td>撤销本地工作目录的修改。</td>
+</tr>
+<tr>
+<td>git clean</td>
+<td>删除代码仓库以外的文件。</td>
+</tr>
+<tr>
+<td>git remote</td>
+<td>管理远程git。</td>
+</tr>
+<tr>
+<td>git fetch</td>
+<td>从远程获取分支。</td>
+</tr>
+<tr>
+<td>git pull</td>
+<td>从远程获取分支。</td>
+</tr>
+<tr>
+<td>git push</td>
+<td>把代码推到远程分支。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h3><p>  Git仓库中的文件有几种状态：</p>
+<ul>
+<li>untracked - 还没添加到仓库中。</li>
+<li>unmodified - 自上次提交以来，文件未曾修改过。</li>
+<li>modified - 文件修改了还没提交。</li>
+<li>staged - 文件提交到了暂存区中。一旦执行git commit就会转换为unmodified状态。</li>
+</ul>
+<p>  Git暂存区（Staged Area）的意思是：你把一个文件托付给Git跟踪（git add），然后又修改了它，此时这个文件就位于暂存区了。暂存区内的文件几乎只做一件事：等待你执行git commit，把它提交。</p>
+<h3 id="快照（snapshot）"><a href="#快照（snapshot）" class="headerlink" title="快照（snapshot）"></a>快照（snapshot）</h3><p>  Git与其他版本控制系统的区别在于：Git只关心文件是否变化，而不关心文件内容的变化。大多数版本控制系统都会忠实地记录版本间的文件差异（diff），但Git不关心这些具体差异（哪一行有什么变动），Git只关心哪些文件修改了哪些没有修改，修改了的文件直接复制形成新的blob（这就是所谓的快照snapshot）。当你需要切换到或拉出一个分支时，Git就直接加载当时的文件快照即可，这就是Git快的原因。说起来，这也是用空间换取时间的经典案例。</p>
+<p>  从这个角度看，Git更像是一个小型文件系统，并在这个系统上提供一系列的工具来辅助开发。</p>
+<h3 id="Git的地理观"><a href="#Git的地理观" class="headerlink" title="Git的地理观"></a>Git的地理观</h3><p>  Git是一个分布式的版本控制系统，因此没有所谓的中心。粗略来看Git可分为本地库（local repository）和远程库（remote repository），细致地看可分为以下几个部分：</p>
+<ul>
+<li>Working Directory - 工作目录。Git仓库位于工作目录之下，工作目录下的文件有加入Git仓库（tracked）和没加入Git仓库（untracked）的区别。</li>
+<li>Stage Area - 暂存区。如上所述，已加入Git仓库并被修改（尚未提交）的文件。</li>
+<li>Local Repository - 本地仓库。</li>
+<li><p>Remote Repository - 远程仓库。</p>
+<p>文件通常是：加入Git仓库（git add）-&gt; 修改后即位于暂存区 -&gt; 提交到本地库（git commit） -&gt; 推送到远程库（git push）。</p>
+<h3 id="origin-master"><a href="#origin-master" class="headerlink" title="origin/master"></a>origin/master</h3><p>这里主要笔记一些在Git上下文中经常遇见的术语。origin/master指远程仓库origin的master分支。</p>
+<pre><code>远程仓库/分支
+</code></pre><p>这样的形式。虽然Git是分布式的系统，但通常把git clone的源头叫做origin，origin也被视为中心仓库（Central Repository）。</p>
+<h1 id="git入门"><a href="#git入门" class="headerlink" title="git入门"></a>git入门</h1><p>创建目录，并用<code>git init</code>初始化：</p>
+<pre><code>$ mkdir learn-git &amp;&amp; cd learn-git
+$ git init
+Initialized empty Git repository in /tmp/learn-git/.git/
+</code></pre><p>从<code>git init</code>输出可知，<code>git</code>创建了一个名为<code>.git</code>的隐藏目录。</p>
+<p>创建一个文件，并用<code>git add</code>添加到仓库，用<code>git commit</code>提交：</p>
+<pre><code>$ echo &quot;hello git&quot; &gt; README.txt
+$ git add .
+$ git commit -m &quot;readme file&quot;
+[master (root-commit) cd27ac1] readme file
+1 file changed, 1 insertion(+)
+create mode 100644 README.txt
+</code></pre><p>接下来对已提交文件做一些修改，并新添加一个文件：</p>
+<pre><code>$ echo &quot;learn files here&quot; &gt;&gt; README.txt
+$ cp ~/.vimrc .
+</code></pre><p>用<code>git diff</code>查看<a href="http://www.berlinix.com/it/diff.php" target="_blank" rel="noopener">文件差异</a>（每次commit前应该先diff对比差异详情）：</p>
+<pre><code>$ git diff
+diff --git a/README.txt b/README.txt
+index 8d0e412..0219596 100644
+--- a/README.txt
++++ b/README.txt
+@@ -1 +1,2 @@
+hello git
++learn files here
+</code></pre><p>差异对比可以用<code>git diff --cached</code>保存下来（如此差异则不输出到屏幕）。</p>
+<p>用<code>git status</code>查看git仓库状态：</p>
+<pre><code>$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+#
+#       modified:   README.txt
+#
+# Untracked files:
+#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+#
+#       .vimrc
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre><p>这里显示<code>README.txt</code>被修改了，而<code>.vimrc</code>则等待添加。接下来，我们将<code>.vimrc</code>添加到git仓库中，且将所有修改一并提交（<code>git commit -a</code>）：</p>
+<pre><code>$ git commit -a -m &quot;update readme &amp;&amp; add vimrc&quot;
+[master f6162f0] update readme &amp;&amp; add vimrc
+2 files changed, 123 insertions(+)
+create mode 100755 .vimrc
+</code></pre><p><code>git log</code>输出git日志，包括提交编号（如”f6162f04170e3665bc03744e43f764c903e4e38d”这样的字串）、提交者、提交日期和提交日志。</p>
+<p><code>git log</code>的其他输出：</p>
+<pre><code>$ git log -p                    # 详细日志，并输出到分页程序
+$ git log --stat --summary
+</code></pre><p>美化git log输出</p>
+<pre><code>$ git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit --
+</code></pre><p>修改全局配置：</p>
+<pre><code>$ git config --global alias.lg &quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit --&quot;
+$ git lg
+</code></pre><h2 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h2><p>创建一个分支：</p>
+<pre><code>$ git branch exp
+</code></pre><p>查看当前git仓库的所有分支：</p>
+<p><code>`</code><br>$ git branch<br>exp</p>
+</li>
+</ul>
+<ul>
+<li><p>master</p>
+<pre><code>
+切换到`exp`分支：
+
+</code></pre><p>$ git checkout exp<br>Switched to branch ‘exp’</p>
+<pre><code>
+修改文件，并提交：
+
+</code></pre><p>$ echo “start branch: exp” &gt;&gt; README.txt<br>$ git commit -a -m “modified readme in exp branch”<br>[exp 2e825a4] modified readme in exp branch<br>1 file changed, 1 insertion(+)</p>
+<pre><code>
+切换回`master`分支：
+
+</code></pre><p>$ git checkout master<br>Switched to branch ‘master’</p>
+<pre><code>
+在`master`分支检查文件，可见`exp`分支的修改并没影响到`master`分支（注意，在exp分支的修改都已提交；如果没有提交，则切换回master分支会看到文件已变）。接下来我们制造一个冲突：
+
+</code></pre><p>$ echo “return branch: master” &gt;&gt; README.txt<br>$ git commit -a -m “modified readme in master branch”<br>[master 8dd9fb2] modified readme in master branch<br>1 file changed, 1 insertion(+)</p>
+<pre><code>
+用`git merge exp`合并分支：
+
+</code></pre><p>$ git merge exp<br>Auto-merging README.txt<br>CONFLICT (content): Merge conflict in README.txt<br>Automatic merge failed; fix conflicts and then commit the result.</p>
+<pre><code>
+从git输出可见，git尝试自动合并但失败了，因此提示需要解决冲突再提交
+
+用`git diff`查看差异，且差异文件被修改：
+
+</code></pre><p>$ git diff<br>…<br>$ cat README.txt<br>hello git<br>learn files here<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id="return-branch-master"><a href="#return-branch-master" class="headerlink" title="return branch: master"></a>return branch: master</h1><p>start branch: exp</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>exp<br><code>`</code></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>手工解决冲突并再次提交：</p>
+<pre><code>(edit file)
+$ git commit -a -m &quot;do merge&quot;
+</code></pre><p>接下来，可以删除<code>exp</code>分支：</p>
+<pre><code>$ git branch -d exp
+Deleted branch exp (was 2e825a4).
+</code></pre><p><code>git branch -d</code>删除分支时会检查分支是否完全合并到主干，如果不是，则会删除失败，并提示需要合并：</p>
+<pre><code>$ git branch exp                        # 建立exp分支
+$ git checkout exp                      # 切换到exp分支
+$ echo &quot;exp again&quot; &gt;&gt; README.txt        # 修改并提交
+$ git commit -a -m &quot;exp again&quot;
+[exp 868e68c] exp again
+1 file changed, 1 insertion(+)
+$ git checkout master                   # 切换回master
+Switched to branch &#39;master&#39;
+$ git branch -d exp                     # 删除失败
+error: The branch &#39;exp&#39; is not fully merged.
+If you are sure you want to delete it, run &#39;git branch -D exp&#39;.
+</code></pre><p>可以用<code>git branch -D exp</code>忽略修改，完全删除分支：</p>
+<pre><code>$ git branch -D exp
+Deleted branch exp (was 868e68c).
+</code></pre><h1 id="查看远端git"><a href="#查看远端git" class="headerlink" title="查看远端git"></a>查看远端git</h1><p>基础命令是：git remote show, git remote show X。</p>
+<pre><code>$ git remote show
+origin
+web
+</code></pre><p>查看GitHub默认设置的origin</p>
+<p><code>`</code><br>$ git remote show origin</p>
+</li>
+<li><p>remote origin<br>Fetch URL: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:berlinix/blog.git<br>Push  URL: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:berlinix/blog.git<br>HEAD branch: master<br>Remote branch:<br>  master tracked<br>Local branch configured for ‘git pull’:<br>  master merges with remote master<br>Local ref configured for ‘git push’:<br>  master pushes to master (fast-forwardable)<br><code>`</code></p>
+<h1 id="git命令快查"><a href="#git命令快查" class="headerlink" title="git命令快查"></a>git命令快查</h1><p>以下列出一些常用的git命令</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.berlinix.com/it/git.php#basic" target="_blank" rel="noopener">基础操作</a></td>
+<td></td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化git仓库</td>
+</tr>
+<tr>
+<td>git add X</td>
+<td>添加X文件/路径到git仓库</td>
+</tr>
+<tr>
+<td>git commit -m “COMMENTS”</td>
+<td>提交更新</td>
+</tr>
+<tr>
+<td><a href="http://www.berlinix.com/it/git.php#branch" target="_blank" rel="noopener">分支管理</a></td>
+<td></td>
+</tr>
+<tr>
+<td>git branch X</td>
+<td>创建一个名为X的分支</td>
+</tr>
+<tr>
+<td>git checkout X</td>
+<td>切换到X分支</td>
+</tr>
+<tr>
+<td>git merge X</td>
+<td>自动合并X分支</td>
+</tr>
+<tr>
+<td>git branch -d X</td>
+<td>删除X分支，需要先merge</td>
+</tr>
+<tr>
+<td>git branch -D X</td>
+<td>强制删除X分支，忽略其修改，无须先merge</td>
+</tr>
+<tr>
+<td><a href="http://www.berlinix.com/it/git.php#remote" target="_blank" rel="noopener">与远程git交互</a></td>
+<td></td>
+</tr>
+<tr>
+<td>git remote show</td>
+<td>显示远程git仓库</td>
+</tr>
+<tr>
+<td>git remote show X</td>
+<td>显示远程git一个名为X的仓库</td>
+</tr>
+<tr>
+<td>git push origin master</td>
+<td>更新提交到GitHub</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Git日常问题"><a href="#Git日常问题" class="headerlink" title="Git日常问题"></a>Git日常问题</h1><h2 id="撤销commit"><a href="#撤销commit" class="headerlink" title="撤销commit"></a>撤销commit</h2><p>  刚与master合并并提交后就后悔了现在要做的是撤销commit（revoke/undo merge/commit）。</p>
+<p>  查看当前所在分支：</p>
+<pre><code>  $ git branch
+    bs3
+  * coin
+    dev
+    master
+</code></pre><p>  查看日志：</p>
+<pre><code>  $ git log --oneline
+  9b7ba39 merged with master
+  73a66e8 update FAQ
+</code></pre><p>  用以下2个命令来撤销提交（把COMMIT_SHA替换为实际的SHA值；把HEAD~N中的N替换为一个数字，表示回退几步）：</p>
+<pre><code>  $ git reset --hard COMMIT_SHA
+  $ git reset --hard HEAD~N
+</code></pre><p>  例如回退到合并前：</p>
+<pre><code>  $ git reset --hard 73a66e8
+  HEAD is now at 73a66e8 update FAQ
+</code></pre><p>  回退后发现不对，因为现在这个commit还是在master中的（在merge之前master已经走的太远），赶紧再次reset到merge时的状态：</p>
+<pre><code>  $ git reset --hard 9b7ba39
+  HEAD is now at 9b7ba39 merged with master
+</code></pre><p>  如此一来就是就是merge后commit之前的状态。接下来就是要完成undo merge（已经undo commit了）：</p>
+<pre><code>  $ git revert -m 1 9b7ba39
+</code></pre><p>  这下就彻底回到merge前了，以防万一再次检查：</p>
+<pre><code>  $ git diff --name-status master..coin
+</code></pre><p>  看起来没什么问题了，检查下日志：</p>
+<pre><code>  $ git log --oneline
+  2691516 Revert &quot;merged with master&quot;
+  9b7ba39 merged with master
+  73a66e8 update FAQ
+</code></pre><h2 id="用git找回已删除文件"><a href="#用git找回已删除文件" class="headerlink" title="用git找回已删除文件"></a>用git找回已删除文件</h2><p>  首先找到与目标文件相关的最后一次commit。如果目标文件没有出现在HEAD commit中，那么在这次commit时，文件就被删除了：</p>
+<pre><code>  $ git rev-list -n 1 HEAD -- htdocs/myfile.php
+  1e8182f58dc038c8e6bc2025e8430f463d372030
+</code></pre><p>  接下来就是恢复工作了：</p>
+<pre><code>  $ git checkout 1e8182f58dc038c8e6bc2025e8430f463d372030^ -- htdocs/myfile.php
+</code></pre><h2 id="合并分支的部分文件"><a href="#合并分支的部分文件" class="headerlink" title="合并分支的部分文件"></a>合并分支的部分文件</h2><p>  有时候只想合并分支里的部分文件，而不是整个分支，可以用这个命令：</p>
+<pre><code>  git checkout BRANCH FILE ...
+</code></pre><p>  例如，从test_branch分支中合并file_modified文件：</p>
+<pre><code>  $ git checkout test_branch file_modified
+</code></pre><p>  参考<a href="http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" target="_blank" rel="noopener">Git Tip: How to “Merge” Specific Files from Another Branch</a>。</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/22/07-Linux命令cat-find/" class="styled-border">
+                    ←
+                    Linux常用命令
+                    
+                </a>
+            
+            
+                <a href="/2019/04/22/08-tox使用/" class="styled-border">
+                    
+                    Tox代码检视集成测试
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

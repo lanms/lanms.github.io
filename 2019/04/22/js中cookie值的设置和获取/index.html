@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>JS中Cookie取值和设置 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JS cookie的取值和设置值第一步：引入js &amp;lt;script src=&amp;quot;/XX/js/login/jquery-1.5.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  &amp;lt;script src=&amp;quot;/XX/js/login/jquery.cookie.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 第二步：存放值 $.cookie(&amp;#">
+<meta name="keywords" content="Javascripts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS中Cookie取值和设置">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/js中cookie值的设置和获取/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="JS cookie的取值和设置值第一步：引入js &amp;lt;script src=&amp;quot;/XX/js/login/jquery-1.5.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  &amp;lt;script src=&amp;quot;/XX/js/login/jquery.cookie.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 第二步：存放值 $.cookie(&amp;#">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:42:43.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS中Cookie取值和设置">
+<meta name="twitter:description" content="JS cookie的取值和设置值第一步：引入js &amp;lt;script src=&amp;quot;/XX/js/login/jquery-1.5.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  &amp;lt;script src=&amp;quot;/XX/js/login/jquery.cookie.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 第二步：存放值 $.cookie(&amp;#">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">JS中Cookie取值和设置</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/22 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Javascripts/">Javascripts</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h2 id="JS-cookie的取值和设置值"><a href="#JS-cookie的取值和设置值" class="headerlink" title="JS cookie的取值和设置值"></a>JS cookie的取值和设置值</h2><p>第一步：引入js</p>
+<pre><code>&lt;script src=&quot;/XX/js/login/jquery-1.5.1.min.js&quot;&gt;&lt;/script&gt;
+ &lt;script src=&quot;/XX/js/login/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>第二步：存放值</p>
+<p><code>$.cookie(&#39;the_cookie&#39;, &#39;the_value&#39;, { expires: 7, path: &#39;/&#39; });</code><br>一步写到位，不要轻易把path去掉。不然只能在当前js使用，我吃过亏的</p>
+<p>举个实例吧：<br>需求：城市定位，需要下次进入页面时记住上次自动定位的城市名字或者手动选择的城市名字</p>
+<p>百度地图API功能</p>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token keyword">var</span> geolocation <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BMap<span class="token punctuation">.</span>Geolocation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+geolocation<span class="token punctuation">.</span><span class="token function">getCurrentPosition</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> BMAP_STATUS_SUCCESS<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">var</span> 城市名<span class="token operator">=</span> r<span class="token punctuation">.</span>address<span class="token punctuation">.</span>city；（拿到的城市名字）
+        <span class="token comment" spellcheck="true">//往cookie里面放城市名称</span>
+        $<span class="token punctuation">.</span><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'locateCity'</span><span class="token punctuation">,</span> 城市名<span class="token punctuation">,</span> <span class="token punctuation">{</span> expires<span class="token punctuation">:</span> <span class="token number">7</span> <span class="token punctuation">,</span>path<span class="token punctuation">:</span><span class="token string">'/'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//alert('failed'+this.getStatus());</span>
+            mui<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"城市定位失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>        
+    <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>enableHighAccuracy<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>第三步：取值</p>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token keyword">var</span> locateCity <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'locateCity'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/22/常用命令/" class="styled-border">
+                    ←
+                    Git常用命令
+                    
+                </a>
+            
+            
+                <a href="/2019/04/22/07-Linux命令cat-find/" class="styled-border">
+                    
+                    Linux常用命令
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

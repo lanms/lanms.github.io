@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>vim文本编辑器 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="vim 文本编辑器 基本操作笔记 1.启动和退出  vim + 文件名 打开或创建文件 :wq 末行模式 w 保存   q 退出      q! 强行退出   wq 保存退出    2.命令模式和编辑模式  i / a进入编辑模式 Esc退出编辑模式 进入命令模式 : 末行模式 set nu 出现行号syntax on 开启语法高亮  (当时有效) vim .vimrc文件修改设置 (永久有效)">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim文本编辑器">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/03-vim文本编辑器/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="vim 文本编辑器 基本操作笔记 1.启动和退出  vim + 文件名 打开或创建文件 :wq 末行模式 w 保存   q 退出      q! 强行退出   wq 保存退出    2.命令模式和编辑模式  i / a进入编辑模式 Esc退出编辑模式 进入命令模式 : 末行模式 set nu 出现行号syntax on 开启语法高亮  (当时有效) vim .vimrc文件修改设置 (永久有效)">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:50:38.151Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim文本编辑器">
+<meta name="twitter:description" content="vim 文本编辑器 基本操作笔记 1.启动和退出  vim + 文件名 打开或创建文件 :wq 末行模式 w 保存   q 退出      q! 强行退出   wq 保存退出    2.命令模式和编辑模式  i / a进入编辑模式 Esc退出编辑模式 进入命令模式 : 末行模式 set nu 出现行号syntax on 开启语法高亮  (当时有效) vim .vimrc文件修改设置 (永久有效)">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">vim文本编辑器</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/20 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Linux/">Linux</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p> <strong>vim 文本编辑器</strong> 基本操作笔记</p>
+<p><strong>1.启动和退出</strong></p>
+<ul>
+<li><code>vim + 文件名</code> 打开或创建文件</li>
+<li><code>:wq</code> 末行模式<ul>
+<li>w 保存   q 退出      q! 强行退出   <code>wq</code> 保存退出</li>
+</ul>
+</li>
+</ul>
+<p><strong>2.命令模式和编辑模式</strong></p>
+<ul>
+<li><code>i / a</code>进入编辑模式</li>
+<li><code>Esc</code>退出编辑模式 进入命令模式</li>
+<li><code>:</code> 末行模式 <code>set nu</code> 出现行号<code>syntax on</code> 开启语法高亮  (当时有效)<ul>
+<li><code>vim .vimrc</code>文件修改设置 (永久有效)<ul>
+<li><code>set nu  syntax off  ts=4</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>3.定标操作</strong></p>
+<ul>
+<li><code>G</code> 去末尾</li>
+<li><code>gg</code>回到开始   行号 + <code>gg</code> 光标移到某行</li>
+</ul>
+<p><strong>4.文本操作</strong></p>
+<ul>
+<li>复制代码  <code>yy + 数字 多少行</code></li>
+<li>粘贴  <code>p</code></li>
+<li><code>dd</code> 删除 + 数字  删除行<ul>
+<li><code>d$</code> 删除光标处到行位</li>
+<li>删除单词    光标在第一个单词  <code>dw</code></li>
+</ul>
+</li>
+<li><code>Ctrl</code><ul>
+<li><code>e</code>后一行  <code>y</code>前一行</li>
+<li><code>f</code>前一页 <code>b</code>后一页</li>
+</ul>
+</li>
+</ul>
+<p><strong>5.查找和替换</strong></p>
+<ul>
+<li><code>/</code>搜索的内容 <code>回车</code> <code>n</code>下一处  <code>N</code> 上一处</li>
+<li>正则查找<ul>
+<li>可以加正则表达式   /\w+ 需要转义  量词要加反斜杠</li>
+</ul>
+</li>
+<li>替换<ul>
+<li>末行模式 <code>:1,10s/</code>替换前的元素/替换后的元素/替换模式   () <ul>
+<li>s 替换  <code>:1, 10s</code> 第1行到第10行替换  , <code>1, $s</code>第一行到最后一行</li>
+<li>替换模式<code>g</code> global 全局替换 <code>i</code> ignore 忽略大小写</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>高级技巧</strong></p>
+<ul>
+<li>映射快捷键</li>
+<li>进入 末行模式    编辑快捷键</li>
+<li><code>inoremap pymain if __name__ == &#39;__main__&#39;:</code></li>
+<li><code>i</code>编辑模式用的快捷键  <code>nore</code>不要递归 <code>map</code>映射</li>
+<li>录制宏  参考菜鸟教程 </li>
+</ul>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/20/01-Linux操作,阿里云主机/" class="styled-border">
+                    ←
+                    Linux命令和操作方法
+                    
+                </a>
+            
+            
+                <a href="/2019/04/20/15-python内置函数库/" class="styled-border">
+                    
+                    python基础-内置函数
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

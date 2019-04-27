@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>git分支-合并-暂时储藏分支 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="git分支 合并 暂时储藏分支  标签  链接多个仓库    1.git push -u origin master 由于远程仓库是空的,第一次推送master分支时, 加上 -u , git 不但会把本地的master分支内容推送到远程的新的master分支,还会把本地的master分支和远程的master分支关联起来, 在以后推送或者拉取时就可以简化命令  git checkout -b zh">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git分支-合并-暂时储藏分支">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/02-Git进阶/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="git分支 合并 暂时储藏分支  标签  链接多个仓库    1.git push -u origin master 由于远程仓库是空的,第一次推送master分支时, 加上 -u , git 不但会把本地的master分支内容推送到远程的新的master分支,还会把本地的master分支和远程的master分支关联起来, 在以后推送或者拉取时就可以简化命令  git checkout -b zh">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:52:52.512Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git分支-合并-暂时储藏分支">
+<meta name="twitter:description" content="git分支 合并 暂时储藏分支  标签  链接多个仓库    1.git push -u origin master 由于远程仓库是空的,第一次推送master分支时, 加上 -u , git 不但会把本地的master分支内容推送到远程的新的master分支,还会把本地的master分支和远程的master分支关联起来, 在以后推送或者拉取时就可以简化命令  git checkout -b zh">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">git分支-合并-暂时储藏分支</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/22 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Git/">Git</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h4 style="color: #228B22;">git分支 合并 暂时储藏分支  标签  链接多个仓库</h4>
+
+
+
+<h4 id="1-git-push-u-origin-master"><a href="#1-git-push-u-origin-master" class="headerlink" title="1.git push -u origin master"></a>1.git push -u origin master</h4><ul>
+<li>由于远程仓库是空的,第一次推送master分支时, 加上 -u , git 不但会把本地的master分支内容推送到远程的新的master分支,还会把本地的master分支和远程的master分支关联起来, 在以后推送或者拉取时就可以简化命令</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">git checkout -b zhang   # 创建分支并切换到分支
+    git branch zhang
+    git checkout zhang
+git branch -d zhang   # 删除分支 zhang
+git merge zhang # 合并分支
+</code></pre>
+<h4 id="2-分支合并冲突"><a href="#2-分支合并冲突" class="headerlink" title="2.分支合并冲突"></a>2.分支合并冲突</h4><pre class=" language-shell"><code class="language-shell">git log --graph  #查看分支合并图
+</code></pre>
+<h4 id="3-撤销缓存区的内容"><a href="#3-撤销缓存区的内容" class="headerlink" title="3.撤销缓存区的内容"></a>3.撤销缓存区的内容</h4><p><code>git rm --cached &lt;file&gt;</code></p>
+<h4 id="4-暂存分支任务"><a href="#4-暂存分支任务" class="headerlink" title="4.暂存分支任务"></a>4.暂存分支任务</h4><pre class=" language-shell"><code class="language-shell">git branch # 当前在zhang分支工作
+git stash   # 将当前分支暂时'储藏起来', 等完成别的分支任务之后对其进行恢复
+git checkout master  # 切换到master分支
+git checkout -b bug-101  # 创建新的修复bug的分支
+完成修复任务后
+git add .
+git commit -m "bug修复"
+git checkout master
+git merge --no-ff -m "bug修复" bug-101
+git checkout zhang
+git status   # 查看工作区状态还是干净的
+git stash list #查看暂时储藏起来的分支
+git apply stash@{0}  #恢复前面储藏的内容
+git stash drop
+也可以使用一个命令
+    git stash pop # 恢复的同时也删除了原先储藏的内容
+</code></pre>
+<h4 id="5-强行删除分支"><a href="#5-强行删除分支" class="headerlink" title="5.强行删除分支"></a>5.强行删除分支</h4><p><code>git branch -D &lt;name&gt;</code> 强行删除分支</p>
+<h4 id="6-推送分支"><a href="#6-推送分支" class="headerlink" title="6.推送分支"></a>6.推送分支</h4><pre class=" language-shell"><code class="language-shell">git push origin <name>  # 推送本地分支
+</code></pre>
+<h4 id="7-标签"><a href="#7-标签" class="headerlink" title="7.标签"></a>7.标签</h4><pre class=" language-shell"><code class="language-shell">切换到分支,然后打标签
+git checkout zhang
+git tag v1.0
+git tag  #查看标签
+</code></pre>
+<ul>
+<li>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为HEAD，也可以指定一个<code>commit id</code>；</li>
+<li>创建带有说明的标签，用<code>-a</code>指定标签名，<code>-m</code>指定说明文字</li>
+<li><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</li>
+<li><code>git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以用PGP签名标签；</li>
+<li>命令<code>git tag</code>可以查看所有标签。</li>
+<li>命令<code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签；</li>
+<li>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</li>
+<li>命令<code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</li>
+<li>命令<code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+$ git tag -d v0.9
+Deleted tag 'v0.9' (was 6224937)
+然后，从远程删除。删除命令也是push，但是格式如下：
+$ git push origin :refs/tags/v0.9
+To git@github.com:michaelliao/learngit.git
+ - [deleted]         v0.9
+</code></pre>
+<h4 id="8-查看远程库的信息"><a href="#8-查看远程库的信息" class="headerlink" title="8.查看远程库的信息."></a>8.查看远程库的信息.</h4><pre class=" language-shell"><code class="language-shell">git remote -v # 显示详细信息
+</code></pre>
+<ul>
+<li>删除本地已经连接的远程库的 链接<ul>
+<li><code>git remote rm origin</code></li>
+</ul>
+</li>
+<li>然后再次关联另外一个远程库<ul>
+<li><code>git remote add origin &lt;链接&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="9-关联多个远程库"><a href="#9-关联多个远程库" class="headerlink" title="9.关联多个远程库"></a>9.关联多个远程库</h4><ul>
+<li>我们先删除已关联的名为<code>origin</code>的远程库：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">git remote rm origin
+</code></pre>
+<ul>
+<li>然后，先关联GitHub的远程库：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">git remote add github git@github.com:michaelliao/learngit.git
+</code></pre>
+<ul>
+<li>注意，远程库的名称叫<code>github</code>，不叫<code>origin</code>了。</li>
+<li>接着，再关联码云的远程库：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">git remote add gitee git@gitee.com:liaoxuefeng/learngit.git
+</code></pre>
+<ul>
+<li>同样注意，远程库的名称叫<code>gitee</code>，不叫<code>origin</code>。</li>
+<li>现在，我们用<code>git remote -v</code>查看远程库信息，可以看到两个远程库：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">git remote -v
+gitee    git@gitee.com:liaoxuefeng/learngit.git (fetch)
+gitee    git@gitee.com:liaoxuefeng/learngit.git (push)
+github    git@github.com:michaelliao/learngit.git (fetch)
+github    git@github.com:michaelliao/learngit.git (push)
+</code></pre>
+<ul>
+<li>如果要推送到GitHub，使用命令：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">git push github master
+</code></pre>
+<ul>
+<li>如果要推送到码云，使用命令：</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">git push gitee master
+</code></pre>
+<p>这样一来，我们的本地库就可以同时与多个远程库互相同步</p>
+<h4 id="使用Git忽略某些特殊的文件"><a href="#使用Git忽略某些特殊的文件" class="headerlink" title="使用Git忽略某些特殊的文件"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758404317281e54b6f5375640abbb11e67be4cd49e0000" target="_blank" rel="noopener">使用Git忽略某些特殊的文件</a></h4><h4 id="给Git指令设置别名"><a href="#给Git指令设置别名" class="headerlink" title="给Git指令设置别名"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375234012342f90be1fc4d81446c967bbdc19e7c03d3000" target="_blank" rel="noopener">给Git指令设置别名</a></h4><ul>
+<li>设置简短 的别名<ul>
+<li><code>git config --global alias.st status</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="搭建Git服务器"><a href="#搭建Git服务器" class="headerlink" title="搭建Git服务器"></a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="noopener">搭建Git服务器</a></h4><p>本文主要是通过廖雪峰的博客学习记的笔记,学习更多上请<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰Git教程</a>的博客, 也感谢博主的文章让我受益匪浅!!</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/22/06-gitignore设置/" class="styled-border">
+                    ←
+                    gitignore文件设置
+                    
+                </a>
+            
+            
+                <a href="/2019/04/22/06-Linux操作命令/" class="styled-border">
+                    
+                    Linux常用命令-1
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

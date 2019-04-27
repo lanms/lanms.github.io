@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Git基础 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="windows git操作 主要流程  windows本地操作 git init   (第一次要设置user.name, user.email) git add .    git status git commit -m &quot;修改说明&quot; git remote add origin  git push origin master   同步到远端 git pull 从远端下载版本到本地  远端克隆到本地">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git基础">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/01-Git基本用法和工作流程/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="windows git操作 主要流程  windows本地操作 git init   (第一次要设置user.name, user.email) git add .    git status git commit -m &quot;修改说明&quot; git remote add origin  git push origin master   同步到远端 git pull 从远端下载版本到本地  远端克隆到本地">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:54:12.732Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git基础">
+<meta name="twitter:description" content="windows git操作 主要流程  windows本地操作 git init   (第一次要设置user.name, user.email) git add .    git status git commit -m &quot;修改说明&quot; git remote add origin  git push origin master   同步到远端 git pull 从远端下载版本到本地  远端克隆到本地">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Git基础</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/23 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Git/">Git</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="windows-git操作"><a href="#windows-git操作" class="headerlink" title="windows git操作"></a>windows <code>git</code>操作</h3><ul>
+<li><h3 id="主要流程"><a href="#主要流程" class="headerlink" title="主要流程"></a>主要流程</h3></li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">windows本地操作
+git init   (第一次要设置user.name, user.email)
+git add .   
+git status
+git commit -m "修改说明"
+git remote add origin <远端仓库url>
+git push origin master   同步到远端
+git pull 从远端下载版本到本地
+
+远端克隆到本地
+git clone <远端仓库的url>
+cd 仓库名  进入克隆下的仓库
+git branch <分支名>  创建自己的分支修改文件
+git branch -d <分支名>  删除分支
+git checkout <分支名>   切换分支
+修改本地文件 
+git add .
+git status  (查看一下状态)
+git commit -m "修改描述"
+git remote add origin <远端的url>
+git push origin master   <上传>   
+    一般是以分支提交的,以master提交会覆盖主分支
+git pull   <下载远端同步>
+
+合并分支,   合并前先切换到 master 里
+git merge <分支名>   默认的会将分支合并道 master里
+
+日志
+git log --online 
+    用 --graph 选项，查看历史中什么时候出现了分支、合并
+</code></pre>
+<ul>
+<li><code>git init</code>将文件夹变文本地仓库</li>
+<li><code>notepad test.txt</code>创建文件</li>
+<li><code>git add + filename/git add .</code>将当前文件目录的所有文件添加版本控制</li>
+<li>初次要设置用户名和邮箱<ul>
+<li><code>git config --global user.name &#39;zhang&#39;</code></li>
+<li><code>git config --global user.email &#39;zhang.email&#39;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h4><ul>
+<li>初始化<code>git</code><ul>
+<li><code>git init</code>将文件夹变为本地仓库</li>
+</ul>
+</li>
+<li><code>git add + filename/git add .</code>将当前文件目录的所有文件添加版本控制</li>
+<li><code>git commit -m &quot;修改的内容,提交的原因&quot;</code> 提交本地的修改后的版本</li>
+<li><code>git status</code> 查看暂存区状态, 有没有修改文件 -commit 提交</li>
+<li><code>git log</code> 查看日志</li>
+</ul>
+<h4 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h4><ul>
+<li><code>git reset --hard  版本号的前六位</code> 回到版本</li>
+<li><code>git reflog</code> 查看历史日志</li>
+<li><code>log --pretty=oneline</code>  单行查看日志</li>
+</ul>
+<h4 id="撤回暂存区内容-撤回错误的操作"><a href="#撤回暂存区内容-撤回错误的操作" class="headerlink" title="撤回暂存区内容,  撤回错误的操作"></a>撤回暂存区内容,  撤回错误的操作</h4><ul>
+<li><code>git checkout--文件名</code>(不加表示撤掉所有)<ul>
+<li>修改之后重新提交</li>
+</ul>
+</li>
+<li><code>Gitlab</code> 可以自己搭建服务器</li>
+</ul>
+<h3 id="添加到远端仓库-具体操作"><a href="#添加到远端仓库-具体操作" class="headerlink" title="添加到远端仓库, 具体操作"></a>添加到远端仓库, 具体操作</h3><ul>
+<li><strong>本地建仓库提交到远端</strong><ul>
+<li><code>makdir hello</code></li>
+<li><code>cd hello</code></li>
+<li><code>git init</code></li>
+<li><code>git add .</code></li>
+<li><code>git status</code></li>
+<li><code>git commit -m  &quot;&quot;说明&quot;</code></li>
+<li><code>git log</code></li>
+</ul>
+</li>
+<li>链接远程仓库<ul>
+<li><code>git remote add origin url</code></li>
+</ul>
+</li>
+<li>提交<ul>
+<li><code>git push -u origin master</code> <strong>第一次</strong>使用加  <code>-u</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a>从远程仓库克隆</h3><ul>
+<li><code>git clone  url</code>在桌面克隆一个远程仓库</li>
+<li><code>add .</code></li>
+<li><code>commit -m</code></li>
+<li><code>git push origin master</code>(origin 项目的别名) 将项目提交到主干上面</li>
+<li><code>git pull</code>从远端同步到本地</li>
+</ul>
+<h4 id="重置版本"><a href="#重置版本" class="headerlink" title="重置版本"></a>重置版本</h4><ul>
+<li><code>git reset --hard   id</code></li>
+<li><code>git reflog</code></li>
+<li><code>git remote add origin (url)</code></li>
+<li><code>git push -u origin master</code></li>
+<li><code>git pull  (url)</code></li>
+</ul>
+<h4 id="远端已存在的项目-克隆到本地"><a href="#远端已存在的项目-克隆到本地" class="headerlink" title="远端已存在的项目,克隆到本地"></a>远端已存在的项目,克隆到本地</h4><ul>
+<li><code>git clone (url)</code></li>
+<li><code>cd hello</code></li>
+<li><code>git add .</code></li>
+<li><code>git checkout  --</code></li>
+<li><code>git commit -m  &quot;说明&quot;</code></li>
+<li><code>git push origin master</code></li>
+<li><code>git pull</code></li>
+</ul>
+<h3 id="git-使用流程"><a href="#git-使用流程" class="headerlink" title="git 使用流程"></a>git 使用流程</h3><ul>
+<li><code>git cone &lt;url&gt;</code></li>
+<li><code>cd &lt;dir&gt;</code></li>
+<li><code>git branch  分支名</code>   创建</li>
+<li><code>git checkout 分支名</code>  切换</li>
+<li>合并   切换到<code>master</code>分支<ul>
+<li><code>git merge  cool-function</code>将分支合并到master</li>
+<li><code>git push origin master</code></li>
+</ul>
+</li>
+</ul>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/23/03-Git团队开发/" class="styled-border">
+                    ←
+                    Git团队开发流程
+                    
+                </a>
+            
+            
+                <a href="/2019/04/22/05-gitattributes设置文件属性/" class="styled-border">
+                    
+                    Git的gitattributes文件详解
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

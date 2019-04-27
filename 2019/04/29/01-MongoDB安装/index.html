@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>mangoDB简介和安装 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="mangoDB前言MongoDB是2009年问世的一个面向文档的数据库管理系统，由C++语言编写，旨在为Web应用提供可扩展的高性能数据存储解决方案。虽然在划分类别的时候后，MongoDB被认为是NoSQL的产品，但是它更像一个介于关系数据库和非关系数据库之间的产品，在非关系数据库中它功能最丰富，最像关系数据库。 MongoDB将数据存储为一个文档，一个文档由一系列的“键值对”组成，其文档类似于J">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mangoDB简介和安装">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/01-MongoDB安装/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="mangoDB前言MongoDB是2009年问世的一个面向文档的数据库管理系统，由C++语言编写，旨在为Web应用提供可扩展的高性能数据存储解决方案。虽然在划分类别的时候后，MongoDB被认为是NoSQL的产品，但是它更像一个介于关系数据库和非关系数据库之间的产品，在非关系数据库中它功能最丰富，最像关系数据库。 MongoDB将数据存储为一个文档，一个文档由一系列的“键值对”组成，其文档类似于J">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/assets/001.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/images/mongo_install_msi.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/images/windows_mongodb_install.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/images/windows_mongodb_27017_success.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/images/mongo_centos_gunzip.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/images/mongo_centos_export_path.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/images/mongo_centos_mongo.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/images/mongo_centos_robomongo.png">
+<meta property="og:updated_time" content="2019-04-27T07:20:29.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mangoDB简介和安装">
+<meta name="twitter:description" content="mangoDB前言MongoDB是2009年问世的一个面向文档的数据库管理系统，由C++语言编写，旨在为Web应用提供可扩展的高性能数据存储解决方案。虽然在划分类别的时候后，MongoDB被认为是NoSQL的产品，但是它更像一个介于关系数据库和非关系数据库之间的产品，在非关系数据库中它功能最丰富，最像关系数据库。 MongoDB将数据存储为一个文档，一个文档由一系列的“键值对”组成，其文档类似于J">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/29/01-MongoDB安装/assets/001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">mangoDB简介和安装</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="mangoDB"><a href="#mangoDB" class="headerlink" title="mangoDB"></a>mangoDB</h3><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>MongoDB是2009年问世的一个面向文档的数据库管理系统，由C++语言编写，旨在为Web应用提供可扩展的高性能数据存储解决方案。虽然在划分类别的时候后，MongoDB被认为是NoSQL的产品，但是它更像一个介于关系数据库和非关系数据库之间的产品，在非关系数据库中它功能最丰富，最像关系数据库。</p>
+<p>MongoDB将数据存储为一个文档，一个文档由一系列的“键值对”组成，其文档类似于JSON对象，但是MongoDB对JSON进行了二进制处理（能够更快的定位key和value），因此其文档的存储格式称为BSON。关于JSON和BSON的差别大家可以看看MongoDB官方网站的文章<a href="https://www.mongodb.com/json-and-bson" target="_blank" rel="noopener">《JSON and BSON》</a>。</p>
+<p>目前，MongoDB已经提供了对Windows、MacOS、Linux、Solaris等多个平台的支持，而且也提供了多种开发语言的驱动程序，Python当然是其中之一。</p>
+<h3 id="2-windows下安装"><a href="#2-windows下安装" class="headerlink" title="2 windows下安装"></a>2 windows下安装</h3><p>我可以从MongoDB的<a href="https://www.mongodb.com/download-center#community" target="_blank" rel="noopener">官方下载</a>链接下载MongoDB，官网上提供了windows的安装msi文件，也提供了linux和mac的安装包的，可以直接下载安装</p>
+<p>windows的下载msi文件比较大有183M，下载需耐心等待了。</p>
+<h4 id="2-1-windows下安装配置"><a href="#2-1-windows下安装配置" class="headerlink" title="2.1 windows下安装配置"></a>2.1 windows下安装配置</h4><p>自定义了安装目录以后，直接下一步下一步就可以完成本地的mongo安装了</p>
+<p><img src="assets/001.png" alt="0"></p>
+<p><img src="./images/mongo_install_msi.png" alt="图"></p>
+<h4 id="2-2-配置mongodb的数据库"><a href="#2-2-配置mongodb的数据库" class="headerlink" title="2.2 配置mongodb的数据库"></a>2.2 配置mongodb的数据库</h4><p>我的mongodb安装在D:\instal_soft\mongodb中，那我指定mongodb的data/db也在该路径下即可。但是data文件夹和db文件夹需要自己创建，创建成功以后，执行以下的命令即可启动mongodb了</p>
+<pre class=" language-shell"><code class="language-shell">
+mongod --dbpath D:\mongoBD\data\db
+</code></pre>
+<p><img src="./images/windows_mongodb_install.png" alt="图"></p>
+<p>如下是安装成功了mongodb，系统会默认开启27017端口，可以通过’localhost:27017’去访问mongodb了。</p>
+<p><img src="./images/windows_mongodb_27017_success.png" alt="图"></p>
+<h3 id="3-linux下安装"><a href="#3-linux下安装" class="headerlink" title="3 linux下安装"></a>3 linux下安装</h3><h4 id="3-1-wget获取mongodo"><a href="#3-1-wget获取mongodo" class="headerlink" title="3.1 wget获取mongodo"></a>3.1 wget获取mongodo</h4><p>wget地址:</p>
+<pre><code>wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.6.5.tgz
+</code></pre><h4 id="3-2-gunzip解压缩"><a href="#3-2-gunzip解压缩" class="headerlink" title="3.2 gunzip解压缩"></a>3.2 gunzip解压缩</h4><p>gunzip是个使用广泛的解压缩程序,它用于解开被gzip压缩过的文件</p>
+<p><img src="./images/mongo_centos_gunzip.png" alt="图"></p>
+<h4 id="3-3-安装"><a href="#3-3-安装" class="headerlink" title="3.3 安装"></a>3.3 安装</h4><p>解压，并指定安装到刚创建的mongodb-3.6.5中，并去除掉第一级的目录结构(–strip-components number参数)</p>
+<pre><code>mkdir mongodb-3.6.5
+
+tar -xvf mongodb-linux-x86_64-amazon-3.6.5.tar --strip-components 1 -C mongodb-3.6.5/
+</code></pre><h4 id="3-4-设置环境变量，启动mongod"><a href="#3-4-设置环境变量，启动mongod" class="headerlink" title="3.4 设置环境变量，启动mongod"></a>3.4 设置环境变量，启动mongod</h4><p>启动mongod：</p>
+<p>默认的 存储位置为 更目录下  /data/db</p>
+<pre class=" language-shell"><code class="language-shell">export PATH=$PATH:~/mongodb-3.6.5/bin
+mkdir -p /data/db
+mongod --bind_ip_all --port 10004 # ip
+</code></pre>
+<p><img src="./images/mongo_centos_export_path.png" alt="图"></p>
+<p>启动mongo，然后就可以愉快的使用mongodb进行玩耍啦：</p>
+<pre><code> mongo --host 45.76.206.145
+</code></pre><p><img src="./images/mongo_centos_mongo.png" alt="图"></p>
+<p>设置配置文件mongodb.conf</p>
+<pre class=" language-shell"><code class="language-shell">vim mongodb.conf
+
+dbpath = /home/mongodb/data/db #数据文件存放目录
+
+logpath = /home/mongodb/logs/mongodb.log #日志文件存放目录
+port = 27017  #端口
+fork = true  #以守护程序的方式启用，即在后台运行
+nohttpinterface = true
+auth=true
+bind_ip=0.0.0.0
+</code></pre>
+<p>启动mongo命令: mongod -f mongodb.conf</p>
+<h4 id="3-5-查看进程"><a href="#3-5-查看进程" class="headerlink" title="3.5 查看进程"></a>3.5 查看进程</h4><p>centos下安装 yum install net-tools 就可以使用netstat -lntp 去查看进程端口等信息了</p>
+<h4 id="3-6-sql和mongodb进行对比"><a href="#3-6-sql和mongodb进行对比" class="headerlink" title="3.6 sql和mongodb进行对比"></a>3.6 sql和mongodb进行对比</h4><p>我们通过与关系型数据库进行对照的方式来说明MongoDB中的一些概念。</p>
+<table>
+<thead>
+<tr>
+<th>SQL</th>
+<th>MongoDB</th>
+<th>解释（SQL/MongoDB）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>database</td>
+<td>database</td>
+<td>数据库/数据库</td>
+</tr>
+<tr>
+<td>table</td>
+<td>collection</td>
+<td>二维表/集合</td>
+</tr>
+<tr>
+<td>row</td>
+<td>document</td>
+<td>记录（行）/文档</td>
+</tr>
+<tr>
+<td>column</td>
+<td>field</td>
+<td>字段（列）/域</td>
+</tr>
+<tr>
+<td>index</td>
+<td>index</td>
+<td>索引/索引</td>
+</tr>
+<tr>
+<td>table joins</td>
+<td>—</td>
+<td>表连接/嵌套文档</td>
+</tr>
+<tr>
+<td>primary key</td>
+<td>primary key</td>
+<td>主键/主键（<code>_id</code>字段）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-robomongo可视化工具"><a href="#4-robomongo可视化工具" class="headerlink" title="4. robomongo可视化工具"></a>4. robomongo可视化工具</h3><p>在windows开发环境中，需要可视化mongodb数据库，通常都会使用robomongo这个可视化工具。请自行去官网下载</p>
+<p>简单的配置一下即可访问centos7 上的mongodb数据库了。</p>
+<p><img src="./images/mongo_centos_robomongo.png" alt="图"></p>
+<p><b>坑：</b></p>
+<p>如果在配置robomongo的过程中，遇到无法访问，出现’connect: network is unreachable’的提示的话，表示mongo的远程没有开启，或者防火墙的问题。首先需要检查mongodb.conf文件中的bind_ip是否是0.0.0.0。其次在查看防火墙是否开启，可直接关闭防火墙，在进行robomongo链接尝试。</p>
+<pre><code>systemctl stop firewalld.service #停止firewall 
+
+systemctl disable firewalld.service #禁止firewall开机启动 
+</code></pre><h3 id="mongodb用户密码设置"><a href="#mongodb用户密码设置" class="headerlink" title="mongodb用户密码设置"></a>mongodb用户密码设置</h3><p><a href="https://www.cnblogs.com/tk2049jq/p/6881497.html" target="_blank" rel="noopener">https://www.cnblogs.com/tk2049jq/p/6881497.html</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/01-PostgreSQL授权和查看表/" class="styled-border">
+                    ←
+                    PostgreSQL常用命令
+                    
+                </a>
+            
+            
+                <a href="/2019/04/24/09-git_rebase/" class="styled-border">
+                    
+                    git-rebase使用
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

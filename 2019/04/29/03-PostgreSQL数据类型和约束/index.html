@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>PostgreSQL数据类型和约束 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="16-PostgreSQL数据类型和约束 数据类型 Boolean : true 1 / false 0 / null Character : char / varcahr / text Numeric : integer / floating-point Timeporal : date / time / timestamp（时间戳） / interval(间隔) UUID : 唯一标识符 UU">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL数据类型和约束">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/03-PostgreSQL数据类型和约束/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="16-PostgreSQL数据类型和约束 数据类型 Boolean : true 1 / false 0 / null Character : char / varcahr / text Numeric : integer / floating-point Timeporal : date / time / timestamp（时间戳） / interval(间隔) UUID : 唯一标识符 UU">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:23:48.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PostgreSQL数据类型和约束">
+<meta name="twitter:description" content="16-PostgreSQL数据类型和约束 数据类型 Boolean : true 1 / false 0 / null Character : char / varcahr / text Numeric : integer / floating-point Timeporal : date / time / timestamp（时间戳） / interval(间隔) UUID : 唯一标识符 UU">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">PostgreSQL数据类型和约束</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>16-PostgreSQL数据类型和约束</p>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a><strong>数据类型</strong></h4><pre class=" language-python"><code class="language-python">
+Boolean <span class="token punctuation">:</span> true <span class="token number">1</span> <span class="token operator">/</span> false <span class="token number">0</span> <span class="token operator">/</span> null
+Character <span class="token punctuation">:</span> char <span class="token operator">/</span> varcahr <span class="token operator">/</span> text
+Numeric <span class="token punctuation">:</span> integer <span class="token operator">/</span> floating<span class="token operator">-</span>point
+Timeporal <span class="token punctuation">:</span> date <span class="token operator">/</span> time <span class="token operator">/</span> timestamp（时间戳） <span class="token operator">/</span> interval<span class="token punctuation">(</span>间隔<span class="token punctuation">)</span>
+UUID <span class="token punctuation">:</span> 唯一标识符 UUID
+Array <span class="token punctuation">:</span> 存储字符串，数字等
+JSON <span class="token punctuation">:</span> 
+hstory <span class="token punctuation">:</span> 存储键值对
+特殊类型 ： 如网络地址和几何数据
+
+</code></pre>
+<h4 id="Character"><a href="#Character" class="headerlink" title="Character"></a><strong>Character</strong></h4><ul>
+<li><code>char(n)</code>  定常字符</li>
+<li><code>varchar(n)</code>  不定长字符</li>
+<li><code>text</code>  可变长字符，理论上不限制长度，但是默认设置的是每行 不超过 8K</li>
+</ul>
+<h4 id="Numeric"><a href="#Numeric" class="headerlink" title="Numeric"></a><strong>Numeric</strong></h4><ul>
+<li><code>SMALLINT</code> 2字节有符号整数</li>
+<li><code>int</code> 4 字节   还有 int8 </li>
+<li><code>float(n)</code>   </li>
+<li><code>real</code>或<code>float8</code> 双精度浮点数</li>
+<li><code>numeric(p,s)</code>p 位实数，小数点后带s位小数</li>
+</ul>
+<h4 id="特殊类型的数字"><a href="#特殊类型的数字" class="headerlink" title="特殊类型的数字"></a><strong>特殊类型的数字</strong></h4><ul>
+<li>box    矩形框</li>
+<li>line   一组积分</li>
+<li>point    一对几何数字，点坐标</li>
+<li>lseg   线段</li>
+<li>polygon  封闭几何形状</li>
+<li>inet  IP4地址</li>
+<li>macaddr   一个 MAC 地址</li>
+</ul>
+<h4 id="列约束"><a href="#列约束" class="headerlink" title="列约束"></a>列约束</h4><ul>
+<li>NOT NULL</li>
+<li>UNIQUE</li>
+<li>PRIMARY KEY</li>
+<li>REFERENCES 定义外键约束</li>
+<li>CHECK  更新数据是的检查条件，例如，插入数据是必须为正<ul>
+<li><code>CHECK(condition)</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>SELECT INTO</strong></p>
+<ul>
+<li>将查找出的内容创建一个新表</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 将film表中查询中的内容创建一个信标film_r</span>
+<span class="token keyword">select</span> film_id<span class="token punctuation">,</span>title<span class="token punctuation">,</span> rental_tate <span class="token keyword">into</span> <span class="token keyword">table</span> film_r
+<span class="token keyword">from</span> film <span class="token keyword">where</span> rating<span class="token operator">=</span><span class="token string">"R"</span> <span class="token operator">and</span> rental_duration<span class="token operator">=</span><span class="token number">5</span> <span class="token keyword">order</span> <span class="token keyword">by</span> title<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="CREATE-AS"><a href="#CREATE-AS" class="headerlink" title="CREATE AS"></a><strong>CREATE AS</strong></h4><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 将查询的结果作为一个  temp 临时表，unlogged 一个未记录的新表</span>
+<span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token keyword">TEMP</span> UNLOGGED<span class="token punctuation">]</span> <span class="token keyword">TABLE</span> new_table_name <span class="token keyword">as</span> query<span class="token punctuation">;</span>
+
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> new_table_name <span class="token punctuation">(</span>column_name_list<span class="token punctuation">)</span> <span class="token keyword">as</span> query<span class="token punctuation">;</span>
+
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> new_table_name <span class="token keyword">as</span> query<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="更改表中的行和列的名称"><a href="#更改表中的行和列的名称" class="headerlink" title="更改表中的行和列的名称"></a><strong>更改表中的行和列的名称</strong></h4><ul>
+<li><a href="http://www.postgresqltutorial.com/postgresql-alter-table/" target="_blank" rel="noopener">http://www.postgresqltutorial.com/postgresql-alter-table/</a></li>
+</ul>
+<p>检查约束和非空约束</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> table_name <span class="token punctuation">(</span>
+    id <span class="token keyword">serial</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+    product_id <span class="token keyword">int</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+    qty <span class="token keyword">numeric</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">check</span><span class="token punctuation">(</span>qty <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    net_price <span class="token keyword">numeric</span> <span class="token keyword">check</span><span class="token punctuation">(</span>net_price <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h4><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 添加主键</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> table_name <span class="token keyword">ADD</span> <span class="token keyword">COLUMN</span> ID <span class="token keyword">SERIAL</span> PRIAMRY <span class="token keyword">KEY</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 删除主键</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> table_name <span class="token keyword">DROP</span> <span class="token keyword">CONSTRAINT</span> primary_key_constraint<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a><strong>外键约束</strong></h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> so_headers<span class="token punctuation">(</span>
+    id <span class="token keyword">serial</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+    customer_id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    ship_to <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 创建外键约束的表</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> so_items <span class="token punctuation">(</span>
+    item_id <span class="token keyword">integer</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+    so_id <span class="token keyword">integer</span> <span class="token keyword">references</span> so_headers<span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    product_id <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    qty <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    primar <span class="token keyword">key</span> <span class="token punctuation">(</span>item_id<span class="token punctuation">,</span> so_id<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 也可以这样</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> child_table <span class="token punctuation">(</span>
+    <span class="token number">c1</span> <span class="token keyword">integer</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+    <span class="token number">c2</span> <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    <span class="token number">c3</span> <span class="token keyword">integer</span><span class="token punctuation">,</span>
+    <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span><span class="token number">c2</span><span class="token punctuation">,</span> <span class="token number">c3</span><span class="token punctuation">)</span> <span class="token keyword">REFERENCES</span> parent_table <span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- alter 添加</span>
+ <span class="token keyword">alter</span> <span class="token keyword">table</span> child_table <span class="token keyword">ADD</span> <span class="token keyword">CONSTRAINT</span> constraint_name 
+ <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token number">c1</span><span class="token punctuation">)</span> <span class="token keyword">REFERENCES</span> parent_table<span class="token punctuation">(</span>p1<span class="token punctuation">)</span> <span class="token keyword">ON</span> <span class="token keyword">DELETE</span> <span class="token keyword">CASCADE</span><span class="token punctuation">;</span>
+
+ <span class="token comment" spellcheck="true">-- 删除外键约束</span>
+ <span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> child_table <span class="token keyword">DROP</span> <span class="token keyword">CONSTRAINT</span> constraint_fkey<span class="token punctuation">;</span>
+
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/04-python3连接PostgreSQL/" class="styled-border">
+                    ←
+                    python3连接postgresql
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/04-MySQL授权语言DCL/" class="styled-border">
+                    
+                    Mysql面试题
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

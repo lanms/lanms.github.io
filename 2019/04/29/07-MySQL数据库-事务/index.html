@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Mysql事物 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="事务  -  (transaction / tx)  原子性操作性(不可以分割的操作) - 要么全做, 要么全不做  事务的特点  -  ACID 特性  A - atomicity  原子性 : 不可分割, 要么成功要么全失败 C - Consistency  一致性:  事务前后数据状态要保持一致, 总数一致 I - Isolation -  隔离性 : 多个事务不能看到对方的中间状态(提交或">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql事物">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/07-MySQL数据库-事务/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="事务  -  (transaction / tx)  原子性操作性(不可以分割的操作) - 要么全做, 要么全不做  事务的特点  -  ACID 特性  A - atomicity  原子性 : 不可分割, 要么成功要么全失败 C - Consistency  一致性:  事务前后数据状态要保持一致, 总数一致 I - Isolation -  隔离性 : 多个事务不能看到对方的中间状态(提交或">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:25:39.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql事物">
+<meta name="twitter:description" content="事务  -  (transaction / tx)  原子性操作性(不可以分割的操作) - 要么全做, 要么全不做  事务的特点  -  ACID 特性  A - atomicity  原子性 : 不可分割, 要么成功要么全失败 C - Consistency  一致性:  事务前后数据状态要保持一致, 总数一致 I - Isolation -  隔离性 : 多个事务不能看到对方的中间状态(提交或">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Mysql事物</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p><strong>事务</strong>  -  (transaction / tx)</p>
+<ul>
+<li>原子性操作性(不可以分割的操作) - 要么全做, 要么全不做</li>
+</ul>
+<p><strong>事务的特点</strong>  -  ACID 特性</p>
+<ul>
+<li>A - atomicity  原子性 : 不可分割, 要么成功要么全失败</li>
+<li>C - Consistency  一致性:  事务前后数据状态要保持一致, 总数一致</li>
+<li>I - Isolation -  隔离性 : 多个事务不能看到对方的中间状态(提交或者回滚之前的状态)</li>
+<li>D - Duration 持久性: 事务完成后数据要持久化(事务的影响要反映在物理存储上)</li>
+</ul>
+<p><strong>操作方法</strong></p>
+<p>begin; -开始事物</p>
+<p>commit; - 提交事物   Python 默认是取消自动提交的</p>
+<p>rollback; - 回撤操作, 只要操作没有执行 commit 就可以进行回滚操作, 撤回</p>
+<pre class=" language-mysql"><code class="language-mysql">create table tb_account
+(
+accid char(4) not null,
+uname varchar(20) not null,
+balance float default 0
+)
+insert into tb_account values
+('1111', '张明禄', 1200.99),
+('2222', '王大锤', 500);
+-- 开启一个事物   start transaction
+begin;
+update tb_account set balance=balance-1000 
+where accid='1111';
+update tb_account set balance=balance+1000 
+where accid='2222';
+commit;   -- 提交 才能改变
+rollback;  -- 撤销
+
+begin;
+delete from  tb_account;  -- 没有commmit 不会删除表
+rollback;
+</code></pre>
+<p><strong>SQL 注射攻击</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    config <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'host'</span><span class="token punctuation">:</span> <span class="token string">'localhost'</span><span class="token punctuation">,</span>
+        <span class="token string">'user'</span><span class="token punctuation">:</span> <span class="token string">'root'</span><span class="token punctuation">,</span>
+        <span class="token string">'passwd'</span><span class="token punctuation">:</span> <span class="token string">'123456'</span><span class="token punctuation">,</span>
+        <span class="token string">'db'</span><span class="token punctuation">:</span> <span class="token string">'hrs'</span><span class="token punctuation">,</span>
+        <span class="token string">'charset'</span><span class="token punctuation">:</span> <span class="token string">'utf8'</span><span class="token punctuation">,</span>
+        <span class="token string">'cursorclass'</span><span class="token punctuation">:</span> pymysql<span class="token punctuation">.</span>cursors<span class="token punctuation">.</span>DictCursor
+    <span class="token punctuation">}</span>
+    conn <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token operator">**</span>config<span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        uid <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'用户名: '</span><span class="token punctuation">)</span>
+        pwd <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'密码: '</span><span class="token punctuation">)</span>
+        <span class="token keyword">with</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> cursor<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 注射攻击的万能密码: a' or '1'='1</span>
+            <span class="token triple-quoted-string string">"""
+            sql = "select 'x' from tb_user where username='%s' \
+                     and userpass='%s'" % (uid, pwd)
+            if cursor.execute(sql) > 0:
+            """</span>
+            <span class="token comment" spellcheck="true"># cursor.callproc('sp_dept_avg_sal', ())</span>
+            <span class="token comment" spellcheck="true"># 定义存储过程 / PyMySQL调用存储过程</span>
+            <span class="token keyword">if</span> cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>
+                    <span class="token string">'select 1 from tb_user where username=%s and userpass=%s'</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">(</span>uid<span class="token punctuation">,</span> pwd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'登录成功, 开始使用系统'</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'用户名或密码错误'</span><span class="token punctuation">)</span>
+    <span class="token keyword">finally</span><span class="token punctuation">:</span>
+        conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li><p>守护进程</p>
+<ul>
+<li><p>守护进程（Daemon Process），也就是通常说的 Daemon 进程（精灵进程），是 Linux 中的后台服务进程。它是一个生存期较长的进程，通常独立于控制终端并且周期性地执行某种任务或等待处理某些发生的事件。</p>
+<p>守护进程是个特殊的孤儿进程，这种进程脱离终端，为什么要脱离终端呢？之所以脱离于终端是为了避免进程被任何终端所产生的信息所打断，其在执行过程中的信息也不在任何终端上显示。由于在 linux 中，每一个系统与用户进行交流的界面称为终端，每一个从此终端开始运行的进程都会依附于这个终端，这个终端就称为这些进程的控制终端，当控制终端被关闭时，相应的进程都会自动关闭。</p>
+</li>
+</ul>
+</li>
+<li><p>哈希</p>
+<ul>
+<li>Hash，一般翻译做“散列”，也有直接音译为“哈希”的，就是把任意长度的<a href="https://baike.baidu.com/item/%E8%BE%93%E5%85%A5/5481954" target="_blank" rel="noopener">输入</a>（又叫做预映射， pre-image），通过散列算法，变换成固定长度的<a href="https://baike.baidu.com/item/%E8%BE%93%E5%87%BA" target="_blank" rel="noopener">输出</a>，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来确定唯一的输入值。简单的说就是一种将任意长度的消息压缩到某一固定长度的<a href="https://baike.baidu.com/item/%E6%B6%88%E6%81%AF%E6%91%98%E8%A6%81" target="_blank" rel="noopener">消息摘要</a>的函数。</li>
+</ul>
+</li>
+</ul>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/08-Python操作MySQL/" class="styled-border">
+                    ←
+                    pymysql应用
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/06-MySQL数据库索引,视图,存储/" class="styled-border">
+                    
+                    Mysql索引－视图－存储
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

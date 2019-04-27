@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Mysql索引－视图－存储 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="索引 索引会加速查询, 但是会使增删改变慢 , 每次都要更新索引 根据需求建索引, 经常查询的属性 索引相当于是一个目录, 可以加速查询提升查询效率 索引是典型的空间换时间的技术,增加了索引是的查询更加快捷查询到想要的内容  -- 创建索引   自动给 主键 和外键 加索引  create index IDxStudent on TbEmp(ename); --           给索引命名">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql索引－视图－存储">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/06-MySQL数据库索引,视图,存储/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="索引 索引会加速查询, 但是会使增删改变慢 , 每次都要更新索引 根据需求建索引, 经常查询的属性 索引相当于是一个目录, 可以加速查询提升查询效率 索引是典型的空间换时间的技术,增加了索引是的查询更加快捷查询到想要的内容  -- 创建索引   自动给 主键 和外键 加索引  create index IDxStudent on TbEmp(ename); --           给索引命名">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:25:19.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql索引－视图－存储">
+<meta name="twitter:description" content="索引 索引会加速查询, 但是会使增删改变慢 , 每次都要更新索引 根据需求建索引, 经常查询的属性 索引相当于是一个目录, 可以加速查询提升查询效率 索引是典型的空间换时间的技术,增加了索引是的查询更加快捷查询到想要的内容  -- 创建索引   自动给 主键 和外键 加索引  create index IDxStudent on TbEmp(ename); --           给索引命名">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Mysql索引－视图－存储</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><ul>
+<li>索引会加速查询, 但是会使增删改变慢 , 每次都要更新索引</li>
+<li>根据需求建索引, 经常查询的属性</li>
+<li>索引相当于是一个目录, 可以加速查询提升查询效率</li>
+<li>索引是典型的空间换时间的技术,增加了索引是的查询更加快捷查询到想要的内容</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">-- 创建索引   自动给 主键 和外键 加索引 
+create index IDxStudent on TbEmp(ename);
+--           给索引命名        那张表的那个列
+-- 查看索引
+show index from tbemp;
+-- 删除
+drop index 索引名;
+-- 唯一索引
+CREATE UNIQUE INDEX indexName ON
+mytable(username(length)) 
+</code></pre>
+<p><a href="http://www.runoob.com/mysql/mysql-index.html" target="_blank" rel="noopener">菜鸟教程索引详细讲解</a></p>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p><code>select or replace view... as..</code></p>
+<ul>
+<li>动态生成的衍生表</li>
+<li>相当于将表中的某些列映射出来到一个视图中, 方便以后查看, 后续查看时只需要查看已经创建的视图</li>
+<li>在授权时, 可以将用户的授权放在一个视图上, 给用户的查询权限进一步缩小到一张表中的某些列中</li>
+<li>让不同的用户可以看到不同的表中的不同的列的数据</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">-- 创建视图
+create or replace view 视图名 as 
+select a, b from tb_remp;     查询的结果表 ;
+-- 查看视图
+select * from 视图名;
+</code></pre>
+<h4 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h4><p>可以定义变量, 写循环和分支结构</p>
+<ul>
+<li>函数和过程, 将重复的操作封装起来</li>
+<li>函数可以产生返回值, 而过程是没有返回值的</li>
+<li>函数和过程都是存储在数据库服务福安编译好的代码, 所以执行的效率比向数据库发出的SQL语句更快</li>
+<li>如果希望简化调用并且鬼改善性能, 可以考虑使用存储过程</li>
+<li>安全性提高, 网络截获请求数据时不会暴露查询语句, 导致数据库表结构暴露</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">drop procedure if exists sp_dept_avg_sal
+-- 创建存储过程  过程没有返回,通过 out 将结果带出
+create procedure sp_dept_avg_sal(
+deptNo integer,   -- 传入部门编号
+out avgSal float  -- 输出参数, 将 avgSal输出
+)
+begin;
+select avg(sal) into avgSal from tbemp 
+where dno=deptNo;
+end;
+-- 调用过程   mysql变量名  @ 开头  
+call sp_dept_avg_sal(20 ,@avgSal);
+select @avgSal;
+</code></pre>
+<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p><code>tigger</code></p>
+<ul>
+<li>在增删改时会触发一些其他的事情</li>
+<li>实际开发避免使用 ,会导致SQL性能降低</li>
+</ul>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/07-MySQL数据库-事务/" class="styled-border">
+                    ←
+                    Mysql事物
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/05-MySQL数据查询语言/" class="styled-border">
+                    
+                    Mysql数据查询语言
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

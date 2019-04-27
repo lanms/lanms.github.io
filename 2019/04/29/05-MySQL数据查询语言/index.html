@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Mysql数据查询语言 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="DQL - 数据查询语言关键字 SELECT / as / from /( =  &amp;lt;&amp;gt;  &amp;lt;  &amp;gt; )/ is null / is not null/ distinct (去重)/ order by...[asc  desc] /group by ... having / where (条件) /inner join... on / left outer join ...">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql数据查询语言">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/05-MySQL数据查询语言/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="DQL - 数据查询语言关键字 SELECT / as / from /( =  &amp;lt;&amp;gt;  &amp;lt;  &amp;gt; )/ is null / is not null/ distinct (去重)/ order by...[asc  desc] /group by ... having / where (条件) /inner join... on / left outer join ...">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:24:51.968Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql数据查询语言">
+<meta name="twitter:description" content="DQL - 数据查询语言关键字 SELECT / as / from /( =  &amp;lt;&amp;gt;  &amp;lt;  &amp;gt; )/ is null / is not null/ distinct (去重)/ order by...[asc  desc] /group by ... having / where (条件) /inner join... on / left outer join ...">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Mysql数据查询语言</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h4 id="DQL-数据查询语言"><a href="#DQL-数据查询语言" class="headerlink" title="DQL - 数据查询语言"></a>DQL - 数据查询语言</h4><p>关键字 <code>SELECT / as / from /( =  &lt;&gt;  &lt;  &gt; )/ is null / is not null/ distinct (去重)/ order by...[asc  desc] /group by ... having / where (条件) /inner join... on / left outer join ... on / right outer join ... on/ full outer join ... on /  limit (偏移量),(查询条数) / limit offset (查询条数), (偏移量)</code> </p>
+<p><code>low_priority</code>  低优先级  (比如在建表后插入数  (insert into)时 , 用降低优先级的形式最后插入数据)</p>
+<p><code>concat(a, &quot;:&quot; b)</code>  将属性 a , b两个字符串属性拼接输出</p>
+<p>查多张表时,不写连接条件会查到笛卡尔积</p>
+<h4 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h4><ul>
+<li>= / &lt;&gt; / &gt; / &lt; / is null / is not null   </li>
+<li>范围 <code>between ..  and..</code></li>
+<li>模糊查询<code>like</code>   通配符(<code>wildcard</code>)<code>%  _</code>   % 0或任意个字符   下划线表示一个字符</li>
+<li>去重  <code>distinct</code></li>
+<li>排序 <code>order by ..</code>  [asc / desc      升序- 小-大/ 降序 大-小]     第一排序关键字第二 ,第三</li>
+<li>占位/模糊查询 /正则查询<ul>
+<li><code>select * from tb_student where sname like &#39;杨_&#39;;</code>  下划线表示一个占位  <ul>
+<li><code>杨%</code> 以杨开头任意多字符</li>
+<li><code>%杨%</code> 中间有杨的字符串</li>
+<li><code>regexp &#39;^[杨张]&#39;</code>正则筛选</li>
+<li><code>select * from tb_student where sname regexp &#39;^[杨张]&#39;</code></li>
+</ul>
+</li>
+<li>判断是否为空要用 <code>is null /  is not null</code></li>
+<li>规则  一般是先筛选再排序</li>
+</ul>
+</li>
+</ul>
+<h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><ul>
+<li><code>max() / min () / avg () / sum() / count ()</code></li>
+<li>聚合函数一般会自动排除空值<ul>
+<li><code>select min(sbirth) from tb_student where saddr is not null and ssex=1;</code></li>
+<li><code>select count(stuid) from tb_student where ssex=1;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="分组查询-筛选"><a href="#分组查询-筛选" class="headerlink" title="分组查询/筛选"></a>分组查询/筛选</h4><ul>
+<li><p><code>group by...</code>   一般和聚合函数一起使用</p>
+</li>
+<li><p>在使用 group by 时如果不希望执行默认的排序行为, 使用 order by null 取消排序行为,提升程序的执行性能</p>
+</li>
+</ul>
+<ul>
+<li><code>group by</code> 分组筛选用 <code>having</code>  加筛选条件</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">
+select cid avg(score) from tb_sc group by cid having avg(score)>60;
+
+select cid if(ssex, '男', '女') as 性别, count(*) as 人数 from tb_student
+where saddr is not null group by ssex order by ssex desc
+order by sbirth desc;  -- 排序  desc 降序排序 asc是默认排序 
+</code></pre>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><ul>
+<li><p>另外一个查询的结果作为其他查询的一个筛选条, 通常可看成是筛选查询的一种</p>
+</li>
+<li><p><code>select sname, sbirth from tb_student where sbirth=(select min(sbirth) from tb_student);</code>  单个子查询可以用 =,  多个要用 in 集合运算</p>
+</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">
+select sname from tb_student
+where stuid in
+(
+select sid from tb_sc
+group by sid having count(sid) > 2;
+) and sex=1;  -- 写在右边(后面)的条件先执行
+</code></pre>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><ol>
+<li>自然连接查询</li>
+<li>内/ 左外/ 右外/ 全 连接查询</li>
+</ol>
+<p><strong>自然连接查询</strong></p>
+<ul>
+<li>多个表同时查询  where条件  and 并列条件</li>
+<li><code>select sid, cid, score from tb_sc, tb_student, tb_course where sid=stuid and cid=courseid;</code></li>
+<li><code>select sname, cname, score from tb_sc ,tb_student, tb_course where sid=stuid and cid=courseid;</code></li>
+</ul>
+<p><strong>内连接</strong></p>
+<ul>
+<li>使用语句<code>inner join ... on</code></li>
+<li><code>表1 inner join 表2  on (两个表的连接条件)</code>相当于将表2加入到表1里面, 用<code>on</code>的条件将两个表对应的行一一对应起来</li>
+</ul>
+<p><code>`</code>sql lite</p>
+<p>– 自然连接写法<br>select sname, avgScore from tb_student t1,<br>(select sid, avg(score) as avgScore from tb_sc<br> group by sid) t2 where stuid=sid;</p>
+<p> – 内连接写法<br> select sname, avgScore from tb_student t1<br> inner join (select sid, avg(score) as avgScore<br>             group by sid) t2<br>on stuid=sid;</p>
+<pre><code>
+
+
+#### 左外连接查询
+
+- 查询语句`left outer join ... on `
+- 自然连接条件变为  `stuid=sid(+)  ` 也表示左外连接  ` MySQL`是不支持这种语法的
+- 左表不满足筛选条件的的记录也会查询出来 ,会将**`null `**也会查找出来
+- `left outer join ... on`  
+
+```mysql
+
+select sname, sCount as sCount 
+from tb_student t1
+left outer join
+(select sid, count(sid) as sCount from tb_sc
+group by sid) t2 on t1.stuid=t2.sid;
+王大锤    4
+骆昊    3
+杨飘飘    null
+张三丰    2
+</code></pre><h4 id="右外连接"><a href="#右外连接" class="headerlink" title="右外连接"></a>右外连接</h4><ul>
+<li>将右表的null也会查询上来 ,实际用法和 左外连接相同</li>
+<li><code>right outer join ...  on</code></li>
+</ul>
+<h4 id="全外连接"><a href="#全外连接" class="headerlink" title="全外连接"></a>全外连接</h4><ul>
+<li>左右表不满足连表条件的都会查询上来 (补null) </li>
+<li><code>MySQL</code>不支持 全外连接</li>
+<li><code>full join ... on</code></li>
+</ul>
+<h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><ul>
+<li>每种数据库的语法都是不同的</li>
+<li><code>limit / limit offset</code></li>
+<li>排序在分页前</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">
+select sname, cname, score from tb_sc
+inner join tb_student on sid=stuid
+inner join tb_course on cid=courseid
+order by score desc  -- 排序在分页前
+limit 5;   -- --  默认偏移量是0  只5条数据
+limit 0, 5;  -- 前面是查询开始的偏移量,后面是查询的条数
+limit 5 offset 0; -- 前面是查询的条数, 后面是查询的开始偏移量
+</code></pre>
+<p>代码下载–<a href="https://coding.net/u/zhangminglu/p/exampleCode/git/blob/master/db_demo/select.sql?public=true" target="_blank" rel="noopener">coding代码仓库</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/06-MySQL数据库索引,视图,存储/" class="styled-border">
+                    ←
+                    Mysql索引－视图－存储
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/05-MySQL和PostgreSQL对比/" class="styled-border">
+                    
+                    MySQL和PostgreSQL对比
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

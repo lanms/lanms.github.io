@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Mysql介绍 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1.为什么要使用数据库?  数据持久化  - 将数据转移到持久存储介质 (断电也不会是数据丢失) 可以高效的存储和处理数据, 检索数据  2.为什么使用关系型数据库  理论基础:  集合论和关系代数   用二维表组织数据  每张表叫做实体 行   - 记录 列   -  字段   关系型数据库, 表与表之间存在某种关系 ​      关系型数据库都有自己的编程语言   SQL - 结构化查询语言">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql介绍">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/01-数据库介绍,Mysql安装/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="1.为什么要使用数据库?  数据持久化  - 将数据转移到持久存储介质 (断电也不会是数据丢失) 可以高效的存储和处理数据, 检索数据  2.为什么使用关系型数据库  理论基础:  集合论和关系代数   用二维表组织数据  每张表叫做实体 行   - 记录 列   -  字段   关系型数据库, 表与表之间存在某种关系 ​      关系型数据库都有自己的编程语言   SQL - 结构化查询语言">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:21:11.642Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql介绍">
+<meta name="twitter:description" content="1.为什么要使用数据库?  数据持久化  - 将数据转移到持久存储介质 (断电也不会是数据丢失) 可以高效的存储和处理数据, 检索数据  2.为什么使用关系型数据库  理论基础:  集合论和关系代数   用二维表组织数据  每张表叫做实体 行   - 记录 列   -  字段   关系型数据库, 表与表之间存在某种关系 ​      关系型数据库都有自己的编程语言   SQL - 结构化查询语言">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Mysql介绍</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p><strong>1.为什么要使用数据库?</strong></p>
+<ul>
+<li>数据持久化  - 将数据转移到持久存储介质 (断电也不会是数据丢失)</li>
+<li>可以高效的存储和处理数据, 检索数据</li>
+</ul>
+<p><strong>2.为什么使用关系型数据库</strong></p>
+<ul>
+<li><p>理论基础:</p>
+<ul>
+<li>集合论和关系代数</li>
+</ul>
+</li>
+<li><p>用二维表组织数据</p>
+<ul>
+<li>每张表叫做实体</li>
+<li>行   - 记录</li>
+<li>列   -  字段</li>
+</ul>
+</li>
+<li><p>关系型数据库, 表与表之间存在某种关系</p>
+<p>​    </p>
+</li>
+<li><p>关系型数据库都有自己的编程语言 </p>
+<ul>
+<li>SQL - 结构化查询语言</li>
+<li>SQL在每种数据库会略有差别, </li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 数据库  - 数据库系统 - 数据管理系统</strong></p>
+<ul>
+<li>数据库  DB 数据的集散地 (仓库)</li>
+<li>数据库系统 DBS    包括了 DB  DBA(数据库管理员)  DBMS</li>
+<li>(r)DBMS - (关系型)数据库管理系统   (管理数据库的软件)<ul>
+<li><strong>关系型数据库管理软件</strong><ul>
+<li>MySQL  - 小巧强大</li>
+<li>Oricle - 强大  商业智能分析  昂贵</li>
+<li>DB2 - 强大  安全  商业智能  (银行  电商 金融)  昂贵</li>
+<li>微软 - SQL Server </li>
+<li>SQLite  - 移动端嵌入式关系型数据库   </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>4.数据库服务器和客户端工具</strong></p>
+<ul>
+<li>SQLyog  -   Toad for MySQL   -  Navicat for MySQL</li>
+<li>安装包和破解工具<a href="http://10.7.152.68/%e8%bd%af%e4%bb%b6/navicat120_crack.rar" target="_blank" rel="noopener"> navicat120_crack.rar</a>   -  <a href="http://10.7.152.68/%e8%bd%af%e4%bb%b6/navicat120_mysql_cs_x64.exe" target="_blank" rel="noopener"> navicat120_mysql_cs_x64.exe</a>   </li>
+<li>也可以安装 Nacicat premium  更加强大的 navicat</li>
+</ul>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h5 id="1-Linux安装mariadb-启动进入mariadb"><a href="#1-Linux安装mariadb-启动进入mariadb" class="headerlink" title="1.Linux安装mariadb, 启动进入mariadb"></a>1.Linux安装mariadb, 启动进入mariadb</h5><pre class=" language-python"><code class="language-python">yum install mariadb<span class="token operator">-</span>server mariadb <span class="token operator">&amp;</span><span class="token operator">&amp;</span>systemctl enable mariadb <span class="token operator">&amp;</span><span class="token operator">&amp;</span> systemctl start mariadb <span class="token operator">&amp;</span><span class="token operator">&amp;</span> mysql <span class="token operator">-</span>u root <span class="token operator">-</span>p
+</code></pre>
+<ul>
+<li><code>yum install mariadb-server mariadb</code> 安装mariadb</li>
+<li>启动服务 <ul>
+<li><code>systemctl start mariadb</code></li>
+</ul>
+</li>
+<li>进入mariadb , 超级管理员初次登录密码是空,前面设置时选择跳过密码设置就好<ul>
+<li><code>mysql -u root -p</code></li>
+</ul>
+</li>
+<li>停止<ul>
+<li><code>systemctl stop mariadb</code></li>
+</ul>
+</li>
+<li>开机自启设置<ul>
+<li><code>systemctl enable mariadb</code></li>
+</ul>
+</li>
+<li>取消开机自启动<ul>
+<li><code>systemctl disabl mariadb</code> 或者 <code>删除符号链接</code></li>
+<li><code>centos6用 `</code>checkconfig<code></code>serveice`配置开机自启</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://git.coding.net/zhangminglu/images.git" target="_blank" rel="noopener">https://git.coding.net/zhangminglu/images.git</a></p>
+<h4 id="2-windows安装mysql"><a href="#2-windows安装mysql" class="headerlink" title="2.windows安装mysql:"></a>2.windows安装mysql:</h4><ul>
+<li>下载地址<a href="http://10.7.152.68/%e8%bd%af%e4%bb%b6/mysql-installer-community-5.7.21.0.msi" target="_blank" rel="noopener"> mysql-installer-community-5.7.21.0.msi</a>  </li>
+<li>安装指南  <ul>
+<li>选择<code>Custom</code>最后一个自定义安装</li>
+<li>选择<code>MySQLServer X64</code>在旁边框中选择 <code>Mysql Client Programs</code></li>
+<li>只安装 server 第一个 </li>
+<li>如果出现缺失的提示, 选择 该软件 Execute</li>
+<li>ready to config  配置<ul>
+<li>Type and Networking   -&gt; cofing Type Development Machine </li>
+<li>​</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>出现缺少环境更新 .NET环境   微软官方下载    .NET4.5.2下载</li>
+</ul>
+<p>启动和停止服务</p>
+<ul>
+<li>打开widows服务 查找框  输入:  service.msc  找打 mysql 进行启动和停止</li>
+<li>cmd 输入  <code>net stop / start mysql</code> 启动或停止</li>
+<li>选择 client utf-8 打开客户端</li>
+<li><code>mysql -u root -p</code> 也可以链接数据库</li>
+</ul>
+<h3 id="使用MySQL"><a href="#使用MySQL" class="headerlink" title="使用MySQL"></a>使用MySQL</h3><ul>
+<li><code>show databases;</code>  查看基础数据库     命令以 分号表示结束</li>
+<li><code>select version();</code>查看版本</li>
+<li><code>?</code> 查看帮助</li>
+</ul>
+<p> 我用<strong>Navicat for MySQL</strong>连接 MySQL</p>
+<ul>
+<li>locahost / 或者 回环地址 : 127.0.0.1  连接自己的服务器</li>
+</ul>
+<p>进入后就可以使用了</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/02-1-Redis生产消费和发布订阅模式/" class="styled-border">
+                    ←
+                    Redis消息队列
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/01-Redis安装和基础/" class="styled-border">
+                    
+                    应用对比,MySQL与Redis
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

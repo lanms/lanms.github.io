@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>mongodb-CRUD | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="mongodb常用方法介绍  一般来说，我们创建集合用db.createCollection(name),如：db.createCollection(“log”),创建一个名字为log的集合，没有任何的大小，数量限制，使用_id作为默认索引； 限制集合空间的大小：db.createCollection(“log”,{size:1024})或db.createCollection(“log”,{ca">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb-CRUD">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/02-MongoDB增删改查/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="mongodb常用方法介绍  一般来说，我们创建集合用db.createCollection(name),如：db.createCollection(“log”),创建一个名字为log的集合，没有任何的大小，数量限制，使用_id作为默认索引； 限制集合空间的大小：db.createCollection(“log”,{size:1024})或db.createCollection(“log”,{ca">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:21:41.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb-CRUD">
+<meta name="twitter:description" content="mongodb常用方法介绍  一般来说，我们创建集合用db.createCollection(name),如：db.createCollection(“log”),创建一个名字为log的集合，没有任何的大小，数量限制，使用_id作为默认索引； 限制集合空间的大小：db.createCollection(“log”,{size:1024})或db.createCollection(“log”,{ca">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">mongodb-CRUD</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><p>常用方法介绍</p>
+<ul>
+<li>一般来说，我们创建集合用db.createCollection(name),如：db.createCollection(“log”),创建一个名字为log的集合，没有任何的大小，数量限制，使用_id作为默认索引；</li>
+<li>限制集合空间的大小：db.createCollection(“log”,{size:1024})或db.createCollection(“log”,{capped:true,size:1024}),创建一个名字为log集合，限制它的空间大小为1M，如果超过1M的大小，则会删除最早的记录；</li>
+<li>限制集合的最大条数：db.createCollection(“log”,{max:1024})，创建一个名字为log集合，最大条数为1024条，超过1024再插入数据的话会删除最早的一条记录。这个不能使用capped:true，否则会报错；</li>
+<li>即限制最大条数有限制使用空间大小：db.createCollection(“log”,{size:1024,max:1024})或db.createCollection(“log”,{capped:true,size:1024,max:1024})，限制集合最大使用空间为1M，最大条数为1024条。</li>
+</ul>
+<h4 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h4><pre class=" language-sql"><code class="language-sql">
+<span class="token comment" spellcheck="true">-- 查看所有的数据库</span>
+<span class="token keyword">show</span> dbs
+
+<span class="token comment" spellcheck="true">-- 创建并切换到 spider 数据库</span>
+<span class="token keyword">use</span> spider
+
+<span class="token comment" spellcheck="true">-- 删除当前数据库</span>
+<span class="token number">db</span><span class="token punctuation">.</span>dropDatabase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="集合的创建、查看、删除"><a href="#集合的创建、查看、删除" class="headerlink" title="集合的创建、查看、删除"></a>集合的创建、查看、删除</h4><pre class=" language-sql"><code class="language-sql">
+<span class="token comment" spellcheck="true">-- 创建并切换到 school 数据库</span>
+<span class="token keyword">use</span> school
+
+<span class="token comment" spellcheck="true">-- 创建集合 colleges</span>
+<span class="token number">db</span><span class="token punctuation">.</span>createCollection<span class="token punctuation">(</span><span class="token string">'colleges'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 创建 students 集合</span>
+<span class="token number">db</span><span class="token punctuation">.</span>createCollection<span class="token punctuation">(</span><span class="token string">"students"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 查看 所有集合</span>
+<span class="token keyword">show</span> collections
+
+<span class="token comment" spellcheck="true">-- 删除 students 集合</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token keyword">drop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
+<h4 id="文档操作-CRUD"><a href="#文档操作-CRUD" class="headerlink" title="文档操作 CRUD"></a>文档操作 CRUD</h4><pre class=" language-sql"><code class="language-sql">
+<span class="token comment" spellcheck="true">-- 向students 集合中插入文档</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token keyword">insert</span><span class="token punctuation">(</span>{<span class="token string">'s_id'</span>:<span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'s_name'</span>:<span class="token string">'老李'</span>}<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 插入方法 2</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token keyword">save</span><span class="token punctuation">(</span>{<span class="token string">'s_id'</span>: <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'s_name'</span>:<span class="token string">'李白'</span>}<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 查看所有的文档</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 更新 s_id 为 1 的文档</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span><span class="token keyword">update</span><span class="token punctuation">(</span><span class="token string">"s_id"</span>:<span class="token string">'1'</span><span class="token punctuation">,</span> {<span class="token string">"$set"</span>:{<span class="token string">'s_name'</span>:<span class="token string">'杜甫'</span>，<span class="token string">'age'</span>:<span class="token string">'20'</span>}}<span class="token punctuation">,</span> upsert<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 查询所有的文档 pretty()</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pretty<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+</code></pre>
+<h4 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h4><blockquote>
+<p>  注意:我们可以使用 find() 方法来查询指定字段的数据，将要返回的字段对应值设置为 1。但是除了 _id 你不能在一个对象中同时指定 0 和 1。否则同时指定0和1的话，会报错</p>
+</blockquote>
+<pre class=" language-sql"><code class="language-sql">
+<span class="token comment" spellcheck="true">-- 查询 s_id 大于 2 的文档 只显示 name 和 tel 字段</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span>find<span class="token punctuation">(</span>{<span class="token string">'s_id'</span>:{<span class="token string">'$gt'</span>:<span class="token string">'2'</span>}}<span class="token punctuation">,</span> {<span class="token string">'s_id'</span>:<span class="token string">'0'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'tel'</span>:<span class="token string">'1'</span>}<span class="token punctuation">)</span><span class="token punctuation">.</span>pretty<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 查询s_id大于2 的文档 显示 除 name 和 tel 外的字段</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span>find<span class="token punctuation">(</span>{<span class="token string">'s_id'</span>:{<span class="token string">'$gt'</span>:<span class="token string">'2'</span>}}<span class="token punctuation">,</span> {<span class="token string">'s_id'</span>:<span class="token string">'0'</span><span class="token punctuation">,</span><span class="token string">'name'</span>:<span class="token string">'0'</span><span class="token punctuation">,</span><span class="token string">'tel'</span>:<span class="token string">'0'</span>}<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 查询 s_id 大于2  的 只显示 s_id 和 tel  字段</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span>find<span class="token punctuation">(</span>{<span class="token string">"s_id"</span><span class="token punctuation">,</span>{<span class="token string">'$gt'</span>:<span class="token string">'2'</span>}}<span class="token punctuation">,</span>{<span class="token string">'s_id'</span>:<span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'name'</span>:<span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'_id'</span>:<span class="token string">'1'</span>}<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 查询学生文档 跳过第一条 只查 3 条</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>skip<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">limit</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pretty<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">-- 对查询结果今次那个排序（1 表示升序，-1表示降序）</span>
+<span class="token number">db</span><span class="token punctuation">.</span>students<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>sort<span class="token punctuation">(</span>{<span class="token string">'s_id'</span>: <span class="token string">'-1'</span>}<span class="token punctuation">)</span>
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/02-MySQL数据库/" class="styled-border">
+                    ←
+                    Mysql常用命令
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/02-1-Redis生产消费和发布订阅模式/" class="styled-border">
+                    
+                    Redis消息队列
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>PostgreSQL-CRUD | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="PostgreSQL FETCH -- 只获取第一条 select film_id, title from film order by title fetch first only;  select film_id, title from film order by title fetch first row only; select film_id, title from film order">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL-CRUD">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/02-PostgreSQL数据的增删改查/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="PostgreSQL FETCH -- 只获取第一条 select film_id, title from film order by title fetch first only;  select film_id, title from film order by title fetch first row only; select film_id, title from film order">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/02-PostgreSQL数据的增删改查/assets/1533890449259.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/02-PostgreSQL数据的增删改查/assets/1533913512631.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/29/02-PostgreSQL数据的增删改查/assets/1533913530425.png">
+<meta property="og:updated_time" content="2019-04-27T07:22:41.475Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PostgreSQL-CRUD">
+<meta name="twitter:description" content="PostgreSQL FETCH -- 只获取第一条 select film_id, title from film order by title fetch first only;  select film_id, title from film order by title fetch first row only; select film_id, title from film order">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/29/02-PostgreSQL数据的增删改查/assets/1533890449259.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">PostgreSQL-CRUD</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>PostgreSQL</p>
+<p><strong>FETCH</strong></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 只获取第一条</span>
+<span class="token keyword">select</span> film_id<span class="token punctuation">,</span> title <span class="token keyword">from</span> film <span class="token keyword">order</span> <span class="token keyword">by</span> title <span class="token keyword">fetch</span> <span class="token keyword">first</span> only<span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> film_id<span class="token punctuation">,</span> title <span class="token keyword">from</span> film <span class="token keyword">order</span> <span class="token keyword">by</span> title <span class="token keyword">fetch</span> <span class="token keyword">first</span> <span class="token keyword">row</span> only<span class="token punctuation">;</span>
+<span class="token keyword">select</span> film_id<span class="token punctuation">,</span> title <span class="token keyword">from</span> film <span class="token keyword">order</span> <span class="token keyword">by</span> title <span class="token keyword">fetch</span> <span class="token keyword">first</span> <span class="token number">5</span> <span class="token keyword">row</span> only<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">-- 获取前五条</span>
+<span class="token comment" spellcheck="true">-- 获取前五之后的五条数据</span>
+seletc film_id<span class="token punctuation">,</span> title <span class="token keyword">from</span> film <span class="token keyword">order</span> <span class="token keyword">by</span> title <span class="token keyword">offset</span> <span class="token number">5</span> <span class="token keyword">rows</span> <span class="token keyword">fetch</span> <span class="token keyword">first</span> <span class="token number">5</span> <span class="token keyword">row</span> only<span class="token punctuation">;</span>
+</code></pre>
+<p>  <strong>IN  =  &lt;&gt;(不等于)  OR  AND  NOT IN范围运算符</strong></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> customer_id<span class="token punctuation">,</span> rental_id <span class="token keyword">from</span> rental 
+<span class="token keyword">where</span> cuntumer_id <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> 
+<span class="token keyword">order</span> <span class="token keyword">by</span> customer_id <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> customer_id<span class="token punctuation">,</span>rental_id <span class="token keyword">from</span> rental 
+<span class="token keyword">where</span> cunstomer_id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">or</span> cuntomer_id<span class="token operator">=</span><span class="token number">2</span>
+<span class="token keyword">order</span> <span class="token keyword">by</span> cuntomer_id <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> cuntomer_id<span class="token punctuation">,</span>rental_id <span class="token keyword">from</span> rental
+<span class="token keyword">where</span> cuntomer_id <span class="token operator">NOT</span> <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>带 IN 的子查询</strong></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> cuntomer_id <span class="token keyword">from</span> rental
+<span class="token keyword">where</span> <span class="token keyword">case</span><span class="token punctuation">(</span>return_date <span class="token keyword">as</span> <span class="token keyword">DATE</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">'2005-05-27'</span>
+
+<span class="token keyword">select</span> first_name<span class="token punctuation">,</span> last_name <span class="token keyword">from</span> customer
+<span class="token keyword">where</span> customer_id <span class="token operator">IN</span> <span class="token punctuation">(</span>
+    <span class="token keyword">select</span> customer_id <span class="token keyword">from</span> rental 
+    <span class="token keyword">where</span> <span class="token keyword">case</span><span class="token punctuation">(</span>return_date <span class="token keyword">as</span> <span class="token keyword">DATE</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'2005-05-27'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>BETWEEN 和一系列值进行匹配</strong></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 选金额介于 8 和 9 之间</span>
+<span class="token keyword">select</span> customer_id<span class="token punctuation">,</span>payment_id<span class="token punctuation">,</span> amount <span class="token keyword">from</span> payment
+<span class="token keyword">where</span> amount <span class="token operator">BETWEEN</span> <span class="token number">8</span> <span class="token operator">AND</span> <span class="token number">9</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 选择不在 8 和 9 之间的</span>
+<span class="token keyword">select</span> customer_id<span class="token punctuation">,</span> payment_id<span class="token punctuation">,</span> amount <span class="token keyword">from</span> payment
+<span class="token keyword">where</span> amount <span class="token operator">NOT</span> <span class="token operator">BETWEEN</span> <span class="token number">8</span> <span class="token operator">AND</span> <span class="token number">9</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> customer_id<span class="token punctuation">,</span>payment_id<span class="token punctuation">,</span>amount <span class="token keyword">from</span> payment 
+<span class="token keyword">where</span> payment_date <span class="token operator">between</span> <span class="token string">'2007-02-07'</span> <span class="token operator">and</span> <span class="token string">'2007-02-15'</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>LIKE</strong></p>
+<ul>
+<li><code>%</code>多个占位符，<code>_</code>单个占位符</li>
+<li>ILIKE 忽略大小写</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> first_name<span class="token punctuation">,</span> last_name <span class="token keyword">from</span> customer
+<span class="token keyword">where</span> first_name <span class="token operator">like</span> <span class="token string">'%er'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> first_name<span class="token punctuation">,</span> last_name form customer
+<span class="token keyword">where</span> first_name likt <span class="token string">'_her'</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>ALIAS</strong>  给表创建简短的别名</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> a_very_long_table_name<span class="token punctuation">.</span>column_name
+<span class="token keyword">from</span> a_very_long_table_name<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 简写</span>
+<span class="token keyword">select</span> t<span class="token punctuation">.</span>column_name 
+<span class="token keyword">from</span> a_very_long_table_name t<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">-- 或者  as t   as 可以省略</span>
+
+<span class="token keyword">select</span> table_name1<span class="token punctuation">.</span>column_name<span class="token punctuation">,</span> table_name2<span class="token punctuation">.</span>column_name <span class="token keyword">from</span> table_name1 
+<span class="token keyword">inner</span> <span class="token keyword">join</span> table_name2 <span class="token keyword">on</span> join_predicate<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 简写</span>
+<span class="token keyword">select</span> t1<span class="token punctuation">.</span>column_name<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>column_name <span class="token keyword">from</span> table_name1 t1
+<span class="token keyword">inner</span> <span class="token keyword">join</span> table_name2 t2 <span class="token keyword">on</span> join_predicate<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 自关联</span>
+<span class="token keyword">select</span> column_list <span class="token keyword">from</span> table_name table_alias
+<span class="token keyword">inner</span> <span class="token keyword">join</span> table_name <span class="token keyword">on</span> <span class="token keyword">join</span> join_predicate<span class="token punctuation">;</span>
+</code></pre>
+<p><strong>INNER JOIN</strong></p>
+<p><img src="assets/1533890449259.png" alt="1533890449259"></p>
+<pre class=" language-sql"><code class="language-sql">还有 
+<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> 
+<span class="token keyword">RIGHT</span> <span class="token keyword">JOIN</span>
+用法基本和 mysql 相同
+</code></pre>
+<p><strong>SELF JOIN</strong> 自连接</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> column_list <span class="token keyword">from</span> A <span class="token number">a1</span>
+<span class="token keyword">inner</span> <span class="token keyword">join</span> B <span class="token number">b1</span> <span class="token keyword">on</span> join_predicate<span class="token punctuation">;</span>
+</code></pre>
+<p><strong>FULL OUTER JOIN</strong></p>
+<ul>
+<li>完整的组合了左连接和右连接的结果，如果表中的行不匹配，则完整外部链接将为缺少的行内的空列=补充NULL</li>
+<li><a href="http://www.postgresqltutorial.com/postgresql-full-outer-join/" target="_blank" rel="noopener">http://www.postgresqltutorial.com/postgresql-full-outer-join/</a></li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> A 
+<span class="token keyword">FULL</span> <span class="token punctuation">[</span><span class="token keyword">OUTER</span><span class="token punctuation">]</span> <span class="token keyword">JOIN</span> B <span class="token keyword">ON</span> A<span class="token punctuation">.</span>id<span class="token operator">=</span>B<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+</code></pre>
+<p><strong>CROSS JOIN</strong>  交叉加入</p>
+<ul>
+<li><a href="http://www.postgresqltutorial.com/postgresql-cross-join/" target="_blank" rel="noopener">http://www.postgresqltutorial.com/postgresql-cross-join/</a></li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> T1
+<span class="token keyword">cross</span> <span class="token keyword">join</span> T2；
+<span class="token comment" spellcheck="true">-- 和下面这句等价</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> T1<span class="token punctuation">,</span> T2<span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> T1 <span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> T2 <span class="token keyword">ON</span> <span class="token boolean">TRUE</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>NATURE JOIN</strong>  自然加入</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> T1
+NATURE <span class="token punctuation">[</span><span class="token keyword">INNER</span><span class="token punctuation">,</span> <span class="token keyword">LEFT</span><span class="token punctuation">,</span> <span class="token keyword">RIGHT</span><span class="token punctuation">]</span> <span class="token keyword">JOIN</span> T2<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">-- 默认是 inner join, 也可以使用 * </span>
+</code></pre>
+<p>使用 <code>*</code>  将</p>
+<ul>
+<li>获取所有的公共列，即两表具有相同的名称的列</li>
+<li>第一个和第二个表中的每列不是公共列</li>
+</ul>
+<p><strong>GROUP BY</strong>  和 <strong>COUNT</strong> 聚合函数</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> staff_id<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>payment_id<span class="token punctuation">)</span> 
+<span class="token keyword">from</span> payment <span class="token keyword">group</span> <span class="token keyword">by</span> staff_id<span class="token punctuation">;</span>
+</code></pre>
+<p><strong>HAVING</strong></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> colum_1<span class="token punctuation">,</span> aggregatr_function<span class="token punctuation">(</span>column_2<span class="token punctuation">)</span> <span class="token keyword">from</span> tb1_name
+groupy <span class="token keyword">by</span> column_1 <span class="token keyword">having</span> condition<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 例</span>
+<span class="token keyword">select</span> store_id<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>customer_id<span class="token punctuation">)</span> <span class="token keyword">from</span> customer
+<span class="token keyword">group</span> <span class="token keyword">by</span> store_id <span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span>customer_id<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">300</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>UNION</strong> </p>
+<ul>
+<li>组合两个表的数据</li>
+<li><code>UNION ALL</code> 将两个表的数据组合起来，单个 UNION 会删除一个重复(行内的所右值都相同)的行，而UNION ALL 会获取包含重复的多有行</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 将两张表结合起来</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sales2017 <span class="token keyword">UNION</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sales2018<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 获取所有</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sales2017 <span class="token keyword">UNION</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sales2018<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 结合 ORDER BY</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sales2017 <span class="token keyword">union</span> <span class="token keyword">all</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sales2018
+<span class="token keyword">order</span> <span class="token keyword">by</span> name <span class="token keyword">ASC</span><span class="token punctuation">,</span> amount <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>INTERSECT</strong></p>
+<ul>
+<li>将两个或多个查询的结果合并到一个结果集当中，必须 select 的字段要一致</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> column_list <span class="token keyword">from</span> A <span class="token keyword">intersect</span>
+<span class="token keyword">select</span> column_list <span class="token keyword">from</span> B<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 例： 查找即在 keys 表中的 id 也在 goods 表的中的 id</span>
+
+<span class="token keyword">select</span> id <span class="token keyword">from</span> <span class="token keyword">keys</span>  <span class="token keyword">intersect</span>
+<span class="token keyword">select</span> id <span class="token keyword">from</span> goods <span class="token keyword">order</span> <span class="token keyword">by</span> id <span class="token keyword">DESC</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>EXCEPT</strong></p>
+<ul>
+<li>返回第一个查询中未出现在第二个查询中的行</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span>
+</code></pre>
+<p><strong>CUBE</strong></p>
+<ul>
+<li>产生多重分组集， GROUP BY 的子条款</li>
+</ul>
+<p><img src="assets/1533913512631.png" alt="1533913512631"></p>
+<p><strong>ROLLUP</strong></p>
+<p><img src="assets/1533913530425.png" alt="1533913530425"></p>
+<p><strong>ANY</strong></p>
+<ul>
+<li><code>=ANY</code>等同于<code>IN</code></li>
+<li><code>&lt;&gt;ANY</code> 等同于 <code>NOT IN</code></li>
+</ul>
+<p><strong>ALL</strong></p>
+<ul>
+<li>全部满足条件，如：  大于 就要大于 条件中的每一个</li>
+</ul>
+<p><strong>EXISTS</strong></p>
+<ul>
+<li>如下， 对 customer 表中的每个客户，子查询检查payment 表查找到该客户是否至少进行了一次付款且金额大于11</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> first_name<span class="token punctuation">,</span> last_name <span class="token keyword">from</span> customer <span class="token number">c</span>
+<span class="token keyword">where</span> <span class="token keyword">exists</span><span class="token punctuation">(</span>
+    <span class="token keyword">select</span> <span class="token number">1</span> <span class="token keyword">from</span> payment p <span class="token keyword">where</span> p<span class="token punctuation">.</span>customer_id <span class="token operator">=</span> <span class="token number">c</span><span class="token punctuation">.</span>customer_id <span class="token operator">and</span> amount <span class="token operator">></span> <span class="token number">11</span>
+<span class="token punctuation">)</span> <span class="token keyword">order</span> <span class="token keyword">by</span> first_name<span class="token punctuation">,</span><span class="token punctuation">,</span> last_name<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 如果 exists(select null) 那么将返回 customer 中的所有的行</span>
+</code></pre>
+<p><strong>INSERT</strong> 插入数据</p>
+<ul>
+<li>upsert <a href="http://www.postgresqltutorial.com/postgresql-upsert/" target="_blank" rel="noopener">http://www.postgresqltutorial.com/postgresql-upsert/</a></li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> <span class="token keyword">table</span> <span class="token punctuation">(</span>column1<span class="token punctuation">,</span> column2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">values</span>
+<span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 多行</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> <span class="token keyword">table</span> <span class="token punctuation">(</span>column1<span class="token punctuation">,</span> column2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">values</span>
+<span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 插入查的的结果</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> <span class="token keyword">table</span> <span class="token punctuation">(</span>column1<span class="token punctuation">,</span> column2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">select</span> 
+column1<span class="token punctuation">,</span> column2 <span class="token keyword">from</span> another_table <span class="token keyword">where</span> condition<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 插入数据并对原数据进行更该  on conflict target action</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> customers <span class="token punctuation">(</span>name<span class="token punctuation">,</span> email<span class="token punctuation">)</span> <span class="token keyword">values</span>
+<span class="token punctuation">(</span><span class="token string">'name1'</span><span class="token punctuation">,</span> <span class="token string">'values1'</span><span class="token punctuation">)</span> 
+<span class="token keyword">on</span> conflict <span class="token keyword">on</span> <span class="token keyword">constraint</span> customers_name_key <span class="token keyword">DO</span> NOTHING<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 等价于上一句</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> customers <span class="token punctuation">(</span>name<span class="token punctuation">,</span> email<span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token string">'v1'</span><span class="token punctuation">,</span> <span class="token string">'v2'</span><span class="token punctuation">)</span>
+<span class="token keyword">on</span> conflict <span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token keyword">update</span> <span class="token keyword">set</span> email<span class="token operator">=</span>EXCLUDED<span class="token punctuation">.</span>email <span class="token operator">||</span><span class="token string">';'</span><span class="token operator">||</span>customers<span class="token punctuation">.</span>email
+</code></pre>
+<p><strong>UPDATE</strong> 更新数据</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 创建信列并更新数据</span>
+<span class="token keyword">UPDATE</span> link_temp 
+<span class="token keyword">set</span> rel<span class="token operator">=</span>link<span class="token punctuation">.</span>rel<span class="token punctuation">,</span>
+description <span class="token operator">=</span> link<span class="token punctuation">.</span>description<span class="token punctuation">,</span>
+<span class="token keyword">from</span> link <span class="token keyword">where</span> link_temp<span class="token punctuation">.</span>id<span class="token operator">=</span>link<span class="token punctuation">.</span>id
+
+<span class="token comment" spellcheck="true">-- 获取数据并进行计算将计算结果添加到新列</span>
+<span class="token keyword">update</span> product <span class="token keyword">set</span> net_price <span class="token operator">=</span> price <span class="token operator">-</span> price <span class="token operator">*</span> discount
+<span class="token keyword">from</span> product_segment <span class="token keyword">where</span> product<span class="token punctuation">.</span>segment_id <span class="token operator">=</span> product_segment<span class="token punctuation">.</span>id
+</code></pre>
+<p><strong>DELETE</strong>  删除操作</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">delete</span> <span class="token keyword">from</span> <span class="token keyword">table</span> <span class="token keyword">where</span> condition<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 检查引用另外一个表中的一个或多个列的条件，使用 using</span>
+<span class="token keyword">delete</span> <span class="token keyword">from</span> table1
+<span class="token keyword">from</span> another_table <span class="token keyword">where</span> table1<span class="token punctuation">.</span>id<span class="token operator">=</span>another_table<span class="token punctuation">.</span>id <span class="token operator">AND</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment" spellcheck="true">-- 也可以</span>
+<span class="token keyword">delete</span> <span class="token keyword">from</span> <span class="token keyword">table</span> <span class="token keyword">where</span> <span class="token keyword">table</span><span class="token punctuation">.</span>id<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> id <span class="token keyword">from</span> another_table<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/03-MongoBD主从配置/" class="styled-border">
+                    ←
+                    MongoBD主从配置
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/02-MySQL数据库/" class="styled-border">
+                    
+                    Mysql常用命令
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

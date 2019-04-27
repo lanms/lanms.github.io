@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Mysql常用命令 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="SQL(structured Query Langunage) 关系型数据库的编程语言 DDL 数据定义语言 : creat 新建/ drop(删除) / alter (修改) DML 数据操作语言 : insert 插入 delete 删除 update 更新 DQL 数据查询语言 : select DCL 数据控制语言  : grant / revoke / begin / commit /">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql常用命令">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/02-MySQL数据库/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="SQL(structured Query Langunage) 关系型数据库的编程语言 DDL 数据定义语言 : creat 新建/ drop(删除) / alter (修改) DML 数据操作语言 : insert 插入 delete 删除 update 更新 DQL 数据查询语言 : select DCL 数据控制语言  : grant / revoke / begin / commit /">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:22:25.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql常用命令">
+<meta name="twitter:description" content="SQL(structured Query Langunage) 关系型数据库的编程语言 DDL 数据定义语言 : creat 新建/ drop(删除) / alter (修改) DML 数据操作语言 : insert 插入 delete 删除 update 更新 DQL 数据查询语言 : select DCL 数据控制语言  : grant / revoke / begin / commit /">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Mysql常用命令</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/database/">database</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <ul>
+<li>SQL(structured Query Langunage)<ul>
+<li>关系型数据库的编程语言</li>
+<li>DDL 数据定义语言 : creat 新建/ drop(删除) / alter (修改)</li>
+<li>DML 数据操作语言 : insert 插入 delete 删除 update 更新</li>
+<li>DQL 数据查询语言 : select</li>
+<li>DCL 数据控制语言  : grant / revoke / begin / commit / rollback</li>
+</ul>
+</li>
+<li>DDL操作  : creat 新建/ drop(删除) / alter (修改)<ul>
+<li>DDL 数据定义语言 基本操作指令 <ul>
+<li>判断数据库存在 <code>drop datebase if exists school</code></li>
+<li>创建数据库 <code>create datebase school default charser utf8</code></li>
+<li>切换到已创建的 school 数据库 <code>use school</code></li>
+<li>删除表 <code>drop table tb_student</code></li>
+<li>创建表 <code>create table tb_student(stuid int not null comment &#39;注释&#39;)</code> 多个并列用逗号隔开</li>
+<li>指定主键 <code>primary key (stuid)</code></li>
+<li>修改表 <code>alter table tb_student add column saddr varchar(100);</code></li>
+<li>删除表 <code>alter table tb_student drop column stel;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DML操作 : insert 插入 delete 删除 update 更新<ul>
+<li>数据操作语言<ul>
+<li>插入数据<code>insert into tb_student values (&quot;写入要插入的内容与表的列数相同&quot;);</code></li>
+<li><code>insert into tb_student (&quot;要插入的属性,逗号隔开&quot;) values (&quot;对应的属性值&quot;)</code></li>
+<li>插入多个 , 圆括号里面装一组的属性,多组用逗号隔开</li>
+<li><code>insert into tb_student values (&quot;插入数据1&quot;), (&quot;插入数据2&quot;);</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>代码示例</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 如果指定的数据库存在则删除该数据库</span>
+<span class="token keyword">drop</span> <span class="token keyword">database</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> school<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 创建数据库  指定默认字符集 utf8</span>
+<span class="token keyword">create</span> <span class="token keyword">database</span> school <span class="token keyword">default</span> <span class="token keyword">charset</span> utf8<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 切换到school数据库</span>
+<span class="token keyword">use</span> school<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 删除表</span>
+<span class="token keyword">drop</span> <span class="token keyword">table</span> tb_student<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 关系型数据库是通过二维表来组织数据的</span>
+<span class="token comment" spellcheck="true">-- 创建学生表  加前缀区分</span>
+<span class="token comment" spellcheck="true">-- 主键(primary key)  能够标识唯一的一条记录的列 不能重复</span>
+<span class="token comment" spellcheck="true">-- comment 关键字后面跟的也是注释,单引号引起注释</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> tb_student
+<span class="token punctuation">(</span>
+stuid <span class="token keyword">int</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">comment</span> <span class="token string">'学号'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- 添加约束  非空约束</span>
+sname <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">comment</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- varchar 可变长度字符串 限定字符串最大长度</span>
+ssex <span class="token keyword">bit</span> <span class="token keyword">default</span> <span class="token number">1</span> <span class="token keyword">comment</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">-- bit 只有 0 和 1 两种类型, default设定默认值 1</span>
+stel char<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token keyword">comment</span> <span class="token string">'电话号'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">-- char 定长字符串</span>
+sbirth <span class="token keyword">date</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">-- 日期型  datetime 时间日期型</span>
+<span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>stuid<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">-- 将学号设置为主键</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 修改表  添加属性  设置属性的参数</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> tb_student <span class="token keyword">add</span> <span class="token keyword">column</span> saddr <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">-- 删除</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> tb_student <span class="token keyword">drop</span> <span class="token keyword">column</span> stel<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- DML  数据操作语言 insert 插入 delete 删除 update 更新</span>
+<span class="token comment" spellcheck="true">-- 插入学生记录  字符串用单引号  双引号也可以,不建议使用</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> tb_student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1001</span><span class="token punctuation">,</span> <span class="token string">'王大锤'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'1994-6-6'</span><span class="token punctuation">,</span> <span class="token string">'成都力宝大厦'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> tb_student <span class="token punctuation">(</span>stuid<span class="token punctuation">,</span> sname<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1002</span><span class="token punctuation">,</span> <span class="token string">'张'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> tb_student <span class="token punctuation">(</span>stuid<span class="token punctuation">,</span> sname<span class="token punctuation">,</span> ssex<span class="token punctuation">)</span> <span class="token keyword">value</span><span class="token punctuation">(</span><span class="token number">1003</span><span class="token punctuation">,</span> <span class="token string">'李飘飘'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- 一次加多个</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> tb_student <span class="token keyword">values</span>
+<span class="token punctuation">(</span><span class="token number">1004</span><span class="token punctuation">,</span> <span class="token string">'张三丰'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'1990-3-4'</span><span class="token punctuation">,</span> <span class="token string">'湖北武汉'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">(</span><span class="token number">1005</span><span class="token punctuation">,</span> <span class="token string">'黄蓉'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'1990-3-4'</span><span class="token punctuation">,</span> <span class="token string">'湖北武汉'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">(</span><span class="token number">1006</span><span class="token punctuation">,</span> <span class="token string">'郭靖'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'1990-3-4'</span><span class="token punctuation">,</span> <span class="token string">'湖北武汉'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/02-PostgreSQL数据的增删改查/" class="styled-border">
+                    ←
+                    PostgreSQL-CRUD
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/02-MongoDB增删改查/" class="styled-border">
+                    
+                    mongodb-CRUD
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

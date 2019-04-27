@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Linux系统设置 | Lanms Blog</title>
+  <title>Linux常用命令-1 | Lanms Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="将vim设置为默认文本编辑器 echo export EDITOR=/usr/bin/vim &amp;gt;&amp;gt; ~/.bashrc   修改Host文件 sudo gedit /etc/hosts  chorme wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb sudo dpkg -i google-">
+  <meta name="description" content="Linux常用命令chmod a+x file.txt  赋予文件权限 echo  回声命令 printf 打印  可以格式化输出 cat 查看文档 rpm -q package_name  确认安装包已成功安装 sysctl -p 验证Linux 核心参数 \$\$   当前的PID \$? 检测命令是否运行成功   -0 标准输入 -1 标准输出 -2 标准错误  -其他 错误 \$*  运行">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统设置">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/10-ubantu安装工具命令/index.html">
+<meta property="og:title" content="Linux常用命令-1">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/06-Linux操作命令/index.html">
 <meta property="og:site_name" content="Lanms Blog">
-<meta property="og:description" content="将vim设置为默认文本编辑器 echo export EDITOR=/usr/bin/vim &amp;gt;&amp;gt; ~/.bashrc   修改Host文件 sudo gedit /etc/hosts  chorme wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb sudo dpkg -i google-">
+<meta property="og:description" content="Linux常用命令chmod a+x file.txt  赋予文件权限 echo  回声命令 printf 打印  可以格式化输出 cat 查看文档 rpm -q package_name  确认安装包已成功安装 sysctl -p 验证Linux 核心参数 \$\$   当前的PID \$? 检测命令是否运行成功   -0 标准输入 -1 标准输出 -2 标准错误  -其他 错误 \$*  运行">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-27T03:43:35.270Z">
+<meta property="og:updated_time" content="2019-04-27T03:48:02.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux系统设置">
-<meta name="twitter:description" content="将vim设置为默认文本编辑器 echo export EDITOR=/usr/bin/vim &amp;gt;&amp;gt; ~/.bashrc   修改Host文件 sudo gedit /etc/hosts  chorme wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb sudo dpkg -i google-">
+<meta name="twitter:title" content="Linux常用命令-1">
+<meta name="twitter:description" content="Linux常用命令chmod a+x file.txt  赋予文件权限 echo  回声命令 printf 打印  可以格式化输出 cat 查看文档 rpm -q package_name  确认安装包已成功安装 sysctl -p 验证Linux 核心参数 \$\$   当前的PID \$? 检测命令是否运行成功   -0 标准输入 -1 标准输出 -2 标准错误  -其他 错误 \$*  运行">
   
     <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
   
@@ -94,7 +94,7 @@
             <!-- Articles -->
                 
                 <h1 class="ts header">
-                    <span style="color: #333;">Linux系统设置</span>
+                    <span style="color: #333;">Linux常用命令-1</span>
                     <div class="sub header" style="color: #808080;">Publish: 2019/3/22 
                      &nbsp;&nbsp;
                         <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Linux/">Linux</a></li></ul>
@@ -102,77 +102,60 @@
                     </div>
                 </h1>
 
-                <p>将vim设置为默认文本编辑器</p>
-<pre class=" language-shell"><code class="language-shell">echo export EDITOR=/usr/bin/vim >> ~/.bashrc 
-</code></pre>
-<p>修改Host文件</p>
-<pre class=" language-shell"><code class="language-shell">sudo gedit /etc/hosts
-</code></pre>
-<p>chorme</p>
-<pre class=" language-shell"><code class="language-shell">wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-</code></pre>
-<p>fish</p>
-<p>软件源所在文件目录</p>
-<pre class=" language-shell"><code class="language-shell">/etc/apt/sources.list.d
+                <h2 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h2><p>chmod a+x file.txt  赋予文件权限</p>
+<p>echo  回声命令</p>
+<p>printf 打印  可以格式化输出</p>
+<p>cat 查看文档</p>
+<p><code>rpm -q package_name</code>  确认安装包已成功安装</p>
+<p><code>sysctl -p</code> 验证Linux 核心参数</p>
+<p>\$\$   当前的PID</p>
+<p>\$? 检测命令是否运行成功   -0 标准输入 -1 标准输出 -2 标准错误  -其他 错误</p>
+<p>\$*  运行的参数的个数</p>
+<p>\$@ 当前文件</p>
+<p>$0 当前运行的文件</p>
+<p>$1  第一个参数</p>
+<p><code>read  var</code>  读取输入，赋值给 var</p>
+<p>-d  path  判断是否为目录   <code>[ -d /home ] &amp;&amp; echo yes</code></p>
+<p>pgrep xxx  获得xxx的进程ID</p>
+<p>ps -ef |grep xxx 查看完成的进程信息</p>
+<p><code>cat/proc/$PID/environ | tr &#39;\0&#39; &#39;\n&#39;</code>  查看PID 进程的环境变量，替换 空 为换行输出</p>
+<p>{}  分隔变量和普通字符   <code>${fruit}(s)</code></p>
+<p>>  输出到文件，每次输出会覆盖原内容</p>
+<p>>&gt;  追加的方式输出到文件</p>
+<p>别名</p>
+<p><code>alias  new_command=&quot;command sequence&quot;</code>    </p>
+<ul>
+<li>eg: <code>alias rm=&#39;cp $@ ~/backup &amp;&amp; rm $@&#39;</code> 备份当前文件并删除</li>
+</ul>
+<p><code>tput</code> 获取终端相关的信息</p>
+<p><code>date</code>显示读取的时间</p>
+<p><code>date +%s</code>  时间戳显示时间，纪元时间</p>
+<p><code>data  --data &#39;Jan 20 2011&#39; +%A</code>     ===&gt;&gt;  Satarday    对时间进行计算，格式化输出需要的内容</p>
+<p>%a  星期简写   %A  全拼</p>
+<p>%b %B  月份</p>
+<p>%d %D  日期</p>
+<p>%y %Y  年</p>
+<p><code>bash -x script.sh</code> shell 跟踪调试</p>
+<p><code>{1..8}</code>   1-8 的数组</p>
+<pre class=" language-shell"><code class="language-shell">
+#! /bin/bash
 
-apt update
-apt install fish
+function DEBUG()
+{
+    [ "$_DEBUG"=="on" ] && $@ ||:
+}
+for i in {1..10}
+do
+    DEBUG echo "I am $i"
+done
 
-</code></pre>
-<p>sublime</p>
-<p><a href="http://www.sublimetext.com/docs/3/linux_repositories.html" target="_blank" rel="noopener">http://www.sublimetext.com/docs/3/linux_repositories.html</a></p>
-<pre class=" language-shell"><code class="language-shell">wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - 
-echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/dev/x86_64" | sudo tee -a /etc/pacman.conf
-apt-get update 
-apt-get install sublime-text
-# 启动
-subl
-</code></pre>
-<pre><code># 修改host 添加
-127.0.0.1 license.sublimehq.com
-127.0.0.1 45.55.255.55
-127.0.0.1 45.55.41.223
+# 执行
+$ _DEBUG=on ./secript.sh
 
-# 注册码
------ BEGIN LICENSE -----
-sgbteam
-Single User License
-EA7E-1153259
-8891CBB9 F1513E4F 1A3405C1 A865D53F
-115F202E 7B91AB2D 0D2A40ED 352B269B
-76E84F0B CD69BFC7 59F2DFEF E267328F
-215652A3 E88F9D8F 4C38E3BA 5B2DAAE4
-969624E7 DC9CD4D5 717FB40C 1B9738CF
-20B3C4F1 E917B5B3 87C38D9C ACCE7DD8
-5F7EF854 86B9743C FADC04AA FB0DA5C0
-F913BE58 42FEA319 F954EFDD AE881E0B
------- END LICENSE ------
-
-</code></pre><p>mysql</p>
-<pre class=" language-shell"><code class="language-shell">apt-get install mysql-server mysql-client libmysqlclient-dev
-mysql -u root -p
+# 在每一条需要打印调试信息的语句前加上DEBUG，如果没有 DEBUG=on 传递给脚本，那么调试信息就不会被打印出来
 </code></pre>
-<p>redis</p>
-<pre class=" language-shell"><code class="language-shell">apt-get install redis-server
-
-</code></pre>
-<p>navicat</p>
-<p><a href="https://blog.csdn.net/ouzhuangzhuang/article/details/81739933" target="_blank" rel="noopener">https://blog.csdn.net/ouzhuangzhuang/article/details/81739933</a></p>
-<p>破解方法</p>
-<p><a href="https://blog.csdn.net/liumengyan_ysu/article/details/44224735" target="_blank" rel="noopener">https://blog.csdn.net/liumengyan_ysu/article/details/44224735</a></p>
-<p>定时删除注册信息可以永久使用</p>
-<p><a href="https://blog.csdn.net/a295277302/article/details/78143010" target="_blank" rel="noopener">https://blog.csdn.net/a295277302/article/details/78143010</a></p>
-<pre class=" language-shell"><code class="language-shell">30 14  *  *  2 rm -f /home/lanms/.navicat64/system.reg  # 每周二，14：30执行一次
-</code></pre>
-<pre><code>vi /etc/profile
-export PATH=$PATH:/home/lanms/Desktop/software/navicat121_premium_cs_x64
-
-vi ~/.bashrc
-alias navicat=&quot;/home/lanms/Desktop/software/navicat121_premium_cs_x64/start_navicat&quot;
-</code></pre><p>解决乱码</p>
-<p>选项里左边选择第一个，在右边第一个下拉框中选择Noto Sans mono CJK SC Regular</p>
-<p><a href="https://blog.csdn.net/sinat_26546385/article/details/80381282" target="_blank" rel="noopener">https://blog.csdn.net/sinat_26546385/article/details/80381282</a></p>
+<p> Frok <strong>炸弹</strong></p>
+<p><code>:(){ :|:&amp; }; :</code></p>
 
             <!-- / the end of articles -->
         </div>
@@ -206,16 +189,16 @@ alias navicat=&quot;/home/lanms/Desktop/software/navicat121_premium_cs_x64/start
         <hr/>
         <div class="next-prev-post-section">
             
-                <a href="/2019/04/22/05-gitattributes设置文件属性/" class="styled-border">
+                <a href="/2019/04/22/06-gitignore设置/" class="styled-border">
                     ←
-                    Git的gitattributes文件详解
+                    gitignore文件设置
                     
                 </a>
             
             
-                <a href="/2019/04/22/10-Linux安装工具命令/" class="styled-border">
+                <a href="/2019/04/22/js中cookie值的设置和获取/" class="styled-border">
                     
-                    Linux工具-1
+                    JS中Cookie取值和设置
                     →
                 </a>
             

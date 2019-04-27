@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>gitignore文件设置 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Git的gitignore文件设置[TOC] 在使用Git的过程中，我们喜欢有的文件比如日志，临时文件，编译的中间文件等不要提交到代码仓库，这时就要设置相应的忽略规则，来忽略这些文件的提交。 Git 忽略文件提交的方法有三种方法可以实现忽略Git中不想提交的文件。 在Git项目中定义 .gitignore 文件这种方式通过在项目的某个文件夹下定义 .gitignore 文件，在该文件中定义相应的忽">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitignore文件设置">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/06-gitignore设置/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="Git的gitignore文件设置[TOC] 在使用Git的过程中，我们喜欢有的文件比如日志，临时文件，编译的中间文件等不要提交到代码仓库，这时就要设置相应的忽略规则，来忽略这些文件的提交。 Git 忽略文件提交的方法有三种方法可以实现忽略Git中不想提交的文件。 在Git项目中定义 .gitignore 文件这种方式通过在项目的某个文件夹下定义 .gitignore 文件，在该文件中定义相应的忽">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:48:23.729Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gitignore文件设置">
+<meta name="twitter:description" content="Git的gitignore文件设置[TOC] 在使用Git的过程中，我们喜欢有的文件比如日志，临时文件，编译的中间文件等不要提交到代码仓库，这时就要设置相应的忽略规则，来忽略这些文件的提交。 Git 忽略文件提交的方法有三种方法可以实现忽略Git中不想提交的文件。 在Git项目中定义 .gitignore 文件这种方式通过在项目的某个文件夹下定义 .gitignore 文件，在该文件中定义相应的忽">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">gitignore文件设置</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/22 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Git/">Git</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h2 id="Git的gitignore文件设置"><a href="#Git的gitignore文件设置" class="headerlink" title="Git的gitignore文件设置"></a>Git的gitignore文件设置</h2><p>[TOC]</p>
+<p>在使用Git的过程中，我们喜欢有的文件比如日志，临时文件，编译的中间文件等不要提交到代码仓库，这时就要设置相应的忽略规则，来忽略这些文件的提交。</p>
+<h3 id="Git-忽略文件提交的方法"><a href="#Git-忽略文件提交的方法" class="headerlink" title="Git 忽略文件提交的方法"></a>Git 忽略文件提交的方法</h3><p>有三种方法可以实现忽略Git中不想提交的文件。</p>
+<h4 id="在Git项目中定义-gitignore-文件"><a href="#在Git项目中定义-gitignore-文件" class="headerlink" title="在Git项目中定义 .gitignore 文件"></a>在Git项目中定义 .gitignore 文件</h4><p>这种方式通过在项目的某个文件夹下定义 .gitignore 文件，在该文件中定义相应的忽略规则，来管理当前文件夹下的文件的Git提交行为。</p>
+<p>.gitignore 文件是可以提交到公有仓库中，这就为该项目下的所有开发者都共享一套定义好的忽略规则。</p>
+<p>在 .gitingore 文件中，遵循相应的语法，在每一行指定一个忽略规则。如：</p>
+<pre><code>*.log
+*.temp
+/vendor
+</code></pre><h3 id="在Git项目的设置中指定排除文件"><a href="#在Git项目的设置中指定排除文件" class="headerlink" title="在Git项目的设置中指定排除文件"></a>在Git项目的设置中指定排除文件</h3><p>这种方式只是临时指定该项目的行为，需要编辑当前项目下的 .git/info/exclude 文件，然后将需要忽略提交的文件写入其中。</p>
+<p>需要注意的是，这种方式指定的忽略文件的根目录是项目根目录。</p>
+<h4 id="定义Git全局的-gitignore-文件"><a href="#定义Git全局的-gitignore-文件" class="headerlink" title="定义Git全局的 .gitignore 文件"></a>定义Git全局的 .gitignore 文件</h4><p>除了可以在项目中定义 .gitignore 文件外，还可以设置全局的 git .gitignore 文件来管理所有Git项目的行为。这种方式在不同的项目开发者之间是不共享的，是属于项目之上Git应用级别的行为。</p>
+<p>这种方式也需要创建相应的 .gitignore 文件，可以放在任意位置。然后在使用以下命令配置Git：</p>
+<pre><code>git config --global core.excludesfile ~/.gitignore
+</code></pre><h3 id="Git-忽略规则"><a href="#Git-忽略规则" class="headerlink" title="Git 忽略规则"></a>Git 忽略规则</h3><p>详细的忽略规则可以参考<a href="https://git-scm.com/docs/gitignore" target="_blank" rel="noopener">官方英文文档</a></p>
+<h4 id="Git-忽略规则优先级"><a href="#Git-忽略规则优先级" class="headerlink" title="Git 忽略规则优先级"></a>Git 忽略规则优先级</h4><p>在 .gitingore 文件中，每一行指定一个忽略规则，Git 检查忽略规则的时候有多个来源，它的优先级如下（由高到低）：</p>
+<ul>
+<li>从命令行中读取可用的忽略规则</li>
+<li>当前目录定义的规则</li>
+<li>父级目录定义的规则，依次递推</li>
+<li>$GIT_DIR/info/exclude 文件中定义的规则</li>
+<li>core.excludesfile中定义的全局规则</li>
+</ul>
+<h4 id="Git-忽略规则匹配语法"><a href="#Git-忽略规则匹配语法" class="headerlink" title="Git 忽略规则匹配语法"></a>Git 忽略规则匹配语法</h4><p>在 .gitignore 文件中，每一行的忽略规则的语法如下：</p>
+<ul>
+<li>空格不匹配任意文件，可作为分隔符，可用反斜杠转义</li>
+<li># 开头的文件标识注释，可以使用反斜杠进行转义</li>
+<li>! 开头的模式标识否定，该文件将会再次被包含，<strong>如果排除了该文件的父级目录，则使用 ! 也不会再次被包含</strong>。可以使用反斜杠进行转义</li>
+<li>/ 结束的模式只匹配文件夹以及在该文件夹路径下的内容，但是不匹配该文件</li>
+<li>/ 开始的模式匹配项目跟目录</li>
+<li>如果一个模式不包含斜杠，则它匹配相对于当前 .gitignore 文件路径的内容，如果该模式不在 .gitignore 文件中，则相对于项目根目录</li>
+<li>** 匹配多级目录，可在开始，中间，结束</li>
+<li>? 通用匹配单个字符</li>
+<li>[] 通用匹配单个字符列表</li>
+</ul>
+<h3 id="常用匹配示例："><a href="#常用匹配示例：" class="headerlink" title="常用匹配示例："></a>常用匹配示例：</h3><pre class=" language-python"><code class="language-python">
+bin<span class="token operator">/</span><span class="token punctuation">:</span> 忽略当前路径下的bin文件夹，该文件夹下的所有内容都会被忽略，不忽略 bin 文件
+<span class="token operator">/</span>bin<span class="token punctuation">:</span> 忽略根目录下的bin文件
+<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">.</span>c<span class="token punctuation">:</span> 忽略 cat<span class="token punctuation">.</span>c，不忽略 build<span class="token operator">/</span>cat<span class="token punctuation">.</span>c
+debug<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">.</span>obj<span class="token punctuation">:</span> 忽略 debug<span class="token operator">/</span>io<span class="token punctuation">.</span>obj，不忽略 debug<span class="token operator">/</span>common<span class="token operator">/</span>io<span class="token punctuation">.</span>obj 和 tools<span class="token operator">/</span>debug<span class="token operator">/</span>io<span class="token punctuation">.</span>obj
+<span class="token operator">**</span><span class="token operator">/</span>foo<span class="token punctuation">:</span> 忽略<span class="token operator">/</span>foo<span class="token punctuation">,</span> a<span class="token operator">/</span>foo<span class="token punctuation">,</span> a<span class="token operator">/</span>b<span class="token operator">/</span>foo等
+a<span class="token operator">/</span><span class="token operator">**</span><span class="token operator">/</span>b<span class="token punctuation">:</span> 忽略a<span class="token operator">/</span>b<span class="token punctuation">,</span> a<span class="token operator">/</span>x<span class="token operator">/</span>b<span class="token punctuation">,</span> a<span class="token operator">/</span>x<span class="token operator">/</span>y<span class="token operator">/</span>b等
+!<span class="token operator">/</span>bin<span class="token operator">/</span>run<span class="token punctuation">.</span>sh<span class="token punctuation">:</span> 不忽略 bin 目录下的 run<span class="token punctuation">.</span>sh 文件
+<span class="token operator">*</span><span class="token punctuation">.</span>log<span class="token punctuation">:</span> 忽略所有 <span class="token punctuation">.</span>log 文件
+config<span class="token punctuation">.</span>php<span class="token punctuation">:</span> 忽略当前路径的 config<span class="token punctuation">.</span>php 文件
+
+</code></pre>
+<h3 id="gitignore规则生效"><a href="#gitignore规则生效" class="headerlink" title=".gitignore规则生效"></a>.gitignore规则生效</h3><p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p>
+<p>解决方法就是先把本地缓存删除（改变成未track状态），然后再提交:</p>
+<pre><code>git rm -r --cached .
+git add .
+git commit -m &#39;update .gitignore&#39;
+</code></pre><p>原文出处：<a href="http://uusama.com/542.html" target="_blank" rel="noopener">http://uusama.com/542.html</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/22/05-定时执行脚本任务/" class="styled-border">
+                    ←
+                    定时执行脚本任务
+                    
+                </a>
+            
+            
+                <a href="/2019/04/22/06-Linux操作命令/" class="styled-border">
+                    
+                    Linux常用命令-1
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

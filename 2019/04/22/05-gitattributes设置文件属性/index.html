@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Git的gitattributes文件详解 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Git的gitattributes文件详解Git的gitattributes文件是一个文本文件，文件中的一行定义一个路径的若干个属性。  gitattributes文件以行为单位设置一个路径下所有文件的属性，格式如下：   要匹配的文件模式 属性1 属性2 …   在gitattributes文件的一行中，一个属性（以text属性为例）可能有4种状态： 设置text 不设置-text 设置值tex">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git的gitattributes文件详解">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/05-gitattributes设置文件属性/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="Git的gitattributes文件详解Git的gitattributes文件是一个文本文件，文件中的一行定义一个路径的若干个属性。  gitattributes文件以行为单位设置一个路径下所有文件的属性，格式如下：   要匹配的文件模式 属性1 属性2 …   在gitattributes文件的一行中，一个属性（以text属性为例）可能有4种状态： 设置text 不设置-text 设置值tex">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T03:49:07.143Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git的gitattributes文件详解">
+<meta name="twitter:description" content="Git的gitattributes文件详解Git的gitattributes文件是一个文本文件，文件中的一行定义一个路径的若干个属性。  gitattributes文件以行为单位设置一个路径下所有文件的属性，格式如下：   要匹配的文件模式 属性1 属性2 …   在gitattributes文件的一行中，一个属性（以text属性为例）可能有4种状态： 设置text 不设置-text 设置值tex">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Git的gitattributes文件详解</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/22 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Git/">Git</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="Git的gitattributes文件详解"><a href="#Git的gitattributes文件详解" class="headerlink" title="Git的gitattributes文件详解"></a>Git的gitattributes文件详解</h3><p>Git的gitattributes文件是一个文本文件，文件中的一行定义一个路径的若干个属性。</p>
+<ol>
+<li><h5 id="gitattributes文件以行为单位设置一个路径下所有文件的属性，格式如下："><a href="#gitattributes文件以行为单位设置一个路径下所有文件的属性，格式如下：" class="headerlink" title="gitattributes文件以行为单位设置一个路径下所有文件的属性，格式如下："></a>gitattributes文件以行为单位设置一个路径下所有文件的属性，格式如下：</h5></li>
+</ol>
+<ul>
+<li>要匹配的文件模式 属性1 属性2 …</li>
+</ul>
+<ol start="2">
+<li><h5 id="在gitattributes文件的一行中，一个属性（以text属性为例）可能有4种状态："><a href="#在gitattributes文件的一行中，一个属性（以text属性为例）可能有4种状态：" class="headerlink" title="在gitattributes文件的一行中，一个属性（以text属性为例）可能有4种状态："></a>在gitattributes文件的一行中，一个属性（以text属性为例）可能有4种状态：</h5><ul>
+<li>设置text</li>
+<li>不设置-text</li>
+<li>设置值text=string</li>
+<li>未声明，通常不出现该属性即可；但是为了覆盖其他文件中的声明，也可以 <code>!text</code></li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><h5 id="gitattributes文件示例："><a href="#gitattributes文件示例：" class="headerlink" title="gitattributes文件示例："></a>gitattributes文件示例：</h5></li>
+</ol>
+<pre class=" language-python"><code class="language-python"><span class="token operator">*</span>           text<span class="token operator">=</span>auto
+<span class="token punctuation">.</span>txt        text
+<span class="token punctuation">.</span>jpg        <span class="token operator">-</span>text
+<span class="token punctuation">.</span>vcproj        text eol<span class="token operator">=</span>crlf
+<span class="token punctuation">.</span>sh            text eol<span class="token operator">=</span>lf
+<span class="token punctuation">.</span>py            eol<span class="token operator">=</span>lf
+</code></pre>
+<p>说明：</p>
+<ul>
+<li><p>第1行，对任何文件，设置text=auto，表示文件的行尾自动转换。如果是文本文件，则在文件入Git库时，行尾自动转换为LF。如果已经在入Git库中的文件的行尾为CRLF，则该文件在入Git库时，不再转换为LF。</p>
+</li>
+<li><p>第2行，对于txt文件，标记为文本文件，并进行行尾规范化。</p>
+</li>
+<li><p>第3行，对于jpg文件，标记为非文本文件，不进行任何的行尾转换。</p>
+</li>
+<li><p>第4行，对于vcproj文件，标记为文本文件，在文件入Git库时进行规范化，即行尾为LF。但是在检出到工作目录时，行尾自动转换为CRLF。</p>
+</li>
+<li><p>第5行，对于sh文件，标记为文本文件，在文件入Git库时进行规范化，即行尾为LF。在检出到工作目录时，行尾也不会转换为CRLF（即保持LF）。</p>
+</li>
+<li><p>第6行，对于py文件，只针对工作目录中的文件，行尾为LF。</p>
+</li>
+</ul>
+<ol start="4">
+<li><h5 id="在一个Git库中可以有多个gitattributes文件："><a href="#在一个Git库中可以有多个gitattributes文件：" class="headerlink" title="在一个Git库中可以有多个gitattributes文件："></a>在一个Git库中可以有多个gitattributes文件：</h5><p>不同gitattributes文件中，属性设置的优先级(从高到低)：</p>
+<ul>
+<li>/myproj/info/attributes文件</li>
+<li>/myproj/my_path/.gitattributes文件</li>
+<li>/myproj/.gitattributes文件</li>
+<li>同一个gitattributes文件中，按照行的先后顺序，如果一个文件的某个属性被多次设置，则后序的设置优先</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li><h5 id="也可以为所有Git库设置统一的gitattributes文件："><a href="#也可以为所有Git库设置统一的gitattributes文件：" class="headerlink" title="也可以为所有Git库设置统一的gitattributes文件："></a>也可以为所有Git库设置统一的gitattributes文件：</h5></li>
+</ol>
+<pre class=" language-python"><code class="language-python">git config <span class="token operator">-</span><span class="token operator">-</span>get core<span class="token punctuation">.</span>attributesFile
+git config <span class="token operator">-</span><span class="token operator">-</span><span class="token keyword">global</span> <span class="token operator">-</span><span class="token operator">-</span>get core<span class="token punctuation">.</span>attributesFile
+</code></pre>
+<ol start="6">
+<li><h5 id="gitattributes文件中可以定义的属性："><a href="#gitattributes文件中可以定义的属性：" class="headerlink" title="gitattributes文件中可以定义的属性："></a>gitattributes文件中可以定义的属性：</h5><ul>
+<li>text，控制行尾的规范性。</li>
+<li>如果一个文本文件是规范的，则Git库中该文件的行尾总是LF。</li>
+</ul>
+</li>
+</ol>
+<p>对于工作目录，除了text属性之外，还可以设置eol属性，或core.eol配置变量。</p>
+<ul>
+<li>eol，设置行末字符</li>
+<li>eol=lf，入库时将行尾规范为LF，检出时禁止将行尾转换为CRLF</li>
+<li>eol=crlf，入库时将行尾规范为CRLF，检出时将行尾转换为CRLF</li>
+<li>crlf，已过时，类似于text</li>
+<li>ident，为路径设置ident属性，路径中的blob对象中的<code>$Id$</code>将会被替换为<code>$Id:char_40_hexadecimal_name</code></li>
+<li>filter</li>
+</ul>
+<p>利用命令clean,smudge</p>
+<ul>
+<li>diff</li>
+<li>merge，与merge.default配置变量一起确定如何合并文件</li>
+<li>在执行git merge, git revert和git cherry-pick时，如何考虑文件的版本</li>
+</ul>
+<p>Git内置的merge驱动：</p>
+<ul>
+<li>merge=text</li>
+<li>merge=binary</li>
+<li>merge=union</li>
+<li>whitespace，对应core.whitespace配置变量</li>
+</ul>
+<p>在执行git diff, git apply时是否考虑空格。</p>
+<ul>
+<li>export-ignore,export-subst，打包相关的属性</li>
+<li>delta，即Delta压缩</li>
+</ul>
+<p>对于delta=false的路径中的blob对象，不会进行Delta压缩</p>
+<ul>
+<li>encoding，为GUI工具（如gitk, git-gui）设置字符编码，以正确显示匹配的文件内容</li>
+</ul>
+<p>如果该属性未设置，或设置了无效值，则GUI工具会使用配置变量gui.encoding的值。</p>
+<p>参考链接：</p>
+<h5 id="https-git-scm-com-docs-gitattributes"><a href="#https-git-scm-com-docs-gitattributes" class="headerlink" title="https://git-scm.com/docs/gitattributes"></a><a href="https://git-scm.com/docs/gitattributes" target="_blank" rel="noopener">https://git-scm.com/docs/gitattributes</a></h5>
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/24/09-git_rebase/" class="styled-border">
+                    ←
+                    git-rebase使用
+                    
+                </a>
+            
+            
+                <a href="/2019/04/22/10-ubantu安装工具命令/" class="styled-border">
+                    
+                    Linux系统设置
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

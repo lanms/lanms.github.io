@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>连接Redis和MySQL | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="02-连接Redis和MySQL 简介Flask默认并没有提供任何数据库操作的API 我们可以选择任何适合自己项目的数据库来使用 Flask中可以自己的选择数据，用原生语句实现功能，也可以选择ORM（SQLAlchemy，MongoEngine） SQLAlchemy是一个很强大的关系型数据库框架，支持多种数据库后台。SQLAlchemy提供了高层ORM，也提供了使用数据库原生SQL的低层功能。">
+<meta name="keywords" content="Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="连接Redis和MySQL">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/02-连接Redis和MySQL/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="02-连接Redis和MySQL 简介Flask默认并没有提供任何数据库操作的API 我们可以选择任何适合自己项目的数据库来使用 Flask中可以自己的选择数据，用原生语句实现功能，也可以选择ORM（SQLAlchemy，MongoEngine） SQLAlchemy是一个很强大的关系型数据库框架，支持多种数据库后台。SQLAlchemy提供了高层ORM，也提供了使用数据库原生SQL的低层功能。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:33:40.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="连接Redis和MySQL">
+<meta name="twitter:description" content="02-连接Redis和MySQL 简介Flask默认并没有提供任何数据库操作的API 我们可以选择任何适合自己项目的数据库来使用 Flask中可以自己的选择数据，用原生语句实现功能，也可以选择ORM（SQLAlchemy，MongoEngine） SQLAlchemy是一个很强大的关系型数据库框架，支持多种数据库后台。SQLAlchemy提供了高层ORM，也提供了使用数据库原生SQL的低层功能。">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">连接Redis和MySQL</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/27 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Flask/">Flask</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>02-连接Redis和MySQL</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Flask默认并没有提供任何数据库操作的API</p>
+<p>我们可以选择任何适合自己项目的数据库来使用</p>
+<p>Flask中可以自己的选择数据，用原生语句实现功能，也可以选择ORM（SQLAlchemy，MongoEngine）</p>
+<p>SQLAlchemy是一个很强大的关系型数据库框架，支持多种数据库后台。SQLAlchemy提供了高层ORM，也提供了使用数据库原生SQL的低层功能。</p>
+<p>ORM：</p>
+<pre><code>将对对象的操作转换为原生SQL
+优点
+    易用性，可以有效减少重复SQL
+    性能损耗少
+    设计灵活，可以轻松实现复杂查询
+    移植性好
+</code></pre><p>针对于Flask的支持, 更多<a href="http://flask-sqlalchemy.pocoo.org/2.3/" target="_blank" rel="noopener">官网地址</a></p>
+<ul>
+<li>Redis  主要用于会话的存储</li>
+<li>MySQL 主要用于数据的存储</li>
+</ul>
+<h4 id="连接redis"><a href="#连接redis" class="headerlink" title="连接redis"></a>连接redis</h4><pre class=" language-python"><code class="language-python">
+  <span class="token keyword">from</span> falsk_session <span class="token keyword">import</span> Session
+
+  <span class="token comment" spellcheck="true"># 设置 密钥  数据库  redis</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'secret_key'</span>  <span class="token comment" spellcheck="true"># 添加自己定义的复杂的 secret_key</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_TYPE'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'redis'</span>  <span class="token comment" spellcheck="true"># 选择数据库类型, 默认连接本地 redis</span>
+
+      <span class="token comment" spellcheck="true"># 连接指定的地址, 设置数据库的地址可以连接其他服务器的Redis</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_REDIS'</span><span class="token punctuation">]</span> <span class="token operator">=</span> redis<span class="token punctuation">.</span>Redis<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span>
+                                                port<span class="token operator">=</span><span class="token number">6379</span><span class="token punctuation">)</span>
+       <span class="token comment" spellcheck="true"># 添加 sessionid的前缀</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_KEY_PREFIX'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'flask'</span>
+
+      Session<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 初始化</span>
+      <span class="token comment" spellcheck="true"># 也可以写为 Session().init_app(app=app)</span>
+</code></pre>
+<h4 id="连接-MySQL"><a href="#连接-MySQL" class="headerlink" title="连接 MySQL"></a>连接 MySQL</h4><p>注意: 创建模型是需要 从 falsk-sqlalchemy 中 导入 SQLAlchemy开进行模型的创建</p>
+<pre class=" language-python"><code class="language-python">   <span class="token comment" spellcheck="true"># 配置数据库</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_DATABASE_URI'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'mysql+pymysql://root:123456@localhost:3306/hello_flask'</span>
+      app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+      db<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>
+</code></pre>
+<p>例：访问mysql数据库，驱动为pymysql，用户为root，密码为123456，数据库的地址为本地，端口为3306，数据库名称HelloFlask</p>
+<p>设置如下： <code>mysql+pymysql://root:123456@localhost:3306/HelloFlask</code></p>
+<p>在初始化init.py文件中如下配置：</p>
+<pre class=" language-python"><code class="language-python">  app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_TRAKE_MODIFICATIONS'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+  app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SQLALCHEMY_DATABASE_URI'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"mysql+pymysql://root:123456@localhost:3306/HelloFlask"</span>
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/27/01-开始项目,基础项目的拆分/" class="styled-border">
+                    ←
+                    基础项目的拆分
+                    
+                </a>
+            
+            
+                <a href="/2019/04/27/03-定义模型和创建/" class="styled-border">
+                    
+                    模型的创建
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

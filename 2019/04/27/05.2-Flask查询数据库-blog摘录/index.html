@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Flask操作数据库 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Flask操作数据库  格式 filter(model_name.属性名.运算符())  contains 包含 startswith 开始 endswith 结束  范围 in_ 模糊查询 like(&apos;%search%&apos;) __ge__() : 大于等于 __gt__() : 大于 __lt__() : 小于 __le__() : 小于等于  order_by offset paginator">
+<meta name="keywords" content="Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask操作数据库">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/05.2-Flask查询数据库-blog摘录/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="Flask操作数据库  格式 filter(model_name.属性名.运算符())  contains 包含 startswith 开始 endswith 结束  范围 in_ 模糊查询 like(&apos;%search%&apos;) __ge__() : 大于等于 __gt__() : 大于 __lt__() : 小于 __le__() : 小于等于  order_by offset paginator">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:32:39.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flask操作数据库">
+<meta name="twitter:description" content="Flask操作数据库  格式 filter(model_name.属性名.运算符())  contains 包含 startswith 开始 endswith 结束  范围 in_ 模糊查询 like(&apos;%search%&apos;) __ge__() : 大于等于 __gt__() : 大于 __lt__() : 小于 __le__() : 小于等于  order_by offset paginator">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">Flask操作数据库</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/27 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Flask/">Flask</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>Flask操作数据库</p>
+<hr>
+<p>格式</p>
+<pre class=" language-python"><code class="language-python">filter<span class="token punctuation">(</span>model_name<span class="token punctuation">.</span>属性名<span class="token punctuation">.</span>运算符<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+contains 包含
+startswith 开始
+endswith 结束
+
+范围
+in_
+模糊查询
+like<span class="token punctuation">(</span><span class="token string">'%search%'</span><span class="token punctuation">)</span>
+__ge__<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> 大于等于
+__gt__<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> 大于
+__lt__<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> 小于
+__le__<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> 小于等于
+
+order_by
+offset
+paginator
+</code></pre>
+<p><strong>查询相关语句</strong>：</p>
+<pre class=" language-python"><code class="language-python">@stu<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/selectstu/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">select_stu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># 查询年龄小于16岁的学生的信息</span>
+    <span class="token comment" spellcheck="true"># 第一种查询的方式</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age <span class="token operator">&lt;</span> <span class="token number">16</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第二种查询的方式</span>
+    <span class="token comment" spellcheck="true"># __lt__表示小于   __le__表示小于等于</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age<span class="token punctuation">.</span>__lt__<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 查询年龄大于16岁的学生的信息</span>
+    <span class="token comment" spellcheck="true"># 第一种查询的方式</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age <span class="token operator">></span> <span class="token number">16</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第二种查询的方式</span>
+    <span class="token comment" spellcheck="true"># __gt__表示大于   __ge__表示大于等于</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age<span class="token punctuation">.</span>__ge__<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 查询年龄在16,17,20,23的学生的信息</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age<span class="token punctuation">.</span>in_<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 查询所有学生的信息</span>
+    <span class="token comment" spellcheck="true"># 第一种查询方法</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第二种查询方法</span>
+    sql <span class="token operator">=</span> <span class="token string">'select * from student;'</span>
+    stus <span class="token operator">=</span> db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 按照id降序排列(注意：不能用：Student.query.all。order_by)</span>
+    <span class="token comment" spellcheck="true"># 因为：.all后  返回的是一个装有对象的列表，列表是不能排序的</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'-s_id'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 按照id降序获取3个</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'-s_id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>limit<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 获取年龄最大的学生的信息</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'-s_id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># offset(2)表示跳过2个数据   limit（3）表示截取3个信息</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'s_id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>offset<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>limit<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 获取id等于24的学生</span>
+    <span class="token comment" spellcheck="true"># 第一种方法</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_id<span class="token operator">==</span><span class="token number">24</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第二种方法(和Django 不同)</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span>
+
+
+    <span class="token comment" spellcheck="true"># 查询多个条件（from sqlalchemy import and_,or_,not_ ）</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age<span class="token operator">==</span><span class="token number">18</span><span class="token punctuation">,</span>Student<span class="token punctuation">.</span>s_name<span class="token operator">==</span><span class="token string">'张三'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># and_ 并且条件(和上一个的效果一样)</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>and_<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age<span class="token operator">==</span><span class="token number">18</span><span class="token punctuation">,</span>Student<span class="token punctuation">.</span>s_name<span class="token operator">==</span><span class="token string">'张三'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># or_或者条件</span>
+    stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter<span class="token punctuation">(</span>or_<span class="token punctuation">(</span>Student<span class="token punctuation">.</span>s_age<span class="token operator">==</span><span class="token number">18</span><span class="token punctuation">,</span>Student<span class="token punctuation">.</span>s_name<span class="token operator">==</span><span class="token string">'张三'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># not_ 非条件</span>
+<span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'student_list.html'</span><span class="token punctuation">,</span> stus<span class="token operator">=</span>stus<span class="token punctuation">)</span>
+</code></pre>
+<p><strong>注意：</strong></p>
+<ul>
+<li>stus = Student.query.filter(Student.s_age==18) 得到的结果是 <strong>sqlalchemy.BaseQuery</strong></li>
+<li>stus = Student.query.filter(Student.s_age==18).all() 得到的结果是 <strong>装有对象的list(列表)</strong></li>
+<li>stus = Student.query.get(1) 得到是一个对象，不是列表， ‘1’默认是s_id</li>
+</ul>
+<p><strong>两张表一对多关联的查询：</strong><br>学生表和班级表，一对多的关联</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+db <span class="token operator">=</span> SQLAlchemy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s_id <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> autoincrement<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    s_name <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>String<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span> unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    s_age <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 设置外键和班级表关联</span>
+    s_g <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> db<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'grade.g_id'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+    __tablename__ <span class="token operator">=</span> <span class="token string">'student'</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>s_name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>s_age <span class="token operator">=</span> age
+
+
+<span class="token keyword">class</span> <span class="token class-name">Grade</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    g_id <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> autoincrement<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    g_name <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>String<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    g_desc <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>String<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    g_time <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Date<span class="token punctuation">,</span> default<span class="token operator">=</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 通过Grade和Student 的联系</span>
+    students <span class="token operator">=</span> db<span class="token punctuation">.</span>relationship<span class="token punctuation">(</span><span class="token string">'Student'</span><span class="token punctuation">,</span> backref<span class="token operator">=</span><span class="token string">'stu'</span><span class="token punctuation">,</span> lazy<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    __tablename__ <span class="token operator">=</span> <span class="token string">'grade'</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> desc<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>g_name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>g_desc <span class="token operator">=</span> desc
+</code></pre>
+<p>通过班级找到该班级下的学生：</p>
+<pre class=" language-python"><code class="language-python">@grade<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/selectstubygrade/&lt;int:id>/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">select_stu_by_grade</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    grade <span class="token operator">=</span> Grade<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># students 是在Grade模型类中定义的</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'student_grade.html'</span><span class="token punctuation">,</span> stus<span class="token operator">=</span>stus<span class="token punctuation">,</span>
+                           grade<span class="token operator">=</span>grade<span class="token punctuation">)</span>
+</code></pre>
+<p>通过学生找到该学生在那个班级：</p>
+<pre class=" language-python"><code class="language-python">@stu<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/selectgratebystu/&lt;int:id>'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">select_grade_by_stu</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># .stu  是在Grade模型里定义的students里的backref = 'stu'</span>
+    grade <span class="token operator">=</span> stu<span class="token punctuation">.</span>stu
+     <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'student_from_grade.html'</span><span class="token punctuation">,</span>grade<span class="token operator">=</span>grade<span class="token punctuation">,</span>stu<span class="token operator">=</span>stu<span class="token punctuation">)</span><span class="token number">123456</span>
+</code></pre>
+<p><strong>两张表多对多的关系的查询：</strong><br>学生表和课程表之间的多对多的关系查询：<br>对应的stu.models：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLALchemy
+
+db<span class="token operator">=</span> SQLALchemy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 多对多的中间表</span>
+sc <span class="token operator">=</span> db<span class="token punctuation">.</span>Table<span class="token punctuation">(</span><span class="token string">'sc'</span><span class="token punctuation">,</span>
+db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span><span class="token string">'s_id'</span><span class="token punctuation">,</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span>db<span class="token punctuation">.</span>ForeiginKey<span class="token punctuation">(</span><span class="token string">'student.s_id'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>primary_key <span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span><span class="token string">'c_id'</span><span class="token punctuation">,</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span>db<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'course.c_id'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 课程模型</span>
+<span class="token keyword">class</span> <span class="token class-name">Course</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    c_id <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span>primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>autoincrement<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    c_name <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>String<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># Student表示学生的模型的类名，secondary=sc表示用的中间表(sc)，backref表示反向引用（通过学生(student)关联到课程（course））</span>
+    students <span class="token operator">=</span> db<span class="token punctuation">.</span>relationship<span class="token punctuation">(</span><span class="token string">'Student'</span><span class="token punctuation">,</span>secondary<span class="token operator">=</span>sc<span class="token punctuation">,</span>backref<span class="token operator">=</span><span class="token string">'cou'</span><span class="token punctuation">)</span>
+
+    __tablename__ <span class="token operator">=</span> <span class="token string">'course'</span>
+
+<span class="token comment" spellcheck="true"># 学生模型</span>
+<span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s_id <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span>primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>autoincrement<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    s_name <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>String<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>unique<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    s_age <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span>default<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">)</span>
+
+    __tablename__ <span class="token operator">=</span> <span class="token string">'student'</span>
+</code></pre>
+<p>向中间表中加入数据方法：</p>
+<pre class=" language-python"><code class="language-python">@stu<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/stucourse/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">stu_cou</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+        stus <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        cous <span class="token operator">=</span> Course<span class="token punctuation">.</span>query<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'stu.cou.html'</span><span class="token punctuation">,</span> stus<span class="token operator">=</span>stus<span class="token punctuation">,</span> cous<span class="token operator">=</span>cous<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        stu_id <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'student'</span><span class="token punctuation">)</span>
+        course_id <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'course'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 原生的插入数据（第一种）</span>
+        <span class="token comment" spellcheck="true"># sql = 'insert into sc(s_id,c_id) values(%s,%s)' %(stu_id,course_id)</span>
+        <span class="token comment" spellcheck="true"># db.session.execute(sql)</span>
+        <span class="token comment" spellcheck="true"># db.session.commit()</span>
+        <span class="token comment" spellcheck="true"># 第二种写法</span>
+        stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>stu_id<span class="token punctuation">)</span>
+        course <span class="token operator">=</span> Course<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>course_id<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 在SC（中间表）中插入对应的学生id和课程id</span>
+        course<span class="token punctuation">.</span>students<span class="token punctuation">.</span>append<span class="token punctuation">(</span>stu<span class="token punctuation">)</span>
+
+        db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>add<span class="token punctuation">(</span>course<span class="token punctuation">)</span>
+        db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> <span class="token string">'ok'</span>
+</code></pre>
+<p>在中间表中删除对应的数据方法：<br>点击页面’删除’，get方法传入两个参数，一个是学生id，一个是课程id,</p>
+<pre class=" language-python"><code class="language-python">@stu<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/deletecourse/&lt;int:s_id>/&lt;int:c_id>/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">delete_course</span><span class="token punctuation">(</span>s_id<span class="token punctuation">,</span> c_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 获取学生对象</span>
+    stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>s_id<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 获取课程对象</span>
+    cou <span class="token operator">=</span> Course<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>c_id<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 删除sc表中的对应的一条数据</span>
+    <span class="token comment" spellcheck="true"># cou.students.remove(stu)</span>
+    <span class="token comment" spellcheck="true"># 删除sc（中间表）中对应的数据</span>
+    stu<span class="token punctuation">.</span>cou<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>cou<span class="token punctuation">)</span>
+    db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'stu.all_stu'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>通过学生查找学生选修的课程：</p>
+<p>传入学生的id，后台接收id，</p>
+<pre class=" language-python"><code class="language-python">@stu<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/selectcoursebystu/&lt;int:id>'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">select_course_by_stu</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 获取到学生对象</span>
+    stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 通过学生对象找到课程对象</span>
+    cous <span class="token operator">=</span> stu<span class="token punctuation">.</span>cou
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'stucourse.html'</span><span class="token punctuation">,</span> cous<span class="token operator">=</span>cous<span class="token punctuation">,</span> stu<span class="token operator">=</span>stu<span class="token punctuation">)</span>
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/27/05.1-深入flask模型的查询/" class="styled-border">
+                    ←
+                    深入flask模型的查询
+                    
+                </a>
+            
+            
+                <a href="/2019/04/27/07-关于Flask-session和cookie/" class="styled-border">
+                    
+                    关于cookie和session
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

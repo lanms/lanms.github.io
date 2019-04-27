@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>关于cookie和session | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="关于cookie和session服务器需要识别来自不同的用户的请求, 主要是通过浏览器的cookie实现,用户在第一次访问服务器时, 服务器在其cookie中设置一个唯一的ID号, 这个ID把他叫做sessionid与它对应的会在服务器端存储一个会话(session), 每次用户访问服务器时, 通过其cookie中携带的sessionid进行用户的区别, 并在其对应的session中进行记录.">
+<meta name="keywords" content="Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于cookie和session">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/07-关于Flask-session和cookie/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="关于cookie和session服务器需要识别来自不同的用户的请求, 主要是通过浏览器的cookie实现,用户在第一次访问服务器时, 服务器在其cookie中设置一个唯一的ID号, 这个ID把他叫做sessionid与它对应的会在服务器端存储一个会话(session), 每次用户访问服务器时, 通过其cookie中携带的sessionid进行用户的区别, 并在其对应的session中进行记录.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/27/07-关于Flask-session和cookie/assets/1528801433709.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/27/07-关于Flask-session和cookie/assets/1528801449198.png">
+<meta property="og:updated_time" content="2019-04-27T07:32:23.286Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于cookie和session">
+<meta name="twitter:description" content="关于cookie和session服务器需要识别来自不同的用户的请求, 主要是通过浏览器的cookie实现,用户在第一次访问服务器时, 服务器在其cookie中设置一个唯一的ID号, 这个ID把他叫做sessionid与它对应的会在服务器端存储一个会话(session), 每次用户访问服务器时, 通过其cookie中携带的sessionid进行用户的区别, 并在其对应的session中进行记录.">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/27/07-关于Flask-session和cookie/assets/1528801433709.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">关于cookie和session</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/27 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Flask/">Flask</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h4 id="关于cookie和session"><a href="#关于cookie和session" class="headerlink" title="关于cookie和session"></a>关于cookie和session</h4><p>服务器需要识别来自不同的用户的请求, 主要是通过浏览器的cookie实现,用户在第一次访问服务器时, 服务器在其cookie中设置一个唯一的ID号, 这个ID把他叫做sessionid与它对应的会在服务器端存储一个会话(session), 每次用户访问服务器时, 通过其cookie中携带的sessionid进行用户的区别, 并在其对应的session中进行记录. </p>
+<h3 id="1-Cookie"><a href="#1-Cookie" class="headerlink" title="1. Cookie"></a>1. Cookie</h3><p>概念：</p>
+<pre class=" language-python"><code class="language-python">a）客户端会话技术，浏览器的会话技术
+
+b）数据全部存储在客户端中
+
+c）存储使用的键值对结构进行存储
+
+特性：
+    支持过期时间
+    默认会自动携带本网站的cookie
+    不能跨域名
+    不能跨浏览器
+</code></pre>
+<p>创建：</p>
+<pre class=" language-python"><code class="language-python">Cookie是通过服务器创建的Response来创建的
+
+设置：set_cookie<span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">,</span> value<span class="token punctuation">,</span> max_ages<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> expires<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+
+删除<span class="token punctuation">,</span> 有三种删除方式
+
+    <span class="token number">1</span><span class="token punctuation">.</span> 直接清空浏览器的cookie
+    <span class="token number">2</span><span class="token punctuation">.</span> del_cookie<span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">)</span> 直接使用del_cookie函数
+    <span class="token number">3</span><span class="token punctuation">.</span> set_cookie<span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">,</span>expires<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span> 重新设置key的值为空，过期时间为<span class="token number">0</span>
+</code></pre>
+<p>获取：</p>
+<pre class=" language-python"><code class="language-python">在每次请求中，url都会向服务器传递Request，在request中可以获取到cookie的信息
+
+request<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>例子1，设置cookie：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> datetime
+
+@blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/setcookie/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">set_cookie</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    temp <span class="token operator">=</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
+    response <span class="token operator">=</span> make_response<span class="token punctuation">(</span>temp<span class="token punctuation">)</span>
+    outdate<span class="token operator">=</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span>days<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 设置cookie中的name的存在时长，设置为30天才过期  </span>
+    response<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span><span class="token string">'cocoococo'</span><span class="token punctuation">,</span>expires<span class="token operator">=</span>outdate<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> response
+</code></pre>
+<p>例子2，删除cookie中的值</p>
+<pre class=" language-python"><code class="language-python">@blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/setcookie/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">set_cookie</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    temp <span class="token operator">=</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
+    response <span class="token operator">=</span> make_response<span class="token punctuation">(</span>temp<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第一种方式，通过set_cookie去删除</span>
+    response<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">,</span>expires<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第二种方式，del_cookie删除</span>
+    response<span class="token punctuation">.</span>del_cookie<span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> response
+</code></pre>
+<p>例子3，获取cookie中的值</p>
+<pre class=" language-python"><code class="language-python">@blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/getcookie/'</span><span class="token punctuation">)</span>  
+<span class="token keyword">def</span> <span class="token function">get_cookie</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name<span class="token operator">=</span>request<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span>  
+    <span class="token keyword">return</span> name
+</code></pre>
+<h3 id="2-Session"><a href="#2-Session" class="headerlink" title="2. Session"></a>2. Session</h3><p>flask-session是flask框架的session组件</p>
+<p>该组件则将支持session保存到多个地方</p>
+<p>如：</p>
+<pre class=" language-python"><code class="language-python">redis：保存数据的一种工具，五大类型。非关系型数据库
+
+memcached
+
+mongodb
+
+sqlalchmey：那数据存到数据库表里面
+</code></pre>
+<h4 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h4><pre class=" language-python"><code class="language-python">pip install flask<span class="token operator">-</span>session
+</code></pre>
+<p>如果指定存session的类型为redis的话，需要安装redis</p>
+<pre class=" language-python"><code class="language-python">pip install redis
+</code></pre>
+<h4 id="2-2-语法"><a href="#2-2-语法" class="headerlink" title="2.2 语法"></a>2.2 语法</h4><p>设置session：</p>
+<pre class=" language-python"><code class="language-python">session<span class="token punctuation">[</span><span class="token string">'key'</span><span class="token punctuation">]</span> <span class="token operator">=</span> value
+</code></pre>
+<p>读取session：</p>
+<pre><code>result = session[&#39;key&#39;] ：如果内容不存在，将会报异常
+
+result = session.get(&#39;key&#39;) ：如果内容不存在，将返回None
+</code></pre><p>删除session：</p>
+<pre><code>session.pop(&#39;key&#39;)
+</code></pre><p>清空session中所有数据：</p>
+<pre><code>session.clear
+</code></pre><h4 id="2-2-使用"><a href="#2-2-使用" class="headerlink" title="2.2 使用"></a>2.2 使用</h4><p>我们在初始化文件中创建一个方法，通过调用该方法来获取到Flask的app对象<br>​    </p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">create_app</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># SECRET_KEY 秘钥</span>
+    app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'secret_key'</span>
+    <span class="token comment" spellcheck="true"># session类型为redis</span>
+    app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_TYPE'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'redis'</span>
+    <span class="token comment" spellcheck="true"># 添加前缀</span>
+    app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SESSION_KEY_PREFIX'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'flask'</span>
+
+    <span class="token comment" spellcheck="true"># 加载app的第一种方式</span>
+    se <span class="token operator">=</span> Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    se<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#加载app的第二种方式</span>
+    Session<span class="token punctuation">(</span>app<span class="token operator">=</span>app<span class="token punctuation">)</span>
+    app<span class="token punctuation">.</span>register_blueprint<span class="token punctuation">(</span>blueprint<span class="token operator">=</span>blue<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> app
+</code></pre>
+<h4 id="2-3-案例"><a href="#2-3-案例" class="headerlink" title="2.3 案例"></a>2.3 案例</h4><p>定义一个登陆的方法，post请求获取到username，直接写入到redis中，并且在页面中展示出redis中的username</p>
+<p>a）需要先启动redis，开启redis-server，使用redis-cli进入客户端</p>
+<p>b）定义方法</p>
+<pre class=" language-python"><code class="language-python">@blue<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/login/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token punctuation">:</span>
+        username <span class="token operator">=</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'login.html'</span><span class="token punctuation">,</span> username<span class="token operator">=</span>username<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        username <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">)</span>
+        session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'first.login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>c）定义模板<br>​    </p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span>h3<span class="token operator">></span>欢迎<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">{</span> username <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h3<span class="token operator">></span>
+<span class="token operator">&lt;</span>form action<span class="token operator">=</span><span class="token string">""</span> method<span class="token operator">=</span><span class="token string">"POST"</span><span class="token operator">></span>
+    用户名<span class="token punctuation">:</span><span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> name<span class="token operator">=</span><span class="token string">"username"</span> placeholder<span class="token operator">=</span><span class="token string">"请输入你的名字"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"submit"</span> value<span class="token operator">=</span><span class="token string">"提交"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>form<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+</code></pre>
+<p>d）redis中数据</p>
+<p><img src="assets/1528801433709.png" alt="52880143370"></p>
+<p>注意：我们在定义app.config的时候指定了SESSION_KEY_PREFIX为flask，表示存在session中的key都会加一个前缀名flask</p>
+<p>e) cookie和session的联系</p>
+<p><img src="assets/1528801449198.png" alt="52880144919"></p>
+<p>访问者在第一次访问服务器时，服务器在其cookie中设置一个唯一的ID号——会话ID(session)。 这样，访问者后续对服务器的访问头中将自动包含该信息，服务器通过这个ID号，即可区 隔不同的访问者。然后根据不同的访问者来获取其中保存的value值信息。</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/27/05.2-Flask查询数据库-blog摘录/" class="styled-border">
+                    ←
+                    Flask操作数据库
+                    
+                </a>
+            
+            
+                <a href="/2019/04/27/flask-部署/" class="styled-border">
+                    
+                    flask-部署-2
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

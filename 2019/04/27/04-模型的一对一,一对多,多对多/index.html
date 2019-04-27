@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>模型的一对一/一对多/多对多 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="04-模型的一对一,一对多,多对多 1. 一对一关系 主要通过一个  uselist=False 来约束, 因为在一对多中通过 查询得到的是一个列表, 所以, uselist=False禁用列表, 使我们只能查找到一个, 就构成了一对一关系  人和身份证的一对一一关系  from flask_sqlalchemy import SQLAlchemy  db = SQLAlchemy()  clas">
+<meta name="keywords" content="Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模型的一对一&#x2F;一对多&#x2F;多对多">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/04-模型的一对一,一对多,多对多/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="04-模型的一对一,一对多,多对多 1. 一对一关系 主要通过一个  uselist=False 来约束, 因为在一对多中通过 查询得到的是一个列表, 所以, uselist=False禁用列表, 使我们只能查找到一个, 就构成了一对一关系  人和身份证的一对一一关系  from flask_sqlalchemy import SQLAlchemy  db = SQLAlchemy()  clas">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:33:19.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模型的一对一&#x2F;一对多&#x2F;多对多">
+<meta name="twitter:description" content="04-模型的一对一,一对多,多对多 1. 一对一关系 主要通过一个  uselist=False 来约束, 因为在一对多中通过 查询得到的是一个列表, 所以, uselist=False禁用列表, 使我们只能查找到一个, 就构成了一对一关系  人和身份证的一对一一关系  from flask_sqlalchemy import SQLAlchemy  db = SQLAlchemy()  clas">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">模型的一对一/一对多/多对多</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/27 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Flask/">Flask</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>04-模型的一对一,一对多,多对多</p>
+<h4 id="1-一对一关系"><a href="#1-一对一关系" class="headerlink" title="1. 一对一关系"></a>1. 一对一关系</h4><ul>
+<li>主要通过一个  uselist=False 来约束, 因为在一对多中通过 查询得到的是一个列表, 所以, uselist=False禁用列表, 使我们只能查找到一个, 就构成了一对一关系</li>
+</ul>
+<p>人和身份证的一对一一关系</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+
+db <span class="token operator">=</span> SQLAlchemy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Persion</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tb_persion'</span>
+    p_id <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">#主键字段</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    ident_id <span class="token operator">=</span> db<span class="token punctuation">,</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> db<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'tb_ident.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Ident</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tb_ident'</span>
+    id <span class="token operator">=</span> <span class="token comment" spellcheck="true"># 主键字段</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    persion <span class="token operator">=</span> db<span class="token punctuation">.</span>relationship<span class="token punctuation">(</span><span class="token string">'User'</span><span class="token punctuation">,</span> backref<span class="token operator">=</span><span class="token string">'ident'</span><span class="token punctuation">,</span> uselist<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="2-一对多关系"><a href="#2-一对多关系" class="headerlink" title="2. 一对多关系"></a>2. 一对多关系</h4><p>班级和学生是一对多关系, 一个班级中可以有多个学生</p>
+<p>学生 和 班级 模型</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+
+db <span class="token operator">=</span> SQLAlchemy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># Many</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tb_student'</span>
+    s_id <span class="token operator">=</span> <span class="token comment" spellcheck="true"># 主键</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    s_grade <span class="token operator">=</span> db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span>db<span class="token punctuation">.</span>Interger<span class="token punctuation">,</span> db<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'tb_grade.g_id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Grade</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># one</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tb_grade'</span>
+    c_id <span class="token operator">=</span> <span class="token comment" spellcheck="true"># 主键</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    students <span class="token operator">=</span> db<span class="token punctuation">.</span>relationship<span class="token punctuation">(</span><span class="token string">'Student'</span><span class="token punctuation">,</span> backref<span class="token operator">=</span><span class="token string">'stu'</span><span class="token punctuation">,</span> lazy<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre>
+<p>backref 字段主要是用于通过建立的联系, 来进行反向查询, 例如, Student 可以通过 Grade 模型中关联的 ‘stu’, 来进行查询班级   </p>
+<h4 id="3-多对多关系"><a href="#3-多对多关系" class="headerlink" title="3. 多对多关系"></a>3. 多对多关系</h4><p>多对多关系主要是要创建中间表, 不同于 Django 的是 Flask 的中间表要我们自己书写, 并且在其中添加关联关系</p>
+<ul>
+<li>关键在于 relationship  , 这个关联关系可以放在两张表的任意一张表中, 但是不可以放在中间表中</li>
+<li>relationship 中的 secondary 是中间表</li>
+</ul>
+<p> 学生表 和 课程表 是 多对多关系, 一个学生可以选择多门课程, 一个课程也可以有多个学生选择</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+
+db <span class="token operator">=</span> SQLAlchemy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tb_student'</span>
+    s_id <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true"># 主键字段</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Course</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tb_course'</span>
+    c_id <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  <span class="token comment" spellcheck="true"># 主键字段</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    students <span class="token operator">=</span> db<span class="token punctuation">.</span>relationship<span class="token punctuation">(</span><span class="token string">'Student'</span><span class="token punctuation">,</span> secondary<span class="token operator">=</span>sc<span class="token punctuation">,</span> backref<span class="token operator">=</span><span class="token string">'course'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 中间表</span>
+sc <span class="token operator">=</span> db<span class="token punctuation">.</span>Table<span class="token punctuation">(</span><span class="token string">'sc'</span><span class="token punctuation">,</span>
+    db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span><span class="token string">'s_id'</span><span class="token punctuation">,</span> db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> db<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'tb_student.s_id'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    db<span class="token punctuation">.</span>Column<span class="token punctuation">(</span><span class="token string">'c_id'</span><span class="token punctuation">,</span> db<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> db<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span><span class="token string">'tb_course.c_id'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
+</code></pre>
+<h4 id="4-添加删除联系和查询"><a href="#4-添加删除联系和查询" class="headerlink" title="4.添加删除联系和查询"></a>4.添加删除联系和查询</h4><h5 id="添加学生和课程之间的关系"><a href="#添加学生和课程之间的关系" class="headerlink" title="添加学生和课程之间的关系"></a>添加学生和课程之间的关系</h5><p>通过页面中传递学生的id和课程的id，分别获取学生的对象和课程的对象，在使用关联关系append去添加学生对象，并且add以后再commit后，就可以在中间表sc中查看到新增的关联关系了。</p>
+<pre class=" language-python"><code class="language-python">    userid <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'userid'</span><span class="token punctuation">)</span>
+    courseid <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'courseid'</span><span class="token punctuation">)</span>
+
+    stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>userid<span class="token punctuation">)</span>
+    cou <span class="token operator">=</span> Course<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>courseid<span class="token punctuation">)</span>
+
+    cou<span class="token punctuation">.</span>students<span class="token punctuation">.</span>append<span class="token punctuation">(</span>stu<span class="token punctuation">)</span>
+    db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>add<span class="token punctuation">(</span>cou<span class="token punctuation">)</span>
+    db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h5 id="删除学生和课程之间的关系"><a href="#删除学生和课程之间的关系" class="headerlink" title="删除学生和课程之间的关系"></a>删除学生和课程之间的关系</h5><p>通过页面获取传递的学生的id和课程的id，分别获取学生对象和课程对象，在使用关联关系remove去删除学生对象，并commit将事务提交到数据库中</p>
+<pre class=" language-python"><code class="language-python">stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>s_id<span class="token punctuation">)</span>
+cou <span class="token operator">=</span> Course<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>c_id<span class="token punctuation">)</span>
+
+cou<span class="token punctuation">.</span>students<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>stu<span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h5 id="通过课程查询学生的信息"><a href="#通过课程查询学生的信息" class="headerlink" title="通过课程查询学生的信息"></a>通过课程查询学生的信息</h5><p>以下定义在课程course的模型中，所以通过课程查询学生的信息，语法为课程的对象.studengs。如果知道学生的信息反过来找课程的信息，则使用backref的反向关联去查询，语语法为学生的对象.cou(反向)</p>
+<p>students = db.relationship(‘Student’,secondary=sc,backref=’cou’)</p>
+<pre class=" language-python"><code class="language-python">cou <span class="token operator">=</span> Course<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+stus <span class="token operator">=</span> cou<span class="token punctuation">.</span>students
+</code></pre>
+<h5 id="通过学生去查询课程的信息"><a href="#通过学生去查询课程的信息" class="headerlink" title="通过学生去查询课程的信息"></a>通过学生去查询课程的信息</h5><pre class=" language-python"><code class="language-python">stu <span class="token operator">=</span> Student<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+cous <span class="token operator">=</span> stu<span class="token punctuation">.</span>cou
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/27/03-定义模型和创建/" class="styled-border">
+                    ←
+                    模型的创建
+                    
+                </a>
+            
+            
+                <a href="/2019/04/27/05-数据查询和模型迁移migrate/" class="styled-border">
+                    
+                    模型的一对多查询和数据迁移
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

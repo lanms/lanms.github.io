@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>部署flask-1 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="部署flask：  更新ubuntu的源sudo apt-get update  安装mysqlsudo apt install mysql-server mysql-client  修改mysql配置 cd /etc/mysql/mysql.conf.d修改mysqld.conf 讲bind_address注释  修改配置 use mysql； GRANT ALL PRIVILEGES ON .">
+<meta name="keywords" content="Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署flask-1">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/flask-部署-ubantu/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="部署flask：  更新ubuntu的源sudo apt-get update  安装mysqlsudo apt install mysql-server mysql-client  修改mysql配置 cd /etc/mysql/mysql.conf.d修改mysqld.conf 讲bind_address注释  修改配置 use mysql； GRANT ALL PRIVILEGES ON .">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:31:34.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="部署flask-1">
+<meta name="twitter:description" content="部署flask：  更新ubuntu的源sudo apt-get update  安装mysqlsudo apt install mysql-server mysql-client  修改mysql配置 cd /etc/mysql/mysql.conf.d修改mysqld.conf 讲bind_address注释  修改配置 use mysql； GRANT ALL PRIVILEGES ON .">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">部署flask-1</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/27 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/Flask/">Flask</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>部署flask：</p>
+<ol>
+<li><p>更新ubuntu的源<br>sudo apt-get update</p>
+</li>
+<li><p>安装mysql<br>sudo apt install mysql-server mysql-client</p>
+</li>
+<li><p>修改mysql配置</p>
+<p>cd /etc/mysql/mysql.conf.d<br>修改mysqld.conf 讲bind_address注释</p>
+</li>
+<li><p>修改配置</p>
+<p>use mysql；</p>
+<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘123456’ WITH GRANT OPTION;</p>
+<p>flush privileges; </p>
+</li>
+<li><p>重启mysql<br>service mysql restart</p>
+</li>
+<li><p>安装Nginx：</p>
+<p>sudo apt-get install nginx</p>
+</li>
+<li><p>安装pip3</p>
+<p>apt install python3-pip</p>
+</li>
+<li><p>安装uWSGI以及uWSGI对于Python的支持：</p>
+<p>pip3 install uwsgi</p>
+</li>
+<li><p>修改总的nginx的配置的文件</p>
+<p>vim  /etc/nginx/nginx.conf</p>
+</li>
+<li><p>配置nginx的文件</p>
+</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">server {
+
+    listen       80;
+    server_name 47.92.73.20 localhost;
+
+    access_log /home/app/logs/access.log;
+    error_log /home/app/logs/error.log;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass 127.0.0.1:8890;
+        uwsgi_param UWSGI_CHDIR /home/app/src/s_aj;
+        uwsgi_param UWSGI_SCRIPT manage:app;   # 启动flask的文件:Flask的实例
+
+    }
+}
+</code></pre>
+<p>​    </p>
+<ol>
+<li>配置uwsgi的文件</li>
+</ol>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">[</span>uwsgi<span class="token punctuation">]</span>
+
+socket<span class="token operator">=</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token punctuation">:</span><span class="token number">8890</span>
+
+chdir<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>src<span class="token operator">/</span>day06
+
+pythonpath<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>python3<span class="token operator">/</span>bin<span class="token operator">/</span>python3
+
+pythonhome<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>env<span class="token operator">/</span>sjenv
+
+callable<span class="token operator">=</span>app<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true"># 回调的flask实例</span>
+
+logto <span class="token operator">=</span> <span class="token operator">/</span>home<span class="token operator">/</span>logs<span class="token operator">/</span>uwsgi<span class="token punctuation">.</span>log
+
+</code></pre>
+<p>后台运行：</p>
+<pre><code>nohup python3 manage.py runserver -p 80 -h 0.0.0.0 -d &amp;
+</code></pre>
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/27/flask-部署/" class="styled-border">
+                    ←
+                    flask-部署-2
+                    
+                </a>
+            
+            
+                <a href="/2019/04/27/flask-部署centOS/" class="styled-border">
+                    
+                    flask-部署
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

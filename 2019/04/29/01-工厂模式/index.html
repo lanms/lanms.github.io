@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>工厂模式 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="01-工厂模式 介绍在工厂模式中，客户端可以请求一个对象，而无需知道这个对象来自哪里，也就是，使用那个类来生成这个对象，共仓背后的思想是简化对象的创建，与客户端自己基于类实例化直接创建对象相比，基于一个中心化函数来实现，更易于追踪创建了那些对象，通过将创建对象的代码和使用对象的代码解耦，工厂能够降低应用维护的复杂度。 工厂通常由两种方式，一种是工厂方法，它是一个方法，对不同的输入参数返回不同的对象">
+<meta name="keywords" content="design-pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工厂模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/01-工厂模式/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="01-工厂模式 介绍在工厂模式中，客户端可以请求一个对象，而无需知道这个对象来自哪里，也就是，使用那个类来生成这个对象，共仓背后的思想是简化对象的创建，与客户端自己基于类实例化直接创建对象相比，基于一个中心化函数来实现，更易于追踪创建了那些对象，通过将创建对象的代码和使用对象的代码解耦，工厂能够降低应用维护的复杂度。 工厂通常由两种方式，一种是工厂方法，它是一个方法，对不同的输入参数返回不同的对象">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:43:40.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工厂模式">
+<meta name="twitter:description" content="01-工厂模式 介绍在工厂模式中，客户端可以请求一个对象，而无需知道这个对象来自哪里，也就是，使用那个类来生成这个对象，共仓背后的思想是简化对象的创建，与客户端自己基于类实例化直接创建对象相比，基于一个中心化函数来实现，更易于追踪创建了那些对象，通过将创建对象的代码和使用对象的代码解耦，工厂能够降低应用维护的复杂度。 工厂通常由两种方式，一种是工厂方法，它是一个方法，对不同的输入参数返回不同的对象">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">工厂模式</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/design-pattern/">design-pattern</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>01-工厂模式</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>在工厂模式中，客户端可以请求一个对象，而无需知道这个对象来自哪里，也就是，使用那个类来生成这个对象，共仓背后的思想是简化对象的创建，与客户端自己基于类实例化直接创建对象相比，基于一个中心化函数来实现，更易于追踪创建了那些对象，通过将创建对象的代码和使用对象的代码解耦，工厂能够降低应用维护的复杂度。</p>
+<p>工厂通常由两种方式，一种是<strong>工厂方法</strong>，它是一个方法，对不同的输入参数返回不同的对象，第二种是<strong>抽象工厂</strong>，它是一组用于创建一系列相关事务的工厂方法</p>
+<h3 id="1-工厂方法"><a href="#1-工厂方法" class="headerlink" title="1. 工厂方法"></a>1. 工厂方法</h3><p>案例：Django框架工厂方法来创建表单字段，Django的forms模块支持不同类型的字段（CharField, EmailField）的创建和定制（max_length, required）。</p>
+<h4 id="何时使用"><a href="#何时使用" class="headerlink" title="何时使用"></a>何时使用</h4><p>如果因为应用创建对象的代码分布在多个不同的地方，而不是仅在一个函数/方法中，你发现没法跟踪这些对象，那么因该考虑使用工厂方法模式</p>
+<p>代码示例 <a href="https://github.com/lanms/Python_design_pattern/blob/master/01_factory_pattern/factory_method.py" target="_blank" rel="noopener">https://github.com/lanms/Python_design_pattern/blob/master/01_factory_pattern/factory_method.py</a></p>
+<h3 id="2-抽象工厂"><a href="#2-抽象工厂" class="headerlink" title="2. 抽象工厂"></a>2. 抽象工厂</h3><p>抽象工厂设计模式是抽象方法的一种泛化</p>
+<p>抽象工厂有一个有点，在使用工厂方法时从用户的视角通常是看不到的，那么就是抽象工厂能够通过改变激活的工厂方法动态的改变应用行为。</p>
+<h4 id="何时使用-1"><a href="#何时使用-1" class="headerlink" title="何时使用"></a>何时使用</h4><p>通常一开始使用的是工厂方法，因为它更加简单，如果后来发现应用需要许多工厂方法，那么将创建一系列对象的过程合并在一起，而最终引入抽象方法。</p>
+<p>代码示例<a href="https://github.com/lanms/Python_design_pattern/blob/master/01_factory_pattern/abstract_factory.py" target="_blank" rel="noopener">https://github.com/lanms/Python_design_pattern/blob/master/01_factory_pattern/abstract_factory.py</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/00-Python设计模式介绍/" class="styled-border">
+                    ←
+                    设计模式简介
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/06-MySQL数据库索引,视图,存储/" class="styled-border">
+                    
+                    Mysql索引－视图－存储
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

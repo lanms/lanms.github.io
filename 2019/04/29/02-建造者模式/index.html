@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>建造者模式 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="建造者模式对比工厂模式建造者模式对比工厂模式两者之间的差别并不明确，主要的区别在于工厂模式以单个步骤创建对象，而建造者模式以多个步骤创建对象，并且几乎始终会使用一个指挥者。另外一个区别是，在工厂模式中会立即返回一个创建好的对象，而在建造模式下，仅在需要客户端代码显示是才会请求指挥者返回最终的对象，可类比Django对数据库的操作 适用场景 想要创建一个复杂对象，对象由多个部分构成，且对象的创建要经">
+<meta name="keywords" content="design-pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建造者模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/02-建造者模式/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="建造者模式对比工厂模式建造者模式对比工厂模式两者之间的差别并不明确，主要的区别在于工厂模式以单个步骤创建对象，而建造者模式以多个步骤创建对象，并且几乎始终会使用一个指挥者。另外一个区别是，在工厂模式中会立即返回一个创建好的对象，而在建造模式下，仅在需要客户端代码显示是才会请求指挥者返回最终的对象，可类比Django对数据库的操作 适用场景 想要创建一个复杂对象，对象由多个部分构成，且对象的创建要经">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:43:36.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="建造者模式">
+<meta name="twitter:description" content="建造者模式对比工厂模式建造者模式对比工厂模式两者之间的差别并不明确，主要的区别在于工厂模式以单个步骤创建对象，而建造者模式以多个步骤创建对象，并且几乎始终会使用一个指挥者。另外一个区别是，在工厂模式中会立即返回一个创建好的对象，而在建造模式下，仅在需要客户端代码显示是才会请求指挥者返回最终的对象，可类比Django对数据库的操作 适用场景 想要创建一个复杂对象，对象由多个部分构成，且对象的创建要经">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">建造者模式</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/design-pattern/">design-pattern</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h4 id="建造者模式对比工厂模式"><a href="#建造者模式对比工厂模式" class="headerlink" title="建造者模式对比工厂模式"></a>建造者模式对比工厂模式</h4><p>建造者模式对比工厂模式两者之间的差别并不明确，主要的区别在于工厂模式以单个步骤创建对象，而建造者模式以多个步骤创建对象，并且几乎始终会使用一个指挥者。另外一个区别是，在工厂模式中会立即返回一个创建好的对象，而在建造模式下，仅在需要客户端代码显示是才会请求指挥者返回最终的对象，可类比Django对数据库的操作</p>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><ul>
+<li>想要创建一个复杂对象，对象由多个部分构成，且对象的创建要经过多个不同的步骤，这些步骤也许还需要遵从特定的顺序</li>
+<li>要求一个对象能有不同的表现，并希望对象的构造与表现解耦</li>
+<li>想要在某个时间点创建对象，但是在稍后的时间再做访问，延时生产</li>
+</ul>
+<p>代码示例 <a href="https://github.com/lanms/Python_design_pattern/blob/master/02_builder_pattern/builder_pizza.py" target="_blank" rel="noopener">https://github.com/lanms/Python_design_pattern/blob/master/02_builder_pattern/builder_pizza.py</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/06-MySQL数据库索引,视图,存储/" class="styled-border">
+                    ←
+                    Mysql索引－视图－存储
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/05-MySQL数据查询语言/" class="styled-border">
+                    
+                    Mysql数据查询语言
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

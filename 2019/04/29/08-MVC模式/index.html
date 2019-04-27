@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>MVC模式 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="MVC模式模型-视图-控制器模式 SoC 关注点分离（Separation of Concerns）是软件工程相关设计原则之一。SoC原则背后的思想是将一个应用切分成不同的部分，每个部分解决一个单独的关注点。分层设计中的层次即是关注点的例子，使用SoC原则能简化软件应用的开发和维护。 MVC就是应用到面向对象编程的SoC原则。 模型是核心部分，代表着应用的信息本源，包含和管理业务逻辑，数据，状态以">
+<meta name="keywords" content="design-pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVC模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/08-MVC模式/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="MVC模式模型-视图-控制器模式 SoC 关注点分离（Separation of Concerns）是软件工程相关设计原则之一。SoC原则背后的思想是将一个应用切分成不同的部分，每个部分解决一个单独的关注点。分层设计中的层次即是关注点的例子，使用SoC原则能简化软件应用的开发和维护。 MVC就是应用到面向对象编程的SoC原则。 模型是核心部分，代表着应用的信息本源，包含和管理业务逻辑，数据，状态以">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:43:10.191Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MVC模式">
+<meta name="twitter:description" content="MVC模式模型-视图-控制器模式 SoC 关注点分离（Separation of Concerns）是软件工程相关设计原则之一。SoC原则背后的思想是将一个应用切分成不同的部分，每个部分解决一个单独的关注点。分层设计中的层次即是关注点的例子，使用SoC原则能简化软件应用的开发和维护。 MVC就是应用到面向对象编程的SoC原则。 模型是核心部分，代表着应用的信息本源，包含和管理业务逻辑，数据，状态以">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">MVC模式</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/design-pattern/">design-pattern</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="MVC模式"><a href="#MVC模式" class="headerlink" title="MVC模式"></a>MVC模式</h3><p>模型-视图-控制器模式</p>
+<p>SoC 关注点分离（Separation of Concerns）是软件工程相关设计原则之一。SoC原则背后的思想是将一个应用切分成不同的部分，每个部分解决一个单独的关注点。分层设计中的层次即是关注点的例子，使用SoC原则能简化软件应用的开发和维护。</p>
+<p>MVC就是应用到面向对象编程的SoC原则。</p>
+<p>模型是核心部分，代表着应用的信息本源，包含和管理业务逻辑，数据，状态以及应用的规则。</p>
+<p>视图是模型的可视化表现。</p>
+<p>控制器是模型和视图之间的链接。模型和视图之间的信息交互都是由控制器进行控制。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>MVC模式将各个模块的功能进行解耦和，方便应用的管理和代码的扩展</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/07-享元模式/" class="styled-border">
+                    ←
+                    享元模式
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/05-MySQL和PostgreSQL对比/" class="styled-border">
+                    
+                    MySQL和PostgreSQL对比
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>代理模式 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="代理模式在某些应用中我们想要访问一个或者多个重要的操作，有时会进行一些敏感操作，在允许用户进行这些敏感操作的之前，我们希望确保用户具备足够的权限，操作系统也存在这样的情况，如在执行某些操作的时候必须有管理员权限才可以进行。 常见的知名代理模式 远程代理：实际存在于不同地址空间的对象在本地的代理 虚拟代理：用于懒初始化，将一个大计算量对象的创建延迟到真正需要的时候 保护/防护代理：控制对敏感对象的访">
+<meta name="keywords" content="design-pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代理模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/09-代理模式/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="代理模式在某些应用中我们想要访问一个或者多个重要的操作，有时会进行一些敏感操作，在允许用户进行这些敏感操作的之前，我们希望确保用户具备足够的权限，操作系统也存在这样的情况，如在执行某些操作的时候必须有管理员权限才可以进行。 常见的知名代理模式 远程代理：实际存在于不同地址空间的对象在本地的代理 虚拟代理：用于懒初始化，将一个大计算量对象的创建延迟到真正需要的时候 保护/防护代理：控制对敏感对象的访">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:43:06.476Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="代理模式">
+<meta name="twitter:description" content="代理模式在某些应用中我们想要访问一个或者多个重要的操作，有时会进行一些敏感操作，在允许用户进行这些敏感操作的之前，我们希望确保用户具备足够的权限，操作系统也存在这样的情况，如在执行某些操作的时候必须有管理员权限才可以进行。 常见的知名代理模式 远程代理：实际存在于不同地址空间的对象在本地的代理 虚拟代理：用于懒初始化，将一个大计算量对象的创建延迟到真正需要的时候 保护/防护代理：控制对敏感对象的访">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">代理模式</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/design-pattern/">design-pattern</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>在某些应用中我们想要访问一个或者多个重要的操作，有时会进行一些敏感操作，在允许用户进行这些敏感操作的之前，我们希望确保用户具备足够的权限，操作系统也存在这样的情况，如在执行某些操作的时候必须有管理员权限才可以进行。</p>
+<h4 id="常见的知名代理模式"><a href="#常见的知名代理模式" class="headerlink" title="常见的知名代理模式"></a>常见的知名代理模式</h4><ul>
+<li>远程代理：实际存在于不同地址空间的对象在本地的代理</li>
+<li>虚拟代理：用于懒初始化，将一个大计算量对象的创建延迟到真正需要的时候</li>
+<li>保护/防护代理：控制对敏感对象的访问</li>
+<li>智能（引用）代理：在对象被访问时执行额外的动作，此类代理的例子包括引用计数和线程安全检查。</li>
+</ul>
+<p>虚拟代理，代码示例<a href="https://github.com/lanms/Python_design_pattern/blob/master/09-proxy_pattern/09-1-Lazy.py" target="_blank" rel="noopener">https://github.com/lanms/Python_design_pattern/blob/master/09-proxy_pattern/09-1-Lazy.py</a></p>
+<p>代理模式代码 <a href="https://github.com/lanms/Python_design_pattern/blob/master/09-proxy_pattern/09-2-proxy.py" target="_blank" rel="noopener">https://github.com/lanms/Python_design_pattern/blob/master/09-proxy_pattern/09-2-proxy.py</a></p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/05-MySQL和PostgreSQL对比/" class="styled-border">
+                    ←
+                    MySQL和PostgreSQL对比
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/10-责任链模式/" class="styled-border">
+                    
+                    责任链模式
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

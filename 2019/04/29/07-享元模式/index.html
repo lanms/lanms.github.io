@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>享元模式 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="享元模式介绍享元模式通过为相似对象引入数据共享来最小化内存使用，提升性能，一个享元就是一个包含状态的独立的不可变数据的共享对象，依赖状态的可变数据不应是享元的一部分，因为每个对象的这种信息不相同，无法共享，如果享元需要非固有数据应该由客户端代码显示提供。 例如我们正在设计一个性能为关键的游戏，例如第一人称设计游戏（FPS），在FPS游戏中，玩家（士兵）共享一些状态，如外在的表现和行为。例如在 CS">
+<meta name="keywords" content="design-pattern">
+<meta property="og:type" content="article">
+<meta property="og:title" content="享元模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/07-享元模式/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="享元模式介绍享元模式通过为相似对象引入数据共享来最小化内存使用，提升性能，一个享元就是一个包含状态的独立的不可变数据的共享对象，依赖状态的可变数据不应是享元的一部分，因为每个对象的这种信息不相同，无法共享，如果享元需要非固有数据应该由客户端代码显示提供。 例如我们正在设计一个性能为关键的游戏，例如第一人称设计游戏（FPS），在FPS游戏中，玩家（士兵）共享一些状态，如外在的表现和行为。例如在 CS">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-27T07:43:14.742Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="享元模式">
+<meta name="twitter:description" content="享元模式介绍享元模式通过为相似对象引入数据共享来最小化内存使用，提升性能，一个享元就是一个包含状态的独立的不可变数据的共享对象，依赖状态的可变数据不应是享元的一部分，因为每个对象的这种信息不相同，无法共享，如果享元需要非固有数据应该由客户端代码显示提供。 例如我们正在设计一个性能为关键的游戏，例如第一人称设计游戏（FPS），在FPS游戏中，玩家（士兵）共享一些状态，如外在的表现和行为。例如在 CS">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">享元模式</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/design-pattern/">design-pattern</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h3 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>享元模式通过为相似对象引入数据共享来最小化内存使用，提升性能，<strong>一个享元</strong>就是一个包含状态的独立的不可变数据的共享对象，依赖状态的可变数据不应是享元的一部分，因为每个对象的这种信息不相同，无法共享，如果享元需要非固有数据应该由客户端代码显示提供。</p>
+<p>例如我们正在设计一个性能为关键的游戏，例如第一人称设计游戏（FPS），在FPS游戏中，玩家（士兵）共享一些状态，如外在的表现和行为。例如在 CS 游戏中，同一团队的所有士兵看起来都是一样的，所有的士兵都有一些共同 的动作，比如，低头，跳跃等，这意味着我们可以创建一个享元来包含所有的共同数据，当然，士兵也有许多因人而异的数据，这些数据不是享元的一部分，比如，枪支/健康状况和地理位置等。</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>享元旨在优化性能和内存的使用。所有的嵌入式系统（如手机，平板，游戏终端和微控制器等）还有和性能相关的应用，如游戏，3D图形处理和实时系统等，都能从其中获益。</p>
+<p>享元模式的使用条件：</p>
+<ul>
+<li>应用需要使用大量的对象</li>
+<li>对象太多，存储/渲染它们的代价太大，一旦移除对象中的可变形态，多组不同的对象可以被相对更少的共享对象所替代。</li>
+<li>对象的ID对于应用不重要，对象共享改会造成ID的比较失败，所以不能依赖对象的ID。</li>
+</ul>
+<h4 id="关于memoization与享元模式之间的区别"><a href="#关于memoization与享元模式之间的区别" class="headerlink" title="关于memoization与享元模式之间的区别"></a>关于memoization与享元模式之间的区别</h4><p>memoization是一种优化技术，使用一个缓存来避免重复计算已经在前期步骤中计算好的结果，memoization并不是只能应用于某种特定的编程方式，还可以应用于方法和简单的函数。享元则是一种特定于面向对象编程优化的审计模式，享元关注的是共享的诗句。</p>
+<h4 id="享元的实现"><a href="#享元的实现" class="headerlink" title="享元的实现"></a>享元的实现</h4><p>在Python中，享元可以以多种方式实现</p>
+<p>代码示例<a href="https://github.com/lanms/Python_design_pattern/blob/master/07-share_pattern.py" target="_blank" rel="noopener">https://github.com/lanms/Python_design_pattern/blob/master/07-share_pattern.py</a></p>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">__new__</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> tree_type<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    obj <span class="token operator">=</span> cls<span class="token punctuation">.</span>pool<span class="token punctuation">.</span>get<span class="token punctuation">(</span>tree_type<span class="token punctuation">,</span> None<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> obj<span class="token punctuation">:</span>
+        obj <span class="token operator">=</span> object<span class="token punctuation">.</span>__new__<span class="token punctuation">(</span>cls<span class="token punctuation">)</span>
+        cls<span class="token punctuation">.</span>pool<span class="token punctuation">[</span>tree_type<span class="token punctuation">]</span> <span class="token operator">=</span> obj
+        obj<span class="token punctuation">.</span>tree_type <span class="token operator">=</span> tree_type
+    <span class="token keyword">return</span> obj
+
+<span class="token comment" spellcheck="true"># pool 是一个类属性，使用 __new__ 把 Tree 变成一个元类，元类支持自引用，cls 引用的是 Tree 类，</span>
+<span class="token comment" spellcheck="true"># 当客户端需要创建一个 Tree实例时，会以 Tree_type 参数传递树的种类，</span>
+<span class="token comment" spellcheck="true"># 树的种类用于检查是否创建过相同的树，如果已经创建过，则返回之前创建的对象，</span>
+<span class="token comment" spellcheck="true"># 否则，将这种新的树种添加到池中，并创建新的对象 </span>
+</code></pre>
+<h4 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h4><p>享元模式就是通过避免重复创建大量的已有的实列来优化程序的结构和性能，Python中可以使用元类来创建，类似于单例模式</p>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/06-外观模式/" class="styled-border">
+                    ←
+                    外观模式
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/08-MVC模式/" class="styled-border">
+                    
+                    MVC模式
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>ELK-Logstash | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ELK安装：https://c4ys.com/archives/552 配置logstashcd /opt/server/logstash-5.5.0/config touch python-logstash.conf ---------------输入以下内容------------------- input {   udp {     port =&amp;gt; 5959 #udp的端口     code">
+<meta name="keywords" content="ELK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK-Logstash">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/logstash/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="ELK安装：https://c4ys.com/archives/552 配置logstashcd /opt/server/logstash-5.5.0/config touch python-logstash.conf ---------------输入以下内容------------------- input {   udp {     port =&amp;gt; 5959 #udp的端口     code">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-23T13:24:53.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ELK-Logstash">
+<meta name="twitter:description" content="ELK安装：https://c4ys.com/archives/552 配置logstashcd /opt/server/logstash-5.5.0/config touch python-logstash.conf ---------------输入以下内容------------------- input {   udp {     port =&amp;gt; 5959 #udp的端口     code">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">ELK-Logstash</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/ELK/">ELK</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <p>ELK安装：<a href="https://c4ys.com/archives/552" target="_blank" rel="noopener">https://c4ys.com/archives/552</a></p>
+<h4 id="配置logstash"><a href="#配置logstash" class="headerlink" title="配置logstash"></a>配置logstash</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /opt/server/logstash-5.5.0/config
+<span class="token function">touch</span> python-logstash.conf
+---------------输入以下内容-------------------
+input <span class="token punctuation">{</span>
+  udp <span class="token punctuation">{</span>
+    port <span class="token operator">=</span><span class="token operator">></span> 5959 <span class="token comment" spellcheck="true">#udp的端口</span>
+    codec <span class="token operator">=</span><span class="token operator">></span> json<span class="token comment" spellcheck="true">#输入的格式为json格式</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+output <span class="token punctuation">{</span>
+elasticsearch <span class="token punctuation">{</span>
+    hosts <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"10.100.172.111:9200"</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#es的地址</span>
+    index <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"python-message-%{+YYYY.MM.dd}"</span> <span class="token comment" spellcheck="true">#存入到es的索引名</span>
+        <span class="token punctuation">}</span>
+  stdout <span class="token punctuation">{</span>
+    codec <span class="token operator">=</span><span class="token operator">></span> rubydebug
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">#到logstash的bin目录下，启动Logstash</span>
+<span class="token punctuation">[</span>root@inte-es-node1 bin<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./logstash -f ../config/python-logstash.conf</span>
+</code></pre>
+<p>安装python-logstash</p>
+<p><code>pip install python-logstash</code></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> logging
+<span class="token keyword">import</span> logstash
+<span class="token keyword">import</span> sys
+
+<span class="token comment" spellcheck="true">#host为logstash的IP地址</span>
+host <span class="token operator">=</span> <span class="token string">'10.100.172.111'</span>
+
+test_logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token string">'python-logstash-logger'</span><span class="token punctuation">)</span>
+test_logger<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#创建一个ogHandler</span>
+test_logger<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>logstash<span class="token punctuation">.</span>LogstashHandler<span class="token punctuation">(</span>host<span class="token punctuation">,</span> <span class="token number">5959</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+test_logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">'这是一行测试日志'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># test_logger.info('python-logstash: test logs  tash info message.')</span>
+<span class="token comment" spellcheck="true"># test_logger.warning('python-logstash: test logstash warning message.')</span>
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> logging
+<span class="token keyword">import</span> logstash
+<span class="token keyword">import</span> sys
+
+host <span class="token operator">=</span> <span class="token string">'localhost'</span>
+
+test_logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token string">'python-logstash-logger'</span><span class="token punctuation">)</span>
+test_logger<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>INFO<span class="token punctuation">)</span>
+test_logger<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>logstash<span class="token punctuation">.</span>LogstashHandler<span class="token punctuation">(</span>host<span class="token punctuation">,</span> <span class="token number">5959</span><span class="token punctuation">,</span> version<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># test_logger.addHandler(logstash.TCPLogstashHandler(host, 5959, version=1))</span>
+
+test_logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">'python-logstash: test logstash error message.'</span><span class="token punctuation">)</span>
+test_logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'python-logstash: test logstash info message.'</span><span class="token punctuation">)</span>
+test_logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">'python-logstash: test logstash warning message.'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># add extra field to logstash message</span>
+extra <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'test_string'</span><span class="token punctuation">:</span> <span class="token string">'python version: '</span> <span class="token operator">+</span> repr<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>version_info<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'test_boolean'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    <span class="token string">'test_dict'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token string">'c'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'test_float'</span><span class="token punctuation">:</span> <span class="token number">1.23</span><span class="token punctuation">,</span>
+    <span class="token string">'test_integer'</span><span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
+    <span class="token string">'test_list'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+test_logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'python-logstash: test extra fields'</span><span class="token punctuation">,</span> extra<span class="token operator">=</span>extra<span class="token punctuation">)</span>
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/02-PostgreSQL数据的增删改查/" class="styled-border">
+                    ←
+                    PostgreSQL-CRUD
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/02-MySQL数据库/" class="styled-border">
+                    
+                    Mysql常用命令
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+

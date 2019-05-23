@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>RabbitMQ的exchange类型 | Lanms Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Rabbitmq 常用三种exchange类型：Fanout exchange：这是处理逻辑最简单的exchange类型，实际上它没有任何逻辑，它把进入该exchange的消息全部转发给每一个绑定的队列中，如果这个exchange没有队列与之绑定，消息会被丢弃。 Direct exchange这种类型的交换机Fancout 类型的交换机智能一些，它会根据routing key来决定把消息具体扔到哪">
+<meta name="keywords" content="MQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ的exchange类型">
+<meta property="og:url" content="http://yoursite.com/2019/04/29/rabbitMQ/index.html">
+<meta property="og:site_name" content="Lanms Blog">
+<meta property="og:description" content="Rabbitmq 常用三种exchange类型：Fanout exchange：这是处理逻辑最简单的exchange类型，实际上它没有任何逻辑，它把进入该exchange的消息全部转发给每一个绑定的队列中，如果这个exchange没有队列与之绑定，消息会被丢弃。 Direct exchange这种类型的交换机Fancout 类型的交换机智能一些，它会根据routing key来决定把消息具体扔到哪">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-23T13:25:01.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RabbitMQ的exchange类型">
+<meta name="twitter:description" content="Rabbitmq 常用三种exchange类型：Fanout exchange：这是处理逻辑最简单的exchange类型，实际上它没有任何逻辑，它把进入该exchange的消息全部转发给每一个绑定的队列中，如果这个exchange没有队列与之绑定，消息会被丢弃。 Direct exchange这种类型的交换机Fancout 类型的交换机智能一些，它会根据routing key来决定把消息具体扔到哪">
+  
+    <link rel="alternate" href="/atom.xml" title="Lanms Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+  <link rel="stylesheet" href="/css/tocas.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style type="text/css">
+    a.title-link:hover{
+        color: #34b2db !important;
+    }
+
+    a.title-link:active{
+        color: #2075c1 !important;
+    }
+
+    #menu-color-id{
+        background : #f7f7f7;
+    }
+
+    #menu-color-id a{
+        color: #5a5a5a;
+    }
+  </style>
+  <script src="/js/tocas.js"></script>
+  
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head></html>
+
+<body>
+<!-- navigation -->
+
+<div class="ts fluid basic link big menu" id="menu-color-id">
+
+    <!-- ejs : align to post page or index page -->
+        
+            <div class="ts very narrow container">
+        
+
+        
+            <a class="item" href="/">Home</a>
+        
+            <a class="item" href="/archives">Archives</a>
+        
+    </div>
+</div>
+<!-- the end of navigation -->
+
+<!-- big bang title -->
+<div class="ts padded horizontally fitted fluid slate" style="background-color: #f7f7f7;">
+    <!-- ejs : align to post page or index page -->
+    
+        <div class="ts very narrow container">
+    
+        <!-- Title -->
+        <h1 class="ts eleven wide column header be-center-h1">
+            <span style="color: #404040;" id="big-title">Lanms Blog</span>
+            <div class="sub header" id="slogan-bar" style=" margin-top: 15px; color: #404040;"></div>
+        </h1>
+        <!-- the end of title -->
+    </div>
+</div>
+<!-- the end of big bang title -->
+</body>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+<!-- main section -->
+<div class="ts text container">
+        <!-- left section -->
+        <div class="column" style=" padding: 35px; ">
+            <!-- Articles -->
+                
+                <h1 class="ts header">
+                    <span style="color: #333;">RabbitMQ的exchange类型</span>
+                    <div class="sub header" style="color: #808080;">Publish: 2019/3/29 
+                     &nbsp;&nbsp;
+                        <ul class="unstyled radius-tag -list"><li class="unstyled radius-tag -list-item"><a class="unstyled radius-tag -list-link" href="/tags/MQ/">MQ</a></li></ul>
+                    
+                    </div>
+                </h1>
+
+                <h2 id="Rabbitmq-常用三种exchange类型："><a href="#Rabbitmq-常用三种exchange类型：" class="headerlink" title="Rabbitmq 常用三种exchange类型："></a>Rabbitmq 常用三种exchange类型：</h2><h2 id="Fanout-exchange："><a href="#Fanout-exchange：" class="headerlink" title="Fanout exchange："></a>Fanout exchange：</h2><p>这是处理逻辑最简单的exchange类型，实际上它没有任何逻辑，它把进入该exchange的消息全部转发给每一个绑定的队列中，如果这个exchange没有队列与之绑定，消息会被丢弃。</p>
+<h2 id="Direct-exchange"><a href="#Direct-exchange" class="headerlink" title="Direct exchange"></a>Direct exchange</h2><p>这种类型的交换机Fancout 类型的交换机智能一些，它会根据routing key来决定把消息具体扔到哪个消息队列中。通过exchange发消息的时候会指定一个routing key，只有当routing key和与队列绑定的routing key一样的时候，消息才对发送到对应的消息队列。即，如果与某个队列绑定的routing key叫hello.world，则通过exchange发送的routing key必须也是hello.world，该队列才能接收到消息（可按上述步骤进行验证）。这种情况下，队列之间是互斥关系，一个消息最多只能进入一个队列。</p>
+<h2 id="Topic-exchange"><a href="#Topic-exchange" class="headerlink" title="Topic exchange"></a>Topic exchange</h2><p>Topic exchange是最灵活的exchange，它会把exchange的routing key与绑定队列的routing key进行模式匹配。Routing key中可以包含 <em>和#两种符号，#号可以用来匹配一个或者多个单词，</em>用来匹配正好一个单词。官方的下图很好地说明了这个问题，读者最好自己动手验证一下。</p>
+<pre class=" language-python"><code class="language-python">
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> pika
+
+
+<span class="token keyword">def</span> <span class="token function">createVerifyCardQueues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    credentials <span class="token operator">=</span> pika<span class="token punctuation">.</span>PlainCredentials<span class="token punctuation">(</span><span class="token string">'your user'</span><span class="token punctuation">,</span> <span class="token string">'your password'</span><span class="token punctuation">)</span>
+    connection <span class="token operator">=</span> pika<span class="token punctuation">.</span>BlockingConnection<span class="token punctuation">(</span>pika<span class="token punctuation">.</span>ConnectionParameters<span class="token punctuation">(</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span><span class="token number">5672</span><span class="token punctuation">,</span><span class="token string">"/"</span><span class="token punctuation">,</span>credentials<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    channel <span class="token operator">=</span> connection<span class="token punctuation">.</span>channel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    name_prefix <span class="token operator">=</span> <span class="token string">"merchant.verifycard.async"</span>
+    exchange_name <span class="token operator">=</span> <span class="token string">"paybiz.merchant.exchange"</span>
+    channel<span class="token punctuation">.</span>queue_declare<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    start<span class="token operator">=</span><span class="token number">10</span>
+    end <span class="token operator">=</span> <span class="token number">26</span>
+    <span class="token keyword">for</span> biz_type <span class="token keyword">in</span> range<span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        queue_name <span class="token operator">=</span> name_prefix <span class="token operator">+</span> str<span class="token punctuation">(</span>biz_type<span class="token punctuation">)</span>
+        channel<span class="token punctuation">.</span>queue_declare<span class="token punctuation">(</span>queue_name<span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        channel<span class="token punctuation">.</span>queue_bind<span class="token punctuation">(</span>queue_name<span class="token punctuation">,</span>exchange_name<span class="token punctuation">,</span>queue_name<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    createVerifyCardQueues<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pika
+
+credentials <span class="token operator">=</span> pika<span class="token punctuation">.</span>PlainCredentials<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">,</span><span class="token string">'123456'</span><span class="token punctuation">)</span>
+connection <span class="token operator">=</span> pika<span class="token punctuation">.</span>BlockingConnection<span class="token punctuation">(</span>pika<span class="token punctuation">.</span>ConnectionParameters<span class="token punctuation">(</span>
+    <span class="token string">'192.168.56.19'</span><span class="token punctuation">,</span><span class="token number">5672</span><span class="token punctuation">,</span><span class="token string">'/'</span><span class="token punctuation">,</span>credentials<span class="token punctuation">)</span><span class="token punctuation">)</span>
+channel <span class="token operator">=</span> connection<span class="token punctuation">.</span>channel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 声明queue</span>
+channel<span class="token punctuation">.</span>queue_declare<span class="token punctuation">(</span>queue<span class="token operator">=</span><span class="token string">'balance'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># n RabbitMQ a message can never be sent directly to the queue, it always needs to go through an exchange.</span>
+channel<span class="token punctuation">.</span>basic_publish<span class="token punctuation">(</span>exchange<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span>
+                      routing_key<span class="token operator">=</span><span class="token string">'balance'</span><span class="token punctuation">,</span>
+                      body<span class="token operator">=</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[x] Sent 'Hello World!'"</span><span class="token punctuation">)</span>
+connection<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>查看队列中的消息</p>
+<pre class=" language-shell"><code class="language-shell">rabbitmqctl list_queues
+
+Listing queues ...
+hello    1
+</code></pre>
+<h4 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h4><pre class=" language-python"><code class="language-python">
+<span class="token keyword">import</span> pika
+
+credentials <span class="token operator">=</span> pika<span class="token punctuation">.</span>PlainCredentials<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">,</span><span class="token string">'123456'</span><span class="token punctuation">)</span>
+connection <span class="token operator">=</span> pika<span class="token punctuation">.</span>BlockingConnection<span class="token punctuation">(</span>pika<span class="token punctuation">.</span>ConnectionParameters<span class="token punctuation">(</span>
+    <span class="token string">'192.168.56.19'</span><span class="token punctuation">,</span><span class="token number">5672</span><span class="token punctuation">,</span><span class="token string">'/'</span><span class="token punctuation">,</span>credentials<span class="token punctuation">)</span><span class="token punctuation">)</span>
+channel <span class="token operator">=</span> connection<span class="token punctuation">.</span>channel<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+channel<span class="token punctuation">.</span>queue_declare<span class="token punctuation">(</span>queue<span class="token operator">=</span><span class="token string">'balance'</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">callback</span><span class="token punctuation">(</span>ch<span class="token punctuation">,</span> method<span class="token punctuation">,</span> properties<span class="token punctuation">,</span> body<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" [x] Received %r"</span> <span class="token operator">%</span> body<span class="token punctuation">)</span>
+
+
+channel<span class="token punctuation">.</span>basic_consume<span class="token punctuation">(</span>callback<span class="token punctuation">,</span>
+                      queue<span class="token operator">=</span><span class="token string">'balance'</span><span class="token punctuation">,</span>
+                      no_ack<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">' [*] Waiting for messages. To exit press CTRL+C'</span><span class="token punctuation">)</span>
+channel<span class="token punctuation">.</span>start_consuming<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+
+            <!-- / the end of articles -->
+        </div>
+        <!-- / left section -->
+        
+        
+            <hr/>
+            <div id="disqus_thread" style=" margin-top: 15px; margin-bottom: 25px; "></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://morgan-hexo-theme.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+
+        <!-- Next Post and Prev Post -->
+        
+        <hr/>
+        <div class="next-prev-post-section">
+            
+                <a href="/2019/04/29/02-1-Redis生产消费和发布订阅模式/" class="styled-border">
+                    ←
+                    Redis消息队列
+                    
+                </a>
+            
+            
+                <a href="/2019/04/29/01-数据库介绍,Mysql安装/" class="styled-border">
+                    
+                    Mysql介绍
+                    →
+                </a>
+            
+        </div>
+        
+</div>
+<script type="text/javascript">
+    let img = document.getElementsByTagName("img");
+    for(let i = 0; i < img.length; i++){
+        img[i].className += " ts fluid image";
+    }
+</script>
+<!-- / main section -->
+
+<!-- copyright -->
+<div class="ts attached secondary segment">
+    <div class="ts narrow container">
+        <br>
+        <div class="ts large center aligned header">
+            Powered by Hexo, Theme designs by @hpcslag.
+            <div class="smaller sub header">
+                Style-Framework Tocas-UI designs by @yamioldmel 
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<!-- / copyright -->
+<script type="text/javascript">
+    
+    const slogans = ["Hallo, dit is lanms blog","嗨，這是我的博客!","안녕하세요, 제 블로그입니다.","Hi, This is my blog!","こんにちは、私のブログへようこそ!","مرحبا، مرحبا بك في مدونتي"];
+</script>
+<script src="/js/script.js"></script>
+
